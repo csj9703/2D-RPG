@@ -1,22 +1,30 @@
-/*
- * A guessing game where the user guesses at a number from 1 to 10.
- * Game is won when the user correctly guesses the number.
+/**
+ * This class contains the methods for a guessing game
+ * @author Team 6 - CPSC 233 - Tutorial T02
+ * @version 1.0
+ * @since September 25, 2017
  */
 
 import java.util.Random;
-import java.util.Scanner;
 
-public class GuessingGame 
+public class GuessingGame
 {
-	// generates and returns a random number from 1 to 10
-	public static int randomNum()
+	/**
+	 * This method generates a random integer from 1 to 10
+	 * @return returns an integer
+	 */
+	public int randomNum()
 	{
 		int number = new Random().nextInt(10)+1;
 		return number;
 	}
-	
-	// returns true if all digits, false otherwise
-	public static boolean allDigits(String aString) 
+	/**
+	 * This method checks the inputed string and determines
+	 * whether it contains only digits
+	 * @param aString This is the string being checked
+	 * @return returns true when string contains all digits, false otherwise
+	 */
+	public boolean allDigits(String aString) 
 	{
 		boolean noDigits = true;
 		for (int index = 0; index < aString.length(); index++)
@@ -27,15 +35,21 @@ public class GuessingGame
 		}
 		return noDigits;
 	}
-	
-	// returns true if guess is between 1 and 10, false otherwise
-	public static boolean guessValid(int guess)
+	/**
+	 * This method checks if the guess is in range
+	 * @param guess This is the integer being checked
+	 * @return returns true if guess is between 1 and 10, false otherwise
+	 */
+	public boolean guessValid(int guess)
 	{
 		return (guess >= 1 && guess <= 10);	
 	}
-	
-	// displays guess results
-	public static void compareGuessToAnswer(int guess, int numberToGuess)
+	/**
+	 * This method compares the guess to the answer and displays results
+	 * @param guess This is the user's guess
+	 * @param numberToGuess This is the answer
+	 */
+	public void compareGuessToAnswer(int guess, int numberToGuess)
 	{
 		if (guess < numberToGuess) 
 		{
@@ -50,42 +64,14 @@ public class GuessingGame
 			System.out.println("You guessed it.\n");
 		}
 	}
-	
-	// returns true if guess is correct, false otherwise
-	public static boolean guessCorrect(int guess, int numberToGuess)
+	/**
+	 * This method determines if the user's guess is correct
+	 * @param guess This is the user's guess
+	 * @param numberToGuess This is the answer
+	 * @return returns true when guess is correct, false otherwise
+	 */
+	public boolean guessCorrect(int guess, int numberToGuess)
 	{
 		return (guess == numberToGuess);	
-	}
-	
-	public static void main(String[] args)
-	{
-		Scanner keyboard = new Scanner(System.in);
-		String guessAsString;
-		int guess = 0;
-		int numberToGuess = randomNum();
-		
-		do 
-		{
-			System.out.print("Enter your guess(1 to 10): ");
-			guessAsString = keyboard.next();
-			if (allDigits(guessAsString))
-			{
-				guess = Integer.parseInt(guessAsString);
-				if (guessValid(guess))
-				{
-					compareGuessToAnswer(guess, numberToGuess);	
-				}
-				else
-				{
-					System.out.println("Not valid\n");
-				}
-			}
-			else
-			{
-				System.out.println("Not valid\n");
-			}
-		}
-		while (!guessCorrect(guess, numberToGuess));
-		keyboard.close();
 	}
 }
