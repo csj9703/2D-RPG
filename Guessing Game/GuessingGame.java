@@ -80,22 +80,21 @@ public class GuessingGame
 	 */
 	public void play()
 	{
-		GuessingGame game = new GuessingGame();
 		Scanner keyboard = new Scanner(System.in);
 		String guessAsString;
 		int guess = 0;
-		int numberToGuess = game.randomNum();
+		int numberToGuess = randomNum();
 		
 		do 
 		{
 			System.out.print("Enter your guess(1 to 10): ");
 			guessAsString = keyboard.next();
-			if (game.allDigits(guessAsString))
+			if (allDigits(guessAsString))
 			{
 				guess = Integer.parseInt(guessAsString);
-				if (game.guessValid(guess))
+				if (guessValid(guess))
 				{
-					game.compareGuessToAnswer(guess, numberToGuess);	
+					compareGuessToAnswer(guess, numberToGuess);	
 				}
 				else
 				{
@@ -107,7 +106,7 @@ public class GuessingGame
 				System.out.println("Not valid\n");
 			}
 		}
-		while (!game.guessCorrect(guess, numberToGuess));
+		while (!guessCorrect(guess, numberToGuess));
 		keyboard.close();
 	}
 	}
