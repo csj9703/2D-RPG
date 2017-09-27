@@ -1,8 +1,8 @@
 /**
  * This class contains the methods for a guessing game
  * @author Team 6 - CPSC 233 - Tutorial T02
- * @version 1.0
- * @since September 25, 2017
+ * @version 1.1
+ * @since September 27, 2017
  */
 
 import java.util.Scanner;
@@ -109,4 +109,4 @@ public class GuessingGame
 		while (!guessCorrect(guess, numberToGuess));
 		keyboard.close();
 	}
-	}
+}
