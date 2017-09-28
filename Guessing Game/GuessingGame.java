@@ -1,8 +1,8 @@
 /**
  * This class contains the methods for a guessing game
  * @author Team 6 - CPSC 233 - Tutorial T02
- * @version 1.1
- * @since September 27, 2017
+ * @version 1.2
+ * @since September 28, 2017
  */
 
 import java.util.Scanner;
@@ -11,8 +11,7 @@ import java.util.Random;
 public class GuessingGame
 {
 	/**
-	 * This method generates a random integer from 1 to 10
-	 * @return returns an integer
+	 * This method generates and returns a random integer from 1 to 10
 	 */
 	public int randomNum()
 	{
@@ -20,10 +19,9 @@ public class GuessingGame
 		return number;
 	}
 	/**
-	 * This method checks the inputed string and determines
-	 * whether it contains only digits
+	 * This method checks the inputed string and determines whether it contains only digits
+	 * Returns true when string contains all digits, false otherwise
 	 * @param aString This is the string being checked
-	 * @return returns true when string contains all digits, false otherwise
 	 */
 	public boolean allDigits(String aString) 
 	{
@@ -37,9 +35,9 @@ public class GuessingGame
 		return noDigits;
 	}
 	/**
-	 * This method checks if the guess is in range
+	 * This method checks if the guess is in range 
+	 * Returns true if guess is between 1 and 10, false otherwise
 	 * @param guess This is the integer being checked
-	 * @return returns true if guess is between 1 and 10, false otherwise
 	 */
 	public boolean guessValid(int guess)
 	{
@@ -67,9 +65,9 @@ public class GuessingGame
 	}
 	/**
 	 * This method determines if the user's guess is correct
+	 * Returns true when guess is correct, false otherwise
 	 * @param guess This is the user's guess
 	 * @param numberToGuess This is the answer
-	 * @return returns true when guess is correct, false otherwise
 	 */
 	public boolean guessCorrect(int guess, int numberToGuess)
 	{
@@ -84,6 +82,7 @@ public class GuessingGame
 		String guessAsString;
 		int guess = 0;
 		int numberToGuess = randomNum();
+		System.out.println("Number to guess is: " + numberToGuess);
 		
 		do 
 		{

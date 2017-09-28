@@ -5,8 +5,8 @@
  * The game continues to run until the user correctly guesses the number
  * Once the user enters the correct number, game is won and the program stops
  * @author Team 6 - CPSC 233 - Tutorial T02
- * @version 1.1
- * @since September 27, 2017
+ * @version 1.2
+ * @since September 28, 2017
  */
 
 public class GuessingGameMain
