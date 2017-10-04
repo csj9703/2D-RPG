@@ -10,15 +10,6 @@ public class BankAccount
 	private double balance;
 	
 	/**
-	 * This constructor initializes the starting balance
-	 * @param beginningBalance This is the starting bank balance
-	 */	
-	public BankAccount(double beginningBalance)
-	{
-		balance = beginningBalance;
-	}
-	
-	/**
 	 * This method adds to the balance
 	 * @param amount The amount to be credited
 	 */
@@ -34,5 +25,24 @@ public class BankAccount
 	public void withdraw(double amount)
 	{
 		balance -= amount;
+	}
+	
+	/**
+	 * This returns the current balance
+	 */
+	public double getBalance()
+	{
+		return balance;
+	}
+	
+	/**
+	 * This method transfer the balance from one account to another
+	 * @param amount The amount to be transfered
+	 * @param account The account receiving the transfer
+	 */
+	public void transfer(double amount, BankAccount account)
+	{
+		balance -= amount;
+		account.deposit(amount);	
 	}
 }
