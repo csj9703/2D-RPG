@@ -1,8 +1,8 @@
 /**
  * This class contains the methods of a bank account
  * @author Team 6 - CPSC 233 - Tutorial T02
- * @version 1.0
- * @since October 3, 2017
+ * @version 1.1
+ * @since October 4, 2017
  */
 
 public class BankAccount 
@@ -15,7 +15,10 @@ public class BankAccount
 	 */
 	public void deposit(double amount)
 	{
-		balance += amount;
+		if (!(amount < 0))
+		{
+			balance += amount;
+		}
 	}
 	
 	/**
@@ -24,7 +27,10 @@ public class BankAccount
 	 */
 	public void withdraw(double amount)
 	{
-		balance -= amount;
+		if (!(amount > balance))
+		{
+			balance -= amount;
+		}
 	}
 	
 	/**
@@ -42,7 +48,22 @@ public class BankAccount
 	 */
 	public void transfer(double amount, BankAccount account)
 	{
-		balance -= amount;
-		account.deposit(amount);	
+		if (!(amount > balance))
+		{
+			balance -= amount;
+			account.deposit(amount);
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
