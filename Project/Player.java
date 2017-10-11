@@ -66,13 +66,8 @@ public class Player {
 	 * @param weaponDmg weapon damage
 	 * @return total damage value.
 	 */
-	public int attack(int attack, int weaponDmg) {
-		int damage = 1;
-		if (hasSword == true) {
-			damage = attack + weaponDmg;
-		}else {
-			damage = attack;
-		}
+	public int attack(int attack) {
+		int damage = attack;
 		return damage;
 	}
 	/**
@@ -80,10 +75,14 @@ public class Player {
 	 * @param item the item the player picked up.
 	 */
 	public void pickUp(String item) {
-		char itemAsChar = item.charAt(0);
-		if (!Character.isDigit(itemAsChar)){
+		int length = item.length();
+		//Checks if the item has "Sword" in the name.
+		if (item.charAt(length-5) == 'S'){
+			System.out.println("Got a Sword!");
 			hasSword = true;
-		}else {
+		//Checks if the item has "Potion in the name.
+		}else if(item.charAt(length-6) == 'P') {
+			System.out.println("Got a Potion!");
 			numOfPot ++;
 		}
 	}
@@ -100,5 +99,12 @@ public class Player {
 		}
     }
 	
+	public void equipSword(int swordDmg) {
+		if(hasSword == true) {
+			attack += swordDmg;
+		}else {
+			System.out.println("You don't have a Sword!");
+		}
+	}
 	
 }
