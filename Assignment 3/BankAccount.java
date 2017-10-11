@@ -1,30 +1,36 @@
 /**
  * This class contains the methods of a bank account
  * @author Team 6 - CPSC 233 - Tutorial T02
- * @version 1.3
- * @since October 9, 2017
+ * @version 1.4
+ * @since October 11, 2017
  */
 
 public class BankAccount 
 {
 	private double balance;
+	private Customer accountHolder;
 	
 	/**
-	 * Default constructor
+	 * This constructor takes an variable of the 
+	 * Customer type as an argument
 	 */
-	public BankAccount()
-	{}
-	
-	/**
-	 * A constructor that takes an initial balance as an argument
-	 */
-	public BankAccount(double initialBalance)
+	public BankAccount(Customer customer)
 	{
-		balance = initialBalance;
+		accountHolder = customer;
 	}
 	
 	/**
-	 * A copy constructor
+	 * This constructor takes an variable of the 
+	 * Customer type and a double as an argument
+	 */
+	public BankAccount(double initialBalance, Customer customer)
+	{
+		balance = initialBalance;
+		accountHolder = customer;
+	}
+	
+	/**
+	 * A copy constructor. 
 	 */
 	public BankAccount(BankAccount account)
 	{
@@ -76,16 +82,9 @@ public class BankAccount
 			account.deposit(amount);
 		}
 	}
+	
+	public Customer getAccountHolder()
+	{
+		return accountHolder;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
