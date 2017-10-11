@@ -1,7 +1,7 @@
 /**
  * CPSC 233 Project.
  * @author Jason ShuJi Chen Team 6
- * Date last modified: Oct 10, 2017.
+ * Date last modified: Oct 11, 2017.
  */
 public class Player {
 	String name;
@@ -12,7 +12,7 @@ public class Player {
 	//Potion potion = new Potion();
 	
 	public Player(){
-		health = 1;
+		health = 9;
 		attack = 1;
 	}
 	/**
@@ -28,6 +28,13 @@ public class Player {
 	 */
 	public int getHealth() {
 		return health;
+	}
+	/**
+	 * Getter for number of potion.
+	 * @return number of potion.
+	 */
+	public int getNumOfPot() {
+		return numOfPot;
 	}
 	/**
 	 * Setter for play health
@@ -47,10 +54,10 @@ public class Player {
 	 * Uses potion.
 	 * @param potNum the type of potion (in int)
 	 */
-	public void useItem(int potNum) {
+	public void useItem() {
 		if(numOfPot > 0 && health < 10) {
-			restoreTwo();
-			
+			restoreHp(2);
+			numOfPot--;
 		}
 	}
 	/**
@@ -80,10 +87,17 @@ public class Player {
 			numOfPot ++;
 		}
 	}
-	
-	public void restoreTwo()
+	/**
+	 * Restores the amount of hp based on the amount.
+	 * @param amount amount of hp the player to restore.
+	 */
+	public void restoreHp(int amount)
     {
-    health += 2;
+		health += amount;
+		if(health > 10) {
+			int excessHp = health - 10;
+			health -= excessHp;
+		}
     }
 	
 	
