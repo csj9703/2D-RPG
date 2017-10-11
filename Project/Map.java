@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Map
 {
+	Player player = new Player();
+	
 	String y = " ";
 	String x = "#";
 	String z = "X";
@@ -111,6 +113,16 @@ public class Map
 		case 8:
 			playerRow -= 1;
 			break;
+			
+		case 5:
+		
+			System.out.println("got it");
+			statsMenu();
+		
+
+			break;
+			
+				
 		}
 		
 		if (moveValid(playerRow, playerCol))
@@ -134,6 +146,7 @@ public class Map
 			case 8:
 				playerRow += 1;
 				break;
+			
 			}
 			maze[playerRow][playerCol] = "X";	
 		}
@@ -153,4 +166,29 @@ public class Map
 		}
 		return empty;
 	}
+	
+	public void statsMenu()
+	{
+		System.out.println("What do you want to do");
+		System.out.println("Type 1 to see hit points");
+		System.out.println("Type 2 to see number of pots");
+		System.out.println("Type 3 to see attack stat");
+		System.out.println("Type 4 to use potion");
+		System.out.println("Type 5 to what swords you have");
+
+		
+		
+		System.out.println("you have " + player.getHealth() + " hit_points");
+		Scanner keyboard = new Scanner(System.in);
+		int decision = keyboard.nextInt();
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
 }
