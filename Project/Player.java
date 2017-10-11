@@ -7,13 +7,18 @@ public class Player {
 	String name;
 	int health;
 	int attack;
-	int numOfPot = 1;
-	boolean hasSword = false;
+	int numOfPot;
+	boolean hasSword;
 	//Potion potion = new Potion();
 	
+	/**
+	 * Constructor that sets the beginner player stats.
+	 */
 	public Player(){
-		health = 9;
+		health = 10;
 		attack = 1;
+		numOfPot = 0;
+		hasSword = false;
 	}
 	/**
 	 * Setter for Player name
@@ -98,7 +103,10 @@ public class Player {
 			health -= excessHp;
 		}
     }
-	
+	/**
+	 * Equips the sword for the player.
+	 * @param swordDmg the damage of the sword.
+	 */
 	public void equipSword(int swordDmg) {
 		if(hasSword == true) {
 			attack += swordDmg;
