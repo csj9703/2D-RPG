@@ -158,7 +158,15 @@ public class Player {
 	 * A simplier statistics menu for player.
 	 */
 	public void statsScreen() {
+<<<<<<< HEAD
 		System.out.printf("\t"+"Health: %d\n",health);
+=======
+<<<<<<< HEAD
+		System.out.printf("\t"+"Health: %d\n",health);
+=======
+		System.out.printf("\t"+"Health: "+health+"\n");
+>>>>>>> 2a14003898f6520a87105b840c883b0e3fdf528b
+>>>>>>> 5e7f3315201ea757f7b8f7d3dc1ac2b86771f9a4
 		System.out.printf("\t"+"Potions: "+numOfPot+"\n");
 		System.out.printf("\t"+"ATK: "+attack+"\n");
 		System.out.println("Press 1 to restore your health.");
