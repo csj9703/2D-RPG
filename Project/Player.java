@@ -1,14 +1,18 @@
 /**
  * CPSC 233 Project.
  * @author Jason ShuJi Chen Team 6
- * Date last modified: Oct 11, 2017.
+ * Date last modified: Oct 12, 2017.
  */
+import java.util.Scanner;
+
 public class Player {
-	String name;
-	int health;
-	int attack;
-	int numOfPot;
-	boolean hasSword;
+	private String name;
+	private int health;
+	private int attack;
+	private int numOfPot;
+	private boolean swordInInventory;
+	private boolean swordEquipped;
+	private Scanner keyboard = new Scanner(System.in);
 	//Potion potion = new Potion();
 	
 	/**
@@ -18,7 +22,8 @@ public class Player {
 		health = 10;
 		attack = 1;
 		numOfPot = 0;
-		hasSword = false;
+		swordInInventory = true;
+		swordEquipped = false;
 	}
 	/**
 	 * Setter for Player name
@@ -83,11 +88,11 @@ public class Player {
 		int length = item.length();
 		//Checks if the item has "Sword" in the name.
 		if (item.charAt(length-5) == 'S'){
-			System.out.println("Got a Sword!");
-			hasSword = true;
+			System.out.println("Picked up a Sword!");
+			swordInInventory = true;
 		//Checks if the item has "Potion in the name.
 		}else if(item.charAt(length-6) == 'P') {
-			System.out.println("Got a Potion!");
+			System.out.println("Picked up a Potion!");
 			numOfPot ++;
 		}
 	}
@@ -108,11 +113,48 @@ public class Player {
 	 * @param swordDmg the damage of the sword.
 	 */
 	public void equipSword(int swordDmg) {
-		if(hasSword == true) {
+		if(swordInInventory == true) {
+			System.out.println("You have equipped the Sword!");
 			attack += swordDmg;
+			swordInInventory = false;
+			swordEquipped = true;
 		}else {
 			System.out.println("You don't have a Sword!");
 		}
 	}
-	
+	/**
+	 * A statistics menu that prompts the player for choice.
+	 */
+	public void statsMenu() {
+		System.out.println("What would you like to do?");
+		System.out.println("Press 1 to see Health");
+		System.out.println("Press 2 to see Number of Potions");
+		System.out.println("Press 3 to see Attack Value");
+		String input = keyboard.next();
+		String decision;
+		switch(input) {
+			case "1":
+				decision = "You have " +health+ " Health";
+				break;
+			case "2":
+				decision = "You have " +numOfPot+ " Potions";
+				break;
+			case "3":
+				decision = "You have " +attack+ " Attack Value";
+				break;
+			default:
+				decision = "Invalid Input";
+				break;
+		}
+		System.out.println(decision);
+	}
+	/**
+	 * A simplier statistics menu for player.
+	 */
+	public void statsScreen() {
+		System.out.println("You have:");
+		System.out.printf("\t"+health+ " Health\n");
+		System.out.printf("\t"+numOfPot+ " Potions\n");
+		System.out.printf("\t"+attack+ " Attack Value\n");
+	}
 }
