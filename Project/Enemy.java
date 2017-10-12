@@ -1,8 +1,10 @@
+package project;
+
 /**
-  * CPSC 233 Project.
-  * @author Muhammad Saadan Team 6
-  * Date last modified: Oct 11, 2017.
-  */
+ * CPSC 233 Project.
+ * @author Muhammad Saadan Team 6
+ * Date last modified: Oct 11, 2017.
+ */
 public class Enemy
 {
 		private String name;
@@ -62,9 +64,16 @@ public class Enemy
 		 * @param damage player based on enemy's ability to damage
 		 * @return total damage inflicted by attack
 		 */
-		public int attack(int attack)
+		public int attack()
 		{
 				int damage = attack;
 				return damage;
 		}
+		public int getHealth()
+		{
+				return health;
+		}
+		
+		
+		
 }

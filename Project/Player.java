@@ -1,6 +1,10 @@
+package project;
+
 /**
+ /**
  * CPSC 233 Project.
  * @author Jason ShuJi Chen Team 6
+ * Version 1.4
  * Date last modified: Oct 12, 2017.
  */
 import java.util.Scanner;
@@ -68,6 +72,8 @@ public class Player {
 		if(numOfPot > 0 && health < 10) {
 			restoreHp(2);
 			numOfPot--;
+		}else {
+			System.out.println("You don't have any potions!");
 		}
 	}
 	/**
@@ -152,9 +158,18 @@ public class Player {
 	 * A simplier statistics menu for player.
 	 */
 	public void statsScreen() {
-		System.out.println("You have:");
-		System.out.printf("\t"+health+ " Health\n");
-		System.out.printf("\t"+numOfPot+ " Potions\n");
-		System.out.printf("\t"+attack+ " Attack Value\n");
+		System.out.printf("\t"+"Health: %d\n",health);
+		System.out.printf("\t"+"Potions: "+numOfPot+"\n");
+		System.out.printf("\t"+"ATK: "+attack+"\n");
+		System.out.println("Press 1 to restore your health.");
+		String input = keyboard.next();
+		switch(input) {
+			case "1": 
+				useItem();
+				break;
+			default:
+				System.out.println("Invalid Input");
+		}
+		
 	}
 }
