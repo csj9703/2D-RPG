@@ -1,19 +1,24 @@
 /**
  * CPSC 233 Project.
  * @author Jason ShuJi Chen Team 6
- * Date last modified: Oct 10, 2017.
+ * Date last modified: Oct 11, 2017.
  */
 public class Player {
 	String name;
 	int health;
 	int attack;
-	int numOfPot = 1;
-	boolean hasSword = false;
+	int numOfPot;
+	boolean hasSword;
 	//Potion potion = new Potion();
 	
+	/**
+	 * Constructor that sets the beginner player stats.
+	 */
 	public Player(){
-		health = 1;
+		health = 10;
 		attack = 1;
+		numOfPot = 0;
+		hasSword = false;
 	}
 	/**
 	 * Setter for Player name
@@ -28,6 +33,13 @@ public class Player {
 	 */
 	public int getHealth() {
 		return health;
+	}
+	/**
+	 * Getter for number of potion.
+	 * @return number of potion.
+	 */
+	public int getNumOfPot() {
+		return numOfPot;
 	}
 	/**
 	 * Setter for play health
@@ -47,10 +59,10 @@ public class Player {
 	 * Uses potion.
 	 * @param potNum the type of potion (in int)
 	 */
-	public void useItem(int potNum) {
+	public void useItem() {
 		if(numOfPot > 0 && health < 10) {
-			restoreTwo();
-			
+			restoreHp(2);
+			numOfPot--;
 		}
 	}
 	/**
@@ -59,13 +71,8 @@ public class Player {
 	 * @param weaponDmg weapon damage
 	 * @return total damage value.
 	 */
-	public int attack(int attack, int weaponDmg) {
-		int damage = 1;
-		if (hasSword == true) {
-			damage = attack + weaponDmg;
-		}else {
-			damage = attack;
-		}
+	public int attack(int attack) {
+		int damage = attack;
 		return damage;
 	}
 	/**
@@ -73,18 +80,39 @@ public class Player {
 	 * @param item the item the player picked up.
 	 */
 	public void pickUp(String item) {
-		char itemAsChar = item.charAt(0);
-		if (!Character.isDigit(itemAsChar)){
+		int length = item.length();
+		//Checks if the item has "Sword" in the name.
+		if (item.charAt(length-5) == 'S'){
+			System.out.println("Got a Sword!");
 			hasSword = true;
-		}else {
+		//Checks if the item has "Potion in the name.
+		}else if(item.charAt(length-6) == 'P') {
+			System.out.println("Got a Potion!");
 			numOfPot ++;
 		}
 	}
-	
-	public void restoreTwo()
+	/**
+	 * Restores the amount of hp based on the amount.
+	 * @param amount amount of hp the player to restore.
+	 */
+	public void restoreHp(int amount)
     {
-    health += 2;
+		health += amount;
+		if(health > 10) {
+			int excessHp = health - 10;
+			health -= excessHp;
+		}
     }
-	
+	/**
+	 * Equips the sword for the player.
+	 * @param swordDmg the damage of the sword.
+	 */
+	public void equipSword(int swordDmg) {
+		if(hasSword == true) {
+			attack += swordDmg;
+		}else {
+			System.out.println("You don't have a Sword!");
+		}
+	}
 	
 }
