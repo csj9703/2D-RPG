@@ -1,29 +1,19 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Map
 {
-	Player player = new Player();
-	
-	String y = " ";
-	String x = "#";
-	String z = "X";
-	
-    String i = "?";
-	// 2D array setup
-	String maze[][] = 
-		{
-			{x,x,x,x,x,x,x,x,y,x},
-			{x,y,y,y,y,y,x,x,y,y},
-			{x,y,x,x,x,y,x,x,y,x},
-			{x,y,y,y,x,x,x,x,y,x},
-			{x,y,x,y,y,y,y,y,y,x},
-			{x,y,x,x,x,x,y,x,y,x},
-			{x,y,y,y,y,x,y,x,y,x},
-			{x,y,x,x,y,x,y,x,y,x},
-			{z,y,x,y,y,x,y,x,y,x},
-			{x,x,x,x,x,x,x,x,x,x}
-		};
+    String maze[][];
+    Player player;
 
+	public Map () 
+	{
+		maze = loadMaze();
+		player = new Player();
+	}
+	
+	
 	// prints instructions
 	public void displayMenu()
 	{
@@ -88,7 +78,7 @@ public class Map
 		return playerCol;
 	}
 	
-
+	// moves the player on grid
 	public void move()
 	{
 		Scanner keyboard = new Scanner(System.in);
@@ -113,16 +103,6 @@ public class Map
 		case 8:
 			playerRow -= 1;
 			break;
-			
-		case 5:
-		
-			System.out.println("got it");
-			statsMenu();
-		
-
-			break;
-			
-				
 		}
 		
 		if (moveValid(playerRow, playerCol))
@@ -146,7 +126,6 @@ public class Map
 			case 8:
 				playerRow += 1;
 				break;
-			
 			}
 			maze[playerRow][playerCol] = "X";	
 		}
@@ -167,27 +146,78 @@ public class Map
 		return empty;
 	}
 	
-	public void statsMenu()
+	// reads text file into a 2d array
+	public static String [][] readFile() 
 	{
-		System.out.println("What do you want to do");
-		System.out.println("Type 1 to see hit points");
-		System.out.println("Type 2 to see number of pots");
-		System.out.println("Type 3 to see attack stat");
-		System.out.println("Type 4 to use potion");
-		System.out.println("Type 5 to what swords you have");
-
+		File file = new File("maze.txt");
+		Scanner scanner = null;
+		try 
+		{
+			scanner = new Scanner(file);
+		} 
+		catch (FileNotFoundException e) 
+		{
+			System.out.println("File not found");
+		}
 		
-		
-		System.out.println("you have " + player.getHealth() + " hit_points");
-		Scanner keyboard = new Scanner(System.in);
-		int decision = keyboard.nextInt();
-		
-		
-		
-		
-		
+		final int rows = 20;
+		final int cols = 20;
+		String maze[][] = new String[rows][cols];
+		for(int row=0; row<rows; row++) 
+		{
+			for(int col=0; col<cols; col++) 
+			{
+				maze[row][col] = scanner.next();
+			}
+		}
+		return maze;
 	}
 	
+	// translates letters in to map symbols
+	private static void translateData(String [][] maze)
+	{
+		final int rows = maze.length;
+		final int cols = maze[0].length;
+		for(int row=0; row<rows; row++) 
+		{
+			for(int col=0; col<cols; col++) 
+			{
+				String letter = maze[row][col];
+				
+				switch(letter)
+				{
+				case "x":
+					maze[row][col] = "#";
+					break;
+				case "y":
+					maze[row][col] = " ";
+					break;
+				case "z":
+					maze[row][col] = "X";
+					break;
+				case "i":
+					maze[row][col] = "?";
+					break;
+				case "e":
+					maze[row][col] = "E";
+					break;
+				}
+			}
+		}	
+	}
+	
+	// creates maze
+	public static String[][] loadMaze() 
+	{
+		String[][] grid = readFile();
+		translateData(grid);
+		return grid;
+	}
+	
+	public String[][] getMaze()
+	{
+		return maze;
+	}
 	
 	
 	
