@@ -1,3 +1,5 @@
+package project;
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,22 +8,26 @@ public class Map
 {
     String maze[][];
     Player player;
-
+    Enemy enemy;
+    
 	public Map () 
 	{
 		maze = loadMaze();
 		player = new Player();
+		enemy = new Enemy("Slime", 5, 1);
 	}
 	
 	
 	// prints instructions
 	public void displayMenu()
 	{
+		System.out.println(" ---------------------------------------");
 		System.out.println("MOVEMENT OPTIONS");
 		System.out.println("   8   ");
 		System.out.println("4  5  6");
 		System.out.println("   2   ");
 		System.out.println("Type a number on the key pad to indicate direction of movement");
+		System.out.println("or 5 for character menu");
 	}
 
 	// prints game grid
@@ -97,6 +103,9 @@ public class Map
 		case 4:
 			playerCol -= 1;
 			break;
+		case 5:
+			player.statsScreen();
+			break;
 		case 6:
 			playerCol += 1;
 			break;
@@ -104,6 +113,8 @@ public class Map
 			playerRow -= 1;
 			break;
 		}
+		
+		checkEvent(maze,playerRow,playerCol);
 		
 		if (moveValid(playerRow, playerCol))
 		{
@@ -129,13 +140,14 @@ public class Map
 			}
 			maze[playerRow][playerCol] = "X";	
 		}
+		//keyboard.close();
 	}
 	// returns true if player is moving into an unoccupied space
 	public boolean moveValid(int playerRow, int playerCol)
 	{
 		boolean empty;
 
-		if (maze[playerRow][playerCol] == " ")
+		if (!(maze[playerRow][playerCol] == "#"))
 		{
 			empty = true;
 		}
@@ -145,6 +157,23 @@ public class Map
 		}
 		return empty;
 	}
+	
+	public void checkEvent(String maze[][],int playerRow, int playerCol)
+	{
+		System.out.println("called checkevent");
+		if (maze[playerRow][playerCol] == "?")
+		{
+			System.out.println("called pick item");
+			player.pickUp("Potion");
+		}
+		else if (maze[playerRow][playerCol] == "E")
+		{
+			System.out.println("found enemy");
+			Battle battle = new Battle();
+			battle.start(player, enemy);
+		}
+	}
+
 	
 	// reads text file into a 2d array
 	public static String [][] readFile() 
