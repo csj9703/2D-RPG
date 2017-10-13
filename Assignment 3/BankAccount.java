@@ -17,7 +17,7 @@ public class BankAccount
 	 */
 	public BankAccount(Customer customer)
 	{
-		accountHolder = customer;
+		accountHolder = new Customer (customer);
 	}
 	
 	/**
