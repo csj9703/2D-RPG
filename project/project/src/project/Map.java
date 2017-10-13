@@ -197,11 +197,11 @@ public class Map
 		boolean reachedExit = false;
 		if (maze[0][18] == "X")
 		{
-			reachedExit = true;
+			reachedExit = false;
 		}
 		else
 		{
-			reachedExit = false;
+			reachedExit = true;
 		}
 		return reachedExit;
 	}
