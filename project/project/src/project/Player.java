@@ -10,8 +10,6 @@ public class Player {
 	private boolean swordInInventory;
 	private boolean swordEquipped;
 	private Scanner keyboard = new Scanner(System.in);
-	//Potion potion = new Potion();
-	
 	/**
 	 * Constructor that sets the beginner player stats.
 	 */
@@ -163,6 +161,19 @@ public class Player {
 			default:
 				System.out.println("Invalid Input");
 		}
-		
+	}
+	/*
+	 * This method checks to see if the player is alive
+	 * Returns true if player is alive, false otherwise
+	 */
+	public boolean isAlive(){
+		boolean isAlive = true;
+		if (health < 1){
+			isAlive = false;
+		}
+		else{
+			isAlive = true;
+		}
+		return isAlive;
 	}
 }

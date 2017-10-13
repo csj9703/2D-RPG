@@ -13,15 +13,23 @@ public class Main
 	{
 		Map stage1 = new Map();
 		
-		while (stage1.maze[0][18] != "X")
+		while (stage1.player.isAlive() && stage1.mazeNotCompleted())
 		{
 			stage1.displayMaze();
 			stage1.displayMenu();
 			stage1.move();
 		}
-		System.out.println("Congratulations! You Win!");
+		if (stage1.player.isAlive())
+		{
+			System.out.println("You have completed the maze!");
+			System.out.println("CONGRATULATIONS");
+		}
+		else
+		{
+			System.out.println("You are dead!");
+			System.out.println("GAME OVER");
+		}
 	}
-
 	public static void main(String[] args) 
 	{
 		play();

@@ -188,4 +188,21 @@ public class Map
 		String[][] grid = fileReader.readFile();
 		return fileReader.translateData(grid);
 	}
+	/*
+	 * This method returns true if player reaches the end of the maze,
+	 * false otherwise
+	 */
+	public boolean mazeNotCompleted() 
+	{
+		boolean reachedExit = false;
+		if (maze[0][18] == "X")
+		{
+			reachedExit = true;
+		}
+		else
+		{
+			reachedExit = false;
+		}
+		return reachedExit;
+	}
 }
