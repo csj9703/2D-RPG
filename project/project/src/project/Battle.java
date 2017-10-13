@@ -41,10 +41,12 @@ public class Battle
 					enemyHp = enemy.getHealth();
 					enemyHp -= playerDmg;
 					enemy.setHealth(enemyHp);
-							
-					playerHp = player.getHealth();
-					playerHp -= enemyDmg;
-					player.setHealth(playerHp);
+					if(!(enemyHp <= 0)) {
+						playerHp = player.getHealth();
+						playerHp -= enemyDmg;
+						player.setHealth(playerHp);
+					}
+					
 					
 					System.out.println("The " + enemyName + " has hit you for " + enemyDmg + " damage!");
 					break;
