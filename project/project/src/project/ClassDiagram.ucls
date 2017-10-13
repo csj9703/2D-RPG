@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="project.Battle" project="project" file="/project/src/project/Battle.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="255" y="69"/>    
+    <position height="-1" width="-1" x="315" y="101"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="project.Main" project="project" file="/project/src/project/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="698" y="211"/>    
+    <position height="-1" width="-1" x="763" y="236"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="project.Player" project="project" file="/project/src/project/Player.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="255" y="421"/>    
+    <position height="-1" width="-1" x="501" y="508"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="project.Enemy" project="project" file="/project/src/project/Enemy.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="55" y="313"/>    
+    <position height="-1" width="-1" x="301" y="409"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="project.Map" project="project" file="/project/src/project/Map.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="485" y="132"/>    
+    <position height="-1" width="-1" x="547" y="137"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="project.FileReader" project="project" file="/project/src/project/FileReader.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="739" y="69"/>    
+    <position height="-1" width="-1" x="801" y="74"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -56,45 +56,45 @@
     </display>  
   </class>  
   <association id="7">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="8" name="enemy"/>      
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="8" name="player"/>      
       <multiplicity id="9" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <dependency id="10">    
     <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="TARGET" refId="4"/>  
   </dependency>  
   <association id="11">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="player"/>      
+      <attribute id="12" name="enemy"/>      
       <multiplicity id="13" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <dependency id="14">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="15">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <dependency id="15">    
+  <dependency id="16">    
     <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="TARGET" refId="6"/>  
   </dependency>  
-  <association id="16">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="17" name="player"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+  <association id="17">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="18" name="player"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="19">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
