@@ -160,15 +160,12 @@ public class Map
 	
 	public void checkEvent(String maze[][],int playerRow, int playerCol)
 	{
-		System.out.println("called checkevent");
 		if (maze[playerRow][playerCol] == "?")
 		{
-			System.out.println("called pick item");
 			player.pickUp("Potion");
 		}
 		else if (maze[playerRow][playerCol] == "E")
 		{
-			System.out.println("found enemy");
 			Battle battle = new Battle();
 			battle.start(player, enemy);
 		}

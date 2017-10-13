@@ -31,13 +31,13 @@ public class Battle
 			System.out.println("Your health: " + player.getHealth());
 			System.out.println("Enemy health: " + enemy.getHealth());
 			System.out.printf("Your actions:"+"\n"+
-													 "1: Attack enemy"+"\n"+
-													 "2: Drink potion(%d)"+"\n" , player.getNumOfPot());
+								"1: Attack enemy"+"\n"+
+								"2: Drink potion(%d)"+"\n" , player.getNumOfPot());
 			String action = keyboard.next();
 			switch(action)
 			{
 				case "1":
-					attackMessage = "You hit the enemy for " + playerDmg + "damage";
+					attackMessage = "You hit the enemy for " + playerDmg + " damage";
 					
 					enemyHp = enemy.getHealth();
 					enemyHp -= playerDmg;
