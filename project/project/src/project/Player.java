@@ -2,20 +2,21 @@ package project;
 
 import java.util.Scanner;
 
-public class Player {
+public class Player 
+{
 	private String name;
 	private int health;
 	private int attack;
 	private int numOfPot;
 	private boolean swordInInventory;
 	private boolean swordEquipped;
-	private Scanner keyboard = new Scanner(System.in);
 	//Potion potion = new Potion();
 	
 	/**
 	 * Constructor that sets the beginner player stats.
 	 */
-	public Player(){
+	public Player()
+	{
 		health = 10;
 		attack = 1;
 		numOfPot = 0;
@@ -26,42 +27,48 @@ public class Player {
 	 * Setter for Player name
 	 * @param aName a name that user wishes to set.
 	 */
-	public void setName(String aName) {
+	public void setName(String aName) 
+	{
 		name = aName;
 	}
 	/**
 	 * Getter for player health.
 	 * @return player health.
 	 */
-	public int getHealth() {
+	public int getHealth() 
+	{
 		return health;
 	}
 	/**
 	 * Getter for number of potion.
 	 * @return number of potion.
 	 */
-	public int getNumOfPot() {
+	public int getNumOfPot()
+	{
 		return numOfPot;
 	}
 	/**
 	 * Setter for play health
 	 * @param aHealth a new health.
 	 */
-	public void setHealth(int aHealth) {
+	public void setHealth(int aHealth) 
+	{
 		health = aHealth;
 	}
 	/**
 	 * Getter for player attack.
 	 * @return attack value.
 	 */
-	public int getAttack() {
+	public int getAttack() 
+	{
 		return attack;
 	}
 	/**
 	 * Uses potion.
 	 * @param potNum the type of potion (in int)
 	 */
-	public boolean useItem() {
+	public boolean useItem() 
+	{
 		boolean itemUsed = false;
 		if(numOfPot > 0 && health < 10) {
 			restoreHp(2);
@@ -77,20 +84,11 @@ public class Player {
 		return itemUsed;
 	}
 	/**
-	 * Player attack method use during battle
-	 * @param attack player base attack value
-	 * @param weaponDmg weapon damage
-	 * @return total damage value.
-	 */
-	public int attack(int attack) {
-		int damage = attack;
-		return damage;
-	}
-	/**
 	 * Player pick up method.
 	 * @param item the item the player picked up.
 	 */
-	public void pickUp(String item) {
+	public void pickUp(String item) 
+	{
 		int length = item.length();
 		//Checks if the item has "Sword" in the name.
 		if (item.charAt(length-5) == 'S'){
@@ -118,7 +116,8 @@ public class Player {
 	 * Equips the sword for the player.
 	 * @param swordDmg the damage of the sword.
 	 */
-	public void equipSword(int swordDmg) {
+	public void equipSword(int swordDmg) 
+	{
 		if(swordInInventory == true) {
 			System.out.println("You have equipped the Sword!");
 			attack += swordDmg;
@@ -131,7 +130,9 @@ public class Player {
 	/**
 	 * A statistics menu that prompts the player for choice.
 	 */
-	public void statsMenu() {
+	public void statsMenu()
+	{
+		Scanner keyboard = new Scanner(System.in);
 		System.out.println("What would you like to do?");
 		System.out.println("Press 1 to see Health");
 		System.out.println("Press 2 to see Number of Potions");
@@ -157,7 +158,9 @@ public class Player {
 	/**
 	 * A simplier statistics menu for player.
 	 */
-	public void statsScreen() {
+	public void statsScreen()
+	{
+		Scanner keyboard = new Scanner(System.in);
 		System.out.printf("\t"+"Health: %d\n",health);
 		System.out.printf("\t"+"Potions: %d\n",numOfPot);
 		System.out.printf("\t"+"ATK: %d\n",attack);
@@ -175,13 +178,13 @@ public class Player {
 				System.out.println("Invalid Input");
 				break;
 		}
-		
 	}
 	/*
 	 * This method checks to see if the player is alive
 	 * Returns true if player is alive, false otherwise
 	 */
-	public boolean isAlive(){
+	public boolean isAlive()
+	{
 		boolean isAlive = true;
 		if (health < 1){
 			isAlive = false;
