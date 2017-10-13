@@ -36,7 +36,7 @@ public class Battle
 			switch(action)
 			{
 				case "1":
-					attackMessage = "You hit the enemy for " + playerDmg + " damage";
+					attackMessage = "You hit the " + enemyName + " for " + playerDmg + " damage!";
 					
 					enemyHp = enemy.getHealth();
 					enemyHp -= playerDmg;
@@ -62,6 +62,6 @@ public class Battle
 			}
 			System.out.println(attackMessage);
 		}
-		System.out.println("You have defeated " + enemyName);
+		System.out.printf("You have defeated %s!\n" , enemyName);
 	}
 }
