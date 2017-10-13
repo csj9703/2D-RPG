@@ -31,15 +31,6 @@ public class Enemy
 		 		return attack;	 
 		 }
 		/**
-		 * This method allows the enemy to make a single attack against the player
-		 * @return The total damage inflicted on opponent
-		 */
-		public int attack()
-		{
-				int damage = attack;
-				return damage;
-		}
-		/**
 		 * Getter method for enemy health
 		 * @return The health value
 		 */
