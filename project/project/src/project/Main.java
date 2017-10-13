@@ -24,13 +24,11 @@ public class Main
 		}
 		if (stage1.player.isAlive())
 		{
-			System.out.println("You have completed the maze!");
-			System.out.println("CONGRATULATIONS");
+			System.out.println("You have completed the maze!" + "\n" + "CONGRATULATIONS");
 		}
 		else
 		{
-			System.out.println("You are dead!");
-			System.out.println("GAME OVER");
+			System.out.println("You are dead!" + "\n" + "GAME OVER");
 		}
 	}
 	public static void main(String[] args) 

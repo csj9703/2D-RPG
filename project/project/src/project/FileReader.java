@@ -10,7 +10,7 @@ public class FileReader
 	 * This method reads a text file into a 2d array
 	 * @return maze The 2d array
 	 */
-	public String [][] readFile() 
+	public String[][] readFile() 
 	{
 		File file = new File("maze.txt");
 		Scanner scanner = null;
@@ -20,17 +20,16 @@ public class FileReader
 		} 
 		catch (FileNotFoundException e) 
 		{
-			System.out.println("File not found");
+			System.out.println("Error: maze.txt not found");
 		}
-		
-		final int rows = 20;
-		final int cols = 20;
-		String maze[][] = new String[rows][cols];
-		for(int row=0; row<rows; row++) 
+		final int ROWS = 20;
+		final int COLS = 20;
+		String maze[][] = new String[ROWS][COLS];
+		for(int r = 0; r < ROWS; r++) 
 		{
-			for(int col=0; col<cols; col++) 
+			for(int c = 0; c < COLS; c++) 
 			{
-				maze[row][col] = scanner.next();
+				maze[r][c] = scanner.next();
 			}
 		}
 		return maze;
@@ -40,32 +39,32 @@ public class FileReader
 	 * @param maze The 2d array 
 	 * @return maze The 2d array
 	 */
-	public String[][] translateData(String [][] maze)
+	public String[][] translateData(String[][] maze)
 	{
-		final int rows = maze.length;
-		final int cols = maze[0].length;
-		for(int row=0; row<rows; row++) 
+		final int ROWS = maze.length;
+		final int COLS = maze[0].length;
+		for(int r = 0; r < ROWS; r++) 
 		{
-			for(int col=0; col<cols; col++) 
+			for(int c= 0; c < COLS; c++) 
 			{
-				String letter = maze[row][col];
+				String letter = maze[r][c];
 				
 				switch(letter)
 				{
 				case "x":
-					maze[row][col] = "#";
+					maze[r][c] = "#";
 					break;
 				case "y":
-					maze[row][col] = " ";
+					maze[r][c] = " ";
 					break;
 				case "z":
-					maze[row][col] = "X";
+					maze[r][c] = "X";
 					break;
 				case "i":
-					maze[row][col] = "?";
+					maze[r][c] = "?";
 					break;
 				case "e":
-					maze[row][col] = "E";
+					maze[r][c] = "E";
 					break;
 				}
 			}

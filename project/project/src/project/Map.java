@@ -90,26 +90,26 @@ public class Map
 	public void move()
 	{
 		Scanner keyboard = new Scanner(System.in);
-		int choice = keyboard.nextInt();
+		String choice = keyboard.next();
 		int playerRow = getRow();
 		int playerCol = getCol();
 		// remove player from current position
 		maze[playerRow][playerCol] = " ";
 		switch (choice)
 		{
-		case 2:
+		case "2":
 			playerRow += 1;
 			break;
-		case 4:
+		case "4":
 			playerCol -= 1;
 			break;
-		case 5:
+		case "5":
 			player.statsScreen();
 			break;
-		case 6:
+		case "6":
 			playerCol += 1;
 			break;
-		case 8:
+		case "8":
 			playerRow -= 1;
 			break;
 		}
@@ -124,16 +124,16 @@ public class Map
 		{
 			switch (choice)
 			{
-			case 2:
+			case "2":
 				playerRow -= 1;
 				break;
-			case 4:
+			case "4":
 				playerCol += 1;
 				break;
-			case 6:
+			case "6":
 				playerCol -= 1;
 				break;
-			case 8:
+			case "8":
 				playerRow += 1;
 				break;
 			}
@@ -187,6 +187,3 @@ public class Map
 		return (maze[0][18] == "X") ? false : true;
 	}
 }
-
-
-
