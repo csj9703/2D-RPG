@@ -61,17 +61,20 @@ public class Player {
 	 * Uses potion.
 	 * @param potNum the type of potion (in int)
 	 */
-	public void useItem() {
+	public boolean useItem() {
+		boolean itemUsed = false;
 		if(numOfPot > 0 && health < 10) {
 			restoreHp(2);
 			System.out.println("You drank the potion and restored 2 health!");
 			System.out.printf("\tHealth: %d\n",health);
 			numOfPot--;
+			itemUsed = true;
 		}else if(numOfPot <= 0){
 			System.out.println("You don't have any potions!");
 		}else {
 			System.out.println("You are already at full health!");
 		}
+		return itemUsed;
 	}
 	/**
 	 * Player attack method use during battle

@@ -44,14 +44,14 @@ public class Battle
 						player.setHealth(playerHp);
 						System.out.printf("The %s has hit you for %d damage!\n",enemyName,enemyDmg);
 					}
-					
 					break;
 				case "2":
-					playerHp = player.getHealth();
-					playerHp -= enemyDmg;
-					player.setHealth(playerHp);
-					System.out.printf("The %s has hit you for %d damage!\n",enemyName,enemyDmg);
-					player.useItem();
+					if(player.useItem()) {
+						playerHp = player.getHealth();
+						playerHp -= enemyDmg;
+						player.setHealth(playerHp);
+						System.out.printf("The %s has hit you for %d damage!\n",enemyName,enemyDmg);
+					}
 					break;
 				default:
 					System.out.println("Invalid input");
