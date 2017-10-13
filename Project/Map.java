@@ -1,24 +1,19 @@
 package project;
 
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 public class Map
 {
     String maze[][];
     Player player;
-    Enemy enemy;
-    
 	public Map () 
 	{
 		maze = loadMaze();
 		player = new Player();
-		enemy = new Enemy("Slime", 5, 1);
 	}
-	
-	
-	// prints instructions
+	/*
+	 * This method prints the input instructions
+	 */
 	public void displayMenu()
 	{
 		System.out.println(" ---------------------------------------");
@@ -29,8 +24,9 @@ public class Map
 		System.out.println("Type a number on the key pad to indicate direction of movement");
 		System.out.println("or 5 for character menu");
 	}
-
-	// prints game grid
+	/*
+	 * This method prints the maze grid
+	 */
 	public void displayMaze()
 	{
 		for (int i = 0; i<maze.length; i++)
@@ -49,7 +45,9 @@ public class Map
 		     System.out.println();
 		}
 	}
-	
+	/*
+	 * This method returns the row index of the player
+	 */
 	public int getRow()
 	{
 		int playerRow = 0;
@@ -66,7 +64,9 @@ public class Map
 		}
 		return playerRow;
 	}
-
+	/*
+	 * This method returns the column index of the player
+	 */
 	public int getCol()
 	{
 		int playerCol = 0;
@@ -84,17 +84,17 @@ public class Map
 		return playerCol;
 	}
 	
-	// moves the player on grid
+	/*
+	 * This method moves the player on the grid 
+	 */
 	public void move()
 	{
 		Scanner keyboard = new Scanner(System.in);
 		int choice = keyboard.nextInt();
-		// current player coordinates
 		int playerRow = getRow();
 		int playerCol = getCol();
 		// remove player from current position
 		maze[playerRow][playerCol] = " ";
-		
 		switch (choice)
 		{
 		case 2:
@@ -113,12 +113,11 @@ public class Map
 			playerRow -= 1;
 			break;
 		}
-		
+		// checks if player encounters an object or challenge
 		checkEvent(maze,playerRow,playerCol);
-		
 		if (moveValid(playerRow, playerCol))
 		{
-			// display player at new position
+			// set player to new position
 			maze[playerRow][playerCol] = "X";
 		}
 		else // player does not move, returns to origin
@@ -140,9 +139,12 @@ public class Map
 			}
 			maze[playerRow][playerCol] = "X";	
 		}
-		//keyboard.close();
 	}
-	// returns true if player is moving into an unoccupied space
+	/*
+	 * This method returns true if player is moving into an valid space
+	 * @param playerRow The row index of player
+	 * @param playerCow The column index of player
+	 */
 	public boolean moveValid(int playerRow, int playerCol)
 	{
 		boolean empty;
@@ -157,7 +159,13 @@ public class Map
 		}
 		return empty;
 	}
-	
+	/*
+	 * This method starts a battle when player encounters a challenge, 
+	 * and picks up a potion when player encounters a object
+	 * @param maze The 2d array the player is traversing
+	 * @param playerRow The row index of player
+	 * @param playerCow The column index of player
+	 */
 	public void checkEvent(String maze[][],int playerRow, int playerCol)
 	{
 		if (maze[playerRow][playerCol] == "?")
@@ -167,84 +175,17 @@ public class Map
 		else if (maze[playerRow][playerCol] == "E")
 		{
 			Battle battle = new Battle();
-			battle.start(player, enemy);
+			battle.start(player, new Enemy("Slime", 5, 1));
 		}
 	}
-
-	
-	// reads text file into a 2d array
-	public static String [][] readFile() 
-	{
-		File file = new File("maze.txt");
-		Scanner scanner = null;
-		try 
-		{
-			scanner = new Scanner(file);
-		} 
-		catch (FileNotFoundException e) 
-		{
-			System.out.println("File not found");
-		}
-		
-		final int rows = 20;
-		final int cols = 20;
-		String maze[][] = new String[rows][cols];
-		for(int row=0; row<rows; row++) 
-		{
-			for(int col=0; col<cols; col++) 
-			{
-				maze[row][col] = scanner.next();
-			}
-		}
-		return maze;
-	}
-	
-	// translates letters in to map symbols
-	private static void translateData(String [][] maze)
-	{
-		final int rows = maze.length;
-		final int cols = maze[0].length;
-		for(int row=0; row<rows; row++) 
-		{
-			for(int col=0; col<cols; col++) 
-			{
-				String letter = maze[row][col];
-				
-				switch(letter)
-				{
-				case "x":
-					maze[row][col] = "#";
-					break;
-				case "y":
-					maze[row][col] = " ";
-					break;
-				case "z":
-					maze[row][col] = "X";
-					break;
-				case "i":
-					maze[row][col] = "?";
-					break;
-				case "e":
-					maze[row][col] = "E";
-					break;
-				}
-			}
-		}	
-	}
-	
-	// creates maze
+	/*
+	 * This method initializes the maze
+	 * @return grid The 2d maze
+	 */
 	public static String[][] loadMaze() 
 	{
-		String[][] grid = readFile();
-		translateData(grid);
-		return grid;
+		FileReader fileReader = new FileReader();
+		String[][] grid = fileReader.readFile();
+		return fileReader.translateData(grid);
 	}
-	
-	public String[][] getMaze()
-	{
-		return maze;
-	}
-	
-	
-	
 }

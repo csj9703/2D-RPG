@@ -1,12 +1,5 @@
 package project;
 
-/**
- /**
- * CPSC 233 Project.
- * @author Jason ShuJi Chen Team 6
- * Version 1.4
- * Date last modified: Oct 12, 2017.
- */
 import java.util.Scanner;
 
 public class Player {

@@ -1,5 +1,12 @@
 package project;
 
+/**
+ * This is the main manager class for the game
+ * @author Team 6 - CPSC 233 - Tutorial T02
+ * @version 1.0
+ * @since October 12, 2017
+ */
+
 public class Main 
 {
 	public static void play() 
