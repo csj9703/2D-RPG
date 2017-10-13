@@ -10,6 +10,8 @@ public class Player {
 	private boolean swordInInventory;
 	private boolean swordEquipped;
 	private Scanner keyboard = new Scanner(System.in);
+	//Potion potion = new Potion();
+	
 	/**
 	 * Constructor that sets the beginner player stats.
 	 */
@@ -62,9 +64,13 @@ public class Player {
 	public void useItem() {
 		if(numOfPot > 0 && health < 10) {
 			restoreHp(2);
+			System.out.println("You drank the potion and restored 2 health!");
+			System.out.printf("\tHealth: %d\n",health);
 			numOfPot--;
-		}else {
+		}else if(numOfPot <= 0){
 			System.out.println("You don't have any potions!");
+		}else {
+			System.out.println("You are already at full health!");
 		}
 	}
 	/**
@@ -97,7 +103,7 @@ public class Player {
 	 * Restores the amount of hp based on the amount.
 	 * @param amount amount of hp the player to restore.
 	 */
-	public void restoreHp(int amount)
+	private void restoreHp(int amount)
     {
 		health += amount;
 		if(health > 10) {
@@ -153,27 +159,19 @@ public class Player {
 		System.out.printf("\t"+"Potions: %d\n",numOfPot);
 		System.out.printf("\t"+"ATK: %d\n",attack);
 		System.out.println("Press 1 to restore your health.");
+		System.out.println("Press 2 to exit the screen.");
 		String input = keyboard.next();
 		switch(input) {
 			case "1": 
 				useItem();
 				break;
+			case "2":
+				System.out.println("Back to navigation");
+				break;
 			default:
 				System.out.println("Invalid Input");
+				break;
 		}
-	}
-	/*
-	 * This method checks to see if the player is alive
-	 * Returns true if player is alive, false otherwise
-	 */
-	public boolean isAlive(){
-		boolean isAlive = true;
-		if (health < 1){
-			isAlive = false;
-		}
-		else{
-			isAlive = true;
-		}
-		return isAlive;
+		
 	}
 }
