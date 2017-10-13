@@ -8,7 +8,8 @@ public class Map
     Player player;
 	public Map () 
 	{
-		maze = loadMaze();
+		FileReader fileReader = new FileReader();
+		maze = fileReader.translateData(fileReader.readFile());
 		player = new Player();
 	}
 	/*
@@ -83,7 +84,6 @@ public class Map
 		}
 		return playerCol;
 	}
-	
 	/*
 	 * This method moves the player on the grid 
 	 */
@@ -179,30 +179,14 @@ public class Map
 		}
 	}
 	/*
-	 * This method initializes the maze
-	 * @return grid The 2d maze
-	 */
-	public static String[][] loadMaze() 
-	{
-		FileReader fileReader = new FileReader();
-		String[][] grid = fileReader.readFile();
-		return fileReader.translateData(grid);
-	}
-	/*
 	 * This method returns true if player reaches the end of the maze,
 	 * false otherwise
 	 */
 	public boolean mazeNotCompleted() 
 	{
-		boolean reachedExit = false;
-		if (maze[0][18] == "X")
-		{
-			reachedExit = false;
-		}
-		else
-		{
-			reachedExit = true;
-		}
-		return reachedExit;
+		return (maze[0][18] == "X") ? false : true;
 	}
 }
+
+
+
