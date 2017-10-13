@@ -20,8 +20,6 @@ public class Battle
 		int playerHp = 0;
 		int playerDmg = player.getAttack();
 		int enemyDmg = enemy.getAttack();
-		
-		String attackMessage;
 		String enemyName = enemy.getName();
 
 		System.out.println("You have encountered " + enemyName + "!");
@@ -36,33 +34,29 @@ public class Battle
 			switch(action)
 			{
 				case "1":
-					attackMessage = "You hit the " + enemyName + " for " + playerDmg + " damage!";
-					
 					enemyHp = enemy.getHealth();
 					enemyHp -= playerDmg;
 					enemy.setHealth(enemyHp);
+					System.out.printf("You hit the %s for %d damage!\n",enemyName,playerDmg);
 					if(!(enemyHp <= 0)) {
 						playerHp = player.getHealth();
 						playerHp -= enemyDmg;
 						player.setHealth(playerHp);
+						System.out.printf("The %s has hit you for %d damage!\n",enemyName,enemyDmg);
 					}
 					
-					
-					System.out.println("The " + enemyName + " has hit you for " + enemyDmg + " damage!");
 					break;
 				case "2":
-					attackMessage = "You drank the potion and restored 2 health";
 					playerHp = player.getHealth();
 					playerHp -= enemyDmg;
 					player.setHealth(playerHp);
-					System.out.println("The " + enemyName + " has hit you for " + enemyDmg + " damage!");
+					System.out.printf("The %s has hit you for %d damage!\n",enemyName,enemyDmg);
 					player.useItem();
 					break;
 				default:
-					attackMessage = "Invalid input";
+					System.out.println("Invalid input");
 					break;
 			}
-			System.out.println(attackMessage);
 		}
 		System.out.printf("You have defeated %s!\n" , enemyName);
 	}
