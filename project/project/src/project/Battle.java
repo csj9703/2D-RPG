@@ -8,18 +8,19 @@ public class Battle
 	private Enemy enemy;
 	
 	/**
-	 * This method starts a fight between the given parameters.
-	 * @param aPlayer an instance of the Player class.
-	 * @param aEnemy an instance of the Enemy class.
+	 * This method initiates a battle between a player and enemy object
+	 * @param player an instance of the Player class
+	 * @param enemy an instance of the Enemy class
 	 */
-	public void start(Player aPlayer, Enemy aEnemy)
+	public void start(Player player, Enemy enemy)
 	{
 		Scanner keyboard = new Scanner(System.in);
-		player = aPlayer;
-		enemy = aEnemy;
+		this.player = player;
+		this.enemy = enemy;
 		String enemyName = enemy.getName();
 
 		System.out.println("You have encountered " + enemyName + "!");
+		// battle continues until one side's health is reduced to zero
 		while (player.getHealth() > 0 && enemy.getHealth() > 0)
 		{
 			displayMenu();
@@ -48,7 +49,7 @@ public class Battle
 		System.out.printf("You have defeated %s!\n" , enemyName);
 	}
 	/**
-	 * This method lets player to attack the enemy.
+	 * This method reduces enemy health by the amount of damage inflicted by the player
 	 */
 	public void playerAttack() 
 	{
@@ -59,7 +60,7 @@ public class Battle
 		enemy.setHealth(enemyHp);
 	}
 	/**
-	 * This method lets the enemy to attack the player.
+	 * This method reduces player health by the amount of damage inflicted by the enemy
 	 */
 	public void enemyAttack() 
 	{
@@ -70,7 +71,7 @@ public class Battle
 		player.setHealth(playerHp);
 	}
 	/**
-	 * This method displays the options for player to choose.
+	 * This method opens the item menu
 	 */
 	public void displayMenu() 
 	{
@@ -81,7 +82,7 @@ public class Battle
 						  "2: Drink potion(%d)"+"\n", player.getNumOfPot());
 	}
 	/**
-	 * Displays the result of a fight.
+	 * This method displays the result of a turn of combat
 	 * @param charID String of either player or enemy.
 	 */
 	public void displayResult(String charID) 

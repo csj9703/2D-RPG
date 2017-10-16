@@ -4,16 +4,20 @@ import java.util.Scanner;
 
 public class Map
 {
-    String maze[][];
-    Player player;
+    private String maze[][];
+    private Player player;
+    
+    /*
+     * This constructor initializes the game, loads all the game elements onto the map
+     */
 	public Map () 
 	{
 		FileReader fileReader = new FileReader();
 		maze = fileReader.translateData(fileReader.readFile());
-		player = new Player();
+		setPlayer(new Player());
 	}
 	/*
-	 * This method prints the input instructions
+	 * This method prints the player input controls
 	 */
 	public void displayMenu()
 	{
@@ -85,7 +89,7 @@ public class Map
 		return playerCol;
 	}
 	/*
-	 * This method moves the player on the grid 
+	 * This method moves the player on the grid
 	 */
 	public void move()
 	{
@@ -104,7 +108,7 @@ public class Map
 			playerCol -= 1;
 			break;
 		case "5":
-			player.statsScreen();
+			getPlayer().statsScreen();
 			break;
 		case "6":
 			playerCol += 1;
@@ -115,9 +119,9 @@ public class Map
 		}
 		// checks if player encounters an object or challenge
 		checkEvent(maze,playerRow,playerCol);
+		// sets player to new position if move is valid
 		if (moveValid(playerRow, playerCol))
 		{
-			// set player to new position
 			maze[playerRow][playerCol] = "X";
 		}
 		else // player does not move, returns to origin
@@ -161,7 +165,7 @@ public class Map
 	}
 	/*
 	 * This method starts a battle when player encounters a challenge, 
-	 * and picks up a potion when player encounters a object
+	 * and picks up a item when player encounters a object
 	 * @param maze The 2d array the player is traversing
 	 * @param playerRow The row index of player
 	 * @param playerCow The column index of player
@@ -170,12 +174,12 @@ public class Map
 	{
 		if (maze[playerRow][playerCol] == "?")
 		{
-			player.pickUp("Potion");
+			getPlayer().pickUp("Potion");
 		}
 		else if (maze[playerRow][playerCol] == "E")
 		{
 			Battle battle = new Battle();
-			battle.start(player, new Enemy("Slime", 5, 1));
+			battle.start(getPlayer(), new Enemy("Slime", 5, 1));
 		}
 	}
 	/*
@@ -185,5 +189,20 @@ public class Map
 	public boolean mazeNotCompleted() 
 	{
 		return (maze[0][18] == "X") ? false : true;
+	}
+	/*
+	 * This is the getter method for player, returns player
+	 */
+	public Player getPlayer() 
+	{
+		return player;
+	}
+	/*
+	 * This is the setter method for player
+	 * @param player The instance of player
+	 */
+	public void setPlayer(Player player) 
+	{
+		this.player = player;
 	}
 }

@@ -5,42 +5,43 @@ public class Enemy
 		private String name;
 		private int health;
 		private int attack;
+		
 		/**
-		 *	Constructor that sets the enemy's name, health, and attack rating
+		 * This constructor initializes the name, health, and attack fields
+		 * @param name The name of the enemy
+		 * @param health The amount of health
+		 * @param name The amount of attack power
 		 */
-		public Enemy(String enemyName, int enemyHealth, int enemyAttack)
+		public Enemy(String name, int health, int attack)
 		{
-				name = enemyName;
-				health = enemyHealth;
-				attack = enemyAttack;
+				this.name = name;
+				this.health = health;
+				this.attack = attack;
 		}
 		/**
-		 * Setter method for enemy health
-		 * @param aHealth updated as the enemy is slain
+		 * This is the setter method for health
+		 * @param health The amount of health
 		 */
-		public void setHealth(int newHealth)
+		public void setHealth(int health)
 		{
-				health = newHealth;	
+				this.health = health;	
 		}		
 		/**
-		 * Getter method for enemy attack
-		 * @return The attack value
+		 * This is the getter method for attack, returns attack
 		 */
 		 public int getAttack()
 		 {
 		 		return attack;	 
 		 }
 		/**
-		 * Getter method for enemy health
-		 * @return The health value
+		 * This is the getter method for health, returns health
 		 */
 		public int getHealth()
 		{
 				return health;
 		}
 		/**
-		 * Getter method for enemy name
-		 * @return The name
+		 * This is the getter method for name, returns name
 		 */
 		public String getName() 
 		{
