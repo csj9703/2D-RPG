@@ -49,7 +49,6 @@ public class Battle
 			}
 		}
 		System.out.printf("You have defeated %s!\n" , enemyName);
-		keyboard.close();
 	}
 	/**
 	 * This method reduces enemy health by the amount of damage inflicted by the player

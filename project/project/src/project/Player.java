@@ -239,7 +239,6 @@ public class Player
 				System.out.println("Invalid Input");
 				break;
 		}
-		keyboard.close();
 	}
 	/*
 	 * This method checks to see if the player is alive
