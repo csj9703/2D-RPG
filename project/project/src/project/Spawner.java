@@ -1,12 +1,9 @@
-
 package project;
 
+import java.util.Random;
 /*
  * This class spawns enemies
  */
-
-import java.util.Random;
-
 public class Spawner 
 {
 	private Enemy enemy;

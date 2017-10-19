@@ -1,7 +1,9 @@
 package project;
 
 import java.util.Scanner;
-
+/*
+ * This class contains the player logic
+ */
 public class Player 
 {
 	private int health = 10;

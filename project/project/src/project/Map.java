@@ -1,7 +1,10 @@
 package project;
 
 import java.util.Scanner;
-
+/*
+ * This class is the maze that tracks the location of the
+ * player, enemy, and items 
+ */
 public class Map
 {
     private String maze[][];

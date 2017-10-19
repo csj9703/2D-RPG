@@ -1,7 +1,9 @@
 package project;
 
 import java.util.Scanner;
-
+/*
+ * This class manages the combat system of the game
+ */
 public class Battle
 {
 	private Player player;

@@ -1,5 +1,8 @@
 package project;
 
+/*
+ * This is used to create enemies in the game
+ */
 public class Enemy
 {
 		private String name;
