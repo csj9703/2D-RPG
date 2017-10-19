@@ -53,13 +53,13 @@ public class FileReader
 				
 				switch(letter)
 				{
-				case "x":
+				case "w":
 					maze[r][c] = "#";
 					break;
-				case "y":
+				case "r":
 					maze[r][c] = " ";
 					break;
-				case "z":
+				case "x":
 					maze[r][c] = "X";
 					break;
 				case "i":

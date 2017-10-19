@@ -19,10 +19,10 @@ public class Main
 		Gui gui = new Gui(game);
 		while (game.getPlayer().isAlive() && game.mazeNotCompleted())
 		{
-			//game.displayMaze();
-			//game.displayMenu();
+			game.displayMaze(); // console display
+			game.displayMenu(); // console display
 			game.move();
-			gui.update(game);
+			gui.update(game); // gui display
 			game.checkStageCompletion();
 		}
 		if (game.getPlayer().isAlive())
