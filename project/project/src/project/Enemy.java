@@ -12,17 +12,17 @@ public class Enemy
 		private int exp;
 		/**
 		 * This constructor initializes the name, health, and attack fields
-		 * @param  name The name of the enemy
-		 * @param  health The amount of health
-		 * @param  attack The amount of attack power
+		 * @param  aName The name of the enemy
+		 * @param  aHealth The amount of health
+		 * @param  aAttack The amount of attack power
 		 * @param  expVal The amount of exp it rewards
 		 * @return        [description]
 		 */
-		public Enemy(String name, int health, int attack, int expVal)
+		public Enemy(String aName, int aHealth, int aAttack, int expVal)
 		{
-				name = name;
-				health = health;
-				attack = attack;
+				name = aName;
+				health = aHealth;
+				attack = aAttack;
 				exp = expVal;
 		}
 		/**
