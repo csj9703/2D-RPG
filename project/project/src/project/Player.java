@@ -1,21 +1,120 @@
 package project;
 
 import java.util.Scanner;
+
 /*
  * This class contains the player logic
  */
-public class Player 
+
+public class Player
 {
-	private int health = 10;
-	private int attack = 1;
-	private int numOfPot = 0;
+	private String name;
+	private int health;
+	private int attack;
+
+	private int numOfPot;
 	private boolean swordInInventory;
 	private boolean swordEquipped;
 
+	private int currentLvl;
+	private int currentEXP;
+	private int expToLvl;
+	//Potion potion = new Potion();
+
+	/**
+	 * Constructor that sets the beginner player stats.
+	 */
+	public Player()
+	{
+		health = 10;
+		attack = 1;
+		numOfPot = 0;
+
+		currentLvl = 1;
+		currentEXP = 0;
+		expToLvl = 1;
+
+		swordInInventory = true;
+		swordEquipped = false;
+	}
+	/**
+	 * This is the getter method for level, returns level.
+	 */
+	public int getLvl()
+	{
+		return currentLvl;
+	}
+	/**
+	 * Setter for player level.
+	 * @param aLvl a level value
+	 */
+	public void setLvl(int aLvl)
+	{
+		currentLvl = aLvl;
+	}
+	/**
+	 * Checks if the player has enough exp to level up.
+	 */
+	public void checkExp()
+	{
+		if(currentEXP >= expToLvl) {
+			levelUp();
+		}
+	}
+	/**
+	 * Level-ups the player while carrying excess exp towards next level.
+	 */
+	private void levelUp()
+	{
+		currentLvl++;
+		if(currentEXP > expToLvl) {
+			currentEXP -= expToLvl;
+			expToLvl = expToLvl * 2;
+		}
+		System.out.println("You Leveled Up!");
+	}
+	/**
+	 * This is the getter method for experience required to level up, returns expToLvl.
+	 */
+	public int getExpToLvl()
+	{
+		return expToLvl;
+	}
+	/**
+	 * Setter for required experience to level up.
+	 * @param expVal an experience value.
+	 */
+	public void setExpToLvl(int expVal)
+	{
+		expToLvl = expVal;
+	}
+	/**
+	 * This is the getter method for current experience, returns currentEXP.
+	 */
+	public int getCurrentExp()
+	{
+		return currentEXP;
+	}
+	/**
+	 * Setter for current player experience.
+	 * @param an experience value.
+	 */
+	public void setCurrentExp(int expVal)
+	{
+		currentEXP = expVal;
+	}
+	/**
+	 * Setter for Player name
+	 * @param aName a name that user wishes to set.
+	 */
+	public void setName(String aName)
+	{
+		name = aName;
+	}
 	/**
 	 * This is the getter method for health, returns health
 	 */
-	public int getHealth() 
+	public int getHealth()
 	{
 		return health;
 	}
@@ -30,14 +129,14 @@ public class Player
 	 * This is the setter method for health
 	 * @param health The amount of health
 	 */
-	public void setHealth(int health) 
+	public void setHealth(int aHealth)
 	{
-		this.health = health;
+		health = aHealth;
 	}
 	/**
 	 * This is the getter method for attack, returns attack
 	 */
-	public int getAttack() 
+	public int getAttack()
 	{
 		return attack;
 	}
@@ -45,24 +144,18 @@ public class Player
 	 * This method allows the player to consume a item to restore their health points
 	 * @return itemUsed The item consumed
 	 */
-	public boolean useItem() 
+	public boolean useItem()
 	{
 		boolean itemUsed = false;
-		if(numOfPot > 0 && health < 10) 
-		{
+		if(numOfPot > 0 && health < 10) {
 			restoreHp(2);
 			System.out.println("You drank the potion and restored 2 health!");
-			System.out.printf("\tHealth: %d\n", health);
+			System.out.printf("\tHealth: %d\n",health);
 			numOfPot--;
 			itemUsed = true;
-		}
-		else if
-		(numOfPot <= 0)
-		{
+		}else if(numOfPot <= 0){
 			System.out.println("You don't have any potions!");
-		}
-		else 
-		{
+		}else {
 			System.out.println("You are already at full health!");
 		}
 		return itemUsed;
@@ -71,93 +164,72 @@ public class Player
 	 * This method checks to see what item the player has obtained
 	 * @param item The item the player obtained
 	 */
-	public void pickUp(String item) 
+	public void pickUp(String item)
 	{
 		int length = item.length();
-		if (item.charAt(length-5) == 'S')
-		{
+		if (item.charAt(length-5) == 'S'){
 			System.out.println("Picked up a Sword!");
 			swordInInventory = true;
-		}
-		else if(item.charAt(length-6) == 'P') 
-		{
+		}else if(item.charAt(length-6) == 'P') {
 			System.out.println("Picked up a Potion!");
 			numOfPot ++;
 		}
 	}
 	/**
-	 * This method increases the player's health 
+	 * This method increases the player's health
 	 * @param amount The amount to be restored
 	 */
-	public void restoreHp(int amount)
+	private void restoreHp(int amount)
     {
 		health += amount;
-		if(health > 10) 
-		{
+		if(health > 10) {
 			int excessHp = health - 10;
 			health -= excessHp;
 		}
     }
-	/**
-	 * This method equips a sword onto the player
-	 * @param swordDmg The damage rating of the sword
-	 */
-	public void equipSword(int swordDmg) 
+		/**
+		 * This method equips a sword onto the player
+		 * @param swordDmg The damage rating of the sword
+		 */
+	public void equipSword(int swordDmg)
 	{
 		if(swordInInventory == true) {
 			System.out.println("You have equipped the Sword!");
 			attack += swordDmg;
 			swordInInventory = false;
 			swordEquipped = true;
-		}
-		else 
-		{
+		}else {
 			System.out.println("You don't have a Sword!");
 		}
 	}
 	/**
-	 * This method prints the in game player menu
+	 * This method displays player statistics.
+	 */
+	private void displayStats()
+	{
+		System.out.printf("\t"+"LEVEL: %d\n",currentLvl);
+		System.out.printf("\t"+"-----------------------\n");
+		System.out.printf("\t"+"Health: %d\n",health);
+		System.out.printf("\t"+"Potions: %d\n",numOfPot);
+		System.out.printf("\t"+"ATK: %d\n",attack);
+		System.out.printf("\t"+"-----------------------\n");
+		System.out.printf("\t"+"EXP: %d/%d\n",currentEXP,expToLvl);
+		System.out.printf("\t"+"EXP Until Level %d: %d\n",(currentLvl + 1),
+				(expToLvl - currentEXP));
+		System.out.println(" ");
+	}
+	/**
+	 * A statistics menu for player.
 	 */
 	public void statsMenu()
 	{
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println("What would you like to do?");
-		System.out.println("Press 1 to see Health");
-		System.out.println("Press 2 to see Number of Potions");
-		System.out.println("Press 3 to see Attack Value");
-		String input = keyboard.next();
-		String decision;
-		switch(input) 
-		{
-			case "1":
-				decision = "You have " +health+ " Health";
-				break;
-			case "2":
-				decision = "You have " +numOfPot+ " Potions";
-				break;
-			case "3":
-				decision = "You have " +attack+ " Attack Value";
-				break;
-			default:
-				decision = "Invalid Input";
-				break;
-		}
-		System.out.println(decision);
-	}
-	/**
-	 * This method displays the item menu
-	 */
-	public void statsScreen()
-	{
-		Scanner keyboard = new Scanner(System.in);
-		System.out.printf("\t"+"Health: %d\n",health);
-		System.out.printf("\t"+"Potions: %d\n",numOfPot);
-		System.out.printf("\t"+"ATK: %d\n",attack);
+		displayStats();
 		System.out.println("Press 1 to restore your health.");
 		System.out.println("Press 2 to exit the screen.");
 		String input = keyboard.next();
 		switch(input) {
-			case "1": 
+			case "1":
 				useItem();
 				break;
 			case "2":
@@ -177,9 +249,6 @@ public class Player
 		boolean isAlive = true;
 		if (health < 1){
 			isAlive = false;
-		}
-		else{
-			isAlive = true;
 		}
 		return isAlive;
 	}

@@ -112,7 +112,7 @@ public class Map
 			playerCol -= 1;
 			break;
 		case "i":
-			getPlayer().statsScreen();
+			getPlayer().statsMenu();
 			break;
 		case "d":
 			playerCol += 1;
