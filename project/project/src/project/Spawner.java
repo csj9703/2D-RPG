@@ -50,34 +50,34 @@ public class Spawner
 	
 	public Enemy spawnGoblin()
 	{
-		return new Enemy("Goblin", 5, 1);
+		return new Enemy("Goblin", 5, 1, 1);
 	}
 	public Enemy spawnSkeleton()
 	{
-		return new Enemy("Skeleton", 6, 2);
+		return new Enemy("Skeleton", 6, 2, 2);
 	}
 	public Enemy spawnZombie()
 	{
-		return new Enemy("Zombie", 7, 1);
+		return new Enemy("Zombie", 7, 1, 3);
 	}
 	public Enemy spawnOgre()
 	{
-		return new Enemy("Ogre", 10, 3);
+		return new Enemy("Ogre", 10, 3, 4);
 	}
 	public Enemy spawnCerberus()
 	{
-		return new Enemy("Cerberus", 20, 10);
+		return new Enemy("Cerberus", 20, 10, 5);
 	}
 	public Enemy spawnMazeGuardian()
 	{
-		return new Enemy("Maze Guardian", 25, 4);
+		return new Enemy("Maze Guardian", 25, 4, 6);
 	}
 	public Enemy spawnMazeSentinel()
 	{
-		return new Enemy("Maze Sentinel", 30, 5);
+		return new Enemy("Maze Sentinel", 30, 5, 7);
 	}
 	public Enemy spawnFinalBoss()
 	{
-		return new Enemy("The God of Destruction, Perses", 100, 10);
+		return new Enemy("The God of Destruction, Perses", 100, 10, 10);
 	}
 }
