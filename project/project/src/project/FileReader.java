@@ -10,9 +10,9 @@ public class FileReader
 	 * This method reads a text file into a 2d array
 	 * @return maze The 2d array
 	 */
-	public String[][] readFile() 
+	public String[][] readFile(String fileName) 
 	{
-		File file = new File("maze.txt");
+		File file = new File(fileName);
 		Scanner scanner = null;
 		try 
 		{
@@ -20,7 +20,7 @@ public class FileReader
 		} 
 		catch (FileNotFoundException e) 
 		{
-			System.out.println("Error: maze.txt not found");
+			System.out.println("Error: " + fileName + " not found");
 		}
 		final int ROWS = 20;
 		final int COLS = 20;

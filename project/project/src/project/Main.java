@@ -15,14 +15,17 @@ public class Main
 	 */
 	public static void play() 
 	{
-		Map stage1 = new Map();
-		while (stage1.getPlayer().isAlive() && stage1.mazeNotCompleted())
+		Map game = new Map();
+		Gui gui = new Gui(game);
+		while (game.getPlayer().isAlive() && game.mazeNotCompleted())
 		{
-			stage1.displayMaze();
-			stage1.displayMenu();
-			stage1.move();
+			//game.displayMaze();
+			//game.displayMenu();
+			game.move();
+			gui.update(game);
+			game.checkStageCompletion();
 		}
-		if (stage1.getPlayer().isAlive())
+		if (game.getPlayer().isAlive())
 		{
 			System.out.println("You have completed the maze!" + "\n" + "CONGRATULATIONS");
 		}
