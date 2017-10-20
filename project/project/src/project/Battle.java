@@ -16,7 +16,7 @@ public class Battle
 	 */
 	public void start(Player player, Enemy enemy)
 	{
-		BattleGui gui = new BattleGui(this);
+		BattleGui gui = new BattleGui(player, enemy);
 		Scanner keyboard = new Scanner(System.in);
 		this.player = player;
 		this.enemy = enemy;
@@ -27,6 +27,8 @@ public class Battle
 		while (player.getHealth() > 0 && enemy.getHealth() > 0)
 		{
 			gui.showGui(true);
+			gui.getBattleInfo().setText(getDisplayMenu());
+			gui.update();
 			displayMenu();
 			String action = keyboard.next();
 			switch(action)
@@ -96,6 +98,17 @@ public class Battle
 						  "1: Attack enemy"    +"\n"+
 						  "2: Drink potion(%d)"+"\n", player.getNumOfPot());
 	}
+	
+	public String getDisplayMenu() 
+	{
+		String menu = "<html><font color='red'>Your health:"+player.getHealth()+"<br>"
+				+ "Enemy health:"+enemy.getHealth()+"<br>"
+				+ "Your actions:<br>"
+				+ "1: Attack enemy<br>"
+				+ "2: Drink potion("+player.getNumOfPot()+")</font><html>";
+		return menu;
+	}
+	
 	/**
 	 * This method displays the result of a turn of combat
 	 * @param charID String of either player or enemy.
@@ -111,4 +124,5 @@ public class Battle
 			System.out.printf("The %s has hit you for %d damage!\n",enemyName,enemyDmg);
 		}
 	}
+	
 }

@@ -11,9 +11,12 @@ import javax.swing.JPanel;
 
 public class BattleGui
 {
-	private Battle battle;
+	private Player player;
+	private Enemy enemy;
 	
 	private JFrame window = new JFrame();
+	
+	JPanel battlePanel;
 	
 	private JLabel playerLB;
 	private JLabel enemyLB;
@@ -24,9 +27,10 @@ public class BattleGui
 	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("backgroundPH.gif").getImage().getScaledInstance(700, 350, Image.SCALE_DEFAULT));
 	private ImageIcon enemy_Icon = new ImageIcon(new ImageIcon("enemyPH.gif").getImage().getScaledInstance(250, 150, Image.SCALE_DEFAULT));
 	
-	public BattleGui(Battle aBattle) 
+	public BattleGui(Player aPlayer, Enemy aEnemy) 
 	{
-		battle = aBattle;
+		player = aPlayer;
+		enemy = aEnemy;
 		
 		final int WIDTH = 700;
 		final int HEIGHT = 700;
@@ -35,7 +39,7 @@ public class BattleGui
 		window.setSize(WIDTH, HEIGHT);
 		window.setLayout(null);
 		
-		JPanel battlePanel = new JPanel();
+		battlePanel = new JPanel();
 		battlePanel.setLayout(null);
 		battlePanel.setBackground(Color.BLACK);
 		battlePanel.setBounds(0, 0, 700, 700);
@@ -43,10 +47,17 @@ public class BattleGui
 		battlePanel.add(getPlayerModel());
 		battlePanel.add(getEnemyModel());
 		battlePanel.add(getBackground());
-		battlePanel.add(getBattleInfo());
+		update();
 		
 		window.add(battlePanel);
 	}
+	public void update()
+	{
+		battlePanel.remove(getBattleInfo());
+		battlePanel.add(getBattleInfo());
+		battlePanel.repaint();
+	}
+	
 	public void showGui(boolean bool) {
 		window.setVisible(bool);
 	}
@@ -72,13 +83,13 @@ public class BattleGui
 		return enemyLB;
 	}
 	
-	private JLabel getBattleInfo() 
+	public JLabel getBattleInfo() 
 	{
-		String menu = "<html><font color='red'>Your health:<br>"
-				+ "Enemy health:<br>"
+		String menu = "<html><font color='red'>Your health:"+player.getHealth()+"<br>"
+				+ "Enemy health:"+enemy.getHealth()+"<br>"
 				+ "Your actions:<br>"
 				+ "1: Attack enemy<br>"
-				+ "2: Drink potion()</font><html>";
+				+ "2: Drink potion("+player.getNumOfPot()+")</font><html>";
 		
 		battleInfo = new JLabel();
 		battleInfo.setText(menu);
@@ -88,6 +99,5 @@ public class BattleGui
 	}
 	
 	//public static void main(String[] args) {
-		//BattleGui gui = new BattleGui();
 	//}
 }
