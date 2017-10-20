@@ -14,8 +14,13 @@ public class Gui
 	private ImageIcon wall = new ImageIcon("wall.png");
 	private ImageIcon road = new ImageIcon("grass.png");
 	private ImageIcon player = new ImageIcon("player.png");
-	private ImageIcon enemy = new ImageIcon("enemy.png");
 	private ImageIcon item = new ImageIcon("item.png");
+	private ImageIcon zombie = new ImageIcon("zombie.png");
+	private ImageIcon skeletonMinion = new ImageIcon("skeleton_minion.png");
+	private ImageIcon skeletonKing = new ImageIcon("skeleton_king.png");
+	private ImageIcon blackKnight = new ImageIcon("black_knight.png");
+	private ImageIcon reaper = new ImageIcon("reaper.png");
+	
 	private JLabel[][] labels;
 	private final int ROW = 20;
 	private final int COL = 20;
@@ -79,7 +84,33 @@ public class Gui
 		    	 }
 		    	 else if (maze[i][j] == "E")
 		    	 {
-		    		 labels[i][j].setIcon(enemy);
+		    		  ;
+		    		 if (game.currentStage() == 1)
+		    		 {
+		    			 labels[i][j].setIcon(zombie);
+		    		 }
+		    		 else if (game.currentStage() == 2)
+		    		 {
+		    			 if (i == 18 && j == 1)
+		    			 {
+		    				 labels[i][j].setIcon(skeletonKing);
+		    			 }
+		    			 else
+		    			 {
+		    				 labels[i][j].setIcon(skeletonMinion);
+		    			 }		 
+		    		 }
+		    		 else if (game.currentStage() == 3)
+		    		 {
+		    			 if (i == 1 && j == 18)
+		    			 {
+		    				 labels[i][j].setIcon(reaper);
+		    			 }
+		    			 else
+		    			 {
+		    				 labels[i][j].setIcon(blackKnight);
+		    			 }		 
+		    		 }
 		    	 }
 		    	 else if (maze[i][j] == "?") 
 		    	 {

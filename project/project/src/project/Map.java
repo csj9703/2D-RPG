@@ -192,7 +192,7 @@ public class Map
 	 */
 	public boolean mazeNotCompleted() 
 	{
-		return (maze[0][18] == "X") ? false : true;
+		return (maze[0][18] == "X") && selectedStage == "stage3.txt" ? false : true;
 	}
 	/*
 	 * This is the getter method for player, returns player
@@ -209,7 +209,10 @@ public class Map
 	{
 		this.player = player;
 	}
-	
+	/*
+	 * This method prints the stage selection menu
+	 * Take input from player and returns the stage selected
+	 */
 	public String selectStage()
 	{
 		System.out.println("Enter which stage you would like to play");
@@ -218,7 +221,6 @@ public class Map
 		System.out.println("3. Stage 3 - for experts!");
 		Scanner keyboard = new Scanner(System.in);
 		String choice = keyboard.next();
-		
 
 		switch (choice)
 		{
@@ -234,10 +236,12 @@ public class Map
 		}
 		return selectedStage;
 	}
-	
+	/*
+	 * This method checks to see if a stage has been complete
+	 * When a stage is complete it will load the next stage
+	 */
 	public void checkStageCompletion()
 	{
-		boolean mazeNotCompleted;
 		FileReader fileReader = new FileReader();
 		if (selectedStage == "stage1.txt" && maze[9][19] == "X")
 		{
@@ -249,14 +253,32 @@ public class Map
 			maze = fileReader.translateData(fileReader.readFile("stage3.txt"));
 			selectedStage = "stage3.txt";
 		}
-		else if (selectedStage == "stage3.txt")
-		{
-			mazeNotCompleted = (maze[0][18] == "X") ? false : true;
-		}
 	}
-	
+	/*
+	 * This is the getter method for the grid, returns maze
+	 */
 	public String[][] getMaze()
 	{
 		return maze;
+	}
+	/*
+	 * This is the getter method for the current stage, returns stage
+	 */
+	public int currentStage()
+	{
+		int stage = 0;
+		if (selectedStage == "stage1.txt")
+		{
+			stage = 1;
+		}
+		else if (selectedStage == "stage2.txt")
+		{
+			stage = 2;
+		}
+		else if (selectedStage == "stage3.txt")
+		{
+			stage = 3;
+		}
+		return stage;
 	}
 }

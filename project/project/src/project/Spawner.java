@@ -21,63 +21,42 @@ public class Spawner
 		switch (num)
 		{
 		case 1:
-			enemy = spawnGoblin();
+			enemy = spawnZombie();
 			break;
 		case 2:
 			enemy = spawnSkeleton();
 			break;
 		case 3:
-			enemy = spawnZombie();
+			enemy = spawnSkeletonKing();
 			break;
 		case 4:
-			enemy = spawnOgre();
+			enemy = spawnBlackKnight();
 			break;
 		case 5:
-			enemy = spawnCerberus();
-			break;
-		case 6:
-			enemy = spawnMazeGuardian();
-			break;
-		case 7:
-			enemy = spawnMazeSentinel();
-			break;
-		case 8:
-			enemy = spawnFinalBoss();
+			enemy = spawnReaper();
 			break;
 		}
 		return enemy;
 	}
 	
-	public Enemy spawnGoblin()
+	public Enemy spawnZombie()
 	{
-		return new Enemy("Goblin", 5, 1, 1);
+		return new Enemy("Zombie", 5, 1, 1);
 	}
 	public Enemy spawnSkeleton()
 	{
 		return new Enemy("Skeleton", 6, 2, 2);
 	}
-	public Enemy spawnZombie()
+	public Enemy spawnSkeletonKing()
 	{
-		return new Enemy("Zombie", 7, 1, 3);
+		return new Enemy("Skeleton King", 10, 3, 4);
 	}
-	public Enemy spawnOgre()
+	public Enemy spawnBlackKnight()
 	{
-		return new Enemy("Ogre", 10, 3, 4);
+		return new Enemy("Black Knight", 8, 2, 3);
 	}
-	public Enemy spawnCerberus()
+	public Enemy spawnReaper()
 	{
-		return new Enemy("Cerberus", 20, 10, 5);
-	}
-	public Enemy spawnMazeGuardian()
-	{
-		return new Enemy("Maze Guardian", 25, 4, 6);
-	}
-	public Enemy spawnMazeSentinel()
-	{
-		return new Enemy("Maze Sentinel", 30, 5, 7);
-	}
-	public Enemy spawnFinalBoss()
-	{
-		return new Enemy("The God of Destruction, Perses", 100, 10, 10);
+		return new Enemy("Reaper", 20, 5, 5);
 	}
 }
