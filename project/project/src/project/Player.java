@@ -69,8 +69,9 @@ public class Player
 		currentLvl++;
 		if(currentEXP > expToLvl) {
 			currentEXP -= expToLvl;
-			expToLvl = expToLvl * 2;
 		}
+		expToLvl *= 2;
+		attack += 1;
 		System.out.println("You Leveled Up!");
 	}
 	/**

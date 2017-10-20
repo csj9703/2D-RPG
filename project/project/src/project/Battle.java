@@ -35,6 +35,8 @@ public class Battle
 					if(!(enemy.getHealth() <= 0)) {
 						enemyAttack();
 						displayResult("enemy");
+					}else {
+						expReward();
 					}
 					break;
 				case "2":
@@ -48,7 +50,15 @@ public class Battle
 					break;
 			}
 		}
-		System.out.printf("You have defeated %s!\n" , enemyName);
+	}
+	private void expReward() 
+	{
+		int playerExp = player.getCurrentExp();
+		int enemyExp = enemy.getExp();
+		player.setCurrentExp(playerExp += enemyExp); 
+		System.out.printf("You have defeated %s!\n" , enemy.getName());
+		System.out.printf("You gained %d EXP!\n" , enemyExp);
+		player.checkExp();
 	}
 	/**
 	 * This method reduces enemy health by the amount of damage inflicted by the player
