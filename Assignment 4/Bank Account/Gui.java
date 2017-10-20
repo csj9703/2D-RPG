@@ -37,7 +37,7 @@ public class Gui extends JFrame
 		depositBtn.setFocusPainted(false);
 		content.add(depositBtn);
 		// withdraw button
-		JButton withdrawBtn = new JButton("Withdrarw");
+		JButton withdrawBtn = new JButton("Withdraw");
 		withdrawBtn.setActionCommand("WITHDRAW");
 		withdrawBtn.addActionListener(listener);
 		withdrawBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
