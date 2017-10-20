@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,23 +45,29 @@ public class BattleGui
 		battlePanel.setBackground(Color.BLACK);
 		battlePanel.setBounds(0, 0, 700, 700);
 		
+		battleInfo = new JLabel();
+		battleInfo.setFont(new Font("info", Font.PLAIN, 18));
+		battleInfo.setBorder(BorderFactory.createEmptyBorder(0, 100, 100, 100));
+		battleInfo.setBounds(0,315,WIDTH,300);
+		
+		battlePanel.add(battleInfo);
 		battlePanel.add(getPlayerModel());
 		battlePanel.add(getEnemyModel());
 		battlePanel.add(getBackground());
-		update();
 		
 		window.add(battlePanel);
 	}
-	public void update()
+	public void updateMenu()
 	{
-		battlePanel.remove(getBattleInfo());
-		battlePanel.add(getBattleInfo());
-		battlePanel.repaint();
+		battlePanel.remove(battleInfo);
+		battleInfo.setText(getMenu());
+		battlePanel.add(battleInfo);
 	}
 	
 	public void showGui(boolean bool) {
 		window.setVisible(bool);
 	}
+	
 	private JLabel getBackground() {
 		background = new JLabel();
 		background.setIcon(BG_Icon);
@@ -82,20 +89,15 @@ public class BattleGui
 		enemyLB.setBounds(350,200,250,150);
 		return enemyLB;
 	}
-	
-	public JLabel getBattleInfo() 
+	private String getMenu() 
 	{
-		String menu = "<html><font color='red'>Your health:"+player.getHealth()+"<br>"
-				+ "Enemy health:"+enemy.getHealth()+"<br>"
-				+ "Your actions:<br>"
-				+ "1: Attack enemy<br>"
-				+ "2: Drink potion("+player.getNumOfPot()+")</font><html>";
-		
-		battleInfo = new JLabel();
-		battleInfo.setText(menu);
-		battleInfo.setFont(new Font("info", Font.PLAIN, 20));
-		battleInfo.setBounds(20, 300, 300, 300);
-		return battleInfo;
+		String menu = 
+			  "<html><font color='red'>Your health: "+player.getHealth()+"<br />"
+			+ "Enemy health: "+enemy.getHealth()+"<br />"
+			+ "Your actions:<br />"
+			+ "1: Attack enemy<br />"
+			+ "2: Drink potion("+player.getNumOfPot()+")<br /><html>";
+		return menu;
 	}
 	
 	//public static void main(String[] args) {

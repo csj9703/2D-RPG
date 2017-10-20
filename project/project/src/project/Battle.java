@@ -27,8 +27,8 @@ public class Battle
 		while (player.getHealth() > 0 && enemy.getHealth() > 0)
 		{
 			gui.showGui(true);
-			gui.getBattleInfo().setText(getDisplayMenu());
-			gui.update();
+			gui.updateMenu();
+			
 			displayMenu();
 			String action = keyboard.next();
 			switch(action)
