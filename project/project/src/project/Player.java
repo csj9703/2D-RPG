@@ -221,8 +221,9 @@ public class Player
 	/**
 	 * A statistics menu for player.
 	 */
-	public void statsMenu()
+	private boolean menu(boolean exitInv)
 	{
+		boolean exitInventory = exitInv;
 		Scanner keyboard = new Scanner(System.in);
 		displayStats();
 		System.out.println("Press 1 to restore your health.");
@@ -234,10 +235,22 @@ public class Player
 				break;
 			case "2":
 				System.out.println("Back to navigation");
+				exitInventory = true;
 				break;
 			default:
 				System.out.println("Invalid Input");
 				break;
+		}
+		return exitInventory;
+	}
+	/**
+	 * This method displays the inventory and menu.
+	 */
+	public void inventory()
+	{
+		boolean exitInventory = false;
+		while (!exitInventory == true) {
+			exitInventory = menu(exitInventory);
 		}
 	}
 	/*
