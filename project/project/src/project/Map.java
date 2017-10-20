@@ -183,7 +183,7 @@ public class Map
 		else if (maze[playerRow][playerCol] == "E")
 		{
 			Battle battle = new Battle();
-			battle.start(getPlayer(), new Spawner().spawnEnemy());
+			battle.start(getPlayer(), new Spawner().spawnEnemy(identifyEnemy(playerRow, playerCol)));
 		}
 	}
 	/*
@@ -280,5 +280,38 @@ public class Map
 			stage = 3;
 		}
 		return stage;
+	}
+	
+	
+	public int identifyEnemy(int playerRow, int playerCol)
+	{
+		int enemyID = 0;
+		if (currentStage() == 1)
+		{
+			enemyID = 1;
+		}
+		else if (currentStage() == 2)
+		{
+			if (playerRow == 18 && playerCol == 1)
+			{
+				enemyID = 3;
+			}
+			else
+			{
+				enemyID = 2;
+			}
+		}
+		else if (currentStage() == 3)
+		{
+			if (playerRow == 18 && playerCol == 1)
+			{
+				enemyID = 5;
+			}
+			else
+			{
+				enemyID = 4;
+			}
+		}
+		return enemyID;
 	}
 }

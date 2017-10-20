@@ -19,7 +19,6 @@ public class Player
 	private int currentLvl;
 	private int currentEXP;
 	private int expToLvl;
-	//Potion potion = new Potion();
 
 	/**
 	 * Constructor that sets the beginner player stats.
@@ -149,7 +148,7 @@ public class Player
 	{
 		boolean itemUsed = false;
 		if(numOfPot > 0 && health < 10) {
-			restoreHp(2);
+			restoreHp(5);
 			System.out.println("You drank the potion and restored 2 health!");
 			System.out.printf("\tHealth: %d\n",health);
 			numOfPot--;
