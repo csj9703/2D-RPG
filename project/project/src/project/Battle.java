@@ -16,6 +16,7 @@ public class Battle
 	 */
 	public void start(Player player, Enemy enemy)
 	{
+		BattleGui gui = new BattleGui(this);
 		Scanner keyboard = new Scanner(System.in);
 		this.player = player;
 		this.enemy = enemy;
@@ -25,6 +26,7 @@ public class Battle
 		// battle continues until one side's health is reduced to zero
 		while (player.getHealth() > 0 && enemy.getHealth() > 0)
 		{
+			gui.showGui(true);
 			displayMenu();
 			String action = keyboard.next();
 			switch(action)
@@ -50,6 +52,7 @@ public class Battle
 					break;
 			}
 		}
+		gui.showGui(false);
 	}
 	private void expReward() 
 	{
