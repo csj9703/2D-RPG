@@ -26,7 +26,7 @@ public class BattleGui
 	
 	private ImageIcon player_Icon = new ImageIcon(new ImageIcon("playerPH.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("backgroundPH.gif").getImage().getScaledInstance(700, 350, Image.SCALE_DEFAULT));
-	private ImageIcon enemy_Icon = new ImageIcon(new ImageIcon("enemyPH.gif").getImage().getScaledInstance(250, 150, Image.SCALE_DEFAULT));
+	private ImageIcon enemy_Icon;
 	
 	public BattleGui(Player aPlayer, Enemy aEnemy) 
 	{
@@ -52,7 +52,7 @@ public class BattleGui
 		
 		battlePanel.add(battleInfo);
 		battlePanel.add(getPlayerModel());
-		battlePanel.add(getEnemyModel());
+		battlePanel.add(getEnemyModel(enemy.getName()));
 		battlePanel.add(getBackground());
 		
 		window.add(battlePanel);
@@ -82,13 +82,35 @@ public class BattleGui
 		return playerLB;
 	}
 	
-	private JLabel getEnemyModel() 
+	private JLabel getEnemyModel(String enemyName) 
 	{
+		int xCoord = 0;
+		int yCoord = 0;
+		if(enemyName == "Zombie") {
+			enemy_Icon = new ImageIcon(new ImageIcon("zombie.gif").getImage().getScaledInstance(125, 125, Image.SCALE_DEFAULT));
+			xCoord = 350; yCoord = 175;
+		}else if(enemyName == "Skeleton") {
+			enemy_Icon = new ImageIcon(new ImageIcon("skeleton.gif").getImage().getScaledInstance(115, 125, Image.SCALE_DEFAULT));
+			xCoord = 350; yCoord = 175;
+		}else if(enemyName == "Skeleton King") {
+			enemy_Icon = new ImageIcon(new ImageIcon("skeletonKing.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+			xCoord = 350; yCoord = 175;
+		}else if(enemyName == "Black Knight") {
+			enemy_Icon = new ImageIcon(new ImageIcon("blackKnight.gif").getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
+			xCoord = 350; yCoord = 175;
+		}else if(enemyName == "Reaper") {
+			enemy_Icon = new ImageIcon(new ImageIcon("reaper.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+			xCoord = 350; yCoord = 175;
+		}
+		
 		enemyLB = new JLabel();
 		enemyLB.setIcon(enemy_Icon);
-		enemyLB.setBounds(350,200,250,150);
+		enemyLB.setBounds(xCoord,yCoord,250,150);
 		return enemyLB;
 	}
+	
+	
+	
 	private String getMenu() 
 	{
 		String menu = 

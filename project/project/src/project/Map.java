@@ -303,7 +303,7 @@ public class Map
 		}
 		else if (currentStage() == 3)
 		{
-			if (playerRow == 18 && playerCol == 1)
+			if (playerRow == 1 && playerCol == 18)
 			{
 				enemyID = 5;
 			}
