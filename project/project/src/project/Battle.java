@@ -1,6 +1,7 @@
 package project;
 
 import java.util.Scanner;
+import java.util.Random;
 /*
  * This class manages the combat system of the game
  */
@@ -21,6 +22,8 @@ public class Battle
 		this.player = player;
 		this.enemy = enemy;
 		String enemyName = enemy.getName();
+		
+		Random attackModifier = new Random();
 
 		System.out.println("You have encountered " + enemyName + "!");
 		// battle continues until one side's health is reduced to zero
@@ -34,19 +37,20 @@ public class Battle
 			switch(action)
 			{
 				case "1":
-					playerAttack();
-					displayResult("player");
-					if(!(enemy.getHealth() <= 0)) {
-						enemyAttack();
-						displayResult("enemy");
-					}else {
+					displayResult("player", playerAttack(attackModifier.nextInt(10)));
+					if(!(enemy.getHealth() <= 0))
+					{
+						displayResult("enemy",enemyAttack(attackModifier.nextInt(10)));
+					}
+					else 
+					{
 						expReward();
 					}
 					break;
 				case "2":
-					if(player.useItem()) {
-						enemyAttack();
-						displayResult("enemy");
+					if(player.useItem()) 
+					{
+						displayResult("enemy",enemyAttack(attackModifier.nextInt(10)));
 					}
 					break;
 				default:
@@ -67,30 +71,71 @@ public class Battle
 	}
 	/**
 	 * This method reduces enemy health by the amount of damage inflicted by the player
+	 *@param attackModifier integer, 0 its a miss, 9 its a critical hit, else its a normal hit
+	 *@return integer, 0 if its a miss, 1 if its a regular hit, 2 if critical
 	 */
-	public void playerAttack() 
+	private int playerAttack(int attackModifier) 
 	{
-		int enemyHp = 0;
-		int playerDmg = player.getAttack();
-		enemyHp = enemy.getHealth();
-		enemyHp -= playerDmg;
-		enemy.setHealth(enemyHp);
+		int enemyHp = enemy.getHealth();
+		int playerDmg;
+		if (attackModifier == 0) 
+		{
+			System.out.println("You Missed!");
+			playerDmg = 0;
+			return 0;
+		}
+		else if (attackModifier == 9)
+		{
+			System.out.println("You hit a critical shot!");
+			playerDmg = 2 * player.getAttack();
+			enemyHp -= playerDmg;
+			enemy.setHealth(enemyHp);
+			return 2;
+		}
+		else 
+		{
+			playerDmg = player.getAttack();
+			enemyHp -= playerDmg;
+			enemy.setHealth(enemyHp);
+			return 1;
+		}
 	}
 	/**
 	 * This method reduces player health by the amount of damage inflicted by the enemy
+	 * @param attackModifier integer, 0 its a miss, 9 its a critical hit, else its a normal hit
+	 * @return integer, 0 if its a miss, 1 if its a regular hit, 2 if critical
 	 */
-	public void enemyAttack() 
+	private int enemyAttack(int attackModifier) 
 	{
-		int playerHp = 0;
-		int enemyDmg = enemy.getAttack();
-		playerHp = player.getHealth();
-		playerHp -= enemyDmg;
-		player.setHealth(playerHp);
+		int playerHp = player.getHealth();
+		int enemyDmg;
+		if (attackModifier == 0)
+		{
+			System.out.println("The Enemy Missed!");
+			enemyDmg = 0;
+			return 0;
+			
+		}
+		else if (attackModifier == 9)
+		{
+			System.out.println("The enemy hit a critical shot!");
+			enemyDmg = 2*enemy.getAttack();
+			playerHp -= enemyDmg;
+			player.setHealth(playerHp);
+			return 2;
+		}
+		else 
+		{
+			enemyDmg = enemy.getAttack();
+			playerHp -= enemyDmg;
+			player.setHealth(playerHp);
+			return 1;
+		}
 	}
 	/**
 	 * This method opens the item menu
 	 */
-	public void displayMenu() 
+	private void displayMenu() 
 	{
 		System.out.println("Your health: " + player.getHealth());
 		System.out.println("Enemy health: " + enemy.getHealth());
@@ -108,21 +153,25 @@ public class Battle
 				+ "2: Drink potion("+player.getNumOfPot()+")</font><html>";
 		return menu;
 	}
-	
 	/**
 	 * This method displays the result of a turn of combat
 	 * @param charID String of either player or enemy.
+	 * @param attackType 0 if miss, 1 if normal hit, 2 if critical
 	 */
-	public void displayResult(String charID) 
+	private void displayResult(String charID, int attackType) 
 	{
 		String enemyName = enemy.getName();
 		int playerDmg = player.getAttack();
 		int enemyDmg = enemy.getAttack();
-		if(charID == "player") {
+		if (attackType == 2)
+		{
+			playerDmg = 2*playerDmg;
+			enemyDmg = 2*enemyDmg;
+		}
+		if(charID == "player" && attackType != 0) {
 			System.out.printf("You hit the %s for %d damage!\n",enemyName,playerDmg);
-		}else if(charID == "enemy") {
+		}else if(charID == "enemy" && attackType != 0) {
 			System.out.printf("The %s has hit you for %d damage!\n",enemyName,enemyDmg);
 		}
 	}
-	
 }
