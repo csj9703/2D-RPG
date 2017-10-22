@@ -12,30 +12,40 @@ public class Game implements KeyListener
 	private Player player = new Player();
 	private Battle battle = new Battle();
 	private Map game = new Map();
-	// game gui 
+
 	private GamePanel gamePanel = new GamePanel();
 	private JPanel gameInterface = gamePanel.createPanel(game);
-	// battle gui
+
 	private BattlePanel battlePanel = new BattlePanel();
 	private JPanel battleInterface = battlePanel.createPanel(player, game.getEnemy());
-	// inventory gui
+
 	private InventoryPanel inventoryPanel = new InventoryPanel();
 	private JPanel inventoryInterface = inventoryPanel.createPanel(player);
-	// starting gui
+
 	private StartScenePanel startScenePanel = new StartScenePanel();
 	private JPanel startingScene = startScenePanel.createPanel();
-	// ending gui
+
 	private EndScenePanel endScenePanel = new EndScenePanel();
 	private JPanel endingScene = endScenePanel.createPanel();
-	// victory gui
+
 	private VictoryScenePanel victoryScenePanel = new VictoryScenePanel();
 	private JPanel victoryScene = victoryScenePanel.createPanel();	
 	
-	private Gui gui = new Gui(this, gameInterface, battleInterface, inventoryInterface, startingScene, endingScene, victoryScene);
+	private TextPanel textPanel = new TextPanel();
+	private JPanel textBox = textPanel.createPanel();
 	
-	// flags used to keep track of which gui is being displayed
-	boolean inBattle = false;
+	private Gui gui = new Gui(this, gameInterface, battleInterface, inventoryInterface, 
+									startingScene, endingScene, victoryScene, textBox);
+	
+	// flags used to keep track of which scene is being displayed
+	boolean inBattleScene = false;
 	boolean inventoryOpen = false;
+	boolean inStartScene = true;
+	boolean inGameScene = false;
+	boolean inEndScene = false;
+	boolean inVictoryScene = false;
+	boolean textBoxDisplayed = false;
+	boolean justDefeatedEnemy = false;
 	/*
 	 * This method manages the player input
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
@@ -45,36 +55,38 @@ public class Game implements KeyListener
     	// Movement buttons
         if(e.getKeyCode()== KeyEvent.VK_RIGHT)
         {
-        	if ((!(inventoryOpen)) && (!(inBattle)))
+        	if (inGameScene)
         		game.move("d");
         }
         else if(e.getKeyCode()== KeyEvent.VK_LEFT) 
         {
-        	if ((!(inventoryOpen)) && (!(inBattle)))
+        	if (inGameScene)
         		game.move("a");
         }
         else if(e.getKeyCode()== KeyEvent.VK_DOWN) 
         {
-        	if ((!(inventoryOpen)) && (!(inBattle)))
+        	if (inGameScene)
         		game.move("s");
         }
         else if(e.getKeyCode()== KeyEvent.VK_UP) 
         {
-        	if ((!(inventoryOpen)) && (!(inBattle)))
+        	if (inGameScene)
         		game.move("w");
         }
         // Inventory button
         else if(e.getKeyCode()== KeyEvent.VK_I) 
         {
-        	if ((!(inventoryOpen)) && (!(inBattle)))
+        	if ((inGameScene) && (!(inStartScene)))
         	{
         		gameInterface.setVisible(false);
+        		inGameScene = false;
         		inventoryInterface.setVisible(true);
         		inventoryOpen = true;
         	}
         	else
         	{
         		gameInterface.setVisible(true);
+        		inGameScene = true;
         		inventoryInterface.setVisible(false);
         		inventoryOpen = false;
         	}
@@ -88,26 +100,38 @@ public class Game implements KeyListener
         // Start button
         else if(e.getKeyCode()== KeyEvent.VK_ENTER) 
         {
-        	startingScene.setVisible(false);
-        	gameInterface.setVisible(true);
+        	if (inStartScene)
+        	{
+        		startingScene.setVisible(false);
+            	inStartScene = false;
+            	gameInterface.setVisible(true);
+            	inGameScene = true;
+            	textBox.setVisible(true);
+            	textBoxDisplayed = true;
+        	}
         }
         // Attack button
         else if(e.getKeyCode()== KeyEvent.VK_A) 
         {
-        	if (inBattle)
+        	if (inBattleScene)
         	{
         		battle.playerAttack(player, game.getEnemy());
         		// after player attacks:
         		if (battle.enemyIsAlive(game.getEnemy()))
         		{
+        			battlePanel.showBattleResults();
         			battle.enemyAttack(player, game.getEnemy());
         		}
         		else
         		{
         			battleInterface.setVisible(false);
+        			inBattleScene = false;
         			gameInterface.setVisible(true);
+        			inGameScene = true;
         			game.foundEnemy(false);
-        			inBattle = false;
+        			battlePanel.hideBattleResults();
+        			textPanel.displayBattleResults(game.getEnemy());
+        			justDefeatedEnemy = true;
         		}
         	}
         }
@@ -115,32 +139,44 @@ public class Game implements KeyListener
         if (game.foundEnemy())
         {
         	battleInterface.setVisible(true);
+        	inBattleScene = true;
         	gameInterface.setVisible(false);
-        	inBattle = true;
+        	inGameScene = false;
         }
         // displays a pop up message when you find an item
-        if (game.foundItem())
+        if ((game.foundItem()) && (!(justDefeatedEnemy)))
         {
+        	textPanel.update();
         	player.pickUp("Potion");
         	game.foundItem(false);
-        	JOptionPane.showMessageDialog(null, "You found a Potion!");
+        }
+        else
+        {
+        	if (!(justDefeatedEnemy))
+        		textPanel.reset();
+        		justDefeatedEnemy = false;
         }
         // ends the game when player dies
         if (!(player.isAlive()))
         {
         	gameInterface.setVisible(false);
+        	inGameScene = false;
         	battleInterface.setVisible(false);
+        	inBattleScene = false;
         	inventoryInterface.setVisible(false);
         	endingScene.setVisible(true);
+        	inEndScene = true;
         }
         // switches to victory screen when game is complete
         if (game.gameWon())
         {
         	gameInterface.setVisible(false);
+        	inGameScene = false;
         	victoryScene.setVisible(true);
+        	inVictoryScene = true;
         }
         // updates the user interface after each key press
-        battlePanel.update(player, game.getEnemy());
+        battlePanel.update(player, game.getEnemy(), battle);
         inventoryPanel.update(player);
         gamePanel.update(game);
         game.checkStageCompletion();        

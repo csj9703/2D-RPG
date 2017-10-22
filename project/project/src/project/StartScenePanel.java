@@ -17,15 +17,17 @@ public class StartScenePanel
 		JPanel startScenePanel  = new JPanel();
 		startScenePanel.setLayout(null);
 		startScenePanel.setBackground(Color.BLACK);
-		startScenePanel.setBounds(0, 0, 700, 700);
+		startScenePanel.setBounds(0, 0, 665, 750);
 		// first label
-		gameInstructions.setBounds(0,0,700,300);
-		gameInstructions.setFont(new Font("info", Font.PLAIN, 48));
+		gameInstructions.setBounds(0,0,665,300);
+		gameInstructions.setFont(new Font("info", Font.PLAIN, 46));
+		gameInstructions.setForeground(Color.WHITE);
 		String gameInfo = "HIT ENTER TO START GAME";
 		gameInstructions.setText(gameInfo);
 		/// second label
-		gameInstructions2.setBounds(0,300,700,300);
+		gameInstructions2.setBounds(0,300,665,300);
 		gameInstructions2.setFont(new Font("info", Font.PLAIN, 20));
+		gameInstructions2.setForeground(Color.WHITE);
 		String gameInfo2 = "<html>" + "PRESS THE ARROW KEYS TO MOVE"
 			              + "<br/>" + "PRESS A TO ATTACK" 
 			              + "<br/>" + "PRESS I TO OPEN INVENTORY (cannot use potion during combat)" 

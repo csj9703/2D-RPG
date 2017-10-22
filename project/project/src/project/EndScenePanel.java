@@ -19,7 +19,8 @@ public class EndScenePanel
 		endScenePanel .setBounds(0, 0, 700, 700);
 
 		gameInstructions.setBounds(0,0,700,700);
-		gameInstructions.setFont(new Font("info", Font.PLAIN, 48));
+		gameInstructions.setFont(new Font("info", Font.PLAIN, 40));
+		gameInstructions.setForeground(Color.RED);
 	
 		String gameInfo = "YOU DIED, GAME OVER";
 	

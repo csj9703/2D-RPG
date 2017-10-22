@@ -12,13 +12,13 @@ public class Gui extends JFrame
      * This constructor initializes the frame
      */
     public Gui(KeyListener listener, JPanel gameInterface, JPanel battleInterface, JPanel inventoryInterface, 
-    		JPanel startingScene, JPanel endingScene, JPanel victoryScene)
+    		JPanel startingScene, JPanel endingScene, JPanel victoryScene, JPanel textBox)
     {
     	JFrame window = new JFrame();
         window.setTitle("MAZE RPG");
         window.addKeyListener(listener);
         window.setResizable(true);
-        window.setSize(700, 700);
+        window.setSize(665, 750);
         window.setLayout(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().add(startingScene);
@@ -27,12 +27,16 @@ public class Gui extends JFrame
         window.getContentPane().add(inventoryInterface);
         window.getContentPane().add(endingScene);
         window.getContentPane().add(victoryScene);
+        window.getContentPane().add(textBox);
+        
+        textBox.setLocation(5,650);
         
         gameInterface.setVisible(false);
         battleInterface.setVisible(false);
         inventoryInterface.setVisible(false);
         endingScene.setVisible(false);
         victoryScene.setVisible(false);
+        textBox.setVisible(false);
                        
         window.setVisible(true);
     }

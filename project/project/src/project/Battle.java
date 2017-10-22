@@ -7,6 +7,8 @@ import java.util.Random;
 public class Battle
 {
 	Random rng = new Random();
+	int playerDamage;
+	int enemyDamage;
 	/**
 	 * This method reduces the enemy's health by the amount of damage inflicted by the player
 	 *@param player The player
@@ -14,22 +16,20 @@ public class Battle
 	 */
 	public void playerAttack(Player player, Enemy enemy)
 	{
-		int attackModifier = rng.nextInt(10);
-		int damage;
-		
+		int attackModifier = rng.nextInt(10);		
 		if (attackModifier == 0)
 		{
-			damage = 0;
+			playerDamage = 0;
 		}
 		else if (attackModifier == 9)
 		{
-			damage = 2 * player.getAttack();
+			playerDamage = 2 * player.getAttack();
 		}
 		else 
 		{
-			damage = player.getAttack();
+			playerDamage = player.getAttack();
 		}
-		enemy.setHealth(enemy.getHealth()-damage);
+		enemy.setHealth(enemy.getHealth()-playerDamage);
 	}
 	/**
 	 * This method reduces the player's health by the amount of damage inflicted by the enemy
@@ -39,21 +39,19 @@ public class Battle
 	public void enemyAttack(Player player, Enemy enemy)
 	{
 		int attackModifier = rng.nextInt(10);
-		int damage;
-		
 		if (attackModifier == 0)
 		{
-			damage = 0;
+			enemyDamage = 0;
 		}
 		else if (attackModifier == 9)
 		{
-			damage = 2 * enemy.getAttack();
+			enemyDamage = 2 * enemy.getAttack();
 		}
 		else 
 		{
-			damage = enemy.getAttack();
+			enemyDamage = enemy.getAttack();
 		}
-		player.setHealth(player.getHealth()-damage);
+		player.setHealth(player.getHealth()-enemyDamage);
 	}
 	/*
 	 * This method returns true if enemy is alive, false otherwise
@@ -62,6 +60,15 @@ public class Battle
 	public boolean enemyIsAlive(Enemy enemy)
 	{
 		return enemy.getHealth() > 0 ? true : false;
+	}
+	
+	public int getPlayerDamage()
+	{
+		return playerDamage;
+	}
+	public int getEnemyDamage()
+	{
+		return enemyDamage;
 	}
 }
 

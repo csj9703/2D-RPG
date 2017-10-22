@@ -14,6 +14,7 @@ public class BattlePanel
 {
 	private JLabel enemyStatistics = new JLabel();
 	private JLabel playerStatistics = new JLabel();
+	private JLabel battleResults = new JLabel();
 	private JLabel background;
 	private JLabel playerLB = new JLabel();
 	private JLabel enemyLB = new JLabel();
@@ -24,7 +25,6 @@ public class BattlePanel
 	
 	public JPanel createPanel(Player player, Enemy enemy)
 	{
-		
 		JPanel battlePanel = new JPanel();
 		battlePanel.setLayout(null);
 		battlePanel.setBackground(Color.BLACK);
@@ -32,33 +32,52 @@ public class BattlePanel
 
 		enemyStatistics.setBounds(400,350,300,100);
 		enemyStatistics.setFont(new Font("info", Font.PLAIN, 18));
+		enemyStatistics.setForeground(Color.RED);
 		
 		playerStatistics.setBounds(50,350,300,100);
 		playerStatistics.setFont(new Font("info", Font.PLAIN, 18));
+		playerStatistics.setForeground(Color.RED);
+		
+		battleResults.setBounds(50,400,300,200);
+		battleResults.setFont(new Font("info", Font.PLAIN, 18));
+		battleResults.setForeground(Color.RED);
+		battleResults.setVisible(false);
 		
 		battlePanel.add(enemyLB);
 		battlePanel.add(playerLB);
 		battlePanel.add(getBackground());
 		battlePanel.add(playerStatistics);
 		battlePanel.add(enemyStatistics);
+		battlePanel.add(battleResults);
 		
 		return battlePanel;
 	}
-	
 	// this method is run after every input command
-	public void update(Player player, Enemy enemy)
+	public void update(Player player, Enemy enemy, Battle battle)
 	{
 		setPlayerModel();
 		setEnemyModel(enemy.getName());
-		String enemyInfo = "<html><font color='red'>" + "Enemy Name: " + enemy.getName() 
+		String enemyInfo = "<html>" + "Enemy Name: " + enemy.getName() 
                           + "<br/>" + "Enemy HP: " + enemy.getHealth() 
                           + "</html>";
 		enemyStatistics.setText(enemyInfo);
 		
-		String playerInfo = "<html><font color='red'>" + "Player Name: " + player.getName()
+		String playerInfo = "<html>" + "Player Name: " + player.getName()
                            + "<br/>" + "Player HP: " + player.getHealth() 
                                      + "</html>";
 		playerStatistics.setText(playerInfo);
+		
+		String battleInfo ="<html>" + "You hit the " + enemy.getName() + " for " + battle.getPlayerDamage() + " damage!"
+							+ "<br/>" + "<br/>" + enemy.getName() + " has hit you for " + battle.getEnemyDamage() + " damage!";
+		battleResults.setText(battleInfo);
+	}
+	public void showBattleResults()
+	{
+		battleResults.setVisible(true);
+	}
+	public void hideBattleResults()
+	{
+		battleResults.setVisible(false);
 	}
 	/**
 	 * Setter Method for the player model.

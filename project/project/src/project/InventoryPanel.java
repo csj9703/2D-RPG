@@ -22,12 +22,15 @@ public class InventoryPanel
 
 		potionInventory.setBounds(400,000,300,100);
 		potionInventory.setFont(new Font("info", Font.PLAIN, 18));
+		potionInventory.setForeground(Color.WHITE);
 		
 		weaponInventory.setBounds(50,0,300,100);
 		weaponInventory.setFont(new Font("info", Font.PLAIN, 18));
+		weaponInventory.setForeground(Color.WHITE);
 	
 		playerHealth.setBounds(400,50,300,100);
 		playerHealth.setFont(new Font("info", Font.PLAIN, 18));
+		playerHealth.setForeground(Color.WHITE);
 		
 		inventoryPanel.add(potionInventory);
 		inventoryPanel.add(weaponInventory);
