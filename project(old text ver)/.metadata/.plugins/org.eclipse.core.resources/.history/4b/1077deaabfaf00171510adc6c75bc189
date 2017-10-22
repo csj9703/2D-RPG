@@ -1,0 +1,70 @@
+package project;
+
+public class Enemy
+{
+		private String name;
+		private int health;
+		private int attack;
+		/**
+		 *	Constructor that sets the enemy's name, health, and attack rating
+		 */
+		public Enemy(String enemyName, int enemyHealth, int enemyAttack)
+		{
+				name = enemyName;
+				health = enemyHealth;
+				attack = enemyAttack;
+		}
+		/**
+		 * Set method for name of enemy
+		 * @param aName that is selected for this npc
+		 */
+		public void setName(String aName) 
+		{
+				name = aName;
+		}
+		
+		/**
+		 * Set method for health of enemy
+		 * @param aHealth updated as the enemy is slain
+		 */
+		public void setHealth(int aHealth)
+		{
+				health = aHealth;	
+		}
+		
+		/**
+		 * Get method for name of enemy 
+		 * @return name of enemy
+		 */
+		public String getName()
+		{
+				return name;
+		}
+		
+		/**
+		 * Get method for attack of enemy
+		 * @return attack value
+		 */
+		 public int getAttack()
+		 {
+		 		return attack;	 
+		 }
+		 
+		/**
+		 * Enemy's attack method
+		 * @param damage player based on enemy's ability to damage
+		 * @return total damage inflicted by attack
+		 */
+		public int attack()
+		{
+				int damage = attack;
+				return damage;
+		}
+		public int getHealth()
+		{
+				return health;
+		}
+		
+		
+		
+}

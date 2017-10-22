@@ -1,7 +1,5 @@
 package project;
 
-import java.util.Scanner;
-
 /*
  * This class contains the player logic
  */
@@ -21,10 +19,12 @@ public class Player
 	private int expToLvl;
 
 	/**
-	 * Constructor that sets the beginner player stats.
+	 * This constructor initializes the player weapon, inventory, and statistics
 	 */
 	public Player()
 	{
+		name = "Not Ed";
+		
 		health = 10;
 		attack = 1;
 		numOfPot = 0;
@@ -37,31 +37,32 @@ public class Player
 		swordEquipped = false;
 	}
 	/**
-	 * This is the getter method for level, returns level.
+	 * This is the getter method for level, returns currentLvl
 	 */
 	public int getLvl()
 	{
 		return currentLvl;
 	}
 	/**
-	 * Setter for player level.
-	 * @param aLvl a level value
+	 * This is the setter method for player level
+	 * @param aLvl The level value
 	 */
 	public void setLvl(int aLvl)
 	{
 		currentLvl = aLvl;
 	}
 	/**
-	 * Checks if the player has enough exp to level up.
+	 * This method increases the player's level when sufficient experience is gained
 	 */
 	public void checkExp()
 	{
-		if(currentEXP >= expToLvl) {
+		if(currentEXP >= expToLvl) 
+		{
 			levelUp();
 		}
 	}
 	/**
-	 * Level-ups the player while carrying excess exp towards next level.
+	 * This method increases the level of the player
 	 */
 	private void levelUp()
 	{
@@ -71,41 +72,41 @@ public class Player
 		}
 		expToLvl *= 2;
 		attack += 1;
-		System.out.println("You Leveled Up!");
+		//System.out.println("You Leveled Up!");
 	}
 	/**
-	 * This is the getter method for experience required to level up, returns expToLvl.
+	 * This is the getter method for experience required to level up, returns expToLvl
 	 */
 	public int getExpToLvl()
 	{
 		return expToLvl;
 	}
 	/**
-	 * Setter for required experience to level up.
-	 * @param expVal an experience value.
+	 * This is the setter method for required experience to level up
+	 * @param expVal The experience value
 	 */
 	public void setExpToLvl(int expVal)
 	{
 		expToLvl = expVal;
 	}
 	/**
-	 * This is the getter method for current experience, returns currentEXP.
+	 * This is the getter method for current experience, returns currentEXP
 	 */
 	public int getCurrentExp()
 	{
 		return currentEXP;
 	}
 	/**
-	 * Setter for current player experience.
-	 * @param an experience value.
+	 * This is the setter method for current player experience
+	 * @param expVal The experience value
 	 */
 	public void setCurrentExp(int expVal)
 	{
 		currentEXP = expVal;
 	}
 	/**
-	 * Setter for Player name
-	 * @param aName a name that user wishes to set.
+	 * This is the setter method for the player name
+	 * @param aName The name
 	 */
 	public void setName(String aName)
 	{
@@ -149,14 +150,14 @@ public class Player
 		boolean itemUsed = false;
 		if(numOfPot > 0 && health < 10) {
 			restoreHp(5);
-			System.out.println("You drank the potion and restored 2 health!");
-			System.out.printf("\tHealth: %d\n",health);
+			//System.out.println("You drank the potion and restored 2 health!");
+			//System.out.printf("\tHealth: %d\n",health);
 			numOfPot--;
 			itemUsed = true;
 		}else if(numOfPot <= 0){
-			System.out.println("You don't have any potions!");
+			//System.out.println("You don't have any potions!");
 		}else {
-			System.out.println("You are already at full health!");
+			//System.out.println("You are already at full health!");
 		}
 		return itemUsed;
 	}
@@ -168,10 +169,10 @@ public class Player
 	{
 		int length = item.length();
 		if (item.charAt(length-5) == 'S'){
-			System.out.println("Picked up a Sword!");
+			//System.out.println("Picked up a Sword!");
 			swordInInventory = true;
 		}else if(item.charAt(length-6) == 'P') {
-			System.out.println("Picked up a Potion!");
+			//System.out.println("Picked up a Potion!");
 			numOfPot ++;
 		}
 	}
@@ -182,75 +183,27 @@ public class Player
 	private void restoreHp(int amount)
     {
 		health += amount;
-		if(health > 10) {
+		if(health > 10) 
+		{
 			int excessHp = health - 10;
 			health -= excessHp;
 		}
     }
-		/**
-		 * This method equips a sword onto the player
-		 * @param swordDmg The damage rating of the sword
-		 */
+	/**
+	 * This method equips a sword onto the player
+	 * @param swordDmg The damage rating of the sword
+	 */
 	public void equipSword(int swordDmg)
 	{
-		if(swordInInventory == true) {
-			System.out.println("You have equipped the Sword!");
+		if(swordInInventory == true) 
+		{
+			//System.out.println("You have equipped the Sword!");
 			attack += swordDmg;
 			swordInInventory = false;
 			swordEquipped = true;
-		}else {
-			System.out.println("You don't have a Sword!");
-		}
-	}
-	/**
-	 * This method displays player statistics.
-	 */
-	private void displayStats()
-	{
-		System.out.printf("\t"+"LEVEL: %d\n",currentLvl);
-		System.out.printf("\t"+"-----------------------\n");
-		System.out.printf("\t"+"Health: %d\n",health);
-		System.out.printf("\t"+"Potions: %d\n",numOfPot);
-		System.out.printf("\t"+"ATK: %d\n",attack);
-		System.out.printf("\t"+"-----------------------\n");
-		System.out.printf("\t"+"EXP: %d/%d\n",currentEXP,expToLvl);
-		System.out.printf("\t"+"EXP Until Level %d: %d\n",(currentLvl + 1),
-				(expToLvl - currentEXP));
-		System.out.println(" ");
-	}
-	/**
-	 * A statistics menu for player.
-	 */
-	private boolean menu(boolean exitInv)
-	{
-		boolean exitInventory = exitInv;
-		Scanner keyboard = new Scanner(System.in);
-		displayStats();
-		System.out.println("Press 1 to restore your health.");
-		System.out.println("Press 2 to exit the screen.");
-		String input = keyboard.next();
-		switch(input) {
-			case "1":
-				useItem();
-				break;
-			case "2":
-				System.out.println("Back to navigation");
-				exitInventory = true;
-				break;
-			default:
-				System.out.println("Invalid Input");
-				break;
-		}
-		return exitInventory;
-	}
-	/**
-	 * This method displays the inventory and menu.
-	 */
-	public void inventory()
-	{
-		boolean exitInventory = false;
-		while (!exitInventory == true) {
-			exitInventory = menu(exitInventory);
+		}else 
+		{
+			//System.out.println("You don't have a Sword!");
 		}
 	}
 	/*
@@ -260,9 +213,17 @@ public class Player
 	public boolean isAlive()
 	{
 		boolean isAlive = true;
-		if (health < 1){
+		if (health < 1)
+		{
 			isAlive = false;
 		}
 		return isAlive;
+	}
+	/**
+	 * This is the getter method for the player name, returns name
+	 */
+	public String getName()
+	{
+		return name;
 	}
 }
