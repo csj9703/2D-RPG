@@ -146,7 +146,6 @@ public class Map
 		}
 		else if (maze[playerRow][playerCol] == "E")
 		{
-			//System.out.println("battle is disabled");
 			foundEnemy(true);
 			enemy = new Spawner().spawnEnemy(identifyEnemy(playerRow, playerCol));
 		}

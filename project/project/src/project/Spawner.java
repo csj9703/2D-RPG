@@ -34,22 +34,22 @@ public class Spawner
 	// these methods create different enemies
 	private Enemy spawnZombie()
 	{
-		return new Enemy("Zombie", 6, 1, 1);
+		return new Enemy("Zombie", 10, 1, 1);
 	}
 	private Enemy spawnSkeleton()
 	{
-		return new Enemy("Skeleton", 8, 1, 1);
+		return new Enemy("Skeleton", 15, 2, 1);
 	}
 	private Enemy spawnSkeletonKing()
 	{
-		return new Enemy("Skeleton King", 15, 2, 2);
+		return new Enemy("Skeleton King", 15, 3, 2);
 	}
 	private Enemy spawnBlackKnight()
 	{
-		return new Enemy("Black Knight", 10, 1, 1);
+		return new Enemy("Black Knight", 15, 2, 1);
 	}
 	private Enemy spawnReaper()
 	{
-		return new Enemy("Reaper", 20, 3, 3);
+		return new Enemy("Reaper", 20, 4, 3);
 	}
 }
