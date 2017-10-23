@@ -143,6 +143,7 @@ public class Game implements KeyListener
         			battlePanel.hideBattleResults();
         			textPanel.displayBattleResults(game.getEnemy());
         			justDefeatedEnemy = true;
+        			battle.expReward(player, game.getEnemy());
         			player.checkExp();
         		}
         	}

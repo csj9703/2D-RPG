@@ -57,6 +57,17 @@ public class Battle
 		}
 		player.setHealth(player.getHealth()-enemyDamage);
 	}
+	/**
+	 * This method rewards the player corresponding exp after defeating an enemy
+	 * @param a player
+	 * @param an enemy
+	 */
+	public void expReward(Player player, Enemy enemy)
+	{
+		int playerExp = player.getCurrentExp();
+		int enemyExp = enemy.getExp();
+		player.setCurrentExp(playerExp += enemyExp); 
+	}
 	/*
 	 * This method returns true if enemy is alive, false otherwise
 	 * @param enemy The enemy
