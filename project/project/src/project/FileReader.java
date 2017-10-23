@@ -56,6 +56,9 @@ public class FileReader
 				case "w":
 					maze[r][c] = "#";
 					break;
+				case "d":
+					maze[r][c] = "d";
+					break;
 				case "r":
 					maze[r][c] = " ";
 					break;

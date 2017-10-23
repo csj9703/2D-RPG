@@ -119,7 +119,7 @@ public class Map
 	{
 		boolean empty;
 
-		if (!(maze[playerRow][playerCol] == "#"))
+		if (!(maze[playerRow][playerCol] == "#")&&!(maze[playerRow][playerCol] == "d"))
 		{
 			empty = true;
 		}

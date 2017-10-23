@@ -10,6 +10,7 @@ import javax.swing.JPanel;
  */
 public class GamePanel 
 {
+	private ImageIcon wallDark = new ImageIcon("WallDark.png");
 	private ImageIcon wall = new ImageIcon("wall.png");
 	private ImageIcon road = new ImageIcon("grass.png");
 	private ImageIcon player = new ImageIcon("player.png");
@@ -61,6 +62,10 @@ public class GamePanel
 		    	 {
 		    		 labels[i][j].setIcon(wall); 
 		    	 }
+		    	 else if(maze[i][j] == "d") 
+		    	 {
+		    		 labels[i][j].setIcon(wallDark);
+		    	 }
 		    	 else if (maze[i][j] == " ") 
 		    	 {
 		    		 labels[i][j].setIcon(road);
@@ -103,6 +108,7 @@ public class GamePanel
 		    	 {
 		    		 labels[i][j].setIcon(item);
 		    	 }
+		    	 
 		     } 
 		}
 	}
