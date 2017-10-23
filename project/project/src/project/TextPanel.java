@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  */
 public class TextPanel 
 {
-	JLabel textLabel = new JLabel();
+	private JLabel textLabel = new JLabel();
 	
 	public JPanel createPanel()
 	{
@@ -28,9 +28,30 @@ public class TextPanel
 		return textPanel;
 	}
 
-	public void update()
+	public void update(int itemID)
 	{
-		String text = "You have acquired a Potion!";
+		String text = null;
+		switch (itemID)
+		{
+		case 1:
+			text = "You have acquired a Small potion!";
+			break;
+		case 2:
+			text = "You have acquired a Medium potion!";
+			break;
+		case 3:
+			text = "You have acquired a Large potion!";
+			break;
+		case 4:
+			text = "You have acquired a Rusty Dagger!";
+			break;
+		case 5:
+			text = "You have acquired a Iron Longsword!";
+			break;
+		case 6:
+			text = "You have acquired the legendary Excalibur!";
+			break;
+		}
 		textLabel.setText(text);
 	}
 	

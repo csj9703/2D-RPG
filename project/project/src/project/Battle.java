@@ -6,9 +6,9 @@ import java.util.Random;
  */
 public class Battle
 {
-	Random rng = new Random();
-	int playerDamage;
-	int enemyDamage;
+	private Random rng = new Random();
+	private int playerDamage;
+	private int enemyDamage;
 	/**
 	 * This method reduces the enemy's health by the amount of damage inflicted by the player
 	 *@param player The player
@@ -16,18 +16,20 @@ public class Battle
 	 */
 	public void playerAttack(Player player, Enemy enemy)
 	{
-		int attackModifier = rng.nextInt(10);		
+		int damageRange = -2 + rng.nextInt(4);
+		int attackModifier = rng.nextInt(8);		
 		if (attackModifier == 0)
 		{
 			playerDamage = 0;
 		}
-		else if (attackModifier == 9)
+		else if (attackModifier == 7)
 		{
-			playerDamage = 2 * player.getAttack();
+			playerDamage = 2 * player.getAttack() + player.getWeaponDamage();
 		}
 		else 
 		{
-			playerDamage = player.getAttack();
+			playerDamage = player.getAttack() + player.getWeaponDamage();
+			playerDamage += damageRange;
 		}
 		enemy.setHealth(enemy.getHealth()-playerDamage);
 	}
@@ -38,18 +40,20 @@ public class Battle
 	 */
 	public void enemyAttack(Player player, Enemy enemy)
 	{
-		int attackModifier = rng.nextInt(10);
+		int damageRange = -1 + rng.nextInt(2);
+		int attackModifier = rng.nextInt(8);
 		if (attackModifier == 0)
 		{
 			enemyDamage = 0;
 		}
-		else if (attackModifier == 9)
+		else if (attackModifier == 7)
 		{
 			enemyDamage = 2 * enemy.getAttack();
 		}
 		else 
 		{
 			enemyDamage = enemy.getAttack();
+			enemyDamage += damageRange;
 		}
 		player.setHealth(player.getHealth()-enemyDamage);
 	}
@@ -61,14 +65,18 @@ public class Battle
 	{
 		return enemy.getHealth() > 0 ? true : false;
 	}
-	
+	/*
+	 * This is the getter method for player damage, returns playerDamage
+	 */
 	public int getPlayerDamage()
 	{
 		return playerDamage;
 	}
+	/*
+	 * This is the getter method for enemy damage, returns enemyDamage
+	 */
 	public int getEnemyDamage()
 	{
 		return enemyDamage;
 	}
 }
-

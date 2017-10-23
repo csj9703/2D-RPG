@@ -9,14 +9,22 @@ public class Player
 	private String name;
 	private int health;
 	private int attack;
+	private int maxHealth;
+	
+	private int numSmallPotions;
+	private int numMediumPotions;
+	private int numLargePotions;
 
-	private int numOfPot;
-	private boolean swordInInventory;
-	private boolean swordEquipped;
-
-	private int currentLvl;
+	private int currentLevel;
 	private int currentEXP;
 	private int expToLvl;
+	
+	private String currentWeapon;
+	
+	private boolean hasDagger = false;
+	private boolean hasSword = false;
+	private boolean hasExcalibur = false;
+	
 
 	/**
 	 * This constructor initializes the player weapon, inventory, and statistics
@@ -25,23 +33,21 @@ public class Player
 	{
 		name = "Not Ed";
 		
-		health = 10;
+		health = 20;
 		attack = 1;
-		numOfPot = 0;
+		maxHealth = 20;
 
-		currentLvl = 1;
+		currentLevel = 1;
 		currentEXP = 0;
 		expToLvl = 1;
 
-		swordInInventory = true;
-		swordEquipped = false;
 	}
 	/**
 	 * This is the getter method for level, returns currentLvl
 	 */
-	public int getLvl()
+	public int getCurrentLevel()
 	{
-		return currentLvl;
+		return currentLevel;
 	}
 	/**
 	 * This is the setter method for player level
@@ -49,7 +55,7 @@ public class Player
 	 */
 	public void setLvl(int aLvl)
 	{
-		currentLvl = aLvl;
+		currentLevel = aLvl;
 	}
 	/**
 	 * This method increases the player's level when sufficient experience is gained
@@ -66,13 +72,13 @@ public class Player
 	 */
 	private void levelUp()
 	{
-		currentLvl++;
-		if(currentEXP > expToLvl) {
+		currentLevel += 1;
+		if(currentEXP > expToLvl) 
+		{
 			currentEXP -= expToLvl;
 		}
 		expToLvl *= 2;
 		attack += 1;
-		//System.out.println("You Leveled Up!");
 	}
 	/**
 	 * This is the getter method for experience required to level up, returns expToLvl
@@ -120,13 +126,6 @@ public class Player
 		return health;
 	}
 	/**
-	 * This is the getter method for numOfPot, returns numOfPot
-	 */
-	public int getNumOfPot()
-	{
-		return numOfPot;
-	}
-	/**
 	 * This is the setter method for health
 	 * @param health The amount of health
 	 */
@@ -145,35 +144,59 @@ public class Player
 	 * This method allows the player to consume a item to restore their health points
 	 * @return itemUsed The item consumed
 	 */
-	public boolean useItem()
+	public void useItem(int itemID)
 	{
-		boolean itemUsed = false;
-		if(numOfPot > 0 && health < 10) {
-			restoreHp(5);
-			//System.out.println("You drank the potion and restored 2 health!");
-			//System.out.printf("\tHealth: %d\n",health);
-			numOfPot--;
-			itemUsed = true;
-		}else if(numOfPot <= 0){
-			//System.out.println("You don't have any potions!");
-		}else {
-			//System.out.println("You are already at full health!");
+		switch (itemID)
+		{
+		case 1:
+			if (getNumSmallPotions() > 0)
+			{
+				restoreHp(3);
+				numSmallPotions -= 1;
+			}
+				break;
+		case 2:
+			if (getNumMediumPotions() > 0)
+			{
+				restoreHp(5);
+				numMediumPotions -= 1;
+			}
+				break;
+		case 3:
+			if (getNumLargePotions() > 0)
+			{
+				restoreHp(7);
+				numLargePotions -= 1;
+			}
+				break;
 		}
-		return itemUsed;
 	}
 	/**
 	 * This method checks to see what item the player has obtained
 	 * @param item The item the player obtained
 	 */
-	public void pickUp(String item)
+	public void pickUp(int itemID)
 	{
-		int length = item.length();
-		if (item.charAt(length-5) == 'S'){
-			//System.out.println("Picked up a Sword!");
-			swordInInventory = true;
-		}else if(item.charAt(length-6) == 'P') {
-			//System.out.println("Picked up a Potion!");
-			numOfPot ++;
+		switch (itemID)
+		{
+		case 1:
+			numSmallPotions += 1;
+			break;
+		case 2:
+			numMediumPotions += 1;
+			break;
+		case 3:
+			numLargePotions += 1;
+			break;
+		case 4:
+			hasDagger = true;
+			break;
+		case 5:
+			hasSword = true;
+			break;
+		case 6:
+			hasExcalibur = true;
+			break;
 		}
 	}
 	/**
@@ -183,29 +206,12 @@ public class Player
 	private void restoreHp(int amount)
     {
 		health += amount;
-		if(health > 10) 
+		if(health > maxHealth) 
 		{
-			int excessHp = health - 10;
+			int excessHp = health - maxHealth;
 			health -= excessHp;
 		}
     }
-	/**
-	 * This method equips a sword onto the player
-	 * @param swordDmg The damage rating of the sword
-	 */
-	public void equipSword(int swordDmg)
-	{
-		if(swordInInventory == true) 
-		{
-			//System.out.println("You have equipped the Sword!");
-			attack += swordDmg;
-			swordInInventory = false;
-			swordEquipped = true;
-		}else 
-		{
-			//System.out.println("You don't have a Sword!");
-		}
-	}
 	/*
 	 * This method checks to see if the player is alive
 	 * Returns true if player is alive, false otherwise
@@ -225,5 +231,60 @@ public class Player
 	public String getName()
 	{
 		return name;
+	}
+	/**
+	 * This is the getter method for small potions, returns numSmallPotions
+	 */
+	public int getNumSmallPotions()
+	{
+		return numSmallPotions;
+	}
+	/**
+	 * This is the getter method for medium potions, returns numMediumPotions
+	 */
+	public int getNumMediumPotions()
+	{
+		return numMediumPotions;
+	}
+	/**
+	 * This is the getter method for large potions, returns numLargePotions
+	 */
+	public int getNumLargePotions()
+	{
+		return numLargePotions;
+	}
+	/**
+	 * This is the getter method for current weapon, returns currentWeapon
+	 */
+	public String getCurrentWeapon()
+	{
+		return currentWeapon;
+	}
+	/**
+	 * This is the getter method for weapon damage, returns weaponDamage
+	 */
+	public int getWeaponDamage()
+	{
+		int weaponDamage = 0;
+		if (hasExcalibur)
+		{
+			weaponDamage = 3;
+			currentWeapon = "Excalibur";
+		}
+		else if (hasSword)
+		{
+			weaponDamage = 2;
+			currentWeapon = "Iron Longsword";
+		}
+		else if (hasDagger)
+		{
+			weaponDamage = 1;
+			currentWeapon = "Rusty Dagger";
+		}
+		else
+		{
+			currentWeapon = "No Weapon";
+		}
+		return weaponDamage;
 	}
 }

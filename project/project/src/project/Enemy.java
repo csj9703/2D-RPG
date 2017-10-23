@@ -1,7 +1,6 @@
 package project;
-
 /*
- *This is used to create enemies in the game
+ *This class defines the enemies of the game
  */
 public class Enemy
 {

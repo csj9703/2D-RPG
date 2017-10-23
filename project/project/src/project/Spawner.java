@@ -5,7 +5,10 @@ package project;
 public class Spawner 
 {
 	private Enemy enemy;
-	
+	/*
+	 * This method returns an enemy based on the enemyID
+	 * @param enemyID The ID number
+	 */
 	public Enemy spawnEnemy(int enemyID)
 	{
 		switch (enemyID)
@@ -28,25 +31,25 @@ public class Spawner
 		}
 		return enemy;
 	}
-	
-	public Enemy spawnZombie()
+	// these methods create different enemies
+	private Enemy spawnZombie()
 	{
-		return new Enemy("Zombie", 5, 1, 1);
+		return new Enemy("Zombie", 6, 1, 1);
 	}
-	public Enemy spawnSkeleton()
+	private Enemy spawnSkeleton()
 	{
-		return new Enemy("Skeleton", 5, 1, 1);
+		return new Enemy("Skeleton", 8, 1, 1);
 	}
-	public Enemy spawnSkeletonKing()
+	private Enemy spawnSkeletonKing()
 	{
-		return new Enemy("Skeleton King", 10, 1, 1);
+		return new Enemy("Skeleton King", 15, 2, 2);
 	}
-	public Enemy spawnBlackKnight()
+	private Enemy spawnBlackKnight()
 	{
-		return new Enemy("Black Knight", 5, 1, 1);
+		return new Enemy("Black Knight", 10, 1, 1);
 	}
-	public Enemy spawnReaper()
+	private Enemy spawnReaper()
 	{
-		return new Enemy("Reaper", 10, 1, 1);
+		return new Enemy("Reaper", 20, 3, 3);
 	}
 }

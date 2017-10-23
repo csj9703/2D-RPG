@@ -9,8 +9,8 @@ import javax.swing.JPanel;
  */
 public class StartScenePanel 
 {
-	JLabel gameInstructions = new JLabel();
-	JLabel gameInstructions2 = new JLabel();
+	private JLabel gameInstructions = new JLabel();
+	private JLabel gameInstructions2 = new JLabel();
 	
 	public JPanel createPanel()
 	{
@@ -20,17 +20,19 @@ public class StartScenePanel
 		startScenePanel.setBounds(0, 0, 665, 750);
 		// first label
 		gameInstructions.setBounds(0,0,665,300);
-		gameInstructions.setFont(new Font("info", Font.PLAIN, 46));
+		gameInstructions.setFont(new Font("info", Font.PLAIN, 100));
 		gameInstructions.setForeground(Color.WHITE);
-		String gameInfo = "HIT ENTER TO START GAME";
+		String gameInfo = "MAZE RPG";
 		gameInstructions.setText(gameInfo);
 		/// second label
 		gameInstructions2.setBounds(0,300,665,300);
 		gameInstructions2.setFont(new Font("info", Font.PLAIN, 20));
 		gameInstructions2.setForeground(Color.WHITE);
-		String gameInfo2 = "<html>" + "PRESS THE ARROW KEYS TO MOVE"
-			              + "<br/>" + "PRESS A TO ATTACK" 
-			              + "<br/>" + "PRESS I TO OPEN INVENTORY (cannot use potion during combat)" 
+		String gameInfo2 = "<html>" + "PLAYER CONTROLS:" + "<br/>"
+						  + "<br/>" + "Press ENTER to start game"
+						  + "<br/>" + "Press ARROW keys to move"
+			              + "<br/>" + "Press A to attack" 
+			              + "<br/>" + "Press I to open or close the inventory menu" 
 			              + "</html>";
 		gameInstructions2.setText(gameInfo2);
 

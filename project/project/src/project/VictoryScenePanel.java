@@ -9,17 +9,18 @@ import javax.swing.JPanel;
  */
 public class VictoryScenePanel 
 {
-	JLabel victoryMessage = new JLabel();
+	private JLabel victoryMessage = new JLabel();
 	
 	public JPanel createPanel()
 	{
-		JPanel victoryScenePanel   = new JPanel();
-		victoryScenePanel .setLayout(null);
-		victoryScenePanel .setBackground(Color.BLACK);
-		victoryScenePanel .setBounds(0, 0, 700, 700);
+		JPanel victoryScenePanel = new JPanel();
+		victoryScenePanel.setLayout(null);
+		victoryScenePanel.setBackground(Color.BLACK);
+		victoryScenePanel.setBounds(0, 0, 700, 700);
 
 		victoryMessage.setBounds(0,0,700,700);
 		victoryMessage.setFont(new Font("info", Font.PLAIN, 48));
+		victoryMessage.setForeground(Color.WHITE);
 	
 		String gameMessage = "CONGRATULATIONS";
 	

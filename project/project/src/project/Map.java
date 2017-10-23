@@ -1,5 +1,4 @@
 package project;
-
 /*
  * This class is the maze that tracks the location of the
  * player, enemy, and items 
@@ -7,11 +6,13 @@ package project;
 public class Map
 {
     private String maze[][];
-	Enemy enemy = new Enemy("Default",1,1,1);
-    String selectedStage = "stage1.txt";
-    boolean foundEnemy = false;
-    boolean foundItem = false;
-    int enemyID = 0;
+    private Enemy enemy = new Enemy("Default",1,1,1);
+    private Potion item = new Potion("Default", 1);
+    private String selectedStage = "stage1.txt";
+    private boolean foundEnemy = false;
+    private boolean foundItem = false;
+    private int enemyID = 0;
+    private int itemID = 0;
     /*
      * This constructor initializes the game, loads all the game elements onto the map
      */
@@ -23,7 +24,7 @@ public class Map
 	/*
 	 * This method returns the row index of the player
 	 */
-	public int getRow()
+	private int getRow()
 	{
 		int playerRow = 0;
 		
@@ -42,7 +43,7 @@ public class Map
 	/*
 	 * This method returns the column index of the player
 	 */
-	public int getCol()
+	private int getCol()
 	{
 		int playerCol = 0;
 		
@@ -140,6 +141,7 @@ public class Map
 		if (maze[playerRow][playerCol] == "?")
 		{
 			foundItem = true;
+			item = new ItemCreator().createItem(identifyItem(playerRow, playerCol));
 
 		}
 		else if (maze[playerRow][playerCol] == "E")
@@ -209,7 +211,6 @@ public class Map
 	 */
 	public int identifyEnemy(int playerRow, int playerCol)
 	{
-		
 		if (currentStage() == 1)
 		{
 			enemyID = 1;
@@ -237,6 +238,48 @@ public class Map
 			}
 		}
 		return enemyID;
+	}
+	/*
+	 * This method determines which enemy is encountered, returns the enemy ID 
+	 * @param playerRow The player's row index on the array
+	 * @param playerCol The player's column index on the array
+	 */
+	public int identifyItem(int playerRow, int playerCol)
+	{
+		if (currentStage() == 1)
+		{
+			if (playerRow == 11 && playerCol == 6)
+			{
+				itemID = 4;
+			}
+			else
+			{
+				itemID = 1;
+			}			
+		}
+		else if (currentStage() == 2)
+		{
+			if (playerRow == 16 && playerCol == 18)
+			{
+				itemID = 5;
+			}
+			else
+			{
+				itemID = 2;
+			}			
+		}
+		else if (currentStage() == 3)
+		{
+			if (playerRow == 2 && playerCol == 6)
+			{
+				itemID = 6;
+			}
+			else
+			{
+				itemID = 3;
+			}			
+		}
+		return itemID;
 	}
 	/*
 	 * This is the getter method for the foundEnemy variable, returns foundEnemy
@@ -276,10 +319,24 @@ public class Map
 		return enemyID;
 	}
 	/*
+	 * This is the getter method for the itemID, returns itemID
+	 */
+	public int getitemID()
+	{
+		return itemID;
+	}
+	/*
 	 * This is the getter method for the enemy, returns enemy
 	 */
 	public Enemy getEnemy()
 	{
 		return enemy;
+	}
+	/*
+	 * This is the getter method for the item, returns item
+	 */
+	public Potion getItem()
+	{
+		return item;
 	}
 }

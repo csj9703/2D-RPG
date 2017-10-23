@@ -9,9 +9,9 @@ import javax.swing.JPanel;
  */
 public class InventoryPanel 
 {
-	JLabel weaponInventory = new JLabel();
-	JLabel potionInventory = new JLabel();
-	JLabel playerHealth = new JLabel();
+	private JLabel weaponInventory = new JLabel();
+	private JLabel playerStatistics = new JLabel();
+	private JLabel potionInventory = new JLabel();
 	
 	public JPanel createPanel(Player player)
 	{
@@ -20,21 +20,21 @@ public class InventoryPanel
 		inventoryPanel.setBackground(Color.BLACK);
 		inventoryPanel.setBounds(0, 0, 700, 700);
 
-		potionInventory.setBounds(400,000,300,100);
-		potionInventory.setFont(new Font("info", Font.PLAIN, 18));
-		potionInventory.setForeground(Color.WHITE);
+		playerStatistics.setBounds(350,000,300,100);
+		playerStatistics.setFont(new Font("info", Font.PLAIN, 18));
+		playerStatistics.setForeground(Color.WHITE);
 		
 		weaponInventory.setBounds(50,0,300,100);
 		weaponInventory.setFont(new Font("info", Font.PLAIN, 18));
 		weaponInventory.setForeground(Color.WHITE);
 	
-		playerHealth.setBounds(400,50,300,100);
-		playerHealth.setFont(new Font("info", Font.PLAIN, 18));
-		playerHealth.setForeground(Color.WHITE);
+		potionInventory.setBounds(350,50,300,400);
+		potionInventory.setFont(new Font("info", Font.PLAIN, 18));
+		potionInventory.setForeground(Color.WHITE);
 		
-		inventoryPanel.add(potionInventory);
+		inventoryPanel.add(playerStatistics);
 		inventoryPanel.add(weaponInventory);
-		inventoryPanel.add(playerHealth);
+		inventoryPanel.add(potionInventory);
 		
 		return inventoryPanel;
 	}
@@ -42,16 +42,26 @@ public class InventoryPanel
 	// this method is run after every input command
 	public void update(Player player)
 	{
-		String weaponInfo = "Weapon: Novice Shortsword";
+		player.getWeaponDamage();
+		String weaponInfo = "Weapon: " + player.getCurrentWeapon();
 		weaponInventory.setText(weaponInfo);
 
-		String potionInfo = "Num of Potions: " + player.getNumOfPot();
-		potionInventory.setText(potionInfo);
+		String playerInfo = "<html>" + "Health: " + player.getHealth()
+		                   + "<br/>" + "Level: " + player.getCurrentLevel()
+		                   + "<br/>" + "EXP: " + player.getCurrentExp() + "/" + player.getExpToLvl()
+		                   + "</html>"; 
+			
+		playerStatistics.setText(playerInfo);
 		
-		String playerInfo = "<html>" + "Current HP: " + player.getHealth()
-		                   + "<br/>" + "PRESS U TO USE A POTION (cannot use during combat)"
-			               + "</html>";
-		playerHealth.setText(playerInfo);
+		String potionInfo = "<html>" 
+		                   + "<br/>" + "<br/>" +"All Items:"
+		                   + "<br/>" + "Small Potion: " + player.getNumSmallPotions()
+		                   + "<br/>" + "Medium Potion: " + player.getNumMediumPotions()
+		                   + "<br/>" + "Large Potion: " + player.getNumLargePotions()
+		                   + "<br/>" + "<br/>" + "Press 1 to consume a small potion"
+		                   + "<br/>" + "Press 2 to consume a medium potion"
+		                   + "<br/>" + "Press 3 to consume a large potion"
+			               + "</html>"; 
+		potionInventory.setText(potionInfo);
 	}
 }
-

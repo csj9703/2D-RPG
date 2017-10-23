@@ -2,7 +2,6 @@ package project;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
  * This class manages player input
@@ -38,14 +37,14 @@ public class Game implements KeyListener
 									startingScene, endingScene, victoryScene, textBox);
 	
 	// flags used to keep track of which scene is being displayed
-	boolean inBattleScene = false;
-	boolean inventoryOpen = false;
-	boolean inStartScene = true;
-	boolean inGameScene = false;
-	boolean inEndScene = false;
-	boolean inVictoryScene = false;
-	boolean textBoxDisplayed = false;
-	boolean justDefeatedEnemy = false;
+	private boolean inBattleScene = false;
+	private boolean inventoryOpen = false;
+	private boolean inStartScene = true;
+	private boolean inGameScene = false;
+	private boolean inEndScene = false;
+	private boolean inVictoryScene = false;
+	private boolean textBoxDisplayed = false;
+	private boolean justDefeatedEnemy = false;
 	/*
 	 * This method manages the player input
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
@@ -92,10 +91,22 @@ public class Game implements KeyListener
         	}
         }
         // Use item button
-        else if(e.getKeyCode()== KeyEvent.VK_U) 
+        else if(e.getKeyCode()== KeyEvent.VK_1) 
         {
         	if (inventoryOpen)
-        		player.useItem();
+        		player.useItem(1);
+        }
+        // Use item button
+        else if(e.getKeyCode()== KeyEvent.VK_2) 
+        {
+        	if (inventoryOpen)
+        		player.useItem(2);
+        }
+        // Use item button
+        else if(e.getKeyCode()== KeyEvent.VK_3) 
+        {
+        	if (inventoryOpen)
+        		player.useItem(3);
         }
         // Start button
         else if(e.getKeyCode()== KeyEvent.VK_ENTER) 
@@ -132,6 +143,7 @@ public class Game implements KeyListener
         			battlePanel.hideBattleResults();
         			textPanel.displayBattleResults(game.getEnemy());
         			justDefeatedEnemy = true;
+        			player.checkExp();
         		}
         	}
         }
@@ -143,11 +155,11 @@ public class Game implements KeyListener
         	gameInterface.setVisible(false);
         	inGameScene = false;
         }
-        // displays a pop up message when you find an item
+        // displays a message when you find an item
         if ((game.foundItem()) && (!(justDefeatedEnemy)))
         {
-        	textPanel.update();
-        	player.pickUp("Potion");
+        	textPanel.update(game.getitemID());
+        	player.pickUp(game.getitemID());
         	game.foundItem(false);
         }
         else
