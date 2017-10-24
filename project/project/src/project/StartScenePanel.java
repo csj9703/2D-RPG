@@ -2,6 +2,9 @@ package project;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 /*
@@ -9,8 +12,12 @@ import javax.swing.JPanel;
  */
 public class StartScenePanel 
 {
+	private JLabel background = new JLabel();
 	private JLabel gameInstructions = new JLabel();
 	private JLabel gameInstructions2 = new JLabel();
+	
+	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("titleBG.gif").getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT));
+	private ImageIcon title = new ImageIcon(new ImageIcon("Title.png").getImage().getScaledInstance(609, 114, Image.SCALE_DEFAULT));
 	
 	public JPanel createPanel()
 	{
@@ -18,14 +25,14 @@ public class StartScenePanel
 		startScenePanel.setLayout(null);
 		startScenePanel.setBackground(Color.BLACK);
 		startScenePanel.setBounds(0, 0, 665, 750);
-		// first label
-		gameInstructions.setBounds(0,0,665,300);
-		gameInstructions.setFont(new Font("info", Font.PLAIN, 100));
-		gameInstructions.setForeground(Color.WHITE);
-		String gameInfo = "MAZE RPG";
-		gameInstructions.setText(gameInfo);
-		/// second label
-		gameInstructions2.setBounds(0,300,665,300);
+
+		background.setIcon(BG_Icon);
+		background.setBounds(0, 0, 700, 700);
+		
+		gameInstructions.setIcon(title);
+		gameInstructions.setBounds(15, 25, 700, 200);
+		
+		gameInstructions2.setBounds(15,300,665,300);
 		gameInstructions2.setFont(new Font("info", Font.PLAIN, 20));
 		gameInstructions2.setForeground(Color.WHITE);
 		String gameInfo2 = "<html>" + "PLAYER CONTROLS:" + "<br/>"
@@ -35,9 +42,11 @@ public class StartScenePanel
 			              + "<br/>" + "Press I to open or close the inventory menu" 
 			              + "</html>";
 		gameInstructions2.setText(gameInfo2);
-
+		
+		
 		startScenePanel.add(gameInstructions);
 		startScenePanel.add(gameInstructions2);
+		startScenePanel.add(background);
 		
 		return startScenePanel;
 	}
