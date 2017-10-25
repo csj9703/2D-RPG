@@ -4,11 +4,9 @@ package project;
  * This class contains the player logic
  */
 
-public class Player
+public class Player extends Characters
 {
-	private String name;
-	private int health;
-	private int attack;
+	
 	private int maxHealth;
 	
 	private int numSmallPotions;
@@ -29,14 +27,11 @@ public class Player
 	/**
 	 * This constructor initializes the player weapon, inventory, and statistics
 	 */
-	public Player()
+	public Player(String name, int health, int attack)
 	{
-		name = "Not Ed";
+		super(name,health,attack);
 		
-		health = 20;
-		attack = 1;
 		maxHealth = 20;
-
 		currentLevel = 1;
 		currentEXP = 0;
 		expToLvl = 1;
@@ -78,7 +73,7 @@ public class Player
 			currentEXP -= expToLvl;
 		}
 		expToLvl *= 2;
-		attack += 1;
+		setAttack(getAttack() + 1);
 	}
 	/**
 	 * This is the getter method for experience required to level up, returns expToLvl
@@ -109,36 +104,6 @@ public class Player
 	public void setCurrentExp(int expVal)
 	{
 		currentEXP = expVal;
-	}
-	/**
-	 * This is the setter method for the player name
-	 * @param aName The name
-	 */
-	public void setName(String aName)
-	{
-		name = aName;
-	}
-	/**
-	 * This is the getter method for health, returns health
-	 */
-	public int getHealth()
-	{
-		return new Integer(health);
-	}
-	/**
-	 * This is the setter method for health
-	 * @param health The amount of health
-	 */
-	public void setHealth(int aHealth)
-	{
-		health = aHealth;
-	}
-	/**
-	 * This is the getter method for attack, returns attack
-	 */
-	public int getAttack()
-	{
-		return new Integer(attack);
 	}
 	/**
 	 * This method allows the player to consume a item to restore their health points
@@ -205,11 +170,11 @@ public class Player
 	 */
 	private void restoreHp(int amount)
     {
-		health += amount;
-		if(health > maxHealth) 
+		setHealth(getHealth()+amount);
+		if(getHealth() > maxHealth) 
 		{
-			int excessHp = health - maxHealth;
-			health -= excessHp;
+			int excessHp = getHealth() - maxHealth;
+			setHealth(getHealth()-excessHp);
 		}
     }
 	/*
@@ -219,18 +184,11 @@ public class Player
 	public boolean isAlive()
 	{
 		boolean isAlive = true;
-		if (health < 1)
+		if (getHealth() < 1)
 		{
 			isAlive = false;
 		}
 		return isAlive;
-	}
-	/**
-	 * This is the getter method for the player name, returns name
-	 */
-	public String getName()
-	{
-		return name;
 	}
 	/**
 	 * This is the getter method for small potions, returns numSmallPotions

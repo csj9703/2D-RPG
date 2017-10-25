@@ -8,7 +8,7 @@ import javax.swing.JPanel;
  */
 public class Game implements KeyListener
 {	
-	private Player player = new Player();
+	private Player player = new Player("Not Ed",20,1);
 	private Battle battle = new Battle();
 	private Map game = new Map();
 
