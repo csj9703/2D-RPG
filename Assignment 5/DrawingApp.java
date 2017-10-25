@@ -19,10 +19,10 @@ import javax.swing.Timer;
 public class DrawingApp extends JFrame implements KeyListener {
 	public static final int WINDOW_WIDTH = 1000;
 	public static final int WINDOW_HEIGHT = 1000;
+	//The Default sizes of the circle and square.
 	public static final int DEFAULT_CIRCLE_SIZE = 100;
-	//My code
 	public static final int DEFAULT_SQUARE_SIZE = 60;
-	//
+	//Creates an arraylist to store the shapes created later.
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();   
     /** 
      * Creates the window that users can use to draw circles.
@@ -34,24 +34,17 @@ public class DrawingApp extends JFrame implements KeyListener {
         // put one circle in the list to get it started.
 		Circle aCircle = new Circle (new Point(0,0),DEFAULT_CIRCLE_SIZE);
 		shapes.add(aCircle);
-
-		// The following three windows are needed to listen to keyboard events.
-		// We need the focus in our content pane in our window to ensure we are informed of keyboard
-		// events.
+		
         getContentPane().addKeyListener(this);
         getContentPane().setFocusable(true); 
         requestFocusInWindow();
         
-        // This creates a timer.  Whenever the timer goes off (every 200 ms)
-        // we call this frame's method to repaint itself.  (Which will
-        // indirectly call paint which is defined below.)
         Timer timer = new Timer(200,
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     timerAction();
                 }
             });
-        // The timer will go off for the first time 1000ms after the timer is started.
         timer.setInitialDelay(1000);
         timer.start();
     }
@@ -69,12 +62,6 @@ public class DrawingApp extends JFrame implements KeyListener {
     
 	@Override
     public void paint(Graphics canvas) {
-		// Draws what should be displayed in this window.  this will be called each
-		// time the window needs to be refreshed.  This includes when the window
-		// is displayed, maximized, moved, etc.)
-
-        // We need to do this call to make sure the window is wiped clean before we
-        // start drawing.
         super.paint(canvas);
 
         for (Shape s : shapes) {
@@ -84,8 +71,6 @@ public class DrawingApp extends JFrame implements KeyListener {
     
 	@Override
 	public void keyTyped(KeyEvent event) {
-		// Required for KeyListener, but we are not interested in this event so we'll
-		// do nothing.
 	}
 
 	@Override
@@ -97,29 +82,35 @@ public class DrawingApp extends JFrame implements KeyListener {
 		int moveAmount = 5;
 		switch (e.getKeyCode()) {
 		case 'C':
+			//This draws a cirle at a random location within the window.
 			Circle newCircle = new Circle(new Point(randNum,randNum),DEFAULT_CIRCLE_SIZE);
 			shapes.add(newCircle);
 			break;
 		case 'S':
+			//This draws a square at a random location within the window.
 			Square newSquare = new Square(new Point(randNum,randNum),DEFAULT_SQUARE_SIZE);
 			shapes.add(newSquare);
 			break;
 		case KeyEvent.VK_LEFT:
+			//This moves all the shapes in the array left by 5 pixels.
 			for (Shape s : shapes) {
 				s.moveLeft(moveAmount);
 			}
 			break;
 		case KeyEvent.VK_RIGHT:
+			//This moves all the shapes in the array right by 5 pixels.
 			for (Shape s : shapes) {
 				s.moveRight(moveAmount);
 			}
 			break;
 		case KeyEvent.VK_UP:
+			//This moves all the shapes in the array up by 5 pixels.
 			for (Shape s : shapes) {
 				s.moveUp(moveAmount);
 			}
 			break;
 		case KeyEvent.VK_DOWN:
+			//This moves all the shapes in the array down by 5 pixels.
 			for (Shape s : shapes) {
 				s.moveDown(moveAmount);
 			}
