@@ -28,7 +28,7 @@ public class Enemy
 		 */
 		public int getExp()
 		{
-			return exp;
+			return new Integer(exp);
 		}
 		/**
 		 * This is the setter method for health
@@ -43,14 +43,14 @@ public class Enemy
 		 */
 		 public int getAttack()
 		 {
-		 		return attack;
+		 		return new Integer(attack);
 		 }
 		/**
  		 * This is the getter method for health, returns health
  		 */
 		public int getHealth()
 		{
-				return health;
+				return new Integer(health);
 		}
 		/**
 		 * This is the getter method for name, returns name

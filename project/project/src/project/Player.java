@@ -47,7 +47,7 @@ public class Player
 	 */
 	public int getCurrentLevel()
 	{
-		return currentLevel;
+		return new Integer(currentLevel);
 	}
 	/**
 	 * This is the setter method for player level
@@ -85,7 +85,7 @@ public class Player
 	 */
 	public int getExpToLvl()
 	{
-		return expToLvl;
+		return new Integer(expToLvl);
 	}
 	/**
 	 * This is the setter method for required experience to level up
@@ -100,7 +100,7 @@ public class Player
 	 */
 	public int getCurrentExp()
 	{
-		return currentEXP;
+		return new Integer(currentEXP);
 	}
 	/**
 	 * This is the setter method for current player experience
@@ -123,7 +123,7 @@ public class Player
 	 */
 	public int getHealth()
 	{
-		return health;
+		return new Integer(health);
 	}
 	/**
 	 * This is the setter method for health
@@ -138,7 +138,7 @@ public class Player
 	 */
 	public int getAttack()
 	{
-		return attack;
+		return new Integer(attack);
 	}
 	/**
 	 * This method allows the player to consume a item to restore their health points
@@ -237,21 +237,21 @@ public class Player
 	 */
 	public int getNumSmallPotions()
 	{
-		return numSmallPotions;
+		return new Integer(numSmallPotions);
 	}
 	/**
 	 * This is the getter method for medium potions, returns numMediumPotions
 	 */
 	public int getNumMediumPotions()
 	{
-		return numMediumPotions;
+		return new Integer(numMediumPotions);
 	}
 	/**
 	 * This is the getter method for large potions, returns numLargePotions
 	 */
 	public int getNumLargePotions()
 	{
-		return numLargePotions;
+		return new Integer(numLargePotions);
 	}
 	/**
 	 * This is the getter method for current weapon, returns currentWeapon
@@ -285,6 +285,6 @@ public class Player
 		{
 			currentWeapon = "No Weapon";
 		}
-		return weaponDamage;
+		return new Integer(weaponDamage);
 	}
 }

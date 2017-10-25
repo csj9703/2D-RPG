@@ -27,6 +27,6 @@ public class Potion
 	 */
 	public int getHealingAmount()
 	{
-		return healingAmount;
+		return new Integer(healingAmount);
 	}
 }

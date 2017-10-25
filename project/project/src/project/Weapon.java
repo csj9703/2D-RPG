@@ -27,6 +27,6 @@ public class Weapon
 	 */
 	public int getWeaponDamage()
 	{
-		return weaponDamage;
+		return new Integer(weaponDamage);
 	}
 }

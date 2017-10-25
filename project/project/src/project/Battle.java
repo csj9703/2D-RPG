@@ -81,13 +81,13 @@ public class Battle
 	 */
 	public int getPlayerDamage()
 	{
-		return playerDamage;
+		return new Integer(playerDamage);
 	}
 	/*
 	 * This is the getter method for enemy damage, returns enemyDamage
 	 */
 	public int getEnemyDamage()
 	{
-		return enemyDamage;
+		return new Integer(enemyDamage);
 	}
 }
