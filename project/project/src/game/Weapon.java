@@ -1,4 +1,4 @@
-package project;
+package game;
 
 /*
  * This class defines the usable weapons in the game

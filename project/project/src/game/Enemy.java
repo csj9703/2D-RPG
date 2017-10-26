@@ -1,6 +1,4 @@
-package project;
-
-import java.util.Random;
+package game;
 /*
  *This class defines the enemies of the game
  */
@@ -17,8 +15,8 @@ public class Enemy extends Character
 		 */
 		public Enemy(String name, int health, int attack, int exp)
 		{
-				super(name,health,attack);
-				this.exp = exp;
+			super(name,health,attack);
+			this.exp = exp;
 		}
 		/**
 		 * This is the getter method for experience, returns experience
@@ -34,9 +32,8 @@ public class Enemy extends Character
 		 */
 		@Override 
 		public void attack(Player player, Enemy enemy) 
-		{	
-			Random rng = new Random();		
-			int totalDamage = (enemy.getAttack() + rng.nextInt(2));
+		{			
+			int totalDamage = (enemy.getAttack());
 			player.setHealth(player.getHealth()-totalDamage);
 			damage = totalDamage;
 		}

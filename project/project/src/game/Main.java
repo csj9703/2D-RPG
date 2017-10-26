@@ -1,4 +1,4 @@
-package project;
+package game;
 /**
  * This class is the starting execution point of the game
  * @author Team 6 - CPSC 233 - Tutorial T02

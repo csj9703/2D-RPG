@@ -1,4 +1,4 @@
-package project;
+package game;
 /*
  * This class is the maze that tracks the location of the
  * player, enemy, and items 
@@ -27,7 +27,6 @@ public class Map
 	private int getRow()
 	{
 		int playerRow = 0;
-		
 		for (int row = 0; row<maze.length; row++)
 		{
 		     for (int col = 0; col<maze[row].length; col++)
@@ -46,7 +45,6 @@ public class Map
 	private int getCol()
 	{
 		int playerCol = 0;
-		
 		for (int row = 0; row<maze.length; row++)
 		{
 		     for (int col = 0; col<maze[row].length; col++)
@@ -117,17 +115,8 @@ public class Map
 	 */
 	public boolean moveValid(int playerRow, int playerCol)
 	{
-		boolean empty;
-
-		if (!(maze[playerRow][playerCol] == "#")&&!(maze[playerRow][playerCol] == "d"))
-		{
-			empty = true;
-		}
-		else
-		{
-			empty = false;
-		}
-		return empty;
+		return (!(maze[playerRow][playerCol] == "#")
+			  &&!(maze[playerRow][playerCol] == "d")) ? true : false;
 	}
 	/*
 	 * This method starts a battle when player encounters a challenge, 
@@ -136,7 +125,7 @@ public class Map
 	 * @param playerRow The row index of player
 	 * @param playerCow The column index of player
 	 */
-	public void checkEvent(String maze[][],int playerRow, int playerCol)
+	private void checkEvent(String maze[][],int playerRow, int playerCol)
 	{
 		if (maze[playerRow][playerCol] == "?")
 		{

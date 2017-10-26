@@ -1,10 +1,12 @@
-package project;
+package gui;
 
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import game.Map;
 /*
  * This class is a panel that displays the maze, player, items, and enemies
  */

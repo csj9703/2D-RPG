@@ -1,4 +1,4 @@
-package project;
+package game;
 /*
  * This class creates game items
  */

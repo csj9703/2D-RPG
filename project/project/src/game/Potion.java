@@ -1,4 +1,4 @@
-package project;
+package game;
 
 /*
  * This class defines the consumable items of the game

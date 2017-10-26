@@ -1,9 +1,11 @@
-package project;
+package gui;
 
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import game.Enemy;
 /*
  * This class is a panel that game text
  */

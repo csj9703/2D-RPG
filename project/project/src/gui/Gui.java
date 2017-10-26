@@ -1,4 +1,4 @@
-package project;
+package gui;
 
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;

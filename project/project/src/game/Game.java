@@ -1,15 +1,23 @@
-package project;
+package game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
+
+import gui.BattlePanel;
+import gui.EndScenePanel;
+import gui.GamePanel;
+import gui.Gui;
+import gui.InventoryPanel;
+import gui.StartScenePanel;
+import gui.TextPanel;
+import gui.VictoryScenePanel;
 /**
  * This class manages player input
  */
 public class Game implements KeyListener
 {	
-	private Player player = new Player("Not Ed",20,1);
-	//private Battle battle = new Battle();
+	private Player player = new Player("Hero",20,1);
 	private Map game = new Map();
 
 	private GamePanel gamePanel = new GamePanel();

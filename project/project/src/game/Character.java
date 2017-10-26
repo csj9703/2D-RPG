@@ -1,4 +1,4 @@
-package project;
+package game;
 
 public abstract class Character {
 	

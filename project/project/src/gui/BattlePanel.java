@@ -1,4 +1,4 @@
-package project;
+package gui;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,6 +7,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import game.Enemy;
+import game.Player;
 /*
  * This class is a panel that displays the battle scenes
  */
