@@ -53,7 +53,7 @@ public class BattlePanel
 		return battlePanel;
 	}
 	// this method is run after every input command
-	public void update(Player player, Enemy enemy, Battle battle)
+	public void update(Player player, Enemy enemy)
 	{
 		setPlayerModel();
 		setEnemyModel(enemy.getName());
@@ -67,8 +67,8 @@ public class BattlePanel
                                      + "</html>";
 		playerStatistics.setText(playerInfo);
 		
-		String battleInfo ="<html>" + "You hit the " + enemy.getName() + " for " + battle.getPlayerDamage() + " damage!"
-							+ "<br/>" + "<br/>" + enemy.getName() + " has hit you for " + battle.getEnemyDamage() + " damage!";
+		String battleInfo ="<html>" + "You hit the " + enemy.getName() + " for " + player.getDamage() + " damage!"
+							+ "<br/>" + "<br/>" + enemy.getName() + " has hit you for " + enemy.getDamage() + " damage!";
 		battleResults.setText(battleInfo);
 	}
 	public void showBattleResults()

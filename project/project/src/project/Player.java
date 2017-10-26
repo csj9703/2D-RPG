@@ -1,10 +1,12 @@
 package project;
 
+import java.util.Random;
+
 /*
  * This class contains the player logic
  */
 
-public class Player extends Characters
+public class Player extends Character
 {
 	
 	private int maxHealth;
@@ -22,6 +24,8 @@ public class Player extends Characters
 	private boolean hasDagger = false;
 	private boolean hasSword = false;
 	private boolean hasExcalibur = false;
+	
+	private int damage;
 	
 
 	/**
@@ -104,6 +108,15 @@ public class Player extends Characters
 	public void setCurrentExp(int expVal)
 	{
 		currentEXP = expVal;
+	}
+	/**
+	 * This is called to increase the player's exp after defeating an enemy
+	 * @param player The player
+	 * @param enemy The enemy
+	 */
+	public void obtainExp(Enemy enemy)
+	{
+		currentEXP += enemy.getExp();
 	}
 	/**
 	 * This method allows the player to consume a item to restore their health points
@@ -245,4 +258,41 @@ public class Player extends Characters
 		}
 		return new Integer(weaponDamage);
 	}
+	/**
+	 * This method reduces the enemy's health by the amount of damage inflicted by the player
+	 *@param player The player
+	 *@param enemy The enemy
+	 */
+	@Override 
+	public void attack(Player player, Enemy enemy) 
+	{	
+		Random rng = new Random();		
+		int totalDamage = (player.getAttack() + player.getWeaponDamage() + rng.nextInt(4) - 2);
+		enemy.setHealth(enemy.getHealth()-totalDamage);
+		damage = totalDamage;
+	}
+	
+	
+	public int getDamage()
+	{
+		return damage;
+	}
+	
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

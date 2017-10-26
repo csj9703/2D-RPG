@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class Game implements KeyListener
 {	
 	private Player player = new Player("Not Ed",20,1);
-	private Battle battle = new Battle();
+	//private Battle battle = new Battle();
 	private Map game = new Map();
 
 	private GamePanel gamePanel = new GamePanel();
@@ -126,12 +126,12 @@ public class Game implements KeyListener
         {
         	if (inBattleScene)
         	{
-        		battle.playerAttack(player, game.getEnemy());
+        		player.attack(player, game.getEnemy());
         		// after player attacks:
-        		if (battle.enemyIsAlive(game.getEnemy()))
+        		if (game.getEnemy().isAlive())
         		{
         			battlePanel.showBattleResults();
-        			battle.enemyAttack(player, game.getEnemy());
+        			game.getEnemy().attack(player, game.getEnemy());
         		}
         		else
         		{
@@ -143,7 +143,7 @@ public class Game implements KeyListener
         			battlePanel.hideBattleResults();
         			textPanel.displayBattleResults(game.getEnemy());
         			justDefeatedEnemy = true;
-        			battle.expReward(player, game.getEnemy());
+        			player.obtainExp(game.getEnemy());
         			player.checkExp();
         		}
         	}
@@ -189,7 +189,7 @@ public class Game implements KeyListener
         	inVictoryScene = true;
         }
         // updates the user interface after each key press
-        battlePanel.update(player, game.getEnemy(), battle);
+        battlePanel.update(player, game.getEnemy());
         inventoryPanel.update(player);
         gamePanel.update(game);
         game.checkStageCompletion();        

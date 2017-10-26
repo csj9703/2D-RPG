@@ -1,18 +1,18 @@
 package project;
 
-public class Characters {
+public abstract class Character {
 	
 	private String name;
 	private int health;
 	private int attack;
-	
 	/**
 	 * This constructor initializes the name, health, and attack.
 	 * @param name
 	 * @param health
 	 * @param attack
 	 */
-	public Characters(String name, int health, int attack) {
+	public Character(String name, int health, int attack) 
+	{
 		this.name = name;
 		this.health = health;
 		this.attack = attack;
@@ -62,4 +62,16 @@ public class Characters {
 	{
 		this.attack = attack;
 	}
+	/*
+	 * This method checks to see if the player is alive (more than zero health)
+	 * Returns true if is alive, false otherwise
+	 */
+	public boolean isAlive()
+	{
+		return getHealth() > 0 ? true : false;
+	}
+	/*
+	 * Abstract method that does nothing
+	 */
+	public abstract void attack(Player player, Enemy enemy);
 }
