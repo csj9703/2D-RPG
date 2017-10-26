@@ -327,4 +327,10 @@ public class Map
 	{
 		return item;
 	}
+	
+	
+	public void displayInventory()
+	{
+		
+	}
 }
