@@ -1,25 +1,19 @@
 package textVersion;
 
 import java.util.Scanner;
-
 import game.*;
 /**
  * This class runs the console text based version of Maze RPG
- * Game instructions:
- * w : Move up
- * a : Move left
- * s : Move down
- * d : Move right
- * i : Open inventory
- * Legend:
- * X : The player
- * ? : An item
- * E : An enemy
- * # : Wall/obstacle
- * d : Wall/obstacle
  * @author Team 6 - CPSC 233 - Tutorial T02
  * @version 1.3
  * @since October 26, 2017
+ * 
+ * Game instructions:			Legend:
+ * w : Move up			        X : The player
+ * a : Move left		        ? : An item
+ * s : Move down                E : An enemy
+ * d : Move right		        # : Wall/obstacle
+ * i : Open inventory           d : Wall/obstacle
  */
 public class TextMain 
 {
@@ -61,10 +55,10 @@ public class TextMain
 	/*
 	 * This method prints the inventory and player info
 	 * @param player The player
+	 * @param keyboard The scanner
 	 */
-	public static void displayInventory(Player player)
+	public static void displayInventory(Player player, Scanner keyboard)
 	{
-		Scanner keyboard = new Scanner(System.in);
 		boolean exit = false;
 		while(!(exit)) 
 		{
@@ -97,10 +91,10 @@ public class TextMain
 	 * @param player The player
 	 * @param enemy The enemy
 	 * @param game The map
+	 * @param keyboard The scanner
 	 */
-	public static void startBattle(Player player, Enemy enemy, Map game)
+	public static void startBattle(Player player, Enemy enemy, Map game, Scanner keyboard)
 	{
-		Scanner keyboard = new Scanner(System.in);
 		while(player.getHealth() > 0 && enemy.getHealth() > 0)
 		{
 			System.out.println("Player Name: " + player.getName());
@@ -130,20 +124,20 @@ public class TextMain
 	/*
 	 * This main controls the game state. Game ends when either
 	 * the player has completed the maze is defeated by an enemy
+	 * @param keyboard The scanner
 	 */
-	public static void play() 
+	public static void play(Scanner keyboard) 
 	{
-		Scanner keyboard = new Scanner(System.in);
 		Map game = new Map();
 		Player player = new Player("Hero",20,1);
-		while (player.isAlive())
+		while (!(game.gameWon()))
 		{
 			displayMaze(game); 
 			displayMenu(); 
 			String choice = keyboard.next();
 			if (choice.equals("i"))
 			{
-				displayInventory(player);
+				displayInventory(player, keyboard);
 			}
 			else
 			{
@@ -156,7 +150,7 @@ public class TextMain
 			}
 			if (game.foundEnemy())
 			{
-				startBattle(player, game.getEnemy(), game);
+				startBattle(player, game.getEnemy(), game, keyboard);
 			}
 			game.checkStageCompletion();
 		}
@@ -174,6 +168,8 @@ public class TextMain
      */
 	public static void main(String[] args) 
 	{
-		play();
+		Scanner keyboard = new Scanner(System.in);
+		play(keyboard);
+		keyboard.close();
 	}
 }
