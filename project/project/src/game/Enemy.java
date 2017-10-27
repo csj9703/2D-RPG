@@ -1,6 +1,7 @@
 package game;
+
 /*
- *This class defines the enemies of the game
+ * This class defines the enemies of the game
  */
 public class Enemy extends Character
 {

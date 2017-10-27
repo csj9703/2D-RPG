@@ -1,4 +1,5 @@
 package game;
+
 /*
  * This class is the maze that tracks the location of the
  * player, enemy, and items 

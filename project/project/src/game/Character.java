@@ -1,8 +1,10 @@
 package game;
 
-public abstract class Character {
-	
-	private String name;
+/*
+ * This class creates the characters of the game
+ */
+public abstract class Character extends GameObject
+{	
 	private int health;
 	private int attack;
 	/**
@@ -13,24 +15,9 @@ public abstract class Character {
 	 */
 	public Character(String name, int health, int attack) 
 	{
-		this.name = name;
+		super(name);
 		this.health = health;
 		this.attack = attack;
-	}
-	/**
-	 * Getter Method for character name. Returns name.
-	 */
-	public String getName()
-	{
-		return name;
-	}
-	/**
-	 * Setter method for character name.
-	 * @param name The name of the character.
-	 */
-	public void setName(String name)
-	{
-		this.name = name;
 	}
 	/**
 	 * Getter Method for character health. Returns health.

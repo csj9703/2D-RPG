@@ -1,4 +1,5 @@
 package game;
+
 /*
  * This class spawns enemies
  */

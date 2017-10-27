@@ -1,45 +1,33 @@
 package game;
 
 import java.util.Random;
-
 /*
  * This class contains the player logic
  */
-
 public class Player extends Character
 {
-	
 	private int maxHealth;
-	
 	private int numSmallPotions;
 	private int numMediumPotions;
 	private int numLargePotions;
-
 	private int currentLevel;
 	private int currentEXP;
 	private int expToLvl;
-	
 	private String currentWeapon;
-	
 	private boolean hasDagger = false;
 	private boolean hasSword = false;
 	private boolean hasExcalibur = false;
-	
 	private int damage;
-	
-
 	/**
 	 * This constructor initializes the player weapon, inventory, and statistics
 	 */
 	public Player(String name, int health, int attack)
 	{
 		super(name,health,attack);
-		
 		maxHealth = 20;
 		currentLevel = 1;
 		currentEXP = 0;
 		expToLvl = 1;
-
 	}
 	/**
 	 * This is the getter method for level, returns currentLvl
@@ -271,28 +259,11 @@ public class Player extends Character
 		enemy.setHealth(enemy.getHealth()-totalDamage);
 		damage = totalDamage;
 	}
-	
-	
+	/**
+	 * This is the getter method for damage, returns damage
+	 */
 	public int getDamage()
 	{
 		return damage;
 	}
-	
-	
-	
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
