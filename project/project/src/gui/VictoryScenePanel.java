@@ -2,6 +2,9 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 /*
@@ -9,7 +12,10 @@ import javax.swing.JPanel;
  */
 public class VictoryScenePanel 
 {
+	private JLabel background = new JLabel();
 	private JLabel victoryMessage = new JLabel();
+	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("victory.gif").getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT));
+	private ImageIcon title = new ImageIcon(new ImageIcon("congratulations.png").getImage().getScaledInstance(609, 114, Image.SCALE_DEFAULT));
 	
 	public JPanel createPanel()
 	{
@@ -18,15 +24,15 @@ public class VictoryScenePanel
 		victoryScenePanel.setBackground(Color.BLACK);
 		victoryScenePanel.setBounds(0, 0, 700, 700);
 
-		victoryMessage.setBounds(0,0,700,700);
-		victoryMessage.setFont(new Font("info", Font.PLAIN, 48));
-		victoryMessage.setForeground(Color.WHITE);
-	
-		String gameMessage = "CONGRATULATIONS";
-	
-		victoryMessage.setText(gameMessage);
+		background.setIcon(BG_Icon);
+		background.setBounds(0, 0, 700, 700);
+		
+		victoryMessage.setIcon(title);
+		victoryMessage.setBounds(15, 100, 700, 200);
 
 		victoryScenePanel.add(victoryMessage);
+		victoryScenePanel.add(background);
+		
 		
 		return victoryScenePanel;
 	}

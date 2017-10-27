@@ -2,6 +2,9 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 /*
@@ -9,7 +12,11 @@ import javax.swing.JPanel;
  */
 public class EndScenePanel 
 {
+	private JLabel background = new JLabel();
 	private JLabel gameInstructions = new JLabel();
+	
+	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("gameOver.png").getImage().getScaledInstance(700, 700, Image.SCALE_DEFAULT));
+	private ImageIcon title = new ImageIcon(new ImageIcon("YouDied.png").getImage().getScaledInstance(500, 700, Image.SCALE_DEFAULT));
 	
 	public JPanel createPanel()
 	{
@@ -18,15 +25,14 @@ public class EndScenePanel
 		endScenePanel .setBackground(Color.BLACK);
 		endScenePanel .setBounds(0, 0, 700, 700);
 
-		gameInstructions.setBounds(0,0,700,700);
-		gameInstructions.setFont(new Font("info", Font.PLAIN, 46));
-		gameInstructions.setForeground(Color.RED);
-	
-		String gameInfo = "YOU DIED, GAME OVER";
-	
-		gameInstructions.setText(gameInfo);
-
+		background.setIcon(BG_Icon);
+		background.setBounds(0, 0, 700, 700);
+		
+		gameInstructions.setIcon(title);
+		gameInstructions.setBounds(65, 50, 700, 700);
+		
 		endScenePanel .add(gameInstructions);
+		endScenePanel .add(background);
 		
 		return endScenePanel;
 	}
