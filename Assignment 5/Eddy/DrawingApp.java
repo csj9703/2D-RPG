@@ -23,9 +23,7 @@ public class DrawingApp extends JFrame implements KeyListener
 	public static final int DEFAULT_CIRCLE_SIZE = 100;
 	public static final int DEFAULT_SQUARE_SIZE = 60;
 	public static final int UP=1, DOWN=2, LEFT=3, RIGHT=4;
-
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
-	   
     /** 
      * This constructor creates a window and adds a key listener
      */
@@ -59,9 +57,9 @@ public class DrawingApp extends JFrame implements KeyListener
 		}
 		repaint();
     }
- 
     /*
      * This method draws all the shapes that should be in the window
+     * @param canvas The graphics 
      */
 	@Override
     public void paint(Graphics canvas) 
@@ -72,7 +70,6 @@ public class DrawingApp extends JFrame implements KeyListener
         	s.draw(canvas);
         }
     }
-    
 	/*
 	 * This method moves all shapes drawn in window 
 	 * @param direction The direction to be moved

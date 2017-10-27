@@ -23,6 +23,6 @@ public class Circle extends Shape
 	@Override
 	public void draw(Graphics g)
 	{
-		g.drawOval(getTopLeft().getXCoord(), getTopLeft().getYCoord(), getSize(), getSize());
+		g.drawOval(getTopLeft().getXCoord(), getTopLeft().getYCoord(), getSize()*2, getSize()*2);
 	}
 }
