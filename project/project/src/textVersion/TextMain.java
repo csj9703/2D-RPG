@@ -4,14 +4,25 @@ import java.util.Scanner;
 
 import game.*;
 /**
- * This is the main manager class for the game.
+ * This class runs the console text based version of Maze RPG
+ * Game instructions:
+ * w : Move up
+ * a : Move left
+ * s : Move down
+ * d : Move right
+ * i : Open inventory
+ * Legend:
+ * X : The player
+ * ? : An item
+ * E : An enemy
+ * # : Wall/obstacle
+ * d : Wall/obstacle
  * @author Team 6 - CPSC 233 - Tutorial T02
- * @version 1.2
- * @since October 15, 2017
+ * @version 1.3
+ * @since October 26, 2017
  */
 public class TextMain 
 {
-	
 	/*
 	 * This method prints the player input controls
 	 */
@@ -27,6 +38,7 @@ public class TextMain
 	}
 	/*
 	 * This method prints the maze grid
+	 * @param game The map
 	 */
 	public static void displayMaze(Map game)
 	{
@@ -36,7 +48,6 @@ public class TextMain
 			System.out.print(" _");
 		}
 		System.out.println();
-		
 		for (int row = 0; row<maze.length; row++)
 		{
 		     for (int col = 0; col<maze[row].length; col++)
@@ -48,7 +59,8 @@ public class TextMain
 		}
 	}
 	/*
-	 * This method prints the inventory and statistics
+	 * This method prints the inventory and player info
+	 * @param player The player
 	 */
 	public static void displayInventory(Player player)
 	{
@@ -56,16 +68,13 @@ public class TextMain
 		boolean exit = false;
 		while(!(exit)) 
 		{
-			System.out.println("Small Potion: " + player.getNumSmallPotions());
-			System.out.println("Medium Potion: " + player.getNumMediumPotions());
-			System.out.println("Large Potion: " + player.getNumLargePotions());
-			System.out.println("Small Potion: " + player.getNumSmallPotions());
-			System.out.println("Medium Potion: " + player.getNumMediumPotions());
-			System.out.println("Large Potion: " + player.getNumLargePotions());
-			System.out.println("Type 1 to consume a small potion");
-			System.out.println("Type 2 to consume a medium potion");
-			System.out.println("Type 3 to consume a large potion");
-			System.out.println("Type i to exit menu");
+			System.out.println("Health: " + player.getHealth());
+			System.out.println("Level: " + player.getCurrentLevel());
+			System.out.println("EXP: " + player.getCurrentExp() + "/" + player.getExpToLvl() + "\n");
+			System.out.println("Small Potion: " + player.getNumSmallPotions() + "  \tType 1 to consume a small potion");
+			System.out.println("Medium Potion: " + player.getNumMediumPotions() + "\tType 2 to consume a medium potion");
+			System.out.println("Large Potion: " + player.getNumLargePotions() + "  \tType 3 to consume a large potion");
+			System.out.println("\nType i to exit menu");
 			switch(keyboard.next())
 			{
 			case "1":
@@ -84,7 +93,10 @@ public class TextMain
 		}
 	}
 	/*
-	 * This method prints the battle 
+	 * This method prints the player and enemy's interactions during battle
+	 * @param player The player
+	 * @param enemy The enemy
+	 * @param game The map
 	 */
 	public static void startBattle(Player player, Enemy enemy, Map game)
 	{
@@ -128,9 +140,7 @@ public class TextMain
 		{
 			displayMaze(game); 
 			displayMenu(); 
-			
 			String choice = keyboard.next();
-			System.out.println(choice);
 			if (choice.equals("i"))
 			{
 				displayInventory(player);
@@ -150,7 +160,6 @@ public class TextMain
 			}
 			game.checkStageCompletion();
 		}
-		
 		if (player.isAlive())
 		{
 			System.out.println("You have completed the maze!" + "\n" + "CONGRATULATIONS");
@@ -160,6 +169,9 @@ public class TextMain
 			System.out.println("You are dead!" + "\n" + "GAME OVER");
 		}
 	}
+	 /*
+     * This method starts the game 
+     */
 	public static void main(String[] args) 
 	{
 		play();

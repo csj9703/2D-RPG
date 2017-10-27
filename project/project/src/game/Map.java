@@ -113,7 +113,7 @@ public class Map
 	 * @param playerRow The row index of player
 	 * @param playerCol The column index of player
 	 */
-	public boolean moveValid(int playerRow, int playerCol)
+	private boolean moveValid(int playerRow, int playerCol)
 	{
 		return (!(maze[playerRow][playerCol] == "#")
 			  &&!(maze[playerRow][playerCol] == "d")) ? true : false;
