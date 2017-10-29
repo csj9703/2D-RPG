@@ -78,7 +78,6 @@ public class GamePanel
 		    	 }
 		    	 else if (maze[i][j] == "E")
 		    	 {
-		    		  ;
 		    		 if (game.currentStage() == 1)
 		    		 {
 		    			 labels[i][j].setIcon(zombie);
@@ -110,7 +109,6 @@ public class GamePanel
 		    	 {
 		    		 labels[i][j].setIcon(item);
 		    	 }
-		    	 
 		     } 
 		}
 	}

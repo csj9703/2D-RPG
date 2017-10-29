@@ -2,15 +2,15 @@ package game;
 
 import java.util.Random;
 /*
- * This class contains the player logic
+ * This class holds data for the player
  */
 public class Player extends Character
 {
-	private int maxHealth;
+	private final int maxHealth;
 	private int numSmallPotions;
 	private int numMediumPotions;
 	private int numLargePotions;
-	private int currentLevel;
+	private int level;
 	private int currentEXP;
 	private int expToLvl;
 	private String currentWeapon;
@@ -19,33 +19,35 @@ public class Player extends Character
 	private boolean hasExcalibur = false;
 	private int damage;
 	/**
-	 * This constructor initializes the player weapon, inventory, and statistics
+	 * This constructor accepts as arguments the name, health, and attack
+	 * It also sets the starting values of max hit points, level and experience
 	 */
 	public Player(String name, int health, int attack)
 	{
 		super(name,health,attack);
 		maxHealth = 20;
-		currentLevel = 1;
+		level = 1;
 		currentEXP = 0;
 		expToLvl = 1;
 	}
 	/**
-	 * This is the getter method for level, returns currentLvl
+	 * This is the getter method for level, returns level
 	 */
 	public int getCurrentLevel()
 	{
-		return new Integer(currentLevel);
+		return level;
 	}
 	/**
-	 * This is the setter method for player level
-	 * @param aLvl The level value
+	 * This is the setter method for level
+	 * @param level The level 
 	 */
-	public void setLvl(int aLvl)
+	public void setLevel(int level)
 	{
-		currentLevel = aLvl;
+		this.level = level;
 	}
 	/**
-	 * This method increases the player's level when sufficient experience is gained
+	 * This method checks whether the player has gain sufficient 
+	 * experience to level up, if so the leveUp method is called
 	 */
 	public void checkExp()
 	{
@@ -55,11 +57,11 @@ public class Player extends Character
 		}
 	}
 	/**
-	 * This method increases the level of the player
+	 * This method increases the level of the player by one
 	 */
 	private void levelUp()
 	{
-		currentLevel += 1;
+		level += 1;
 		if(currentEXP > expToLvl) 
 		{
 			currentEXP -= expToLvl;
@@ -72,7 +74,7 @@ public class Player extends Character
 	 */
 	public int getExpToLvl()
 	{
-		return new Integer(expToLvl);
+		return expToLvl;
 	}
 	/**
 	 * This is the setter method for required experience to level up
@@ -87,7 +89,7 @@ public class Player extends Character
 	 */
 	public int getCurrentExp()
 	{
-		return new Integer(currentEXP);
+		return currentEXP;
 	}
 	/**
 	 * This is the setter method for current player experience
@@ -98,17 +100,17 @@ public class Player extends Character
 		currentEXP = expVal;
 	}
 	/**
-	 * This is called to increase the player's exp after defeating an enemy
+	 * This method is called after defeating an enemy to increase experience
 	 * @param player The player
 	 * @param enemy The enemy
 	 */
 	public void obtainExp(Enemy enemy)
 	{
-		currentEXP += enemy.getExp();
+		currentEXP += enemy.getExperience();
 	}
 	/**
-	 * This method allows the player to consume a item to restore their health points
-	 * @return itemUsed The item consumed
+	 * This method consumes a item based on the itemID passed as argument
+	 * @param itemID The ID of the item
 	 */
 	public void useItem(int itemID)
 	{
@@ -138,8 +140,8 @@ public class Player extends Character
 		}
 	}
 	/**
-	 * This method checks to see what item the player has obtained
-	 * @param item The item the player obtained
+	 * This method picks up a item based on the itemID passed as argument
+	 * @param itemID The ID of the item
 	 */
 	public void pickUp(int itemID)
 	{
@@ -178,39 +180,26 @@ public class Player extends Character
 			setHealth(getHealth()-excessHp);
 		}
     }
-	/*
-	 * This method checks to see if the player is alive
-	 * Returns true if player is alive, false otherwise
-	 */
-	public boolean isAlive()
-	{
-		boolean isAlive = true;
-		if (getHealth() < 1)
-		{
-			isAlive = false;
-		}
-		return isAlive;
-	}
 	/**
 	 * This is the getter method for small potions, returns numSmallPotions
 	 */
 	public int getNumSmallPotions()
 	{
-		return new Integer(numSmallPotions);
+		return numSmallPotions;
 	}
 	/**
 	 * This is the getter method for medium potions, returns numMediumPotions
 	 */
 	public int getNumMediumPotions()
 	{
-		return new Integer(numMediumPotions);
+		return numMediumPotions;
 	}
 	/**
 	 * This is the getter method for large potions, returns numLargePotions
 	 */
 	public int getNumLargePotions()
 	{
-		return new Integer(numLargePotions);
+		return numLargePotions;
 	}
 	/**
 	 * This is the getter method for current weapon, returns currentWeapon
@@ -244,16 +233,18 @@ public class Player extends Character
 		{
 			currentWeapon = "No Weapon";
 		}
-		return new Integer(weaponDamage);
+		return weaponDamage;
 	}
 	/**
-	 * This method reduces the enemy's health by the amount of damage inflicted by the player
+	 * This method reduces the enemy's health by the amount of damage 
+	 * inflicted by the player
 	 *@param player The player
 	 *@param enemy The enemy
 	 */
 	@Override 
 	public void attack(Player player, Enemy enemy) 
 	{	
+		// random number is introduced to create a damage range, varies damage
 		Random rng = new Random();		
 		int totalDamage = (player.getAttack() + player.getWeaponDamage() + rng.nextInt(4) - 2);
 		enemy.setHealth(enemy.getHealth()-totalDamage);

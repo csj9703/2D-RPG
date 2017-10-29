@@ -1,28 +1,31 @@
 package game;
 
 /*
- * This class is the starting point for all game objects
+ * The GamObject class is a abstract class that holds the name
+ * of game objects, classes representing a game object should 
+ * inherit from this class
  */
-public class GameObject 
+public abstract class GameObject 
 {
 	private String name;
 	/**
-	 * This constructor initializes the name of all game objects
+	 * This constructor accepts name as the argument
+	 * @param name The name
 	 */
 	public GameObject(String name)
 	{
 		this.name = name;
 	}
 	/**
-	 * Getter Method for character name. Returns name.
+	 * This is the getter method for name, returns name
 	 */
 	public String getName()
 	{
 		return name;
 	}
 	/**
-	 * Setter method for character name.
-	 * @param name The name of the character.
+	 * This is the setter method for name
+	 * @param name The name of the game object
 	 */
 	public void setName(String name)
 	{

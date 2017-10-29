@@ -59,7 +59,7 @@ public class TextPanel
 	
 	public void displayBattleResults(Enemy enemy)
 	{
-		String results = "You have defeated the " + enemy.getName() + " and gained " + enemy.getExp() + " exp!";
+		String results = "You have defeated the " + enemy.getName() + " and gained " + enemy.getExperience() + " exp!";
 		textLabel.setText(results);
 	}
 	

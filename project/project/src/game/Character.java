@@ -1,17 +1,19 @@
 package game;
 
 /*
- * This class creates the characters of the game
+ * The Character class is a abstract class that holds general
+ * data about a game character, classes representing a type of 
+ * character should inherit from this class
  */
 public abstract class Character extends GameObject
 {	
 	private int health;
 	private int attack;
 	/**
-	 * This constructor initializes the name, health, and attack.
-	 * @param name
-	 * @param health
-	 * @param attack
+	 * This constructor accepts as arguments the name, health, and attack
+	 * @param name The name
+	 * @param health The amount of hit points
+	 * @param attack The attack rating
 	 */
 	public Character(String name, int health, int attack) 
 	{
@@ -20,37 +22,37 @@ public abstract class Character extends GameObject
 		this.attack = attack;
 	}
 	/**
-	 * Getter Method for character health. Returns health.
+	 * This is the getter method for health, returns health
 	 */
 	public int getHealth() 
 	{
-		return new Integer(health);
+		return health;
 	}
 	/**
-	 * Setter method for character health.
-	 * @param health The amount of the health.
+	 * This is the setter method for health
+	 * @param health The amount of hit points
 	 */
 	public void setHealth(int health) 
 	{
 		this.health = health;
 	}
 	/**
-	 * Getter Method for character attack. Returns attack.
+	 * This is the getter method for attack, returns attack
 	 */
 	public int getAttack() 
 	{
-		return new Integer(attack);
+		return attack;
 	}
 	/**
-	 * Setter method for character attack.
-	 * @param attack The amount of attack power.
+	 * This is the setter method for attack
+	 * @param attack The amount rating
 	 */
 	public void setAttack(int attack) 
 	{
 		this.attack = attack;
 	}
 	/*
-	 * This method checks to see if the player is alive (more than zero health)
+	 * This method checks to see if the character is alive (more than zero health)
 	 * Returns true if is alive, false otherwise
 	 */
 	public boolean isAlive()
@@ -58,7 +60,8 @@ public abstract class Character extends GameObject
 		return getHealth() > 0 ? true : false;
 	}
 	/*
-	 * Abstract method that does nothing
+	 * This abstract method does nothing and must
+	 * be overridden in a subclass
 	 */
 	public abstract void attack(Player player, Enemy enemy);
 }

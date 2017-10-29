@@ -5,29 +5,31 @@ package game;
  */
 public class Enemy extends Character
 {
-		private int exp;
+		private int experience;
 		private int damage;
 		/**
-		 * This constructor initializes the name, health, attack and experience fields
-		 * @param  aName The name of the enemy
-		 * @param  aHealth The amount of health
-		 * @param  aAttack The amount of attack power
-		 * @param  expVal The amount of experience
+		 * This constructor accepts as arguments the name, health, 
+		 * attack, and experience fields
+		 * @param  name The name
+		 * @param  health The amount of hit points
+		 * @param  attack The attack rating
+		 * @param  experience The amount of experience
 		 */
-		public Enemy(String name, int health, int attack, int exp)
+		public Enemy(String name, int health, int attack, int experience)
 		{
 			super(name,health,attack);
-			this.exp = exp;
+			this.experience = experience;
 		}
 		/**
 		 * This is the getter method for experience, returns experience
 		 */
-		public int getExp()
+		public int getExperience()
 		{
-			return new Integer(exp);
+			return experience;
 		}
 		/**
-		 * This method reduces the player's health by the amount of damage inflicted by the enemy
+		 * This method reduces the player's health by the amount of 
+		 * damage inflicted by the enemy
 		 *@param player The player
 		 *@param enemy The enemy
 		 */
