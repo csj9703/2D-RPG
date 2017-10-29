@@ -1,9 +1,7 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,7 +14,9 @@ public class VictoryScenePanel
 	private JLabel victoryMessage = new JLabel();
 	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("victory.gif").getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT));
 	private ImageIcon title = new ImageIcon(new ImageIcon("congratulations.png").getImage().getScaledInstance(609, 114, Image.SCALE_DEFAULT));
-	
+	/* 
+	 * This method creates and returns a JPanel
+	 */
 	public JPanel createPanel()
 	{
 		JPanel victoryScenePanel = new JPanel();
@@ -32,7 +32,6 @@ public class VictoryScenePanel
 
 		victoryScenePanel.add(victoryMessage);
 		victoryScenePanel.add(background);
-		
 		
 		return victoryScenePanel;
 	}

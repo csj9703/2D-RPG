@@ -2,11 +2,9 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import game.Player;
 /*
  * This class is a panel that displays the player's inventory
@@ -28,7 +26,10 @@ public class InventoryPanel
 	private ImageIcon mediumPotion = new ImageIcon("medium_potion.png");
 	private ImageIcon largePotion = new ImageIcon("large_potion.png");
 	private ImageIcon inventoryHeader = new ImageIcon("inventory_header.png");
-	
+	/* 
+	 * This method creates and returns a JPanel
+	 * @param player The player
+	 */
 	public JPanel createPanel(Player player)
 	{
 		JPanel inventoryPanel = new JPanel();

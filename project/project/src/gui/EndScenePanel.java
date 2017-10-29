@@ -13,11 +13,12 @@ import javax.swing.JPanel;
 public class EndScenePanel 
 {
 	private JLabel background = new JLabel();
-	private JLabel gameInstructions = new JLabel();
-	
+	private JLabel gameInstructions = new JLabel();	
 	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("gameOver.png").getImage().getScaledInstance(700, 700, Image.SCALE_DEFAULT));
 	private ImageIcon title = new ImageIcon(new ImageIcon("YouDied.png").getImage().getScaledInstance(500, 700, Image.SCALE_DEFAULT));
-	
+	/* 
+	 * This method creates and returns a JPanel
+	 */
 	public JPanel createPanel()
 	{
 		JPanel endScenePanel   = new JPanel();

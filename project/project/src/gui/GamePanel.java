@@ -21,12 +21,14 @@ public class GamePanel
 	private ImageIcon skeletonMinion = new ImageIcon("skeleton_minion.png");
 	private ImageIcon skeletonKing = new ImageIcon("skeleton_king.png");
 	private ImageIcon blackKnight = new ImageIcon("black_knight.png");
-	private ImageIcon reaper = new ImageIcon("reaper.png");
-	
+	private ImageIcon reaper = new ImageIcon("reaper.png");	
 	private JLabel[][] labels;
 	private final int ROW = 20;
 	private final int COL = 20;
-	
+	/* 
+	 * This method creates and returns a JPanel
+	 * @param game The map
+	 */
 	public JPanel createPanel(Map game) 
 	{ 
 		// panel displaying the maze

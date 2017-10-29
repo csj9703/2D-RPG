@@ -9,7 +9,8 @@ import javax.swing.JPanel;
 public class Gui extends JFrame 
 {
     /*
-     * This constructor initializes the frame
+     * This constructor accepts as arguments the other panels and 
+     * initializes the frame
      */
     public Gui(KeyListener listener, JPanel gameInterface, JPanel battleInterface, JPanel inventoryInterface, 
     		JPanel startingScene, JPanel endingScene, JPanel victoryScene, JPanel textBox)
