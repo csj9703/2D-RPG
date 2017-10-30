@@ -3,13 +3,13 @@ compile instructions
 
 To run the GUI version:
 
-javac Main.java
+in ../project/project> javac -d bin -cp bin src\launcher\Main.java
 
-java Main
+in ../project/project> java -cp .:bin:/*.class launcher.Main (for Windows change ":" to ";")
 
 
 To run the Textversion:
 
-javac TextMain.java
+in ../project/project> javac -d bin -cp bin src\launcher\TextMain.java
 
-java TextMain
+in ../project/project> java -cp .:bin:/*.class launcher.TextMain (for Windows change ":" to ";")
