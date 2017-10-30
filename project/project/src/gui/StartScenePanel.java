@@ -14,8 +14,8 @@ public class StartScenePanel
 	private JLabel background = new JLabel();
 	private JLabel gameInstructions = new JLabel();
 	private JLabel gameInstructions2 = new JLabel();
-	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("titleBG.gif").getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT));
-	private ImageIcon title = new ImageIcon(new ImageIcon("Title.png").getImage().getScaledInstance(609, 114, Image.SCALE_DEFAULT));
+	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("src/graphics/titleBG.gif").getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT));
+	private ImageIcon title = new ImageIcon(new ImageIcon("src/graphics/Title.png").getImage().getScaledInstance(609, 114, Image.SCALE_DEFAULT));
 	/* 
 	 * This method creates and returns a JPanel
 	 */

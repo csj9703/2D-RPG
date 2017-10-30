@@ -1,4 +1,4 @@
-package textVersion;
+package launcher;
 
 import java.util.Scanner;
 import game.*;

@@ -19,13 +19,13 @@ public class InventoryPanel
 	private JLabel mediumPotionIcon = new JLabel();
 	private JLabel largePotionIcon = new JLabel();
 	private JLabel inventoryHeaderIcon = new JLabel();
-	private ImageIcon rustyDagger = new ImageIcon("rusty_dagger.png");
-	private ImageIcon ironLongsword = new ImageIcon("iron_longsword.png");
-	private ImageIcon excalibur = new ImageIcon("excalibur.png");
-	private ImageIcon smallPotion = new ImageIcon("small_potion.png");
-	private ImageIcon mediumPotion = new ImageIcon("medium_potion.png");
-	private ImageIcon largePotion = new ImageIcon("large_potion.png");
-	private ImageIcon inventoryHeader = new ImageIcon("inventory_header.png");
+	private ImageIcon rustyDagger = new ImageIcon("src/graphics/rusty_dagger.png");
+	private ImageIcon ironLongsword = new ImageIcon("src/graphics/iron_longsword.png");
+	private ImageIcon excalibur = new ImageIcon("src/graphics/excalibur.png");
+	private ImageIcon smallPotion = new ImageIcon("src/graphics/small_potion.png");
+	private ImageIcon mediumPotion = new ImageIcon("src/graphics/medium_potion.png");
+	private ImageIcon largePotion = new ImageIcon("src/graphics/large_potion.png");
+	private ImageIcon inventoryHeader = new ImageIcon("src/graphics/inventory_header.png");
 	/* 
 	 * This method creates and returns a JPanel
 	 * @param player The player

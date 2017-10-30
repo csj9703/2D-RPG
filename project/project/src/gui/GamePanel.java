@@ -12,16 +12,16 @@ import game.Map;
  */
 public class GamePanel 
 {
-	private ImageIcon wallDark = new ImageIcon("WallDark.png");
-	private ImageIcon wall = new ImageIcon("wall.png");
-	private ImageIcon road = new ImageIcon("grass.png");
-	private ImageIcon player = new ImageIcon("player.png");
-	private ImageIcon item = new ImageIcon("item.png");
-	private ImageIcon zombie = new ImageIcon("zombie.png");
-	private ImageIcon skeletonMinion = new ImageIcon("skeleton_minion.png");
-	private ImageIcon skeletonKing = new ImageIcon("skeleton_king.png");
-	private ImageIcon blackKnight = new ImageIcon("black_knight.png");
-	private ImageIcon reaper = new ImageIcon("reaper.png");	
+	private ImageIcon wallDark = new ImageIcon("src/graphics/WallDark.png");
+	private ImageIcon wall = new ImageIcon("src/graphics/wall.png");
+	private ImageIcon road = new ImageIcon("src/graphics/grass.png");
+	private ImageIcon player = new ImageIcon("src/graphics/player.png");
+	private ImageIcon item = new ImageIcon("src/graphics/item.png");
+	private ImageIcon zombie = new ImageIcon("src/graphics/zombie.png");
+	private ImageIcon skeletonMinion = new ImageIcon("src/graphics/skeleton_minion.png");
+	private ImageIcon skeletonKing = new ImageIcon("src/graphics/skeleton_king.png");
+	private ImageIcon blackKnight = new ImageIcon("src/graphics/black_knight.png");
+	private ImageIcon reaper = new ImageIcon("src/graphics/reaper.png");	
 	private JLabel[][] labels;
 	private final int ROW = 20;
 	private final int COL = 20;

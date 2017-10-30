@@ -1,4 +1,6 @@
-package game;
+package launcher;
+
+import game.Game;
 
 /**
  * This class is the starting execution point of the game
