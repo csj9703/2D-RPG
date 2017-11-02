@@ -66,7 +66,7 @@ public class TextMain
 			System.out.println("Level: " + player.getCurrentLevel());
 			System.out.println("EXP: " + player.getCurrentExp() + "/" + player.getExpToLvl() + "\n");
 			System.out.println("Small Potion: " + player.getNumSmallPotions() + "  \tType 1 to consume a small potion");
-			System.out.println("Medium Potion: " + player.getNumMediumPotions() + "\tType 2 to consume a medium potion");
+			System.out.println("Medium Potion: " + player.getNumMediumPotions() + "  \tType 2 to consume a medium potion");
 			System.out.println("Large Potion: " + player.getNumLargePotions() + "  \tType 3 to consume a large potion");
 			System.out.println("\nType i to exit menu");
 			switch(keyboard.next())
