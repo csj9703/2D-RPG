@@ -59,10 +59,11 @@ public class TriangleTest
 		Triangle triangle = new Triangle(l1,
                 new Line(new Point(2,0), new Point(0,2)),
                 new Line(new Point(0,2), new Point(0,0)));
-		Line original = triangle.getLine1();
-		l1 = new Line(new Point(1,0), new Point(2,0));
-				
-		assertEquals("Line 1 length should be 2.0",original,triangle.getLine1());
+		int original = triangle.getLine1().getStart().getXCoord();
+		Point p1 = new Point(1,0);
+		l1.setStart(p1);
+		
+		assertEquals("Line 1 starting point should be 1",original,triangle.getLine1().getStart().getXCoord());
 	}
 	
 	@Test
