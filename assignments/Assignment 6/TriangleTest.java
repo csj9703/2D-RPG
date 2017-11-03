@@ -63,7 +63,7 @@ public class TriangleTest
 		Point p1 = new Point(1,0);
 		l1.setStart(p1);
 		
-		assertEquals("Line 1 starting point should be 1",original,triangle.getLine1().getStart().getXCoord());
+		assertEquals("Line 1 start point x-coordinate should be 0",original,triangle.getLine1().getStart().getXCoord());
 	}
 	
 	@Test
