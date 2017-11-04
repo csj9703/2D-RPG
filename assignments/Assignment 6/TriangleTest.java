@@ -1,6 +1,4 @@
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+@p
 
 public class TriangleTest 
 {
@@ -49,6 +47,7 @@ public class TriangleTest
                 new Line(new Point(0,2), new Point(0,0)));
 		
 		assertEquals("Line 1 length should be 2.0",2.0, triangle.getLine1().length(), 0.00001);
+
 	}
 	
 	@Test
@@ -235,5 +234,57 @@ public class TriangleTest
 		l3.setEnd(p3);
 		
 		assertEquals("Line 3 end point y-coordinate should be 0",original,triangle.getLine3().getEnd().getYCoord());
+	}
+	
+	@Test
+	public void test_PrivacyLeakConstructor_Line1()
+	{
+		Line l1 = new Line(new Point(new Point(0,0), new Point(2,0)));
+
+	    Triangle triangle = new Triangle(l1,
+							            new Line(new Point(2,0), new Point(0,2)),
+							            new Line(new Point(0,2), new Point(0,0)));
+	    l1.setStart(new Point(3,3));
+	    double circumference = triangle.getCircumference();
+
+	    assertEquals("Line from (0,0) to (2,0) passed in as arguement to parameter Line1 in constructor. The start point of Line1 was changed to (3,3) but this should not effect Triangle object. Circumference of Triangle with vertices at (0,0), (2,0) and (0,2) should be 6.82842", 6.82842, circumference, 0.00001);
+	}
+	
+	@Test
+	public void test_PrivacyLeakConstructor_Line2()
+	{
+	    Line l2 = new Line(new Point(new Point(2,0), new Point(0,2)));
+
+	    Triangle triangle = new Triangle(new Line(new Point(0,0), new Point(2,0)),
+							            l2,
+							            new Line(new Point(0,2), new Point(0,0)));
+	    l2.setStart(new Point(3,3));
+	    double circumference = triangle.getCircumference();
+
+	    assertEquals("Line from (0,2) to (0,2) passed in as arguement to parameter Line2 in constructor. The start point of Line2 was changed to (3,3) but this should not effect Triangle object. Circumference of Triangle with vertices at (0,0), (2,0) and (0,2) should be 6.82842", 6.82842, circumference, 0.00001);
+	}
+	
+	@Test
+	public void test_PrivacyLeakConstructor_Line3()
+	{
+	    Line l3 = new Line(new Point(new Point(0,2), new Point(0,0)));
+
+	    Triangle triangle = new Triangle(new Line(new Point(0,0), new Point(2,0)),
+	    									new Line(new Point(2,0), new Point(0,2)),
+							            l3);
+	    l3.setStart(new Point(3,3));
+	    double circumference = triangle.getCircumference();
+
+	    assertEquals("Line from (0,2) to (0,0) passed in as arguement to parameter Line2 in constructor. The start point of Line3 was changed to (3,3) but this should not effect Triangle object. Circumference of Triangle with vertices at (0,0), (2,0) and (0,2) should be 6.82842", 6.82842, circumference, 0.00001);
+	}
+	
+	@Test
+	public void test_constructor_AllThreeLineSame()
+	{
+	    Line l1,l2,l3 = new Line(new Point(new Point(1,0), new Point(0,0)));
+	    Triangle triangle = new Triangle(l1,l2,l3);
+	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
+
+	    assertEquals("Three identical lines passed in as argument to constructor. Since these lines do not make a triangle, expected null with all getLine methods, but got at least one return value that was not null", allNull);
 	}
 }
