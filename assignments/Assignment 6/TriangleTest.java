@@ -281,7 +281,9 @@ public class TriangleTest
 	@Test
 	public void test_constructor_AllThreeLineSame()
 	{
-	    Line l1,l2,l3 = new Line(new Point(new Point(1,0), new Point(0,0)));
+	    Line l1 = new Line(new Point(new Point(1,0), new Point(0,0)));
+	    Line l2 = new Line(new Point(new Point(1,0), new Point(0,0)));
+	    Line l3 = new Line(new Point(new Point(1,0), new Point(0,0)));
 	    Triangle triangle = new Triangle(l1,l2,l3);
 	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
 
@@ -297,7 +299,7 @@ public class TriangleTest
 	    Triangle triangle = new Triangle(l1,l2,l3);
 	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
 
-	    assertEquals("Three lines passed in to constructor do not make a Triangle, so all three lines should return null but was not", allNull);
+	    assertEquals("Three lines passed in to constructor do not make a Triangle, so all three lines should return null", allNull);
 	  }
 	
 }
