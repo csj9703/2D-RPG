@@ -275,15 +275,15 @@ public class TriangleTest
 	    l3.setStart(new Point(3,3));
 	    double circumference = triangle.getCircumference();
 
-	    assertEquals("Line from (0,2) to (0,0) passed in as arguement to parameter Line2 in constructor. The start point of Line3 was changed to (3,3) but this should not effect Triangle object. Circumference of Triangle with vertices at (0,0), (2,0) and (0,2) should be 6.82842", 6.82842, circumference, 0.00001);
+	    assertEquals("Line from (0,2) to (0,0) passed in as arguement to parameter Line3 in constructor. The start point of Line3 was changed to (3,3) but this should not effect Triangle object. Circumference of Triangle with vertices at (0,0), (2,0) and (0,2) should be 6.82842", 6.82842, circumference, 0.00001);
 	}
 	
 	@Test
 	public void test_constructor_AllThreeLineSame()
 	{
-	    Line l1 = new Line(new Point(new Point(1,0), new Point(0,0)));
-	    Line l2 = new Line(new Point(new Point(1,0), new Point(0,0)));
-	    Line l3 = new Line(new Point(new Point(1,0), new Point(0,0)));
+	    Line l1 = new Line(new Point(1,0), new Point(0,0));
+	    Line l2 = new Line(new Point(1,0), new Point(0,0));
+	    Line l3 = new Line(new Point(1,0), new Point(0,0));
 	    Triangle triangle = new Triangle(l1,l2,l3);
 	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
 
@@ -291,15 +291,15 @@ public class TriangleTest
 	}
 	
 	@Test
-	  public void test_constructor_NotTriangle()
-	  {
-	    Line l1 = new Line(new Point(new Point(2,0), new Point(0,0)));
-	    Line l2 = new Line(new Point(new Point(0,0), new Point(0,2)));
-	    Line l3 = new Line(new Point(new Point(2,0), new Point(1,1)));
+	public void test_constructor_NotTriangle()
+	{
+	    Line l1 = new Line(new Point(2,0), new Point(0,0));
+	    Line l2 = new Line(new Point(0,0), new Point(0,2));
+	    Line l3 = new Line(new Point(2,0), new Point(1,1));
 	    Triangle triangle = new Triangle(l1,l2,l3);
 	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
 
 	    assertEquals("Three lines passed in to constructor do not make a Triangle, so all three lines should return null", allNull);
-	  }
+	}
 	
 }
