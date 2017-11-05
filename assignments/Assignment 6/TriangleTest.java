@@ -1,4 +1,7 @@
-@p
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 
 public class TriangleTest 
 {
@@ -59,7 +62,7 @@ public class TriangleTest
                 new Line(new Point(0,2), new Point(0,0)));
 		int original = triangle.getLine1().getStart().getXCoord();
 		Point p1 = new Point(1,1);
-		l1.setStart(p1);
+		triangle.getLine1().setStart(p1);
 		
 		assertEquals("Line 1 start point x-coordinate should be 0",original,triangle.getLine1().getStart().getXCoord());
 	}
@@ -73,7 +76,7 @@ public class TriangleTest
                 new Line(new Point(0,2), new Point(0,0)));
 		int original = triangle.getLine1().getStart().getYCoord();
 		Point p1 = new Point(1,1);
-		l1.setStart(p1);
+		triangle.getLine1().setStart(p1);
 		
 		assertEquals("Line 1 start point y-coordinate should be 0",original,triangle.getLine1().getStart().getYCoord());
 	}
@@ -87,7 +90,7 @@ public class TriangleTest
                 new Line(new Point(0,2), new Point(0,0)));
 		int original = triangle.getLine1().getEnd().getXCoord();
 		Point p1 = new Point(1,1);
-		l1.setEnd(p1);
+		triangle.getLine1().setEnd(p1);
 		
 		assertEquals("Line 1 end point x-coordinate should be 2",original,triangle.getLine1().getEnd().getXCoord());
 	}
@@ -101,7 +104,7 @@ public class TriangleTest
                 new Line(new Point(0,2), new Point(0,0)));
 		int original = triangle.getLine1().getEnd().getYCoord();
 		Point p1 = new Point(1,1);
-		l1.setEnd(p1);
+		triangle.getLine1().setEnd(p1);
 		
 		assertEquals("Line 1 end point y-coordinate should be 0",original,triangle.getLine1().getEnd().getYCoord());
 	}
@@ -126,7 +129,7 @@ public class TriangleTest
                 new Line(new Point(0,0), new Point(2,0)));
 		int original = triangle.getLine2().getStart().getXCoord();
 		Point p2 = new Point(1,1);
-		l2.setStart(p2);
+		triangle.getLine2().setStart(p2);
 		
 		assertEquals("Line 2 start point x-coordinate should be 0",original,triangle.getLine2().getStart().getXCoord());
 	}
@@ -140,7 +143,7 @@ public class TriangleTest
                 new Line(new Point(0,0), new Point(2,0)));
 		int original = triangle.getLine2().getStart().getYCoord();
 		Point p2 = new Point(1,1);
-		l2.setStart(p2);
+		triangle.getLine2().setStart(p2);
 		
 		assertEquals("Line 2 start point y-coordinate should be 0",original,triangle.getLine2().getStart().getYCoord());
 	}
@@ -154,7 +157,7 @@ public class TriangleTest
                 new Line(new Point(0,0), new Point(2,0)));
 		int original = triangle.getLine2().getEnd().getXCoord();
 		Point p2 = new Point(1,1);
-		l2.setEnd(p2);
+		triangle.getLine2().setEnd(p2);
 		
 		assertEquals("Line 2 end point x-coordinate should be 2",original,triangle.getLine2().getEnd().getXCoord());
 	}
@@ -168,7 +171,7 @@ public class TriangleTest
                 new Line(new Point(0,0), new Point(2,0)));
 		int original = triangle.getLine2().getEnd().getYCoord();
 		Point p2 = new Point(1,1);
-		l2.setEnd(p2);
+		triangle.getLine2().setEnd(p2);
 		
 		assertEquals("Line 2 end point y-coordinate should be 0",original,triangle.getLine2().getEnd().getYCoord());
 	}
@@ -192,7 +195,7 @@ public class TriangleTest
                 l3);
 		int original = triangle.getLine3().getStart().getXCoord();
 		Point p3 = new Point(1,1);
-		l3.setStart(p3);
+		triangle.getLine3().setStart(p3);
 		
 		assertEquals("Line 3 start point x-coordinate should be 0",original,triangle.getLine3().getStart().getXCoord());
 	}
@@ -205,7 +208,7 @@ public class TriangleTest
                 l3);
 		int original = triangle.getLine3().getStart().getYCoord();
 		Point p3 = new Point(1,1);
-		l3.setStart(p3);
+		triangle.getLine3().setStart(p3);
 		
 		assertEquals("Line 3 start point y-coordinate should be 0",original,triangle.getLine3().getStart().getYCoord());
 	}
@@ -218,7 +221,7 @@ public class TriangleTest
                 l3);
 		int original = triangle.getLine3().getEnd().getXCoord();
 		Point p3 = new Point(1,1);
-		l3.setEnd(p3);
+		triangle.getLine3().setEnd(p3);
 		
 		assertEquals("Line 3 end point x-coordinate should be 2",original,triangle.getLine3().getEnd().getXCoord());
 	}
@@ -231,7 +234,7 @@ public class TriangleTest
                 l3);
 		int original = triangle.getLine3().getEnd().getYCoord();
 		Point p3 = new Point(1,1);
-		l3.setEnd(p3);
+		triangle.getLine3().setEnd(p3);
 		
 		assertEquals("Line 3 end point y-coordinate should be 0",original,triangle.getLine3().getEnd().getYCoord());
 	}
@@ -239,7 +242,7 @@ public class TriangleTest
 	@Test
 	public void test_PrivacyLeakConstructor_Line1()
 	{
-		Line l1 = new Line(new Point(new Point(0,0), new Point(2,0)));
+		Line l1 = new Line(new Point(0,0), new Point(2,0));
 
 	    Triangle triangle = new Triangle(l1,
 							            new Line(new Point(2,0), new Point(0,2)),
@@ -253,7 +256,7 @@ public class TriangleTest
 	@Test
 	public void test_PrivacyLeakConstructor_Line2()
 	{
-	    Line l2 = new Line(new Point(new Point(2,0), new Point(0,2)));
+	    Line l2 = new Line(new Point(2,0), new Point(0,2));
 
 	    Triangle triangle = new Triangle(new Line(new Point(0,0), new Point(2,0)),
 							            l2,
@@ -267,7 +270,7 @@ public class TriangleTest
 	@Test
 	public void test_PrivacyLeakConstructor_Line3()
 	{
-	    Line l3 = new Line(new Point(new Point(0,2), new Point(0,0)));
+	    Line l3 = new Line(new Point(0,2), new Point(0,0));
 
 	    Triangle triangle = new Triangle(new Line(new Point(0,0), new Point(2,0)),
 	    									new Line(new Point(2,0), new Point(0,2)),
