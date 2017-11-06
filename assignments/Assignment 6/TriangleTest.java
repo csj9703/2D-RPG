@@ -1,10 +1,22 @@
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-
+/** 
+ * This class is the unit test for the triangle class.
+ * @author Team 6 - CPSC 233 - Tutorial T02
+ * @version 1.0
+ * @since November 5, 2017
+ */
 public class TriangleTest 
 {
+	@Test
+	public void test_getArea_negative_triangle() 
+	{
+		Triangle triangle = new Triangle(new Line(new Point(-2,-2), new Point(0,0)),
+						                 new Line(new Point(0,0), new Point(2,2)),
+						                 new Line(new Point(2,2), new Point(-2,-2)));
+		assertEquals("Triangle lines cannot be negative, area should be 0.0", 0.0, triangle.getArea(), 0.00001);
+	}
+	
 	@Test
 	public void test_getArea_small_triangle() 
 	{
@@ -21,6 +33,15 @@ public class TriangleTest
 						                 new Line(new Point(7651,58), new Point(3158,64081)),
 						                 new Line(new Point(3158,64081), new Point(1,1)));
 		assertEquals("Area should be 245016025.49999", 245016025.49999, triangle.getArea(), 0.00001);
+	}
+	
+	@Test
+	public void test_getCircumferance_negative_triangle() 
+	{
+		Triangle triangle = new Triangle(new Line(new Point(-2,-2), new Point(0,0)),
+						                 new Line(new Point(0,0), new Point(2,2)),
+						                 new Line(new Point(2,2), new Point(-2,-2)));
+		assertEquals("Triangle lines cannot be negative, circumferance should be 0.0", 0.0, triangle.getCircumference(), 0.00001);
 	}
 	
 	@Test
@@ -290,7 +311,7 @@ public class TriangleTest
 	    Triangle triangle = new Triangle(l1,l2,l3);
 	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
 
-	    assertEquals("Three identical lines passed in as argument to constructor. Since these lines do not make a triangle, expected null with all getLine methods, but got at least one return value that was not null", allNull);
+	    assertTrue("Three identical lines passed in as argument to constructor. Since these lines do not make a triangle, expected null with all getLine methods, but got at least one return value that was not null", allNull);
 	}
 	
 	@Test
@@ -302,7 +323,6 @@ public class TriangleTest
 	    Triangle triangle = new Triangle(l1,l2,l3);
 	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
 
-	    assertEquals("Three lines passed in to constructor do not make a Triangle, so all three lines should return null", allNull);
+	    assertTrue("Three lines passed in to constructor do not make a Triangle, so all three lines should return null", allNull);
 	}
-	
 }
