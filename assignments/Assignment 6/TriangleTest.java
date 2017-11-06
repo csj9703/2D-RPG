@@ -306,7 +306,7 @@ public class TriangleTest
 	    Triangle triangle = new Triangle(l1,l2,l3);
 	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
 
-	    assertTrue("Three identical lines passed in as argument to constructor. Since these lines do not make a triangle, expected null with all getLine methods, but got at least one return value that was not null", allNull);
+	    assertEquals("Three identical lines passed in as argument to constructor. Since these lines do not make a triangle, expected null with all getLine methods, but got at least one return value that was not null", allNull);
 	}
 	
 	@Test
@@ -318,7 +318,7 @@ public class TriangleTest
 	    Triangle triangle = new Triangle(l1,l2,l3);
 	    boolean allNull = triangle.getLine1() == null && triangle.getLine2() == null && triangle.getLine3() == null;
 
-	    assertTrue("Three lines passed in to constructor do not make a Triangle, so all three lines should return null", allNull);
+	    assertEquals("Three lines passed in to constructor do not make a Triangle, so all three lines should return null", allNull);
 	}
 	
 }
