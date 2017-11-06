@@ -41,22 +41,6 @@ public class TriangleTest
 		assertEquals("Circumferance should be 135988.39348", 135988.39348, triangle.getCircumference(), 0.00001);
 	}
 	
-	@Test
-	public void test_InstanceVariablePrivacy()
-	{
-	Triangle triangle = new Triangle( new Line(new Point(0,0), new Point(2,0)),
-						new Line(new Point(2,0), new Point(0,2)),
-						new Line(new Point(0,2), new Point(0,0)));
-	Triangle original = triangle;
-	triangle.Line1 = new Line(new Point(0,0), new Point(0,0));
-	triangle.Line2 = new Line(new Point(0,0), new Point(0,0));
-	triangle.Line3 = new Line(new Point(0,0), new Point(0,0));
-	assertEquals("Was able to directly change Line1",  Original.getLine1, triangle.getLine1);
-	assertEquals("Was able to directly change Line2",  Original.getLine2, triangle.getLine2);
-	assertEquals("Was able to directly change Line3",  Original.getLine3, triangle.getLine3);
-	
-	}
-	
 	//GetLine1
 	@Test
 	public void test_getLine1_triangle()
