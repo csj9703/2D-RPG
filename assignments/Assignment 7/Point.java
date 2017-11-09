@@ -1,3 +1,9 @@
+/*
+ * This class defines a point
+ * @author Team 6 - CPSC 233 - Tutorial T02
+ * @version 1.0
+ * @since November 8, 2017
+ */
 public class Point
 {
 	private int xcoord, ycoord;
@@ -93,5 +99,14 @@ public class Point
 	public boolean equals(Point point)
 	{
 	    return xcoord == point.getXCoord() && ycoord == point.getYCoord() ? true : false;
+	}
+	/*
+	 * This method returns a string which contains 
+	 * all the coordinates in the point 
+	 */
+	@Override
+	public String toString()
+	{
+		return "(" + xcoord + "," + ycoord + ")";
 	}
 }

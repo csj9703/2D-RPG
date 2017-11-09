@@ -1,3 +1,9 @@
+/*
+ * This class defines a line
+ * @author Team 6 - CPSC 233 - Tutorial T02
+ * @version 1.0
+ * @since November 8, 2017
+ */
 public class Line 
 {
 	private Point start;
@@ -48,5 +54,14 @@ public class Line
 	public double length()
 	{
 		return start.distance(end);
+	}
+	/*
+	 * This method returns a string which contains 
+	 * all the points in the line 
+	 */
+	@Override
+	public String toString()
+	{
+		return "[" + getStart().toString() + "," + getEnd().toString() + "]";
 	}
 }
