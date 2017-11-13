@@ -1,0 +1,5 @@
+Zombie 10 1 1
+Skeleton 15 2 1
+Skeleton King 15 3 2
+Black Knight 15 2 1
+Reaper 20 4 3

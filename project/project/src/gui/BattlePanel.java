@@ -109,27 +109,27 @@ public class BattlePanel
 	{
 		int xCoord = 0;
 		int yCoord = 0;
-		if(enemyName == "Zombie") 
+		if(enemyName.equals("Zombie")) 
 		{
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/zombie.gif").getImage().getScaledInstance(125, 125, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
-		else if(enemyName == "Skeleton") 
+		else if(enemyName.equals("Skeleton")) 
 		{
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/skeleton.gif").getImage().getScaledInstance(115, 125, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
-		else if(enemyName == "Skeleton King")
+		else if(enemyName.equals("Skeleton King"))
 		{
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/skeletonKing.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
-		else if(enemyName == "Black Knight") 
+		else if(enemyName.equals("Black Knight")) 
 		{
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/blackKnight.gif").getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
-		else if(enemyName == "Reaper") 
+		else if(enemyName.equals("Reaper")) 
 		{
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/reaper.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;

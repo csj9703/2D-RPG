@@ -137,7 +137,7 @@ public class Map
 		else if (maze[playerRow][playerCol] == "E")
 		{
 			foundEnemy(true);
-			enemy = new Spawner().spawnEnemy(identifyEnemy(playerRow, playerCol));
+			enemy = new Spawner("Enemies.txt").spawnEnemy(identifyEnemy(playerRow, playerCol));
 		}
 	}
 	/*

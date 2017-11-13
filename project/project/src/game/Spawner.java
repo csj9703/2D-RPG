@@ -1,11 +1,30 @@
 package game;
 
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 /*
  * This class spawns enemies
  */
 public class Spawner 
 {
 	private Enemy enemy;
+	private File file;
+	private Scanner scanner;
+	
+	
+	public Spawner(String EnemiesFile)
+	{
+		file = new File(EnemiesFile) ;
+		try
+		{
+		scanner = new Scanner(file);
+		}
+		catch (FileNotFoundException e)
+		{
+		System.out.println("Error: " + file + " not found");
+		}
+	}
 	/*
 	 * This method returns an enemy based on the enemyID
 	 * @param enemyID The ID number
@@ -35,22 +54,33 @@ public class Spawner
 	// these methods create different enemies
 	private Enemy spawnZombie()
 	{
-		return new Enemy("Zombie", 10, 1, 1);
+		return new Enemy(scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 	}
 	private Enemy spawnSkeleton()
 	{
-		return new Enemy("Skeleton", 15, 2, 1);
+		scanner.nextLine();
+		return new Enemy(scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 	}
 	private Enemy spawnSkeletonKing()
 	{
-		return new Enemy("Skeleton King", 15, 3, 2);
+		scanner.nextLine();
+		scanner.nextLine();
+		return new Enemy(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 	}
 	private Enemy spawnBlackKnight()
 	{
-		return new Enemy("Black Knight", 15, 2, 1);
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		return new Enemy(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
+
 	}
 	private Enemy spawnReaper()
 	{
-		return new Enemy("Reaper", 20, 4, 3);
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		return new Enemy(scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
+		}
 	}
-}
