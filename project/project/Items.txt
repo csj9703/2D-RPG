@@ -1,0 +1,6 @@
+Small Potion 3
+Medium Potion 5
+Large Potion 7
+Rusty Dagger 1
+Iron Longsword 2
+Excalibur 3

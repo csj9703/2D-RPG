@@ -131,7 +131,7 @@ public class Map
 		if (maze[playerRow][playerCol] == "?")
 		{
 			foundItem = true;
-			item = new ItemCreator().createItem(identifyItem(playerRow, playerCol));
+			item = new Spawner("Items.txt").createItem(identifyItem(playerRow, playerCol));
 
 		}
 		else if (maze[playerRow][playerCol] == "E")

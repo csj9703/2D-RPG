@@ -4,18 +4,20 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 /*
- * This class spawns enemies
+ * This class handles the creation of enemies, potion's and weapons
  */
-public class Spawner 
+public class Spawner
 {
 	private Enemy enemy;
 	private File file;
 	private Scanner scanner;
+	private Potion potion;
+	private Weapon weapon;
 	
 	
-	public Spawner(String EnemiesFile)
+	public Spawner(String aFile)
 	{
-		file = new File(EnemiesFile) ;
+		file = new File(aFile) ;
 		try
 		{
 		scanner = new Scanner(file);
@@ -51,6 +53,42 @@ public class Spawner
 		}
 		return enemy;
 	}
+	public Potion createItem(int itemID)
+	{
+		{
+			switch (itemID)
+			{
+			case 1:
+				potion = createSmallPotion();
+				break;
+			case 2:
+				potion = createMediumPotion();
+				break;
+			case 3:
+				potion = createLargePotion();
+				break;
+			}
+			return potion;
+		}
+	}
+	public Weapon createWeapon(int itemID)
+	{
+		{
+			switch (itemID)
+			{
+			case 4:
+				weapon = createWeapon1();
+				break;
+			case 5:
+				weapon = createWeapon2();
+				break;
+			case 6:
+				weapon = createWeapon3();
+				break;
+			}
+			return weapon;
+		}
+	}
 	// these methods create different enemies
 	private Enemy spawnZombie()
 	{
@@ -83,4 +121,46 @@ public class Spawner
 		scanner.nextLine();
 		return new Enemy(scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 		}
+	// these methods create different potions
+	private Potion createSmallPotion()
+	{
+		return new Potion(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
 	}
+	private Potion createMediumPotion()
+	{
+		scanner.nextLine();
+		return new Potion(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
+	}
+	private Potion createLargePotion()
+	{
+		scanner.nextLine();
+		scanner.nextLine();
+		return new Potion(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
+	}
+	// these methods create different weapons
+	private Weapon createWeapon1()
+	{
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		return new Weapon(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
+	}
+	private Weapon createWeapon2()
+	{
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		return new Weapon(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
+	}
+	private Weapon createWeapon3()
+	{
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		scanner.nextLine();
+		return new Weapon(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
+	}
+}
+	
