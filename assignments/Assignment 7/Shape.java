@@ -25,8 +25,11 @@ public abstract class Shape
 		}
 		else
 		{
-			lines.add((((line.getStart().getXCoord() == lines.get(lines.size() - 1).getEnd().getXCoord()) &&
-			(line.getStart().getYCoord() == lines.get(lines.size() - 1).getEnd().getYCoord()))) ? line : null);
+			if ((line.getStart().getXCoord() == lines.get(lines.size() - 1).getEnd().getXCoord()) &&					
+				(line.getStart().getYCoord() == lines.get(lines.size() - 1).getEnd().getYCoord()));
+			{
+				lines.add(line);
+			}
 		}
 	}
 	/*
