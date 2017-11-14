@@ -4,7 +4,8 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 /*
- * This class handles the creation of enemies, potion's and weapons
+ * This class creates the enemy, potion, 
+ * and weapon game objects  
  */
 public class Spawner
 {
@@ -13,18 +14,20 @@ public class Spawner
 	private Scanner scanner;
 	private Potion potion;
 	private Weapon weapon;
-	
-	
+	/*
+	 * This method reads from a text file
+	 * @param aFile The name of the text file
+	 */
 	public Spawner(String aFile)
 	{
 		file = new File(aFile) ;
 		try
 		{
-		scanner = new Scanner(file);
+			scanner = new Scanner(file);
 		}
 		catch (FileNotFoundException e)
 		{
-		System.out.println("Error: " + file + " not found");
+			System.out.println("Error: " + file + " not found");
 		}
 	}
 	/*
@@ -35,29 +38,32 @@ public class Spawner
 	{
 		switch (enemyID)
 		{
-		case 1:
-			enemy = spawnZombie();
-			break;
-		case 2:
-			enemy = spawnSkeleton();
-			break;
-		case 3:
-			enemy = spawnSkeletonKing();
-			break;
-		case 4:
-			enemy = spawnBlackKnight();
-			break;
-		case 5:
-			enemy = spawnReaper();
-			break;
+			case 1:
+				enemy = spawnZombie();
+				break;
+			case 2:
+				enemy = spawnSkeleton();
+				break;
+			case 3:
+				enemy = spawnSkeletonKing();
+				break;
+			case 4:
+				enemy = spawnBlackKnight();
+				break;
+			case 5:
+				enemy = spawnReaper();
+				break;
 		}
 		return enemy;
 	}
+	/*
+	 * This method returns an potion based on the itemID
+	 * @param itemID The ID number
+	 */
 	public Potion createItem(int itemID)
 	{
+		switch (itemID)
 		{
-			switch (itemID)
-			{
 			case 1:
 				potion = createSmallPotion();
 				break;
@@ -67,15 +73,17 @@ public class Spawner
 			case 3:
 				potion = createLargePotion();
 				break;
-			}
-			return potion;
 		}
+		return potion;
 	}
+	/*
+	 * This method returns an weapon based on the itemID
+	 * @param itemID The ID number
+	 */
 	public Weapon createWeapon(int itemID)
 	{
+		switch (itemID)
 		{
-			switch (itemID)
-			{
 			case 4:
 				weapon = createWeapon1();
 				break;
@@ -85,9 +93,8 @@ public class Spawner
 			case 6:
 				weapon = createWeapon3();
 				break;
-			}
-			return weapon;
 		}
+		return weapon;
 	}
 	// these methods create different enemies
 	private Enemy spawnZombie()
@@ -163,4 +170,3 @@ public class Spawner
 		return new Weapon(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
 	}
 }
-	
