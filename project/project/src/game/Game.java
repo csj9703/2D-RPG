@@ -53,109 +53,72 @@ public class Game implements KeyListener
 	private boolean textBoxDisplayed = false;
 	private boolean justDefeatedEnemy = false;
 	/*
-	 * This method manages the player input
-	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 * This method displays the game
 	 */
-    public void keyReleased(KeyEvent e) 
-    {
-    	// Movement buttons
-        if(e.getKeyCode()== KeyEvent.VK_RIGHT)
-        {
-        	if (inGameScene)
-        		game.move("d");
-        }
-        else if(e.getKeyCode()== KeyEvent.VK_LEFT) 
-        {
-        	if (inGameScene)
-        		game.move("a");
-        }
-        else if(e.getKeyCode()== KeyEvent.VK_DOWN) 
-        {
-        	if (inGameScene)
-        		game.move("s");
-        }
-        else if(e.getKeyCode()== KeyEvent.VK_UP) 
-        {
-        	if (inGameScene)
-        		game.move("w");
-        }
-        // Inventory button
-        else if(e.getKeyCode()== KeyEvent.VK_I) 
-        {
-        	if ((inGameScene) && (!(inStartScene)))
-        	{
-        		gameInterface.setVisible(false);
-        		inGameScene = false;
-        		inventoryInterface.setVisible(true);
-        		inventoryOpen = true;
-        	}
-        	else
-        	{
-        		gameInterface.setVisible(true);
-        		inGameScene = true;
-        		inventoryInterface.setVisible(false);
-        		inventoryOpen = false;
-        	}
-        }
-        // Use item button
-        else if(e.getKeyCode()== KeyEvent.VK_1) 
-        {
-        	if (inventoryOpen)
-        		player.useItem(1);
-        }
-        // Use item button
-        else if(e.getKeyCode()== KeyEvent.VK_2) 
-        {
-        	if (inventoryOpen)
-        		player.useItem(2);
-        }
-        // Use item button
-        else if(e.getKeyCode()== KeyEvent.VK_3) 
-        {
-        	if (inventoryOpen)
-        		player.useItem(3);
-        }
-        // Start button
-        else if(e.getKeyCode()== KeyEvent.VK_ENTER) 
-        {
-        	if (inStartScene)
-        	{
-        		startingScene.setVisible(false);
-            	inStartScene = false;
-            	gameInterface.setVisible(true);
-            	inGameScene = true;
-            	textBox.setVisible(true);
-            	textBoxDisplayed = true;
-        	}
-        }
-        // Attack button
-        else if(e.getKeyCode()== KeyEvent.VK_A) 
-        {
-        	if (inBattleScene)
-        	{
-        		player.attack(player, game.getEnemy());
-        		// after player attacks:
-        		if (game.getEnemy().isAlive())
-        		{
-        			battlePanel.showBattleResults();
-        			game.getEnemy().attack(player, game.getEnemy());
-        		}
-        		else
-        		{
-        			battleInterface.setVisible(false);
-        			inBattleScene = false;
-        			gameInterface.setVisible(true);
-        			inGameScene = true;
-        			game.foundEnemy(false);
-        			battlePanel.hideBattleResults();
-        			textPanel.displayBattleResults(game.getEnemy());
-        			justDefeatedEnemy = true;
-        			player.obtainExp(game.getEnemy());
-        			player.checkExp();
-        		}
-        	}
-        }
-        // switches panel when an enemy is found
+	private void startGame()
+	{
+		if (inStartScene)
+    	{
+    		startingScene.setVisible(false);
+        	inStartScene = false;
+        	gameInterface.setVisible(true);
+        	inGameScene = true;
+        	textBox.setVisible(true);
+        	textBoxDisplayed = true;
+    	}
+	}
+	/*
+	 * This method opens and closes the inventory menu
+	 */
+	private void accessInventory()
+	{
+		if ((inGameScene) && (!(inStartScene)))
+    	{
+    		gameInterface.setVisible(false);
+    		inGameScene = false;
+    		inventoryInterface.setVisible(true);
+    		inventoryOpen = true;
+    	}
+    	else
+    	{
+    		gameInterface.setVisible(true);
+    		inGameScene = true;
+    		inventoryInterface.setVisible(false);
+    		inventoryOpen = false;
+    	}
+	}
+	/*
+	 * This method initiates a turn of combat
+	 */
+	private void attack()
+	{
+		if (inBattleScene)
+    	{
+    		player.attack(player, game.getEnemy());
+    		// after player attacks:
+    		if (game.getEnemy().isAlive())
+    		{
+    			battlePanel.showBattleResults();
+    			game.getEnemy().attack(player, game.getEnemy());
+    		}
+    		else
+    		{
+    			battleInterface.setVisible(false);
+    			inBattleScene = false;
+    			gameInterface.setVisible(true);
+    			inGameScene = true;
+    			game.foundEnemy(false);
+    			battlePanel.hideBattleResults();
+    			textPanel.displayBattleResults(game.getEnemy());
+    			justDefeatedEnemy = true;
+    			player.obtainExp(game.getEnemy());
+    			player.checkExp();
+    		}
+    	}
+	}
+	private void updateGUI()
+	{
+		 // switches panel when an enemy is found
         if (game.foundEnemy())
         {
         	battleInterface.setVisible(true);
@@ -200,9 +163,79 @@ public class Game implements KeyListener
         inventoryPanel.update(player);
         gamePanel.update(game);
         game.checkStageCompletion();        
+	}
+	/*
+	 * This method manages the player input
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
+    public void keyReleased(KeyEvent e) 
+    {
+    	// Movement buttons
+        if(e.getKeyCode()== KeyEvent.VK_RIGHT)
+        {
+        	if (inGameScene)
+        		game.move("d");
+        }
+        else if(e.getKeyCode()== KeyEvent.VK_LEFT) 
+        {
+        	if (inGameScene)
+        		game.move("a");
+        }
+        else if(e.getKeyCode()== KeyEvent.VK_DOWN) 
+        {
+        	if (inGameScene)
+        		game.move("s");
+        }
+        else if(e.getKeyCode()== KeyEvent.VK_UP) 
+        {
+        	if (inGameScene)
+        		game.move("w");
+        }
+        // Inventory button
+        else if(e.getKeyCode()== KeyEvent.VK_I) 
+        {
+        	accessInventory();
+        }
+        // Use item button
+        else if(e.getKeyCode()== KeyEvent.VK_1) 
+        {
+        	if (inventoryOpen)
+        		player.useItem(1);
+        }
+        // Use item button
+        else if(e.getKeyCode()== KeyEvent.VK_2) 
+        {
+        	if (inventoryOpen)
+        		player.useItem(2);
+        }
+        // Use item button
+        else if(e.getKeyCode()== KeyEvent.VK_3) 
+        {
+        	if (inventoryOpen)
+        		player.useItem(3);
+        }
+        // Start button
+        else if(e.getKeyCode()== KeyEvent.VK_ENTER) 
+        {
+        	startGame();
+        }
+        // Attack button
+        else if(e.getKeyCode()== KeyEvent.VK_A) 
+        {
+        	attack();
+        }
+        // Updates the GUI after each input command
+        updateGUI();
     }
-    // DO NOT USE THESE METHODS
+    /*
+     * This method is not used but is required by the key listener 
+     * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+     */
     public void keyPressed(KeyEvent e) {}
+    /*
+     * This method is not used but is required by the key listener 
+     * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+     */
     public void keyTyped(KeyEvent e) {}
     /*
      * This method starts the game 
