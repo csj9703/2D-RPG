@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
  */
 public class Spawner
 {
+	private Player player;
 	private Enemy enemy;
 	private File file;
 	private Scanner scanner;
@@ -95,6 +96,14 @@ public class Spawner
 				break;
 		}
 		return weapon;
+	}
+	/**
+	 * This method spawns the player.
+	 * @return Player
+	 */
+	public Player spawnPlayer() 
+	{
+		return new Player(scanner.next(),Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 	}
 	// these methods create different enemies
 	private Enemy spawnZombie()
