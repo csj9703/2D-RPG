@@ -111,8 +111,8 @@ public class BattlePanel
 		int yCoord = 0;
 		if(enemyName.equals("Zombie")) 
 		{
-			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/zombie.gif").getImage().getScaledInstance(125, 125, Image.SCALE_DEFAULT));
-			xCoord = 350; yCoord = 175;
+			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/zombie.gif").getImage().getScaledInstance(90, 125, Image.SCALE_DEFAULT));
+			xCoord = 425; yCoord = 190;
 		}
 		else if(enemyName.equals("Skeleton")) 
 		{
