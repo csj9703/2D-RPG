@@ -18,6 +18,7 @@ public class Player extends Character
 	private boolean hasSword = false;
 	private boolean hasExcalibur = false;
 	private int damage;
+	private AudioPlayer audioPlayer = new AudioPlayer();
 	/**
 	 * This constructor accepts as arguments the name, health, and attack
 	 * It also sets the starting values of max hit points, level and experience
@@ -121,22 +122,25 @@ public class Player extends Character
 			{
 				restoreHp(3);
 				numSmallPotions -= 1;
+				audioPlayer.playDrinkPotionSFX();
 			}
-				break;
+			break;
 		case 2:
 			if (getNumMediumPotions() > 0)
 			{
 				restoreHp(5);
 				numMediumPotions -= 1;
+				audioPlayer.playDrinkPotionSFX();
 			}
-				break;
+			break;
 		case 3:
 			if (getNumLargePotions() > 0)
 			{
 				restoreHp(7);
 				numLargePotions -= 1;
+				audioPlayer.playDrinkPotionSFX();
 			}
-				break;
+			break;
 		}
 	}
 	/**

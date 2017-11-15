@@ -18,6 +18,7 @@ public class Game implements KeyListener
 {	
 	private Player player = new Spawner("player.txt").spawnPlayer();
 	private Map game = new Map();
+	private AudioPlayer audioPlayer = game.getAudioPlayer();
 
 	private GamePanel gamePanel = new GamePanel();
 	private JPanel gameInterface = gamePanel.createPanel(game);
@@ -59,6 +60,7 @@ public class Game implements KeyListener
 	{
 		if (inStartScene)
     	{
+			audioPlayer.startGameMusic();
     		startingScene.setVisible(false);
         	inStartScene = false;
         	gameInterface.setVisible(true);
@@ -74,6 +76,7 @@ public class Game implements KeyListener
 	{
 		if ((inGameScene) && (!(inStartScene)))
     	{
+			audioPlayer.playInventorySFX();
     		gameInterface.setVisible(false);
     		inGameScene = false;
     		inventoryInterface.setVisible(true);
@@ -94,6 +97,7 @@ public class Game implements KeyListener
 	{
 		if (inBattleScene)
     	{
+			audioPlayer.playAttackSFX();
     		player.attack(player, game.getEnemy());
     		// after player attacks:
     		if (game.getEnemy().isAlive())
@@ -113,6 +117,8 @@ public class Game implements KeyListener
     			justDefeatedEnemy = true;
     			player.obtainExp(game.getEnemy());
     			player.checkExp();
+    			audioPlayer.stopBattleMusic();
+    			audioPlayer.startGameMusic();
     		}
     	}
 	}
@@ -129,6 +135,7 @@ public class Game implements KeyListener
         // displays a message when you find an item
         if ((game.foundItem()) && (!(justDefeatedEnemy)))
         {
+        	audioPlayer.playPotionSFX();
         	textPanel.update(game.getitemID());
         	player.pickUp(game.getitemID());
         	game.foundItem(false);

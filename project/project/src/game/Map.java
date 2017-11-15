@@ -11,6 +11,7 @@ public class Map
     private String maze[][];
     private Enemy enemy = new Enemy("Default",1,1,1);
     private Potion item = new Potion("Default", 1);
+    private AudioPlayer audioPlayer = new AudioPlayer();
     private String selectedStage = "stage1.txt";
     private boolean foundEnemy = false;
     private boolean foundItem = false;
@@ -194,6 +195,7 @@ public class Map
 		if (moveValid(playerRow, playerCol))
 		{
 			maze[playerRow][playerCol] = "X";
+			audioPlayer.playMovementSFX();
 		}
 		else // player does not move, returns to origin
 		{
@@ -242,6 +244,8 @@ public class Map
 		}
 		else if (maze[playerRow][playerCol] == "E")
 		{
+			audioPlayer.stopGameMusic();
+			audioPlayer.startBattleMusic();
 			foundEnemy(true);
 			enemy = new Spawner("Enemies.txt").spawnEnemy(identifyEnemy(playerRow, playerCol));
 		}
@@ -435,9 +439,8 @@ public class Map
 		return item;
 	}
 	
-	
-	public void displayInventory()
+	public AudioPlayer getAudioPlayer()
 	{
-		
+		return audioPlayer;
 	}
 }
