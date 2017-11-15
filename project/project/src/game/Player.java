@@ -44,7 +44,9 @@ public class Player extends Character
 	 */
 	public void setLevel(int level)
 	{
-		this.level = level;
+		if(level > 0) {
+			this.level = level;
+		}
 	}
 	/**
 	 * This method checks whether the player has gain sufficient 
