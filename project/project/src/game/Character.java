@@ -51,7 +51,7 @@ public abstract class Character extends GameObject
 	 */
 	public void setAttack(int attack) 
 	{
-		if(health > 0) {
+		if(attack > 0) {
 			this.attack = attack;
 		}
 	}
