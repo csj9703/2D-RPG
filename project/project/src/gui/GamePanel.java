@@ -62,55 +62,50 @@ public class GamePanel
 		{
 		     for (int j = 0; j < COL; j++)
 		     {
-		    	 if (maze[i][j] == "#") 
+		    	 if (maze[i][j] == "w") 
 		    	 {
 		    		 labels[i][j].setIcon(wall); 
 		    	 }
-		    	 else if(maze[i][j] == "d") 
+		    	 else if(maze[i][j] == "v") 
 		    	 {
 		    		 labels[i][j].setIcon(wallDark);
 		    	 }
-		    	 else if (maze[i][j] == " ") 
+		    	 else if (maze[i][j] == "r") 
 		    	 {
 		    		 labels[i][j].setIcon(road);
 		    	 }
-		    	 else if (maze[i][j] == "X") 
+		    	 else if (maze[i][j] == "x") 
 		    	 {
 		    		 labels[i][j].setIcon(player);
-		    	 }
-		    	 else if (maze[i][j] == "E")
-		    	 {
-		    		 if (game.currentStage() == 1)
-		    		 {
-		    			 labels[i][j].setIcon(zombie);
-		    		 }
-		    		 else if (game.currentStage() == 2)
-		    		 {
-		    			 if (i == 18 && j == 1)
-		    			 {
-		    				 labels[i][j].setIcon(skeletonKing);
-		    			 }
-		    			 else
-		    			 {
-		    				 labels[i][j].setIcon(skeletonMinion);
-		    			 }		 
-		    		 }
-		    		 else if (game.currentStage() == 3)
-		    		 {
-		    			 if (i == 1 && j == 18)
-		    			 {
-		    				 labels[i][j].setIcon(reaper);
-		    			 }
-		    			 else
-		    			 {
-		    				 labels[i][j].setIcon(blackKnight);
-		    			 }		 
-		    		 }
 		    	 }
 		    	 else if (maze[i][j] == "?") 
 		    	 {
 		    		 labels[i][j].setIcon(item);
 		    	 }
+		    	 else if ((maze[i][j]).matches("[1-6]")) 
+		    	 {
+		    		 labels[i][j].setIcon(item);
+		    	 }	 
+		    	 else if ((maze[i][j]) == "a") 
+		    	 {
+		    		 labels[i][j].setIcon(zombie);
+		    	 }	 
+		    	 else if ((maze[i][j]) == "b") 
+		    	 {
+		    		 labels[i][j].setIcon(skeletonMinion);
+		    	 }	 
+		    	 else if ((maze[i][j]) == "c") 
+		    	 {
+		    		 labels[i][j].setIcon(skeletonKing);
+		    	 }	 
+		    	 else if ((maze[i][j]) == "d") 
+		    	 {
+		    		 labels[i][j].setIcon(blackKnight);
+		    	 }	 
+		    	 else if ((maze[i][j]) == "e") 
+		    	 {
+		    		 labels[i][j].setIcon(reaper);
+		    	 }	 
 		     } 
 		}
 	}

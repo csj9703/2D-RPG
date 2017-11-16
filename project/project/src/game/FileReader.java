@@ -34,42 +34,59 @@ public class FileReader
 				maze[r][c] = scanner.next();
 			}
 		}
-		return maze;
-	}
-	/*
-	 * This method translates the letters from the array into map symbols
-	 * @param maze The 2d array 
-	 * @return maze The 2d array
-	 */
-	public String[][] translateData(String[][] maze)
-	{
-		final int ROWS = maze.length;
-		final int COLS = maze[0].length;
+		// something wrong here, need to fix, not sure why the second loop is needed
 		for(int r = 0; r < ROWS; r++) 
 		{
-			for(int c= 0; c < COLS; c++) 
+			for(int c = 0; c < COLS; c++) 
 			{
 				String letter = maze[r][c];
-				
+
 				switch(letter)
 				{
 				case "w":
-					maze[r][c] = "#";
+					maze[r][c] = "w";
+					break;
+				case "v":
+					maze[r][c] = "v";
+					break;
+				case "r":
+					maze[r][c] = "r";
+					break;
+				case "x":
+					maze[r][c] = "x";
+					break;
+				case "1":
+					maze[r][c] = "1";
+					break;
+				case "2":
+					maze[r][c] = "2";
+					break;
+				case "3":
+					maze[r][c] = "3";
+					break;
+				case "4":
+					maze[r][c] = "4";
+					break;
+				case "5":
+					maze[r][c] = "5";
+					break;
+				case "6":
+					maze[r][c] = "6";
+					break;
+				case "a":
+					maze[r][c] = "a";
+					break;
+				case "b":
+					maze[r][c] = "b";
+					break;
+				case "c":
+					maze[r][c] = "c";
 					break;
 				case "d":
 					maze[r][c] = "d";
 					break;
-				case "r":
-					maze[r][c] = " ";
-					break;
-				case "x":
-					maze[r][c] = "X";
-					break;
-				case "i":
-					maze[r][c] = "?";
-					break;
 				case "e":
-					maze[r][c] = "E";
+					maze[r][c] = "e";
 					break;
 				}
 			}

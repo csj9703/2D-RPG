@@ -24,7 +24,7 @@ public class Map
 	{	
 		audioPlayer.startGameMusic();
 		FileReader fileReader = new FileReader();
-		maze = fileReader.translateData(fileReader.readFile("stage1.txt"));
+		maze = fileReader.readFile("stage1.txt");
 	}
 	/*
 	 * This method prints the player input controls
@@ -143,7 +143,7 @@ public class Map
 		{
 		     for (int col = 0; col<maze[row].length; col++)
 		     {
-		    	 if (maze[row][col] == "X")
+		    	 if (maze[row][col] == "x")
 		    	 {
 		    		 playerRow = row;
 		    	 }
@@ -161,7 +161,7 @@ public class Map
 		{
 		     for (int col = 0; col<maze[row].length; col++)
 		     {
-		    	 if (maze[row][col] == "X")
+		    	 if (maze[row][col] == "x")
 		    	 {
 		    		 playerCol = col;
 		    	 }
@@ -177,7 +177,7 @@ public class Map
 		int playerRow = getRow();
 		int playerCol = getCol();
 		// remove player from current position
-		maze[playerRow][playerCol] = " ";
+		maze[playerRow][playerCol] = "r";
 		switch (choice)
 		{
 		case "s":
@@ -198,7 +198,7 @@ public class Map
 		// sets player to new position if move is valid
 		if (moveValid(playerRow, playerCol))
 		{
-			maze[playerRow][playerCol] = "X";
+			maze[playerRow][playerCol] = "x";
 			audioPlayer.playMovementSFX();
 		}
 		else // player does not move, returns to origin
@@ -218,7 +218,7 @@ public class Map
 				playerRow += 1;
 				break;
 			}
-			maze[playerRow][playerCol] = "X";	
+			maze[playerRow][playerCol] = "x";	
 		}
 	}
 	/*
@@ -228,8 +228,8 @@ public class Map
 	 */
 	private boolean moveValid(int playerRow, int playerCol)
 	{
-		return (!(maze[playerRow][playerCol] == "#")
-			  &&!(maze[playerRow][playerCol] == "d")) ? true : false;
+		return (!(maze[playerRow][playerCol] == "w")
+			  &&!(maze[playerRow][playerCol] == "v")) ? true : false;
 	}
 	/*
 	 * This method starts a battle when player encounters a challenge, 
@@ -240,19 +240,20 @@ public class Map
 	 */
 	private void checkEvent(String maze[][],int playerRow, int playerCol)
 	{
-		if (maze[playerRow][playerCol] == "?")
+		if ((maze[playerRow][playerCol]).matches("[1-6]"))
 		{
 			audioPlayer.playPotionSFX();
 			foundItem = true;
-			item = new Spawner("Items.txt").createItem(identifyItem(playerRow, playerCol));
-
+			item = new Spawner("Items.txt").createItem(Integer.parseInt(maze[playerRow][playerCol]));
+			itemID = Integer.parseInt(maze[playerRow][playerCol]);
 		}
-		else if (maze[playerRow][playerCol] == "E")
+		else if ((maze[playerRow][playerCol]).matches("[a-e]"))
 		{
 			audioPlayer.stopGameMusic();
 			audioPlayer.startBattleMusic();
 			foundEnemy(true);
-			enemy = new Spawner("Enemies.txt").spawnEnemy(identifyEnemy(playerRow, playerCol));
+			enemy = new Spawner("Enemies.txt").spawnEnemy(convertLetterToID(maze[playerRow][playerCol]));
+			enemyID = convertLetterToID(maze[playerRow][playerCol]);
 		}
 	}
 	/*
@@ -261,7 +262,7 @@ public class Map
 	 */
 	public boolean gameWon() 
 	{
-		return (maze[0][18] == "X") && selectedStage == "stage3.txt" ? true : false;
+		return (maze[0][18] == "x") && selectedStage == "stage3.txt" ? true : false;
 	}
 	/*
 	 * This method checks to see if a stage has been complete
@@ -270,14 +271,14 @@ public class Map
 	public void checkStageCompletion()
 	{
 		FileReader fileReader = new FileReader();
-		if (selectedStage == "stage1.txt" && maze[9][19] == "X")
+		if (selectedStage == "stage1.txt" && maze[9][19] == "x")
 		{
-			maze = fileReader.translateData(fileReader.readFile("stage2.txt"));
+			maze = fileReader.readFile("stage2.txt");
 			selectedStage = "stage2.txt";
 		}
-		else if (selectedStage == "stage2.txt" && (maze[19][1] == "X"))
+		else if (selectedStage == "stage2.txt" && (maze[19][1] == "x"))
 		{
-			maze = fileReader.translateData(fileReader.readFile("stage3.txt"));
+			maze = fileReader.readFile("stage3.txt");
 			selectedStage = "stage3.txt";
 		}
 	}
@@ -308,82 +309,28 @@ public class Map
 		}
 		return stage;
 	}
-	/*
-	 * This method determines which enemy is encountered, returns the enemy ID 
-	 * @param playerRow The player's row index on the array
-	 * @param playerCol The player's column index on the array
-	 */
-	public int identifyEnemy(int playerRow, int playerCol)
+	private int convertLetterToID(String letterID)
 	{
-		if (currentStage() == 1)
+		int id = 0;
+		switch (letterID)
 		{
-			enemyID = 1;
+		case "a":
+			id = 1;
+			break;
+		case "b":
+			id = 2;
+			break;
+		case "c":
+			id = 3;
+			break;
+		case "d":
+			id = 4;
+			break;
+		case "e":
+			id = 5;
+			break;
 		}
-		else if (currentStage() == 2)
-		{
-			if (playerRow == 18 && playerCol == 1)
-			{
-				enemyID = 3;
-			}
-			else
-			{
-				enemyID = 2;
-			}
-		}
-		else if (currentStage() == 3)
-		{
-			if (playerRow == 1 && playerCol == 18)
-			{
-				enemyID = 5;
-			}
-			else
-			{
-				enemyID = 4;
-			}
-		}
-		return enemyID;
-	}
-	/*
-	 * This method determines which enemy is encountered, returns the enemy ID 
-	 * @param playerRow The player's row index on the array
-	 * @param playerCol The player's column index on the array
-	 */
-	public int identifyItem(int playerRow, int playerCol)
-	{
-		if (currentStage() == 1)
-		{
-			if (playerRow == 11 && playerCol == 6)
-			{
-				itemID = 4;
-			}
-			else
-			{
-				itemID = 1;
-			}			
-		}
-		else if (currentStage() == 2)
-		{
-			if (playerRow == 16 && playerCol == 18)
-			{
-				itemID = 5;
-			}
-			else
-			{
-				itemID = 2;
-			}			
-		}
-		else if (currentStage() == 3)
-		{
-			if (playerRow == 2 && playerCol == 6)
-			{
-				itemID = 6;
-			}
-			else
-			{
-				itemID = 3;
-			}			
-		}
-		return itemID;
+		return id;
 	}
 	/*
 	 * This is the getter method for the foundEnemy variable, returns foundEnemy

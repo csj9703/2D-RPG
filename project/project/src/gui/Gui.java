@@ -18,7 +18,7 @@ public class Gui extends JFrame
     	JFrame window = new JFrame();
         window.setTitle("MAZE RPG");
         window.addKeyListener(listener);
-        window.setResizable(false);
+        window.setResizable(true);
         window.setSize(665, 750);
         window.setLayout(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
