@@ -175,7 +175,7 @@ public class AudioPlayer
 		victory.close();
 	}
 	/**
-	 * This method plays the victory music
+	 * This method plays the menu music
 	 */
 	public void startMenuMusic()
 	{
@@ -192,7 +192,7 @@ public class AudioPlayer
 		menu.start();
 	}
 	/**
-	 * This method stops the victory music
+	 * This method stops the menu music
 	 */
 	public void stopMenuMusic()
 	{
