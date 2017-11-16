@@ -18,6 +18,47 @@ public class PlayerTest {
 		 assertEquals("Player CurrentExp should be 0", 0, playerDefault.getCurrentExp());
 		 assertEquals("Player expToLvl should be 1", 1, playerDefault.getExpToLvl());
 	 }
+	 //Player is alive Test
+	 @Test
+	 public void isAliveTest_Alive() {
+		 boolean alive = true;
+		 Player p1 = new Player("Default", 1, 1);
+		 assertEquals("Player should be alive, thus returning True", alive, p1.isAlive());
+	 }
+	 
+	 @Test
+	 public void isAliveTest_Dead() {
+		 boolean alive = false;
+		 Player p1 = new Player("Default", 1, 1);
+		 p1.setHealth(0);
+		 assertEquals("Player should be dead, thus returning False", alive, p1.isAlive());
+	 }
+	 //Set Health Tests
+	 @Test
+	 public void setHealthTest_Positive() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setHealth(20);
+		 assertEquals("Player health should be 20",20,p1.getHealth());
+	 }
+	 
+	 public void setHealthTest_Negative() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setHealth(-1);
+		 assertEquals("Player health should be 10",10,p1.getHealth());
+	 }
+	 //Set Attack Tests
+	 @Test
+	 public void setAttackTest_Positive() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setAttack(2);
+		 assertEquals("Player attack should be 2",2,p1.getAttack());
+	 }
+	 
+	 public void setAttackTest_Negative() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setAttack(-1);
+		 assertEquals("Player attack should be 1",1,p1.getAttack());
+	 }
 	 //Set Level Tests
 	 @Test
 	 public void setLevelTest_PositiveLevel() {
@@ -31,6 +72,33 @@ public class PlayerTest {
 		 Player p1 = new Player("Default", 10, 1);
 		 p1.setLevel(-1);
 		 assertEquals("Player level should be 1",1,p1.getCurrentLevel());
+	 }
+	 //Set Exp to Lvl Tests
+	 @Test
+	 public void setExpToLvlTest_Positive() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setExpToLvl(2);
+		 assertEquals("Player exp to lvl should be 2",2,p1.getExpToLvl());
+	 }
+	 
+	 @Test public void setExpToLvlTest_Negative() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setExpToLvl(-1);
+		 assertEquals("Player exp to lvl should be 1",1,p1.getExpToLvl());
+	 }
+	 //Set Current Exp Tests
+	 @Test
+	 public void setCurrentExpTest_Positive() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setCurrentExp(2);
+		 assertEquals("Player current exp should be 2",2,p1.getCurrentExp());
+	 }
+	 
+	 @Test
+	 public void setCurrentExpTest_Negative() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setCurrentExp(-1);
+		 assertEquals("Player current exp should be 0",0,p1.getCurrentExp());
 	 }
 	//Level Up Tests
 	 @Test
@@ -110,5 +178,110 @@ public class PlayerTest {
 		 assertEquals("Player weapon damage should be 3",3,p1.getWeaponDamage());
 		 assertEquals("Player current weapon should be 'Excalibur'","Excalibur",p1.getCurrentWeapon());
 	 }
-	
+	//Use Potion Tests
+	 @Test
+	 public void useItemTest_SmallPotion() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.pickUp(1);
+		 p1.useItem(1);
+		 assertEquals("Player health should be 13", 13, p1.getHealth());
+	 }
+	 
+	 @Test
+	 public void useItemTest_MediumPotion() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.pickUp(2);
+		 p1.useItem(2);
+		 assertEquals("Player health should be 15", 15, p1.getHealth());
+	 }
+	 
+	 @Test
+	 public void useItemTest_LargePotion() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.pickUp(3);
+		 p1.useItem(3);
+		 assertEquals("Player health should be 17", 17, p1.getHealth());
+	 }
+	 //Potion over max health limit tests
+	 @Test
+	 public void useItemTest_SmallPotion_OverMaxHealth() {
+		 Player p1 = new Player("Default", 19, 1);
+		 p1.pickUp(1);
+		 p1.useItem(1);
+		 assertEquals("Player health should be 20", 20, p1.getHealth());
+	 }
+	 
+	 @Test
+	 public void useItemTest_MediumPotion_OverMaxHealth() {
+		 Player p1 = new Player("Default", 19, 1);
+		 p1.pickUp(2);
+		 p1.useItem(2);
+		 assertEquals("Player health should be 20", 20, p1.getHealth());
+	 }
+	 
+	 @Test
+	 public void useItemTest_LargePotion_OverMaxHealth() {
+		 Player p1 = new Player("Default", 19, 1);
+		 p1.pickUp(3);
+		 p1.useItem(3);
+		 assertEquals("Player health should be 20", 20, p1.getHealth());
+	 }
+	 //Using potion with invalid amount Tests
+	 @Test
+	 public void useItemTest_SmallPotion_NoPotion() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.useItem(1);
+		 assertEquals("Player health should be 10", 10, p1.getHealth());
+	 }
+	 
+	 @Test
+	 public void useItemTest_MediumPotion_NoPotion() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.useItem(2);
+		 assertEquals("Player health should be 10", 10, p1.getHealth());
+	 }
+	 
+	 @Test
+	 public void useItemTest_LargePotion_NoPotion() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.useItem(3);
+		 assertEquals("Player health should be 10", 10, p1.getHealth());
+	 }
+	 //Item amount after used Test
+	 @Test
+	 public void useItemTest_SmallPotion_ItemUsed() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.pickUp(1);
+		 p1.useItem(1);
+		 assertEquals("numSmallPotions should be 0", 0, p1.getNumSmallPotions());
+	 }
+	 @Test
+	 public void useItemTest_MediumPotion_ItemUsed() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.pickUp(2);
+		 p1.useItem(2);
+		 assertEquals("numMediumPotions should be 0", 0, p1.getNumMediumPotions());
+	 }
+	 
+	 @Test
+	 public void useItemTest_LargePotion_ItemUsed() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.pickUp(3);
+		 p1.useItem(3);
+		 assertEquals("numLargePotions should be 0", 0, p1.getNumLargePotions());
+	 }
+	 //Attack Tests
+ 	 @Test
+ 	 public void attackTest_AttackEnemy() {
+ 		 boolean isLess = false;
+		 Player p1 = new Player("Default", 10, 1);
+		 int e1Health = 10;
+		 Enemy e1 = new Enemy("E1",e1Health,1,1); 
+		 p1.attack(p1, e1);
+		 if(e1Health<e1.getHealth()) {
+			 isLess = true;
+		 }
+		 assertEquals("Enemy health should decrease.",isLess,e1Health<e1.getHealth());
+ 	 }
+ 	 
 }

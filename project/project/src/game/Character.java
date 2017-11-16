@@ -34,7 +34,9 @@ public abstract class Character extends GameObject
 	 */
 	public void setHealth(int health) 
 	{
-		this.health = health;
+		if(health >= 0) {
+			this.health = health;
+		}
 	}
 	/**
 	 * This is the getter method for attack, returns attack
@@ -49,7 +51,9 @@ public abstract class Character extends GameObject
 	 */
 	public void setAttack(int attack) 
 	{
-		this.attack = attack;
+		if(health > 0) {
+			this.attack = attack;
+		}
 	}
 	/*
 	 * This method checks to see if the character is alive (more than zero health)

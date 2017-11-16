@@ -85,7 +85,9 @@ public class Player extends Character
 	 */
 	public void setExpToLvl(int expVal)
 	{
-		expToLvl = expVal;
+		if(expVal > 0) {
+			expToLvl = expVal;
+		}
 	}
 	/**
 	 * This is the getter method for current experience, returns currentEXP
@@ -100,7 +102,9 @@ public class Player extends Character
 	 */
 	public void setCurrentExp(int expVal)
 	{
-		currentEXP = expVal;
+		if(expVal > 0) {
+			currentEXP = expVal;
+		}
 	}
 	/**
 	 * This method is called after defeating an enemy to increase experience
