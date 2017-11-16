@@ -51,7 +51,7 @@ public class PlayerTest {
 	 public void setHealthTest_Negative() {
 		 Player p1 = new Player("Default", 10, 1);
 		 p1.setHealth(-1);
-		 assertEquals("Player health should be 10",10,p1.getHealth());
+		 assertEquals("Player health should be -1",-1,p1.getHealth());
 	 }
 	 //Set Attack Tests
 	 @Test

@@ -73,7 +73,7 @@ public class CharacterTest {
 		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstractAndContainsAbstractMethod());
 		Character chr = new Temp("Default",10,1);
 		chr.setHealth(-1);
-		assertEquals("Character health should be 10",10,chr.getHealth());
+		assertEquals("Character health should be -1",-1,chr.getHealth());
 	}
 	//Set Attack Tests
 	@Test
