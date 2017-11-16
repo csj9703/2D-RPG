@@ -60,6 +60,7 @@ public class Game implements KeyListener
 	{
 		if (inStartScene)
     	{
+			audioPlayer.stopMenuMusic();
 			audioPlayer.startGameMusic();
     		startingScene.setVisible(false);
         	inStartScene = false;
@@ -149,6 +150,8 @@ public class Game implements KeyListener
         // ends the game when player dies
         if (!(player.isAlive()))
         {
+        	audioPlayer.stopBattleMusic();
+        	audioPlayer.startDeathMusic();
         	gameInterface.setVisible(false);
         	inGameScene = false;
         	battleInterface.setVisible(false);
@@ -160,6 +163,8 @@ public class Game implements KeyListener
         // switches to victory screen when game is complete
         if (game.gameWon())
         {
+        	audioPlayer.stopGameMusic();
+        	audioPlayer.startVictoryMusic();
         	gameInterface.setVisible(false);
         	inGameScene = false;
         	victoryScene.setVisible(true);
@@ -249,6 +254,7 @@ public class Game implements KeyListener
      */
     public void play()
     {
+    	audioPlayer.startMenuMusic();
         javax.swing.SwingUtilities.invokeLater(new Runnable() {public void run() {}});
     }
 }

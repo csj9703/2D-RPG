@@ -8,8 +8,11 @@ import javax.sound.sampled.Clip;
  */
 public class AudioPlayer 
 {
+	Clip menu;
 	Clip battle;
 	Clip game;
+	Clip death;
+	Clip victory;
 	/*
 	 * This method plays a wave audio file
 	 * @param sound The sound file
@@ -122,5 +125,77 @@ public class AudioPlayer
 	public void stopGameMusic()
 	{
 		game.close();
+	}
+	/**
+	 * This method plays the death music
+	 */
+	public void startDeathMusic() 
+	{
+		File deathMusic = new File("src/sounds/deathMusic.wav");
+		try
+		{
+			death = AudioSystem.getClip();
+			death.open(AudioSystem.getAudioInputStream(deathMusic));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error: sound file not found");
+		}
+		death.start();
+	}
+	/**
+	 * This method stops the death music
+	 */
+	public void stopDeathMusic()
+	{
+		death.close();
+	}
+	/**
+	 * This method plays the victory music
+	 */
+	public void startVictoryMusic()
+	{
+		File victoryMusic = new File("src/sounds/victoryMusic.wav");
+		try
+		{
+			victory = AudioSystem.getClip();
+			victory.open(AudioSystem.getAudioInputStream(victoryMusic));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error: sound file not found");
+		}
+		victory.start();
+	}
+	/**
+	 * This method stops the victory music
+	 */
+	public void stopVictoryMusic()
+	{
+		victory.close();
+	}
+	/**
+	 * This method plays the victory music
+	 */
+	public void startMenuMusic()
+	{
+		File menuMusic = new File("src/sounds/menuMusic.wav");
+		try
+		{
+			menu = AudioSystem.getClip();
+			menu.open(AudioSystem.getAudioInputStream(menuMusic));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error: sound file not found");
+		}
+		menu.start();
+	}
+	/**
+	 * This method stops the victory music
+	 */
+	public void stopMenuMusic()
+	{
+		menu.close();
 	}
 }
