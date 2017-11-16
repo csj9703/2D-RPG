@@ -60,8 +60,6 @@ public class Game implements KeyListener
 	{
 		if (inStartScene)
     	{
-			audioPlayer.stopMenuMusic();
-			audioPlayer.startGameMusic();
     		startingScene.setVisible(false);
         	inStartScene = false;
         	gameInterface.setVisible(true);
@@ -136,7 +134,6 @@ public class Game implements KeyListener
         // displays a message when you find an item
         if ((game.foundItem()) && (!(justDefeatedEnemy)))
         {
-        	audioPlayer.playPotionSFX();
         	textPanel.update(game.getitemID());
         	player.pickUp(game.getitemID());
         	game.foundItem(false);
@@ -254,7 +251,6 @@ public class Game implements KeyListener
      */
     public void play()
     {
-    	audioPlayer.startMenuMusic();
         javax.swing.SwingUtilities.invokeLater(new Runnable() {public void run() {}});
     }
 }

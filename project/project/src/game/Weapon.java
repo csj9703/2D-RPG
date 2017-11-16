@@ -7,7 +7,10 @@ public class Weapon extends GameObject
 {
 	private int weaponDamage;
 	/*
-	 * This constructor initializes the weapon fields
+	 * This constructor accepts as arguments the name
+	 * and damage rating of the weapon
+	 * @param name The name
+	 * @param weaponDamage The damage rating
 	 */
 	public Weapon(String name, int weaponDamage) 
 	{
@@ -19,6 +22,6 @@ public class Weapon extends GameObject
 	 */
 	public int getWeaponDamage()
 	{
-		return new Integer(weaponDamage);
+		return weaponDamage;
 	}
 }

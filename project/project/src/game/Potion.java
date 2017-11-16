@@ -7,7 +7,10 @@ public class Potion extends GameObject
 {	
 	private int healingAmount;
 	/*
-	 * This constructor initializes the potion fields
+	 * This constructor accepts as arguments the name
+	 * and damage healing amount of the potion
+	 * @param name The name
+	 * @param healingAmount The healing amount 
 	 */
 	public Potion(String name, int healingAmount) 
 	{
@@ -19,6 +22,6 @@ public class Potion extends GameObject
 	 */
 	public int getHealingAmount()
 	{
-		return new Integer(healingAmount);
+		return healingAmount;
 	}
 }

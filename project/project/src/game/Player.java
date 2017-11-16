@@ -44,7 +44,8 @@ public class Player extends Character
 	 */
 	public void setLevel(int level)
 	{
-		if(level > 0) {
+		if (level > 0) 
+		{
 			this.level = level;
 		}
 	}
@@ -54,7 +55,7 @@ public class Player extends Character
 	 */
 	public void checkExp()
 	{
-		if(currentEXP >= expToLvl) 
+		if (currentEXP >= expToLvl) 
 		{
 			levelUp();
 		}
@@ -65,7 +66,7 @@ public class Player extends Character
 	private void levelUp()
 	{
 		level += 1;
-		if(currentEXP > expToLvl) 
+		if (currentEXP > expToLvl) 
 		{
 			currentEXP -= expToLvl;
 		}
@@ -85,7 +86,8 @@ public class Player extends Character
 	 */
 	public void setExpToLvl(int expVal)
 	{
-		if(expVal > 0) {
+		if (expVal > 0) 
+		{
 			expToLvl = expVal;
 		}
 	}
@@ -102,7 +104,8 @@ public class Player extends Character
 	 */
 	public void setCurrentExp(int expVal)
 	{
-		if(expVal > 0) {
+		if (expVal > 0) 
+		{
 			currentEXP = expVal;
 		}
 	}

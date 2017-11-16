@@ -22,6 +22,7 @@ public class Map
      */
 	public Map () 
 	{	
+		audioPlayer.startGameMusic();
 		FileReader fileReader = new FileReader();
 		maze = fileReader.translateData(fileReader.readFile("stage1.txt"));
 	}
@@ -113,6 +114,7 @@ public class Map
 			String choice = keyboard.next();
 			if (choice.equals("a"))
 			{
+				audioPlayer.playAttackSFX();
 				player.attack(player, enemy);
 				System.out.println("You hit the " + enemy.getName() + " for " + player.getDamage() + " damage!");
 				if (enemy.isAlive())
@@ -122,6 +124,8 @@ public class Map
 				}
 				else
 				{
+					audioPlayer.startGameMusic();
+					audioPlayer.stopBattleMusic();
 					game.foundEnemy(false);
 					player.obtainExp(enemy);
 					player.checkExp();
@@ -238,6 +242,7 @@ public class Map
 	{
 		if (maze[playerRow][playerCol] == "?")
 		{
+			audioPlayer.playPotionSFX();
 			foundItem = true;
 			item = new Spawner("Items.txt").createItem(identifyItem(playerRow, playerCol));
 

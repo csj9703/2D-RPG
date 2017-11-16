@@ -17,15 +17,8 @@ public class Enemy extends Character
 		 */
 		public Enemy(String name, int health, int attack, int experience)
 		{
-			super(name,health,attack);
+			super(name, health, attack);
 			this.experience = experience;
-		}
-		/**
-		 * This is the getter method for experience, returns experience
-		 */
-		public int getExperience()
-		{
-			return experience;
 		}
 		/**
 		 * This method reduces the player's health by the amount of 
@@ -40,8 +33,18 @@ public class Enemy extends Character
 			player.setHealth(player.getHealth()-totalDamage);
 			damage = totalDamage;
 		}
+		/**
+		 * This is the getter method for damage, returns damage
+		 */
 		public int getDamage()
 		{
 			return damage;
+		}
+		/**
+		 * This is the getter method for experience, returns experience
+		 */
+		public int getExperience()
+		{
+			return experience;
 		}
 }
