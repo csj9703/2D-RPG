@@ -33,6 +33,13 @@ public class PlayerTest {
 		 p1.setHealth(0);
 		 assertEquals("Player should be dead, thus returning False", alive, p1.isAlive());
 	 }
+	 //Set Name Tests
+	 @Test
+	 public void setNameTest() {
+		 Player p1 = new Player("Default", 10, 1);
+		 p1.setName("New");
+		 assertEquals("Player name should be 'New'","New",p1.getName());
+	 }
 	 //Set Health Tests
 	 @Test
 	 public void setHealthTest_Positive() {
