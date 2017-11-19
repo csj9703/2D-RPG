@@ -5,11 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 /*
  * This class creates the enemy, potion, 
- * and weapon game objects  
+ * and weapon game objects
  */
 public class Spawner
 {
-	private Player player;
 	private Enemy enemy;
 	private File file;
 	private Scanner scanner;
@@ -29,6 +28,7 @@ public class Spawner
 		catch (FileNotFoundException e)
 		{
 			System.out.println("Error: " + file + " not found");
+			e.printStackTrace();
 		}
 	}
 	/*
@@ -54,6 +54,9 @@ public class Spawner
 			case 5:
 				enemy = spawnReaper();
 				break;
+			default:
+				enemy = null;
+				break;
 		}
 		return enemy;
 	}
@@ -74,6 +77,9 @@ public class Spawner
 			case 3:
 				potion = createLargePotion();
 				break;
+			default:
+				potion = null;
+				break;
 		}
 		return potion;
 	}
@@ -93,6 +99,9 @@ public class Spawner
 				break;
 			case 6:
 				weapon = createWeapon3();
+				break;
+			default:
+				weapon = null;
 				break;
 		}
 		return weapon;
@@ -176,6 +185,6 @@ public class Spawner
 		scanner.nextLine();
 		scanner.nextLine();
 		scanner.nextLine();
-		return new Weapon(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
+		return new Weapon(scanner.next(), Integer.parseInt(scanner.next()));
 	}
 }
