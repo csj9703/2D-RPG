@@ -74,13 +74,17 @@ public class GamePanel
 		    	 {
 		    		 labels[i][j].setIcon(road);
 		    	 }
+		    	 else if (maze[i][j] == "n") 
+		    	 {
+		    		 labels[i][j].setIcon(road);
+		    	 }
+		    	 else if (maze[i][j] == "m") 
+		    	 {
+		    		 labels[i][j].setIcon(road);
+		    	 }
 		    	 else if (maze[i][j] == "x") 
 		    	 {
 		    		 labels[i][j].setIcon(player);
-		    	 }
-		    	 else if (maze[i][j] == "?") 
-		    	 {
-		    		 labels[i][j].setIcon(item);
 		    	 }
 		    	 else if ((maze[i][j]).matches("[1-6]")) 
 		    	 {

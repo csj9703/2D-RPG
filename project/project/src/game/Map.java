@@ -17,6 +17,8 @@ public class Map
     private boolean foundItem = false;
     private int enemyID = 0;
     private int itemID = 0;
+    private boolean stageComplete = false;
+    private boolean gameWon = false;
     /*
      * This constructor initializes the game, loads all the game elements onto the map
      */
@@ -40,12 +42,11 @@ public class Map
 		System.out.println("or i for character menu");
 	}
 	/*
-	 * This method prints the maze grid
-	 * @param game The map
+	 * This method prints the maze grid borders
 	 */
 	public void displayMaze()
 	{
-		String[][] maze = getMaze();
+		String[][] maze = textMaze();
 		for (int i = 0; i<maze.length; i++)
 		{
 			System.out.print(" _");
@@ -60,6 +61,80 @@ public class Map
 		     System.out.print("|");
 		     System.out.println();
 		}
+	}
+	/*
+	 * This method converts the maze elements to a letter
+	 * to be displayed in the console, returns a text maze
+	 */
+	private String[][] textMaze()
+	{
+		final int ROWS = 20;
+		final int COLS = 20;
+		String[][] maze = getMaze();
+		String[][] textMaze = new String[ROWS][COLS];
+		for(int r = 0; r < ROWS; r++) 
+		{
+			for(int c = 0; c < COLS; c++) 
+			{
+				String letter = maze[r][c];
+
+				switch(letter)
+				{
+				case "w":
+					textMaze[r][c] = "#";
+					break;
+				case "v":
+					textMaze[r][c] = "#";
+					break;
+				case "r":
+					textMaze[r][c] = " ";
+					break;
+				case "x":
+					textMaze[r][c] = "X";
+					break;
+				case "1":
+					textMaze[r][c] = "?";
+					break;
+				case "2":
+					textMaze[r][c] = "?";
+					break;
+				case "3":
+					textMaze[r][c] = "?";
+					break;
+				case "4":
+					textMaze[r][c] = "?";
+					break;
+				case "5":
+					textMaze[r][c] = "?";
+					break;
+				case "6":
+					textMaze[r][c] = "?";
+					break;
+				case "a":
+					textMaze[r][c] = "E";
+					break;
+				case "b":
+					textMaze[r][c] = "E";
+					break;
+				case "c":
+					textMaze[r][c] = "E";
+					break;
+				case "d":
+					textMaze[r][c] = "E";
+					break;
+				case "e":
+					textMaze[r][c] = "E";
+					break;
+				case "n":
+					maze[r][c] = " ";
+					break;
+				case "m":
+					maze[r][c] = " ";
+					break;
+				}
+			}
+		}
+		return textMaze;
 	}
 	/*
 	 * This method prints the inventory and player info
@@ -255,6 +330,14 @@ public class Map
 			enemy = new Spawner("Enemies.txt").spawnEnemy(convertLetterToID(maze[playerRow][playerCol]));
 			enemyID = convertLetterToID(maze[playerRow][playerCol]);
 		}
+		else if ((maze[playerRow][playerCol])== "n")
+		{
+			stageComplete = true;
+		}
+		else if ((maze[playerRow][playerCol])== "m")
+		{
+			gameWon = true;
+		}
 	}
 	/*
 	 * This method returns true if player reaches the end of the maze,
@@ -262,7 +345,7 @@ public class Map
 	 */
 	public boolean gameWon() 
 	{
-		return (maze[0][18] == "x") && selectedStage == "stage3.txt" ? true : false;
+		return gameWon;
 	}
 	/*
 	 * This method checks to see if a stage has been complete
@@ -271,15 +354,17 @@ public class Map
 	public void checkStageCompletion()
 	{
 		FileReader fileReader = new FileReader();
-		if (selectedStage == "stage1.txt" && maze[9][19] == "x")
+		if (selectedStage == "stage1.txt" && stageComplete)
 		{
 			maze = fileReader.readFile("stage2.txt");
 			selectedStage = "stage2.txt";
+			stageComplete = false;
 		}
-		else if (selectedStage == "stage2.txt" && (maze[19][1] == "x"))
+		else if (selectedStage == "stage2.txt" && stageComplete)
 		{
 			maze = fileReader.readFile("stage3.txt");
 			selectedStage = "stage3.txt";
+			stageComplete = false;
 		}
 	}
 	/*
@@ -363,13 +448,6 @@ public class Map
 		foundItem = truthValue;
 	}
 	/*
-	 * This is the getter method for the enemyID, returns enemyID
-	 */
-	public int getEnemyID()
-	{
-		return enemyID;
-	}
-	/*
 	 * This is the getter method for the itemID, returns itemID
 	 */
 	public int getitemID()
@@ -384,13 +462,8 @@ public class Map
 		return enemy;
 	}
 	/*
-	 * This is the getter method for the item, returns item
+	 * This is the getter method for the audio player, returns audioPlayer
 	 */
-	public Potion getItem()
-	{
-		return item;
-	}
-	
 	public AudioPlayer getAudioPlayer()
 	{
 		return audioPlayer;

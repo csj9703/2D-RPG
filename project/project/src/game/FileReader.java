@@ -88,6 +88,12 @@ public class FileReader
 				case "e":
 					maze[r][c] = "e";
 					break;
+				case "n":
+					maze[r][c] = "n";
+					break;
+				case "m":
+					maze[r][c] = "m";
+					break;
 				}
 			}
 		}
