@@ -137,12 +137,15 @@ public class Game implements KeyListener
         	textPanel.update(game.getitemID());
         	player.pickUp(game.getitemID());
         	game.foundItem(false);
+        	new SaveGame(game.getMaze(),player).save();
         }
         else
         {
         	if (!(justDefeatedEnemy))
+        	{
         		textPanel.reset();
         		justDefeatedEnemy = false;
+        	}
         }
         // ends the game when player dies
         if (!(player.isAlive()))
@@ -233,9 +236,14 @@ public class Game implements KeyListener
         {
         	attack();
         }
+        // Saves to File after each input command, unless in battle
+        if(!inBattleScene)
+        {
+        new SaveGame(game.getMaze(),player).save();
+        }
         // Updates the GUI after each input command
         updateGUI();
-    }
+    	}
     /*
      * This method is not used but is required by the key listener 
      * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
