@@ -28,7 +28,6 @@ public class Spawner
 		catch (FileNotFoundException e)
 		{
 			System.out.println("Error: " + file + " not found");
-			e.printStackTrace();
 		}
 	}
 	/*
