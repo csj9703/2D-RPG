@@ -270,4 +270,21 @@ public class Player extends Character
 	{
 		return damage;
 	}
+	public void loadPlayerData()
+	{
+		/*
+		private final int maxHealth ;
+		private int numSmallPotions;
+		private int numMediumPotions;
+		private int numLargePotions;
+		private int level;
+		private int currentEXP;
+		private int expToLvl;
+		private String currentWeapon;
+		private boolean hasDagger = false;
+		private boolean hasSword = false;
+		private boolean hasExcalibur = false;
+		private int damage;
+		*/
+	}
 }

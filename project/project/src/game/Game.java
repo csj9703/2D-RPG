@@ -174,6 +174,11 @@ public class Game implements KeyListener
         gamePanel.update(game);
         game.checkStageCompletion();        
 	}
+	private void loadGame()
+	{
+		player.loadPlayerData();
+		game.loadMapData();
+	}
 	/*
 	 * This method manages the player input
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
@@ -234,14 +239,20 @@ public class Game implements KeyListener
         {
         	attack();
         }
+        // Load game button
+        else if(e.getKeyCode()== KeyEvent.VK_L) 
+        {
+        	if (inStartScene)
+        		loadGame();
+        }
         // Saves to File after each input command, unless in battle
         if(!inBattleScene)
         {
-        new SaveGame(game.getMaze(),player).save();
+        	new SaveGame(game.getMaze(),player).save();
         }
         // Updates the GUI after each input command
         updateGUI();
-    	}
+    }
     /*
      * This method is not used but is required by the key listener 
      * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)

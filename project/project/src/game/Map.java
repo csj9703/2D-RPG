@@ -418,6 +418,14 @@ public class Map
 		return id;
 	}
 	/*
+	 * This method will load maze from saved game file
+	 */
+	public void loadMapData()
+	{
+		FileReader fileReader = new FileReader();
+		maze = fileReader.readFile("SaveGame.txt");
+	}
+	/*
 	 * This is the getter method for the foundEnemy variable, returns foundEnemy
 	 */
 	public boolean foundEnemy()
