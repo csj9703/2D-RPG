@@ -12,6 +12,7 @@ import java.io.Writer;
 public class SaveGame 
 {
 	private Writer writer;
+	private Writer writer2;
 	private String maze[][];
 	private Player player;
 	
@@ -29,6 +30,7 @@ public class SaveGame
 	try 
 	{
 	writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("SaveGame.txt"), "utf-8"));
+	writer2 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("SaveMap.txt"), "utf-8"));
 	}
 	catch (Exception e) {}
 	}
@@ -51,10 +53,11 @@ public class SaveGame
 	        }
 		try {
 		writer.write
-		(maze2+"\r\n"+player.getName()+" Level: "+player.getCurrentLevel()+" Experience: "+player.getCurrentExp()+
+		(player.getName()+" Level: "+player.getCurrentLevel()+" Experience: "+player.getCurrentExp()+
 		" ExpToLevel: "+player.getExpToLvl()+" Health: "+player.getHealth()+"\r\n"+player.getCurrentWeapon()+
 		" SmallPot: "+player.getNumSmallPotions()+" Mediumpot: "+player.getNumMediumPotions()+
 		" LargePot: "+player.getNumLargePotions());
+		writer2.write(maze2);
 		}
 		catch (IOException e)
 		{
@@ -63,6 +66,7 @@ public class SaveGame
 		{
 			try {
 				writer.close();
+				writer2.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
