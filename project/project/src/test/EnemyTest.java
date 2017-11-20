@@ -43,7 +43,7 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     e1.setAttack(-1);
-    assertEquals("Negative value passed as enemy attack, should be default value 1", 1, e1.getAttack());
+    assertEquals("Negative value passed as enemy attack, should be default value 10", 10, e1.getAttack());
   }
 
   @Test
@@ -51,7 +51,7 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     e1.setAttack(0);
-    assertEquals("Zero passed as enemy attack, should be default value 1", 1, e1.getAttack());
+    assertEquals("Zero passed as enemy attack, should be default value 10", 10, e1.getAttack());
   }
 
   @Test
@@ -67,8 +67,7 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     e1.setHealth(0);
-    boolean dead = !e1.isAlive();
-    assertEquals("Enemy health is 0, so should be dead",dead);
+    assertEquals("Enemy health is 0, so should be dead",false,e1.isAlive());
   }
 
   @Test
@@ -76,8 +75,7 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     e1.setHealth(-1);
-    boolean dead = !e1.isAlive();
-    assertEquals("Enemy health is -1, so should be dead",dead);
+    assertEquals("Enemy health is -1, so should be dead",false,e1.isAlive());
   }
 
   @Test
@@ -85,23 +83,21 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     e1.setHealth(5);
-    assertEquals("Enemy health is 5, so should be alive",e1.isAlive());
+    assertEquals("Enemy health is 5, so should be alive",true,e1.isAlive());
   }
 
   @Test
   public void test_getExperience_ValidValue()
   {
     Enemy e1 = new Enemy("Monster", 10,10,10);
-    int experience = e1.getExperience();
     assertEquals("Enemy created with experience passed in as 10, so should return 10", 10, e1.getExperience());
   }
 
   @Test
   public void test_getExperience_InvalidValue()
   {
-    Enemy e1 = new Enemy("Monster", 10,-1,10);
-    int experience = e1.getExperience();
-    assertEquals("Enemy experience cannot be negative, experience should be 0", 0, e1.getExperience());
+    Enemy e1 = new Enemy("Monster", 10,10,-1);
+    assertEquals("Enemy experience cannot be negative, experience should be 1", 1, e1.getExperience());
   }
 
   @Test
@@ -150,7 +146,7 @@ public class EnemyTest
   public void test_constructor_InvalidNegativeExperience()
   {
     Enemy e1 = new Enemy("Monster",10,10,-10);
-    assertEquals("Enemy created with -10 as experience value, but expected default value of 0",0,e1.getExperience());
+    assertEquals("Enemy created with -10 as experience value, but expected default value of 1",1,e1.getExperience());
   }
 
   @Test

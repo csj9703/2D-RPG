@@ -19,7 +19,7 @@ public abstract class Character extends GameObject
 	{
 		super(name);
 		this.health = health;
-		this.attack = attack;
+		setAttack(attack);
 	}
 	/**
 	 * This is the getter method for health, returns health

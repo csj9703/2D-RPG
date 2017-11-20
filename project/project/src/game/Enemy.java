@@ -18,7 +18,11 @@ public class Enemy extends Character
 		public Enemy(String name, int health, int attack, int experience)
 		{
 			super(name, health, attack);
-			this.experience = experience;
+			if(experience > 0) {
+				this.experience = experience;
+			}else {
+				this.experience = 1;
+			}
 		}
 		/**
 		 * This method reduces the player's health by the amount of 
