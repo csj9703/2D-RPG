@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 w w w w w w w w w w w w w w w w w w w w 
 w w w w w w w w w w w w w w w w w w w w 
 w w w w w w w w w w w w w w w w w w w w 
@@ -17,4 +18,25 @@ w w w w w w w w w w w w w w w w w w w w
 w w w w w w w w w w w w w w w w w w w w 
 w w w w w w w w w w w w w w w w w w w w 
 w w w w w w w w w w w w w w w w w w w w 
+=======
+w v v v v v w w v v v w v v w v v w m w 
+w r r r r r v w r r r v r r w 3 r w e w 
+w r v v w r 6 w r w r r r w v w r w r w 
+w r r r v v v v r w v r v v r w r w r w 
+w r w r r r r d r w r r r r r w r w r w 
+w r v v v w r w r w v r v v v v r w r w 
+w r r r r w r w r w r r r r r r r w r w 
+w r w v r w r w r v v r v w r v v w r w 
+w 3 w r r w r w r r r r r w d r r w r w 
+w v w r w v v w v w v v v w r w r w r w 
+w r v r v r r w r v r r r w r w r v r w 
+w r r r r r w v r r r v v w r w r r r w 
+w r v v w r w r r w r r r w 3 w v v r w 
+w d r r v v v v r w v v r v v w r r r w 
+w r w r r r r r r w r r r r r w r w r w 
+w r v v v w r w r w r w w w v v r w v w 
+w r r r r w r w r v r v r w r r r w 3 w 
+w r w v r w r w r r d r r v r v v v r w 
+w x w 3 r w r w r w r w r r r r r r r w 
+>>>>>>> def1bcecfe130193981ffb97484dee5ded3ad11c
 w w w w w w w w w w w w w w w w w w w w 
