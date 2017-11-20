@@ -307,5 +307,6 @@ public class Player extends Character
 		hasDagger = playerData[9] == "true" ? true : false;
 		hasSword = playerData[10] == "true" ? true : false;
 		hasExcalibur = playerData[11] == "true" ? true : false;
+		getWeaponDamage();
 	}
 }

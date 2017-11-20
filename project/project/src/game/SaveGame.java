@@ -66,13 +66,14 @@ public class SaveGame
 		{
 			hasDagger = true;
 		}
-		
+		String something = player.getCurrentWeapon();
+		something = something.replaceAll("\\s+","");
 		try {
 		writer.write
 		
 		(	player.getNumSmallPotions()+" "+player.getNumMediumPotions()+" "+player.getNumLargePotions()+
 			" "+player.getCurrentLevel()+ " "+player.getCurrentExp()+" "+player.getExpToLvl()+
-			" "+player.getHealth()+" "+player.getAttack()+" "+player.getCurrentWeapon()+
+			" "+player.getHealth()+" "+player.getAttack()+" "+something+
 			" "+hasDagger+" "+hasIronLongsword+" "+hasExcalibur
 		);
 		
