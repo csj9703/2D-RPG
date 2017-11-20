@@ -47,11 +47,11 @@ public class EnemyTest
   }
 
   @Test
-  public void test_setAttack_ValidZero()
+  public void test_setAttack_InvalidZero()
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     e1.setAttack(0);
-    assertEquals("Zero passed as enemy attack, should be the value 0", 0, e1.getAttack());
+    assertEquals("Zero passed as enemy attack, should be the default value 10", 10, e1.getAttack());
   }
 
   @Test
@@ -97,14 +97,14 @@ public class EnemyTest
   public void test_getExperience_ValidZeroValue()
   {
     Enemy e1 = new Enemy("Monster", 10,10,0);
-    assertEquals("Enemy created with experience passed in as 0, so should return 0", 0, e1.getExperience());
+    assertEquals("Enemy created with experience passed in as 0, should return default value of 1", 1, e1.getExperience());
   }
 
   @Test
   public void test_getExperience_InvalidValue()
   {
     Enemy e1 = new Enemy("Monster", 10,10,-1);
-    assertEquals("Enemy experience cannot be negative, experience should be 0", 0, e1.getExperience());
+    assertEquals("Enemy experience cannot be negative, experience should be 1", 1, e1.getExperience());
   }
 
   @Test
@@ -115,17 +115,17 @@ public class EnemyTest
   }
 
   @Test
-  public void test_constructor_InvalidNegativeHealth()
+  public void test_constructor_NegativeHealth()
   {
     Enemy e1 = new Enemy("Monster",-10,10,10);
-    assertEquals("Enemy with -10 passed as health value, expecting default value of 1",1,e1.getHealth());
+    assertEquals("Enemy with -10 passed as health value, expecting default value of -10",-10,e1.getHealth());
   }
 
   @Test
-  public void test_constructor_InvalidZeroHealth()
+  public void test_constructor_ZeroHealth()
   {
     Enemy e1 = new Enemy("Monster",0,10,10);
-    assertEquals("Enemy with 0 passed as health value, expecting default value of 1",1,e1.getHealth());
+    assertEquals("Enemy with 0 passed as health value, expecting default value of 0",0,e1.getHealth());
   }
 
   @Test
@@ -153,7 +153,7 @@ public class EnemyTest
   public void test_constructor_InvalidNegativeExperience()
   {
     Enemy e1 = new Enemy("Monster",10,10,-10);
-    assertEquals("Enemy created with -10 as experience value, but expected default value of 0",0,e1.getExperience());
+    assertEquals("Enemy created with -10 as experience value, but expected default value of 1",1,e1.getExperience());
   }
 
   @Test
