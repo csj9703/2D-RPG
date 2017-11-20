@@ -15,9 +15,12 @@ public class Potion extends GameObject
 	public Potion(String name, int healingAmount) 
 	{
 		super(name);
-		if(healingAmount > 0) {
+		if(healingAmount > 0) 
+		{
 			this.healingAmount = healingAmount;
-		}else {
+		}
+		else 
+		{
 			this.healingAmount = 3;
 		}
 	}

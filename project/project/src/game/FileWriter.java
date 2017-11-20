@@ -99,7 +99,7 @@ public class FileWriter
 		try 
 		{
 			Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("currentStage.txt"), "utf-8"));
-			writer.write("stage" + map.currentStage() + ".txt");
+			writer.write(map.getSelectedStage());
 			writer.close();
 		}
 		catch (IOException e) 

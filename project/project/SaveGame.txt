@@ -1,1 +1,1 @@
-0 0 0 4 6 8 12 4 IronLongsword false true false
+0 0 0 1 0 1 20 1 NoWeapon false false false

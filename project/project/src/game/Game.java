@@ -121,31 +121,44 @@ public class Game implements KeyListener
     		}
     	}
 	}
-	private void updateGUI()
+	
+	/*
+	 * This method updates the gui when an enemy is found
+	 */
+	private void checkForBattle()
 	{
-		// switches panel when an enemy is found
-        if (game.foundEnemy())
-        {
-        	battleInterface.setVisible(true);
-        	inBattleScene = true;
-        	gameInterface.setVisible(false);
-        	inGameScene = false;
-        }
-        // displays a message when you find an item
-        if ((game.foundItem()) && (!(justDefeatedEnemy)))
-        {
-        	textPanel.update(game.getitemID());
-        	player.pickUp(game.getitemID());
-        	game.foundItem(false);
-        }
-        else
-        {
-        	if (!(justDefeatedEnemy))
-        		textPanel.reset();
-        		justDefeatedEnemy = false;
-        }
-        // ends the game when player dies
-        if (!(player.isAlive()))
+		if (game.foundEnemy())
+		{
+			battleInterface.setVisible(true);
+			inBattleScene = true;
+			gameInterface.setVisible(false);
+			inGameScene = false;
+		}
+	}
+	/*
+	 * This method updates the gui when an item is found
+	 */
+	private void checkForItem()
+	{
+		if ((game.foundItem()) && (!(justDefeatedEnemy)))
+		{
+			textPanel.update(game.getitemID());
+			player.pickUp(game.getitemID());
+			game.foundItem(false);
+		}
+		else
+		{
+			if (!(justDefeatedEnemy))
+				textPanel.reset();
+				justDefeatedEnemy = false;
+		}		
+	}
+	/*
+	 * This method checks to see if player has been defeated
+	 */
+	private void checkPlayerHealth()
+	{
+		if (!(player.isAlive()))
         {
         	audioPlayer.stopBattleMusic();
         	audioPlayer.startDeathMusic();
@@ -157,8 +170,13 @@ public class Game implements KeyListener
         	endingScene.setVisible(true);
         	inEndScene = true;
         }
-        // switches to victory screen when game is complete
-        if (game.gameWon())
+	}
+	/*
+	 * This method checks to see if winning condition is met
+	 */
+	private void checkWinCondition()
+	{
+		if (game.gameWon())
         {
         	audioPlayer.stopGameMusic();
         	audioPlayer.startVictoryMusic();
@@ -167,13 +185,27 @@ public class Game implements KeyListener
         	victoryScene.setVisible(true);
         	inVictoryScene = true;
         }
-        // updates the user interface after each key press
+	}
+	
+	/*
+	 * This method updates the user interface after each key press
+	 * and saves the game data
+	 */
+	private void updateGUI()
+	{
+		checkForBattle();
+		checkForItem();
+		checkPlayerHealth();
+		checkWinCondition();
         battlePanel.update(player, game.getEnemy());
         inventoryPanel.update(player);
         gamePanel.update(game);
         game.checkStageCompletion();     
         new FileWriter(player,game).save();
 	}
+	/*
+	 * This method loads the saved game data 
+	 */
 	private void loadGame()
 	{
 		player.loadPlayerData();

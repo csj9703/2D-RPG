@@ -386,25 +386,8 @@ public class Map
 		return maze;
 	}
 	/*
-	 * This is the getter method for the current stage, returns stage
+	 * This method converts letter id to number id
 	 */
-	public int currentStage()
-	{
-		int stage = 0;
-		if (selectedStage == "stage1.txt")
-		{
-			stage = 1;
-		}
-		else if (selectedStage == "stage2.txt")
-		{
-			stage = 2;
-		}
-		else if (selectedStage == "stage3.txt")
-		{
-			stage = 3;
-		}
-		return stage;
-	}
 	private int convertLetterToID(String letterID)
 	{
 		int id = 0;

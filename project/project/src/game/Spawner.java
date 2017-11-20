@@ -91,13 +91,13 @@ public class Spawner
 		switch (itemID)
 		{
 			case 4:
-				weapon = createWeapon1();
+				weapon = createRustyDagger();
 				break;
 			case 5:
-				weapon = createWeapon2();
+				weapon = createIronLongsword();
 				break;
 			case 6:
-				weapon = createWeapon3();
+				weapon = createExcalibur();
 				break;
 			default:
 				weapon = null;
@@ -113,30 +113,43 @@ public class Spawner
 	{
 		return new Player(scanner.next(),Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 	}
-	// these methods create different enemies
+	/*
+	 * This method creates and returns a zombie
+	 */
 	private Enemy spawnZombie()
 	{
 		return new Enemy(scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 	}
+	/*
+	 * This method creates and returns a skeleton
+	 */
 	private Enemy spawnSkeleton()
 	{
 		scanner.nextLine();
 		return new Enemy(scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 	}
+	/*
+	 * This method creates and returns a skeleton king
+	 */
 	private Enemy spawnSkeletonKing()
 	{
 		scanner.nextLine();
 		scanner.nextLine();
 		return new Enemy(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 	}
+	/*
+	 * This method creates and returns a black knight
+	 */
 	private Enemy spawnBlackKnight()
 	{
 		scanner.nextLine();
 		scanner.nextLine();
 		scanner.nextLine();
 		return new Enemy(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
-
 	}
+	/*
+	 * This method creates and returns a reaper
+	 */
 	private Enemy spawnReaper()
 	{
 		scanner.nextLine();
@@ -145,31 +158,44 @@ public class Spawner
 		scanner.nextLine();
 		return new Enemy(scanner.next(), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
 		}
-	// these methods create different potions
+	/*
+	 * This method creates and returns a small potion
+	 */
 	private Potion createSmallPotion()
 	{
 		return new Potion(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
 	}
+	/*
+	 * This method creates and returns a medium potion
+	 */
 	private Potion createMediumPotion()
 	{
 		scanner.nextLine();
 		return new Potion(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
 	}
+	/*
+	 * This method creates and returns a large potion
+	 */
 	private Potion createLargePotion()
 	{
 		scanner.nextLine();
 		scanner.nextLine();
 		return new Potion(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
 	}
-	// these methods create different weapons
-	private Weapon createWeapon1()
+	/*
+	 * This method creates and returns a rusty dagger
+	 */
+	private Weapon createRustyDagger()
 	{
 		scanner.nextLine();
 		scanner.nextLine();
 		scanner.nextLine();
 		return new Weapon(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
 	}
-	private Weapon createWeapon2()
+	/*
+	 * This method creates and returns a iron longsword
+	 */
+	private Weapon createIronLongsword()
 	{
 		scanner.nextLine();
 		scanner.nextLine();
@@ -177,7 +203,10 @@ public class Spawner
 		scanner.nextLine();
 		return new Weapon(scanner.next()+" "+scanner.next(), Integer.parseInt(scanner.next()));
 	}
-	private Weapon createWeapon3()
+	/*
+	 * This method creates and returns a excalibur
+	 */
+	private Weapon createExcalibur()
 	{
 		scanner.nextLine();
 		scanner.nextLine();
