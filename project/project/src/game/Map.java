@@ -458,6 +458,10 @@ public class Map
 	}
 	/*
 	 * This is the getter method for the enemy, returns enemy
+	 * There is a potential privacy leak here, but the reason for returning 
+	 * the original reference is because the enemy should not be cloned because
+	 * it would not be possible to defeat the enemy since the enemy's original 
+	 * health would not be decreased by battle, instead the copy of it would
 	 */
 	public Enemy getEnemy()
 	{
@@ -465,6 +469,10 @@ public class Map
 	}
 	/*
 	 * This is the getter method for the audio player, returns audioPlayer
+	 * There is a potential privacy leak here, but the reason for returning 
+	 * the original reference is because the audio should only come from one 
+	 * player, it does not make sense to have the same sounds playing at the 
+	 * same time in multiple audio players
 	 */
 	public AudioPlayer getAudioPlayer()
 	{

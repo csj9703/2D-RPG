@@ -18,9 +18,12 @@ public class Enemy extends Character
 		public Enemy(String name, int health, int attack, int experience)
 		{
 			super(name, health, attack);
-			if(experience > 0) {
+			if(experience > 0) 
+			{
 				this.experience = experience;
-			}else {
+			}
+			else 
+			{
 				this.experience = 1;
 			}
 		}

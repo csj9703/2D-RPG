@@ -19,31 +19,22 @@ public class Game implements KeyListener
 	private Player player = new Spawner("player.txt").spawnPlayer();
 	private Map game = new Map();
 	private AudioPlayer audioPlayer = game.getAudioPlayer();
-
 	private GamePanel gamePanel = new GamePanel();
 	private JPanel gameInterface = gamePanel.createPanel(game);
-
 	private BattlePanel battlePanel = new BattlePanel();
 	private JPanel battleInterface = battlePanel.createPanel(player, game.getEnemy());
-
 	private InventoryPanel inventoryPanel = new InventoryPanel();
 	private JPanel inventoryInterface = inventoryPanel.createPanel(player);
-
 	private StartScenePanel startScenePanel = new StartScenePanel();
 	private JPanel startingScene = startScenePanel.createPanel();
-
 	private EndScenePanel endScenePanel = new EndScenePanel();
 	private JPanel endingScene = endScenePanel.createPanel();
-
 	private VictoryScenePanel victoryScenePanel = new VictoryScenePanel();
 	private JPanel victoryScene = victoryScenePanel.createPanel();	
-	
 	private TextPanel textPanel = new TextPanel();
 	private JPanel textBox = textPanel.createPanel();
-	
 	private Gui gui = new Gui(this, gameInterface, battleInterface, inventoryInterface, 
 									startingScene, endingScene, victoryScene, textBox);
-	
 	// flags used to keep track of which scene is being displayed
 	private boolean inBattleScene = false;
 	private boolean inventoryOpen = false;
