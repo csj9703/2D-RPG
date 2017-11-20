@@ -424,6 +424,7 @@ public class Map
 	{
 		FileReader fileReader = new FileReader();
 		maze = fileReader.readFile("SaveMap.txt");
+		selectedStage = fileReader.readStageLevel("currentStage.txt");
 	}
 	/*
 	 * This is the getter method for the foundEnemy variable, returns foundEnemy

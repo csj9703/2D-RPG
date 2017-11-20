@@ -99,4 +99,22 @@ public class FileReader
 		}
 		return maze;
 	}
+	/*
+	 * This methods reads the saved stage level
+	 */
+	public String readStageLevel(String fileName) 
+	{
+		File file = new File(fileName);
+		Scanner scanner = null;
+		try 
+		{
+			scanner = new Scanner(file);
+		} 
+		catch (FileNotFoundException e) 
+		{
+			System.out.println("Error: " + fileName + " not found");
+		}
+		String selectedStage = scanner.next();
+		return selectedStage;
+	}
 }
