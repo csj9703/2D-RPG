@@ -365,13 +365,13 @@ public class Map
 	public void checkStageCompletion()
 	{
 		FileReader fileReader = new FileReader();
-		if (selectedStage.equals("stage1.txt") && stageComplete)
+		if (selectedStage == "stage1.txt" && stageComplete)
 		{
 			maze = fileReader.readFile("stage2.txt");
 			selectedStage = "stage2.txt";
 			stageComplete = false;
 		}
-		else if (selectedStage.equals("stage2.txt") && stageComplete)
+		else if (selectedStage == "stage2.txt" && stageComplete)
 		{
 			maze = fileReader.readFile("stage3.txt");
 			selectedStage = "stage3.txt";
@@ -435,10 +435,6 @@ public class Map
 	{
 		FileReader fileReader = new FileReader();
 		maze = fileReader.readFile("SaveMap.txt");
-<<<<<<< HEAD
-=======
-		selectedStage = fileReader.readStageLevel("currentStage.txt");
->>>>>>> def1bcecfe130193981ffb97484dee5ded3ad11c
 	}
 	/*
 	 * This is the getter method for the foundEnemy variable, returns foundEnemy

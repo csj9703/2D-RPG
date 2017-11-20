@@ -171,14 +171,8 @@ public class Game implements KeyListener
         battlePanel.update(player, game.getEnemy());
         inventoryPanel.update(player);
         gamePanel.update(game);
-<<<<<<< HEAD
         game.checkStageCompletion();     
         new FileWriter(player,game).save();
-=======
-        game.checkStageCompletion(); 
-        if (!inBattleScene)
-        new FileWriter(game.getMaze(),player,game).save();
->>>>>>> def1bcecfe130193981ffb97484dee5ded3ad11c
 	}
 	private void loadGame()
 	{
