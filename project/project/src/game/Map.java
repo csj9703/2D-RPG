@@ -126,10 +126,10 @@ public class Map
 					textMaze[r][c] = "E";
 					break;
 				case "n":
-					maze[r][c] = " ";
+					textMaze[r][c] = " ";
 					break;
 				case "m":
-					maze[r][c] = " ";
+					textMaze[r][c] = " ";
 					break;
 				}
 			}
