@@ -177,7 +177,7 @@ public class Game implements KeyListener
 	private void loadGame()
 	{
 		player.loadPlayerData();
-		game.loadMapData();
+		//game.loadMapData();
 	}
 	/*
 	 * This method manages the player input

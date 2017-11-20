@@ -40,7 +40,7 @@ public class FileReader
 			for(int c = 0; c < COLS; c++) 
 			{
 				String letter = maze[r][c];
-
+				// converts to string
 				switch(letter)
 				{
 				case "w":

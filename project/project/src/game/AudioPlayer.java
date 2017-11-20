@@ -39,7 +39,7 @@ public class AudioPlayer
 		playSound(attackSFX);
 	}
 	/*
-	 * This method plays a attacking sound effect
+	 * This method plays a item sound effect
 	 */
 	public void playPotionSFX()
 	{
