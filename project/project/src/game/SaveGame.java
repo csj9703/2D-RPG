@@ -17,7 +17,7 @@ public class SaveGame
 	private String maze[][];
 	private Map map;
 	private Player player;
-	private String stage;
+	private String stage = "";
 	
 	/**
 	 * This constructor initializes the writer to a bufferedWriter and gives it the fileName

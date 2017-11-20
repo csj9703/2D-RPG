@@ -303,10 +303,15 @@ public class Player extends Character
 		expToLvl = Integer.parseInt(playerData[5]);
 		setHealth(Integer.parseInt(playerData[6]));
 		setAttack(Integer.parseInt(playerData[7]));
-		currentWeapon = playerData[8];
-		hasDagger = playerData[9] == "true" ? true : false;
-		hasSword = playerData[10] == "true" ? true : false;
-		hasExcalibur = playerData[11] == "true" ? true : false;
-		getWeaponDamage();
+		playerData[9] +="";
+		hasDagger = Boolean.parseBoolean(playerData[9]);
+		hasSword = Boolean.parseBoolean(playerData[10]);
+		hasExcalibur = Boolean.parseBoolean(playerData[11]);
+		if (hasDagger)
+			currentWeapon = "Rusty Dagger";
+		if (hasSword)
+			currentWeapon = "Iron Longsword";
+		if (hasExcalibur)
+			currentWeapon = "Ecalibur";
 	}
 }

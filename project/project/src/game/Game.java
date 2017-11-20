@@ -123,7 +123,7 @@ public class Game implements KeyListener
 	}
 	private void updateGUI()
 	{
-		 // switches panel when an enemy is found
+		// switches panel when an enemy is found
         if (game.foundEnemy())
         {
         	battleInterface.setVisible(true);
@@ -137,7 +137,6 @@ public class Game implements KeyListener
         	textPanel.update(game.getitemID());
         	player.pickUp(game.getitemID());
         	game.foundItem(false);
-        	new SaveGame(game.getMaze(),player,game).save();
         }
         else
         {
@@ -172,7 +171,8 @@ public class Game implements KeyListener
         battlePanel.update(player, game.getEnemy());
         inventoryPanel.update(player);
         gamePanel.update(game);
-        game.checkStageCompletion();        
+        game.checkStageCompletion();     
+        new SaveGame(game.getMaze(),player,game).save();
 	}
 	private void loadGame()
 	{
@@ -244,11 +244,6 @@ public class Game implements KeyListener
         {
         	if (inStartScene)
         		loadGame();
-        }
-        // Saves to File after each input command, unless in battle
-        if(!inBattleScene)
-        {
-        	new SaveGame(game.getMaze(),player,game).save();
         }
         // Updates the GUI after each input command
         updateGUI();

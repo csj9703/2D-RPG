@@ -36,7 +36,9 @@ public class StartScenePanel
 		gameInstructions2.setFont(new Font("info", Font.PLAIN, 20));
 		gameInstructions2.setForeground(Color.WHITE);
 		String gameInfo2 = "<html>" + "PLAYER CONTROLS:" + "<br/>"
-						  + "<br/>" + "Press ENTER to start game"
+						  + "<br/>" + "Press ENTER to start a new game"
+						  + "<br/>" + "Press L then ENTER to resume game"	
+						  + "<br/>" 
 						  + "<br/>" + "Press ARROW keys to move"
 			              + "<br/>" + "Press A to attack" 
 			              + "<br/>" + "Press I to open or close the inventory menu" 

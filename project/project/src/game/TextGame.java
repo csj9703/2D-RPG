@@ -13,7 +13,7 @@ import java.util.Scanner;
  * a : Move left		        ? : An item
  * s : Move down                E : An enemy
  * d : Move right		        # : Wall/obstacle
- * i : Open inventory           d : Wall/obstacle
+ * i : Open inventory           
  */
 public class TextGame 
 {
