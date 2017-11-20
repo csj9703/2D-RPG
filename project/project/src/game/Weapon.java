@@ -15,7 +15,11 @@ public class Weapon extends GameObject
 	public Weapon(String name, int weaponDamage) 
 	{
 		super(name);
-		this.weaponDamage = weaponDamage;
+		if(weaponDamage > 0) {
+			this.weaponDamage = weaponDamage;
+		}else {
+			this.weaponDamage = 1;
+		}
 	}
 	/*
 	 * This is the getter method for weapon damage, returns weaponDamage
