@@ -273,9 +273,11 @@ public class Player extends Character
 	{
 		return damage;
 	}
+	/*
+	 * This method sets the player data to the values saved in file
+	 */
 	public void loadPlayerData()
 	{
-		
 		File file = new File("SaveGame.txt");
 		Scanner scanner = null;
 		try 
@@ -293,16 +295,17 @@ public class Player extends Character
 		{
 			playerData[i] = scanner.next();
 		}
-		
 		numSmallPotions = Integer.parseInt(playerData[0]);
 		numMediumPotions = Integer.parseInt(playerData[1]);
 		numLargePotions = Integer.parseInt(playerData[2]);
 		level = Integer.parseInt(playerData[3]);
 		currentEXP = Integer.parseInt(playerData[4]);
 		expToLvl = Integer.parseInt(playerData[5]);
-		currentWeapon = playerData[6];
-		hasDagger = playerData[7] == "true" ? true : false;
-		hasSword = playerData[8] == "true" ? true : false;
-		hasExcalibur = playerData[9] == "true" ? true : false;
+		setHealth(Integer.parseInt(playerData[6]));
+		setAttack(Integer.parseInt(playerData[7]));
+		currentWeapon = playerData[8];
+		hasDagger = playerData[9] == "true" ? true : false;
+		hasSword = playerData[10] == "true" ? true : false;
+		hasExcalibur = playerData[11] == "true" ? true : false;
 	}
 }
