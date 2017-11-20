@@ -43,6 +43,9 @@ public class SaveGame
 	 */
 	public void save()
 	{
+		boolean hasDagger = false;
+		boolean hasIronLongsword = false;
+		boolean hasExcalibur = false;
 		String maze2="";
 		for(int i = 0; i < maze.length; i++){
 	        for(int j = 0; j < maze[i].length; j++)
@@ -51,12 +54,28 @@ public class SaveGame
 	        }
 	        maze2=maze2+"\r\n";
 	        }
+		if (player.getCurrentWeapon().equals("Excalibur"))
+		{
+			hasExcalibur = true;
+		}
+		else if (player.getCurrentWeapon().equals("Iron Longsword"))
+		{
+			hasIronLongsword = true;
+		}
+		else if (player.getCurrentWeapon().equals("Rusty Dagger"))
+		{
+			hasDagger = true;
+		}
+		
 		try {
 		writer.write
-		(player.getName()+" Level: "+player.getCurrentLevel()+" Experience: "+player.getCurrentExp()+
-		" ExpToLevel: "+player.getExpToLvl()+" Health: "+player.getHealth()+"\r\n"+player.getCurrentWeapon()+
-		" SmallPot: "+player.getNumSmallPotions()+" Mediumpot: "+player.getNumMediumPotions()+
-		" LargePot: "+player.getNumLargePotions());
+		
+		(	player.getNumSmallPotions()+player.getNumMediumPotions()+player.getNumLargePotions()+
+			player.getCurrentLevel()+player.getCurrentExp()+player.getExpToLvl()+
+			player.getHealth()+player.getAttack()+player.getCurrentWeapon()+
+			hasDagger+hasIronLongsword+hasExcalibur
+		);
+		
 		writer2.write(maze2);
 		}
 		catch (IOException e)
