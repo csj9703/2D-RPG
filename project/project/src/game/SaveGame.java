@@ -50,7 +50,7 @@ public class SaveGame
 		for(int i = 0; i < maze.length; i++){
 	        for(int j = 0; j < maze[i].length; j++)
 	        {
-	        maze2=maze2+" "+maze[i][j];
+	        maze2=maze2+maze[i][j]+" ";
 	        }
 	        maze2=maze2+"\r\n";
 	        }
