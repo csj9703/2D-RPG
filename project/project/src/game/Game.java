@@ -137,7 +137,7 @@ public class Game implements KeyListener
         	textPanel.update(game.getitemID());
         	player.pickUp(game.getitemID());
         	game.foundItem(false);
-        	new SaveGame(game.getMaze(),player).save();
+        	new SaveGame(game.getMaze(),player,game).save();
         }
         else
         {
@@ -248,7 +248,7 @@ public class Game implements KeyListener
         // Saves to File after each input command, unless in battle
         if(!inBattleScene)
         {
-        	new SaveGame(game.getMaze(),player).save();
+        	new SaveGame(game.getMaze(),player,game).save();
         }
         // Updates the GUI after each input command
         updateGUI();

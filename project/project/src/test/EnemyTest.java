@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
+import game.*;
 import org.junit.Test;
 
 public class EnemyTest
@@ -125,7 +126,7 @@ public class EnemyTest
   }
 
   @Test
-  public void test_constructor_NegativeHealth()
+  public void test_constructor_PositiveHealth()
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     assertEquals("Enemy with 10 passed as health value, so expecting that value",10,e1.getHealth());

@@ -13,8 +13,11 @@ public class SaveGame
 {
 	private Writer writer;
 	private Writer writer2;
+	private Writer writer3;
 	private String maze[][];
+	private Map map;
 	private Player player;
+	private String stage;
 	
 	/**
 	 * This constructor initializes the writer to a bufferedWriter and gives it the fileName
@@ -22,15 +25,17 @@ public class SaveGame
 	 * @param maze2 the 2d array maze
 	 * @param player2 the instance of the player, containing all relevant info
 	 */
-	public SaveGame(String maze2[][], Player player2)
+	public SaveGame(String maze2[][], Player player2, Map map2)
 	{
 		maze=maze2;
 		player=player2;
+		map = map2;
 	
 	try 
 	{
 	writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("SaveGame.txt"), "utf-8"));
 	writer2 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("SaveMap.txt"), "utf-8"));
+	writer3 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("currentStage.txt"), "utf-8"));
 	}
 	catch (Exception e) {}
 	}
@@ -66,18 +71,30 @@ public class SaveGame
 		{
 			hasDagger = true;
 		}
-		String something = player.getCurrentWeapon();
-		something = something.replaceAll("\\s+","");
+		
+		
+		String weapon = player.getCurrentWeapon();
+		weapon = weapon.replaceAll("\\s+","");
+		
+		if (map.currentStage() == 1)
+			stage = "stage1.txt";
+		else if (map.currentStage()==2)
+			stage = "stage2.txt";
+		else if (map.currentStage()==3)
+			stage = "stage3.txt";
+		
+		
 		try {
 		writer.write
 		
 		(	player.getNumSmallPotions()+" "+player.getNumMediumPotions()+" "+player.getNumLargePotions()+
 			" "+player.getCurrentLevel()+ " "+player.getCurrentExp()+" "+player.getExpToLvl()+
-			" "+player.getHealth()+" "+player.getAttack()+" "+something+
+			" "+player.getHealth()+" "+player.getAttack()+" "+weapon+
 			" "+hasDagger+" "+hasIronLongsword+" "+hasExcalibur
 		);
 		
 		writer2.write(maze2);
+		writer3.write(stage);
 		}
 		catch (IOException e)
 		{
@@ -87,6 +104,7 @@ public class SaveGame
 			try {
 				writer.close();
 				writer2.close();
+				writer3.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
