@@ -172,7 +172,7 @@ public class Game implements KeyListener
         inventoryPanel.update(player);
         gamePanel.update(game);
         game.checkStageCompletion();     
-        new SaveGame(game.getMaze(),player,game).save();
+        new FileWriter(game.getMaze(),player,game).save();
 	}
 	private void loadGame()
 	{

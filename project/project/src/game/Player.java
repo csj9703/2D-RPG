@@ -308,10 +308,16 @@ public class Player extends Character
 		hasSword = Boolean.parseBoolean(playerData[10]);
 		hasExcalibur = Boolean.parseBoolean(playerData[11]);
 		if (hasDagger)
+		{
 			currentWeapon = "Rusty Dagger";
+		}
 		if (hasSword)
+		{
 			currentWeapon = "Iron Longsword";
+		}
 		if (hasExcalibur)
-			currentWeapon = "Ecalibur";
+		{
+			currentWeapon = "Excalibur";
+		}
 	}
 }
