@@ -1,6 +1,9 @@
 package game;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Random;
+import java.util.Scanner;
 /*
  * This class holds data for the player
  */
@@ -13,7 +16,7 @@ public class Player extends Character
 	private int level;
 	private int currentEXP;
 	private int expToLvl;
-	private String currentWeapon;
+	private String currentWeapon = "No Weapon";
 	private boolean hasDagger = false;
 	private boolean hasSword = false;
 	private boolean hasExcalibur = false;
@@ -272,19 +275,34 @@ public class Player extends Character
 	}
 	public void loadPlayerData()
 	{
-		/*
-		private final int maxHealth ;
-		private int numSmallPotions;
-		private int numMediumPotions;
-		private int numLargePotions;
-		private int level;
-		private int currentEXP;
-		private int expToLvl;
-		private String currentWeapon;
-		private boolean hasDagger = false;
-		private boolean hasSword = false;
-		private boolean hasExcalibur = false;
-		private int damage;
-		*/
+		
+		File file = new File("SaveGame.txt");
+		Scanner scanner = null;
+		try 
+		{
+			scanner = new Scanner(file);
+		} 
+		catch (FileNotFoundException e) 
+		{
+			System.out.println("Error: " + "SaveGame.txt" + " not found");
+		}
+		final int SIZE = 12;
+		String[] playerData = new String[SIZE];
+		
+		for(int i = 0; i < SIZE; i++) 
+		{
+			playerData[i] = scanner.next();
+		}
+		
+		numSmallPotions = Integer.parseInt(playerData[0]);
+		numMediumPotions = Integer.parseInt(playerData[1]);
+		numLargePotions = Integer.parseInt(playerData[2]);
+		level = Integer.parseInt(playerData[3]);
+		currentEXP = Integer.parseInt(playerData[4]);
+		expToLvl = Integer.parseInt(playerData[5]);
+		currentWeapon = playerData[6];
+		hasDagger = playerData[7] == "true" ? true : false;
+		hasSword = playerData[8] == "true" ? true : false;
+		hasExcalibur = playerData[9] == "true" ? true : false;
 	}
 }
