@@ -423,7 +423,7 @@ public class Map
 	public void loadMapData()
 	{
 		FileReader fileReader = new FileReader();
-		maze = fileReader.readFile("SaveGame.txt");
+		maze = fileReader.readFile("SaveMap.txt");
 	}
 	/*
 	 * This is the getter method for the foundEnemy variable, returns foundEnemy
