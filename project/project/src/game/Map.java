@@ -10,12 +10,10 @@ public class Map
 {
     private String maze[][];
     private Enemy enemy = new Enemy("Default",1,1,1);
-    private Potion item = new Potion("Default", 1);
     private AudioPlayer audioPlayer = new AudioPlayer();
     private String selectedStage = "stage1.txt";
     private boolean foundEnemy = false;
     private boolean foundItem = false;
-    private int enemyID = 0;
     private int itemID = 0;
     private boolean stageComplete = false;
     private boolean gameWon = false;
@@ -27,6 +25,21 @@ public class Map
 		audioPlayer.startGameMusic();
 		FileReader fileReader = new FileReader();
 		maze = fileReader.readFile("stage1.txt");
+	}
+	/*
+	 * This is the copy constructor for map
+	 */
+	public Map(Map map)
+	{
+		maze = map.getMaze();
+		enemy = map.getEnemy();
+		audioPlayer = map.getAudioPlayer();
+		selectedStage = map.getSelectedStage();
+		foundEnemy = map.foundEnemy();
+		foundItem = map.foundItem();
+		itemID = map.getitemID();
+		stageComplete = map.getStageComplete();
+		gameWon = map.gameWon();
 	}
 	/*
 	 * This method prints the player input controls
@@ -319,16 +332,14 @@ public class Map
 		{
 			audioPlayer.playPotionSFX();
 			foundItem = true;
-			item = new Spawner("Items.txt").createItem(Integer.parseInt(maze[playerRow][playerCol]));
 			itemID = Integer.parseInt(maze[playerRow][playerCol]);
 		}
 		else if ((maze[playerRow][playerCol]).matches("[a-e]"))
 		{
-			audioPlayer.stopGameMusic();
+			audioPlayer.stopGameMusic(); 
 			audioPlayer.startBattleMusic();
 			foundEnemy(true);
 			enemy = new Spawner("Enemies.txt").spawnEnemy(convertLetterToID(maze[playerRow][playerCol]));
-			enemyID = convertLetterToID(maze[playerRow][playerCol]);
 		}
 		else if ((maze[playerRow][playerCol])== "n")
 		{
@@ -424,7 +435,6 @@ public class Map
 	{
 		FileReader fileReader = new FileReader();
 		maze = fileReader.readFile("SaveMap.txt");
-		//selectedStage = fileReader.readStageLevel("currentStage.txt");
 	}
 	/*
 	 * This is the getter method for the foundEnemy variable, returns foundEnemy
@@ -476,5 +486,19 @@ public class Map
 	public AudioPlayer getAudioPlayer()
 	{
 		return audioPlayer;
+	}
+	/*
+	 * This is the getter method for the selected stage, returns selectedStage
+	 */
+	public String getSelectedStage()
+	{
+		return selectedStage;
+	}
+	/*
+	 * This is the getter method for the stageComplete variable, returns stageComplete
+	 */
+	public Boolean getStageComplete()
+	{
+		return stageComplete;
 	}
 }
