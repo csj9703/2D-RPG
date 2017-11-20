@@ -70,10 +70,10 @@ public class SaveGame
 		try {
 		writer.write
 		
-		(	player.getNumSmallPotions()+player.getNumMediumPotions()+player.getNumLargePotions()+
-			player.getCurrentLevel()+player.getCurrentExp()+player.getExpToLvl()+
-			player.getHealth()+player.getAttack()+player.getCurrentWeapon()+
-			hasDagger+hasIronLongsword+hasExcalibur
+		(	player.getNumSmallPotions()+" "+player.getNumMediumPotions()+" "+player.getNumLargePotions()+
+			" "+player.getCurrentLevel()+ " "+player.getCurrentExp()+" "+player.getExpToLvl()+
+			" "+player.getHealth()+" "+player.getAttack()+" "+player.getCurrentWeapon()+
+			" "+hasDagger+" "+hasIronLongsword+" "+hasExcalibur
 		);
 		
 		writer2.write(maze2);
