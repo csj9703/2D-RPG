@@ -191,7 +191,8 @@ public class Game implements KeyListener
         battlePanel.update(player, game.getEnemy());
         inventoryPanel.update(player);
         gamePanel.update(game);
-        game.checkStageCompletion();     
+        game.checkStageCompletion();
+        if(!inBattleScene)
         new FileWriter(player,game).save();
 	}
 	/*
