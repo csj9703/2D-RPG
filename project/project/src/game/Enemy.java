@@ -34,10 +34,10 @@ public class Enemy extends Character
 		 *@param enemy The enemy
 		 */
 		@Override 
-		public void attack(Player player, Enemy enemy) 
+		public void attack(Character character) 
 		{			
-			int totalDamage = (enemy.getAttack());
-			player.setHealth(player.getHealth()-totalDamage);
+			int totalDamage = getAttack();
+			character.setHealth(character.getHealth()-totalDamage);
 			damage = totalDamage;
 		}
 		/**

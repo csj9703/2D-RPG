@@ -203,11 +203,11 @@ public class Map
 			if (choice.equals("a"))
 			{
 				audioPlayer.playAttackSFX();
-				player.attack(player, enemy);
+				player.attack(enemy);
 				System.out.println("You hit the " + enemy.getName() + " for " + player.getDamage() + " damage!");
 				if (enemy.isAlive())
 				{
-					enemy.attack(player, enemy);
+					enemy.attack(player);
 					System.out.println(enemy.getName() + " has hit you for " + enemy.getDamage() + " damage!");
 				}
 				else

@@ -284,7 +284,7 @@ public class PlayerTest {
 		 Player p1 = new Player("Default", 10, 1);
 		 int e1Health = 10;
 		 Enemy e1 = new Enemy("E1",e1Health,1,1); 
-		 p1.attack(p1, e1);
+		 p1.attack(e1);
 		 if(e1Health<e1.getHealth()) {
 			 isLess = true;
 		 }

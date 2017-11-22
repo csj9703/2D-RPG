@@ -168,7 +168,7 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,5,10);
     Player p1 = new Player("Hero",10,5);
-    e1.attack(p1,e1);
+    e1.attack(p1);
     assertEquals("Player with 10 health attacked by Enemy with 5 attack, Player health should decrease after enemy attacks", 5, p1.getHealth());
   }
 
@@ -177,7 +177,7 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,5,10);
     Player p1 = new Player("Hero",10,5);
-    e1.attack(p1,e1);
+    e1.attack(p1);
     assertEquals("Enemy had attack value of 5 when attacking Player, so should return 5 as damage", 5, e1.getDamage());
   }
 }

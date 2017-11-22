@@ -1,1 +1,1 @@
-1 1 2 3 3 4 6 3 IronLongsword false true false
+1 1 0 3 3 4 5 3 RustyDagger true false false

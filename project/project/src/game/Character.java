@@ -66,5 +66,5 @@ public abstract class Character extends GameObject
 	 * This abstract method does nothing and must
 	 * be overridden in a subclass
 	 */
-	public abstract void attack(Player player, Enemy enemy);
+	public abstract void attack(Character character);
 }

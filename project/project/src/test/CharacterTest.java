@@ -9,15 +9,15 @@ import java.io.IOException;
 import org.junit.Test;
 
 import game.Character;
-import game.Enemy;
-import game.Player;
+//import game.Enemy;
+//import game.Player;
 
 public class CharacterTest {
 	private class Temp extends Character{
 		public Temp(String name, int health, int attack) {
 			super(name,health,attack);
 		}
-		public void attack(Player player, Enemy enemy) {
+		public void attack(Character character) {
 		}
 	}
 	

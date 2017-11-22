@@ -88,12 +88,12 @@ public class Game implements KeyListener
 		if (inBattleScene)
     	{
 			audioPlayer.playAttackSFX();
-    		player.attack(player, game.getEnemy());
+    		player.attack(game.getEnemy());
     		// after player attacks:
     		if (game.getEnemy().isAlive())
     		{
     			battlePanel.showBattleResults();
-    			game.getEnemy().attack(player, game.getEnemy());
+    			game.getEnemy().attack(player);
     		}
     		else
     		{

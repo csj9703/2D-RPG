@@ -258,12 +258,12 @@ public class Player extends Character
 	 *@param enemy The enemy
 	 */
 	@Override 
-	public void attack(Player player, Enemy enemy) 
+	public void attack(Character character) 
 	{	
 		// random number is introduced to create a damage range, varies damage
 		Random rng = new Random();		
-		int totalDamage = (player.getAttack() + player.getWeaponDamage() + rng.nextInt(4) - 2);
-		enemy.setHealth(enemy.getHealth()-totalDamage);
+		int totalDamage = (getAttack() + getWeaponDamage() + rng.nextInt(4) - 2);
+		character.setHealth(character.getHealth()-totalDamage);
 		damage = totalDamage;
 	}
 	/**
