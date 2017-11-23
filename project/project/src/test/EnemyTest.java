@@ -43,7 +43,7 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     e1.setAttack(-1);
-    assertEquals("Negative value passed as enemy attack, should be the value 10", 10, e1.getAttack());
+    assertEquals("Negative value passed as enemy attack, should be the value 1", 1, e1.getAttack());
   }
 
   @Test
@@ -51,7 +51,7 @@ public class EnemyTest
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
     e1.setAttack(0);
-    assertEquals("Zero passed as enemy attack, should be the default value 10", 10, e1.getAttack());
+    assertEquals("Zero passed as enemy attack, should be the default value 1", 1, e1.getAttack());
   }
 
   @Test
@@ -118,14 +118,14 @@ public class EnemyTest
   public void test_constructor_NegativeHealth()
   {
     Enemy e1 = new Enemy("Monster",-10,10,10);
-    assertEquals("Enemy with -10 passed as health value, expecting default value of -10",-10,e1.getHealth());
+    assertEquals("Enemy with -10 passed as health value, expecting default value of -10",-10,e1.getHealth()); //
   }
 
   @Test
   public void test_constructor_ZeroHealth()
   {
     Enemy e1 = new Enemy("Monster",0,10,10);
-    assertEquals("Enemy with 0 passed as health value, expecting default value of 0",0,e1.getHealth());
+    assertEquals("Enemy with 0 passed as health value, expecting default value of 0",0,e1.getHealth()); //
   }
 
   @Test
@@ -139,14 +139,14 @@ public class EnemyTest
   public void test_constructor_InvalidNegativeAttackValue()
   {
     Enemy e1 = new Enemy("Monster",10,-10,10);
-    assertEquals("Enemy created with -10 as attack value, but expecting default value of 0",0,e1.getAttack());
+    assertEquals("Enemy created with -10 as attack value, but expecting default value of 1",1,e1.getAttack());
   }
 
   @Test
   public void test_constructor_ValidAttackValue()
   {
     Enemy e1 = new Enemy("Monster",10,10,10);
-    assertEquals("Enemy attack should be 10",10,e1.getAttack());
+    assertEquals("Enemy attack should be 10",10,e1.getAttack()); 
   }
 
   @Test
