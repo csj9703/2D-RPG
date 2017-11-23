@@ -26,7 +26,7 @@ public class TextGame
 	{
 		Map game = new Map();
 		Player player = new Spawner("player.txt").spawnPlayer();
-		while (!(game.gameWon()))
+		while (!(game.gameWon()) && player.isAlive())
 		{
 			game.displayMaze(); 
 			game.displayMenu(); 
