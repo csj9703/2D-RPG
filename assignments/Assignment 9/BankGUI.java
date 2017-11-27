@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-
+/*
+ * This class is written by Nathaly Verwaal
+ */
 public class BankGUI extends JFrame {
 	private JLabel balanceLbl = new JLabel("0.0");
 	private JTextField amountEntry = new JTextField(20); 

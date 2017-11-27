@@ -1,3 +1,6 @@
+/*
+ * This class is written by Nathaly Verwaal
+ */
 public class InsufficientFundsException extends Exception {
 
 	public InsufficientFundsException() {

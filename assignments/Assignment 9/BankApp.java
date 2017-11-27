@@ -1,5 +1,7 @@
 import java.awt.event.*;
-
+/*
+ * This class is written by Nathaly Verwaal
+ */
 public class BankApp implements ActionListener {
 	private BankGUI gui;
 	private BankAccount account;
