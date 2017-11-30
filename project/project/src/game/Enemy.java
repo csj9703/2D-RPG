@@ -27,6 +27,16 @@ public class Enemy extends Character
 				this.experience = 1;
 			}
 		}
+		/*
+		 * This is the copy constructor for enemy
+		 * @param enemy The enemy object to be copied
+		 */
+		public Enemy(Enemy enemy)
+		{
+			super(enemy.getName(), enemy.getHealth(), enemy.getExperience());
+			experience = enemy.getExperience();
+			damage = enemy.getDamage();
+		}
 		/**
 		 * This method reduces the player's health by the amount of 
 		 * damage inflicted by the enemy

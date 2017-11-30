@@ -28,6 +28,7 @@ public class Map
 	}
 	/*
 	 * This is the copy constructor for map
+	 * @param map The map object to be copied
 	 */
 	public Map(Map map)
 	{
@@ -187,10 +188,9 @@ public class Map
 	 * This method prints the player and enemy's interactions during battle
 	 * @param player The player
 	 * @param enemy The enemy
-	 * @param game The map
 	 * @param keyboard The scanner
 	 */
-	public void startBattle(Player player, Enemy enemy, Map game, Scanner keyboard)
+	public void startBattle(Player player, Enemy enemy, Scanner keyboard)
 	{
 		while(player.getHealth() > 0 && enemy.getHealth() > 0)
 		{
@@ -214,7 +214,7 @@ public class Map
 				{
 					audioPlayer.startGameMusic();
 					audioPlayer.stopBattleMusic();
-					game.foundEnemy(false);
+					foundEnemy(false);
 					player.obtainExp(enemy);
 					player.checkExp();
 				}

@@ -105,7 +105,7 @@ public class Game implements KeyListener
     			battlePanel.hideBattleResults();
     			textPanel.displayBattleResults(game.getEnemy());
     			justDefeatedEnemy = true;
-    			player.obtainExp(game.getEnemy());
+    			player.obtainExp(new Enemy(game.getEnemy()));
     			player.checkExp();
     			audioPlayer.stopBattleMusic();
     			audioPlayer.startGameMusic();
