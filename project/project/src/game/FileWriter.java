@@ -58,7 +58,6 @@ public class FileWriter
 		}
 		catch (IOException e)
 		{
-			e.printStackTrace();
 			System.out.println("ERROR: Could not write file");
 		}
 	}
@@ -86,7 +85,6 @@ public class FileWriter
 		}
 		catch (IOException e)
 		{
-			e.printStackTrace();
 			System.out.println("ERROR: Could not write file");
 		}
 	}
@@ -104,7 +102,6 @@ public class FileWriter
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
 			System.out.println("ERROR: Could not write file");
 		}
 	}

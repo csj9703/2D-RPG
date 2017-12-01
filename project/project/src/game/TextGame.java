@@ -46,7 +46,7 @@ public class TextGame
 			}
 			if (game.foundEnemy())
 			{
-				game.startBattle(player, game.getEnemy(), game, keyboard);
+				game.startBattle(player, game.getEnemy(), keyboard);
 			}
 			game.checkStageCompletion();
 		}
