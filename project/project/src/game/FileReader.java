@@ -2,6 +2,7 @@ package game;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 /*
  * This class is used to read text files into an array
@@ -97,7 +98,7 @@ public class FileReader
 			}
 			scanner.close();
 		} 
-		catch (FileNotFoundException e) 
+		catch (FileNotFoundException|NoSuchElementException|ArrayIndexOutOfBoundsException e) 
 		{
 			FileWriter gameRepair = new FileWriter();
 			gameRepair.reinstallGameFiles();
