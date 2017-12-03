@@ -45,6 +45,22 @@ public class Game implements KeyListener
 	private boolean textBoxDisplayed = false;
 	private boolean justDefeatedEnemy = false;
 	/*
+	 * This constructor will save the game on exit
+	 */
+	public Game()
+	{
+		Runtime.getRuntime().addShutdownHook(onExit());
+	}
+	/*
+	 * This method creates and returns a thread that is executed
+	 * when the program is closed allowing the player to save
+	 * his game progress to a text file on exit
+	 */
+	private Thread onExit()
+	{
+		return new Thread() {public void run() {new FileWriter(player,game).save();}};
+	}
+	/*
 	 * This method displays the game
 	 */
 	private void startGame()
@@ -192,8 +208,6 @@ public class Game implements KeyListener
         inventoryPanel.update(player);
         gamePanel.update(game);
         game.checkStageCompletion();
-        if(!inBattleScene)
-        new FileWriter(player,game).save();
 	}
 	/*
 	 * This method loads the saved game data 
