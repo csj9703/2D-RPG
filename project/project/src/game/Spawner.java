@@ -34,18 +34,11 @@ public class Spawner
 			scanner = new Scanner(file);
 			if (file.equals(new File("Enemies.txt")))
 			{
-			String[] scanArray = new String[22];
-			int counter = 0;
-			while (scanner.hasNext())
-				{
-					scanArray[counter] = scanner.next();
-					counter++;
-				}
-			Enemy zombie = new Enemy(scanArray[0], Integer.parseInt(scanArray[1]), Integer.parseInt(scanArray[2]), Integer.parseInt(scanArray[3]));
-			Enemy skeleton = new Enemy(scanArray[4], Integer.parseInt(scanArray[5]), Integer.parseInt(scanArray[6]), Integer.parseInt(scanArray[7]));
-			Enemy skeletonKing = new Enemy(scanArray[8]+" "+scanArray[9], Integer.parseInt(scanArray[10]), Integer.parseInt(scanArray[11]), Integer.parseInt(scanArray[12]));
-			Enemy blackKnight = new Enemy(scanArray[13]+" "+scanArray[14], Integer.parseInt(scanArray[15]), Integer.parseInt(scanArray[16]), Integer.parseInt(scanArray[17]));
-			Enemy reaper =  new Enemy(scanArray[18], Integer.parseInt(scanArray[19]), Integer.parseInt(scanArray[20]), Integer.parseInt(scanArray[21]));
+			Enemy zombie = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+			Enemy skeleton = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+			Enemy skeletonKing = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+			Enemy blackKnight = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+			Enemy reaper =  new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
 			enemyArray[0] = null;
 			enemyArray[1] = zombie;
 			enemyArray[2] = skeleton;
@@ -56,30 +49,23 @@ public class Spawner
 			if (file.equals(new File("Items.txt")))
 			{
 				
-			String[] scanArray = new String[17];
-			int counter = 0;
-			while (scanner.hasNext())
-				{
-				scanArray[counter] = scanner.next();
-				counter++;
-				}
 			itemArray[0] = null;
-			Potion smallPotion = new Potion(scanArray[0]+" "+scanArray[1], Integer.parseInt(scanArray[2]));
-			Potion mediumPotion = new Potion(scanArray[3]+" "+scanArray[4], Integer.parseInt(scanArray[5]));
-			Potion largePotion = new Potion(scanArray[6]+" "+scanArray[7], Integer.parseInt(scanArray[8]));
+			Potion smallPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
+			Potion mediumPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
+			Potion largePotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
 			itemArray[1] = smallPotion;
 			itemArray[2] = mediumPotion;
 			itemArray[3] = largePotion;
-			Weapon rustyDagger = new Weapon(scanArray[9]+" "+scanArray[10], Integer.parseInt(scanArray[11]));
-			Weapon ironLongsword = new Weapon(scanArray[12]+" "+scanArray[13], Integer.parseInt(scanArray[14]));
-			Weapon excalibur = new Weapon(scanArray[15]+" "+scanArray[16], Integer.parseInt(scanArray[17]));
+			Weapon rustyDagger = new Weapon(scanner.next()+" "+scanner.next(), scanner.nextInt());
+			Weapon ironLongsword = new Weapon(scanner.next()+" "+scanner.next(), scanner.nextInt());
+			Weapon excalibur = new Weapon(scanner.next(), scanner.nextInt());
 			itemArray[4] = rustyDagger;
 			itemArray[5] = ironLongsword;
 			itemArray[6] = excalibur;
 			}
 			if (file.equals(new File("Player.txt")))
 			{
-			player = new Player(scanner.next(), Integer.parseInt(scanner.next()),Integer.parseInt(scanner.next()));
+			player = new Player(scanner.next(), scanner.nextInt(),scanner.nextInt());
 			}
 		}
 		catch (FileNotFoundException e)

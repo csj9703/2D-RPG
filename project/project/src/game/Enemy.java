@@ -33,7 +33,7 @@ public class Enemy extends Character
 		 */
 		public Enemy(Enemy enemy)
 		{
-			super(enemy.getName(), enemy.getHealth(), enemy.getExperience());
+			super(enemy.getName(), enemy.getHealth(), enemy.getAttack());
 			experience = enemy.getExperience();
 			damage = enemy.getDamage();
 		}

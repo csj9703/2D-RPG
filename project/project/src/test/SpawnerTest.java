@@ -38,7 +38,7 @@ public class SpawnerTest
 	@Test
 	public void SpawnPlayerTest()
 	{
-		Spawner spawn = new Spawner("player.txt");
+		Spawner spawn = new Spawner("Player.txt");
 		Player test = spawn.spawnPlayer();
 		Player holder = new Player("Hero",20,1);
 		assertEquals("Spawned player, expected name of Hero, health 20 and attack 1", true,playerEquals(test,holder));
