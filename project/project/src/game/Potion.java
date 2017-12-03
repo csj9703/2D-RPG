@@ -24,6 +24,20 @@ public class Potion extends GameObject
 			this.healingAmount = 3;
 		}
 	}
+	
+
+	public Potion(Potion potionToCopy) 
+	{
+		super(potionToCopy.getName());
+		if(potionToCopy.healingAmount > 0) 
+		{
+			this.healingAmount = potionToCopy.healingAmount;
+		}
+		else 
+		{
+			this.healingAmount = 3;
+		}
+	}
 	/*
 	 * This is the getter method for healing amount, returns healingAmount
 	 */

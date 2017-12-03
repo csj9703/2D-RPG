@@ -24,6 +24,19 @@ public class Weapon extends GameObject
 			this.weaponDamage = 1;
 		}
 	}
+	public Weapon(Weapon weaponToCopy)
+	{
+		super(weaponToCopy.getName());
+		if(weaponToCopy.getWeaponDamage() > 0) 
+		{
+			this.weaponDamage = weaponToCopy.getWeaponDamage();
+		}
+		else 
+		{
+			this.weaponDamage = 1;
+		}
+		
+	}
 	/*
 	 * This is the getter method for weapon damage, returns weaponDamage
 	 */
