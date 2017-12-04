@@ -7,7 +7,9 @@ import game.Weapon;
 public class WeaponTest 
 {
 	
-	//Constructor Test default name and damage
+	/*
+	 * Constructor Test using default values for name and weapon damage variables
+	 */
 	@Test
 	public void constructorTest() 
 	{
@@ -16,7 +18,9 @@ public class WeaponTest
 		assertEquals("Weapon should have weapon damage 3",3,wep1.getWeaponDamage());
 	}
 	
-	//getWeaponDamage test
+	/*
+	 * Testing the getWeaponDamage method, with default name and weapon damage values
+	 */
 	@Test
 	public void test_getWeaponDamage()
   {
@@ -24,8 +28,10 @@ public class WeaponTest
     assertEquals("Weapon created with weapon damage 1, should show this", 1, wep1.getWeaponDamage());
   }
   
-	//Constructor Test with negative damage, 
-	//this is allowed but wouldn't be used unless implementing an enemy-healing weapon
+	/*
+	 * Constructor Test with negative damage entered, negative damage for weapon 
+	 * is not allowed in normal weapon implementation
+	 */
 	@Test
 	public void test_constructor_NegativeDamage()
   {
@@ -33,7 +39,9 @@ public class WeaponTest
     assertEquals("Weapon shouldn't show -1 as weapon damage",1,wep1.getWeaponDamage());
   }
   
-  //Constructor Test with no damage, allowed for a broken weapon perhaps
+  /*
+   * Constructor Test with no damage, this is not allowed for a normal functioning weapon
+   */
 	@Test
 	public void test_constructor_ZeroDamage()
   {
