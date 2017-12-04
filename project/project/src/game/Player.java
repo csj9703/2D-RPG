@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 /*
  * This class holds data for the player
  */
@@ -318,7 +320,10 @@ public class Player extends Character
 		}
 		catch (FileNotFoundException|ArrayIndexOutOfBoundsException|NoSuchElementException e) 
 		{
-		
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null, "Saved file was not found. Press enter to start a new game.", "LOADING ERROR",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+			null, options, options[0]);
 		}
 		if (hasDagger)
 		{

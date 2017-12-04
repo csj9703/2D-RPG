@@ -20,64 +20,73 @@ public class Spawner
 	private Enemy[] enemyArray = new Enemy[6];
 	private GameObject[] itemArray = new GameObject[7];
 	private Player player;
+	private String fileName = "";
 	/*
-	 * This method reads from a text file
+	 * This constructor reads from a text file and 
+	 * assigns the data values to an object
 	 * @param aFile The name of the text file
 	 */
-	
-	
 	public Spawner(String aFile)
 	{
-		file = new File(aFile) ;
+		fileName = aFile;
+		initializeGameValues();
+	}
+	/*
+	 * This method reads data from a text file into a array and assigns
+	 * each value to an object
+	 */
+	private void initializeGameValues()
+	{
+		file = new File(fileName) ;
 		try
 		{
 			scanner = new Scanner(file);
 			if (file.equals(new File("Enemies.txt")))
 			{
-			Enemy zombie = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-			Enemy skeleton = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-			Enemy skeletonKing = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-			Enemy blackKnight = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-			Enemy reaper =  new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-			enemyArray[0] = null;
-			enemyArray[1] = zombie;
-			enemyArray[2] = skeleton;
-			enemyArray[3]= skeletonKing;
-			enemyArray[4] = blackKnight;
-			enemyArray[5] = reaper;
+				Enemy zombie = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+				Enemy skeleton = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+				Enemy skeletonKing = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+				Enemy blackKnight = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+				Enemy reaper =  new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+				enemyArray[0] = null;
+				enemyArray[1] = zombie;
+				enemyArray[2] = skeleton;
+				enemyArray[3]= skeletonKing;
+				enemyArray[4] = blackKnight;
+				enemyArray[5] = reaper;
 			}
 			if (file.equals(new File("Items.txt")))
 			{
-				
-			itemArray[0] = null;
-			Potion smallPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
-			Potion mediumPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
-			Potion largePotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
-			itemArray[1] = smallPotion;
-			itemArray[2] = mediumPotion;
-			itemArray[3] = largePotion;
-			Weapon rustyDagger = new Weapon(scanner.next()+" "+scanner.next(), scanner.nextInt());
-			Weapon ironLongsword = new Weapon(scanner.next()+" "+scanner.next(), scanner.nextInt());
-			Weapon excalibur = new Weapon(scanner.next(), scanner.nextInt());
-			itemArray[4] = rustyDagger;
-			itemArray[5] = ironLongsword;
-			itemArray[6] = excalibur;
+				itemArray[0] = null;
+				Potion smallPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
+				Potion mediumPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
+				Potion largePotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
+				itemArray[1] = smallPotion;
+				itemArray[2] = mediumPotion;
+				itemArray[3] = largePotion;
+				Weapon rustyDagger = new Weapon(scanner.next()+" "+scanner.next(), scanner.nextInt());
+				Weapon ironLongsword = new Weapon(scanner.next()+" "+scanner.next(), scanner.nextInt());
+				Weapon excalibur = new Weapon(scanner.next(), scanner.nextInt());
+				itemArray[4] = rustyDagger;
+				itemArray[5] = ironLongsword;
+				itemArray[6] = excalibur;
 			}
 			if (file.equals(new File("Player.txt")))
 			{
-			player = new Player(scanner.next(), scanner.nextInt(),scanner.nextInt());
+				player = new Player(scanner.next(), scanner.nextInt(), scanner.nextInt());
 			}
 		}
 		catch (FileNotFoundException e)
 		{
-			System.out.println("Error: " + file + " not found");
+			FileWriter gameRepair = new FileWriter();
+			gameRepair.reinstallGameFiles();
+			initializeGameValues();
 		}
 	}
 	/*
 	 * This method returns an enemy based on the enemyID
 	 * @param enemyID The ID number
 	 */
-	
 	public Enemy spawnEnemy(int enemyID)
 	{
 		switch (enemyID)
@@ -149,47 +158,32 @@ public class Spawner
 		}
 		return weapon;
 	}
-	
+	/*
+	 * This method creates and returns a new instance of player
+	 */
 	public Player spawnPlayer()
 	{
 		return new Player("Hero", 20, 1);
-	}
-	
-	
-	/** Below are the object grabber methods, they take either
-	 * an enemyID or an itemID and they grab
-	 * the corresponding object from the corresponding array.
-	 * 
-	 * Note that all of these return new objects, 
-	 * however this is not necessary since the only changes to these
-	 * objects occurs in the map class which is conveniently creating an new instance of the 
-	 * spawner class each time it is called, 
-	 * so changes to the objects in the enemy array will have no effect.
-	 * This is merely to prevent privacy leaks.
-	 */
-	
-	/**
-	 * 
-	 * @param enemyID
-	 * @return Enemy object corresponding to enemyID
+	}	
+	/*
+	 * This method returns a enemy based on the ID received
+	 * @param enemyID The ID number of the enemy
 	 */
 	public Enemy objectGrabberEnemy(int enemyID)
 	{
 		return new Enemy(enemyArray[enemyID]);
 	}
-	/**
-	 * 
-	 * @param itemID
-	 * @return Weapon object corresponding to itemID
+	/*
+	 * This method returns a weapon based on the ID received
+	 * @param itemID The ID number of the weapon
 	 */
 	public Weapon objectGrabberWeapon(int itemID)
 	{
 		return new Weapon((Weapon) itemArray[itemID]);
 	}
-	/**
-	 * 
-	 * @param itemID
-	 * @return Potion object corresponding to itemID
+	/*
+	 * This method returns a potion based on the ID received
+	 * @param itemID The ID number of the potion
 	 */
 	public Potion objectGrabberPotion(int itemID)
 	{

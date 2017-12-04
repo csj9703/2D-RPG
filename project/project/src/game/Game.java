@@ -45,7 +45,8 @@ public class Game implements KeyListener
 	private boolean textBoxDisplayed = false;
 	private boolean justDefeatedEnemy = false;
 	/*
-	 * This constructor will save the game on exit
+	 * This constructor contains a shut down hook 
+	 * that will save the game on exit
 	 */
 	public Game()
 	{
@@ -61,7 +62,8 @@ public class Game implements KeyListener
 		return new Thread() {public void run() {new FileWriter(player,game).save();}};
 	}
 	/*
-	 * This method displays the game
+	 * This method is used to display the game, it will hide
+	 * the starting menu and show the in game display
 	 */
 	private void startGame()
 	{
@@ -76,7 +78,7 @@ public class Game implements KeyListener
     	}
 	}
 	/*
-	 * This method opens and closes the inventory menu
+	 * This method is used to open or close the inventory menu
 	 */
 	private void accessInventory()
 	{
@@ -119,7 +121,7 @@ public class Game implements KeyListener
     			inGameScene = true;
     			game.foundEnemy(false);
     			battlePanel.hideBattleResults();
-    			textPanel.displayBattleResults(game.getEnemy());
+    			textPanel.displayBattleResults(new Enemy(game.getEnemy()));
     			justDefeatedEnemy = true;
     			player.obtainExp(new Enemy(game.getEnemy()));
     			player.checkExp();
@@ -128,7 +130,6 @@ public class Game implements KeyListener
     		}
     	}
 	}
-	
 	/*
 	 * This method updates the gui when an enemy is found
 	 */
@@ -193,10 +194,8 @@ public class Game implements KeyListener
         	inVictoryScene = true;
         }
 	}
-	
 	/*
 	 * This method updates the user interface after each key press
-	 * and saves the game data
 	 */
 	private void updateGUI()
 	{

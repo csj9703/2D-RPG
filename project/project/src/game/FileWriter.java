@@ -112,11 +112,12 @@ public class FileWriter
 		}
 	}
 	/*
-	 * This method contains back up data and
-	 * is used to repair game text files
+	 * This method contains back up data for the text files 
+	 * and is used to repair game text files 
 	 */
 	public void reinstallGameFiles()
 	{
+		//hard coded maze data used for backup
 		String[][] stage1txtBackUp = new String[][] {
 		    {"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"},
 			{"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"},
@@ -138,7 +139,7 @@ public class FileWriter
 			{"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"},
 			{"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"},
 			{"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"}};
-		
+		//hard coded maze data used for backup
 		String[][] stage2txtBackUp = new String[][] {
 		    {"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"},
 			{"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"},
@@ -160,7 +161,7 @@ public class FileWriter
 			{"w", "r", "w", "v", "r", "w", "r", "w", "r", "r", "b", "r", "r", "v", "r", "v", "v", "v", "r", "w"},
 			{"w", "c", "w", "2", "r", "w", "r", "w", "r", "w", "r", "w", "r", "r", "r", "r", "r", "r", "r", "w"},
 			{"w", "n", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"}};
-			
+		//hard coded maze data used for backup
 		String[][] stage3txtBackUp = new String[][] {
 		    {"w", "v", "v", "v", "v", "v", "w", "w", "v", "v", "v", "w", "v", "v", "w", "v", "v", "w", "m", "w"},
 			{"w", "r", "r", "r", "r", "r", "v", "w", "r", "r", "r", "v", "r", "r", "w", "3", "r", "w", "e", "w"},
@@ -182,8 +183,15 @@ public class FileWriter
 			{"w", "r", "w", "v", "r", "w", "r", "w", "r", "r", "d", "r", "r", "v", "r", "v", "v", "v", "r", "w"},
 			{"w", "x", "w", "3", "r", "w", "r", "w", "r", "w", "r", "w", "r", "r", "r", "r", "r", "r", "r", "w"},
 			{"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"}};
+		//hard coded enemy data used for backup
+		String enemyData = "Zombie 10 1 1\r\n" + "Skeleton 15 2 1\r\n" + "Skeleton King 15 3 2\r\n" 
+				 + "Black Knight 15 2 1\r\n" + "Reaper 20 4 3";
+		//hard coded item data used for backup
+		String itemData = "Small Potion 3\r\n" + "Medium Potion 5\r\n" + "Large Potion 7\r\n" 
+					    + "Rusty Dagger 1\r\n" + "Iron Longsword 2\r\n" + "Excalibur 3";
+		//hard coded player data used for backup
+		String playerData = "Hero 20 1";
 		
-		// regenerates the missing text files	
 		String stage1Data = "";
 		for(int i = 0; i < stage1txtBackUp.length; i++)
 		{
@@ -193,7 +201,6 @@ public class FileWriter
 	        }
 	        stage1Data += "\r\n";
 	    }
-		
 		String stage2Data = "";
 		for(int i = 0; i < stage2txtBackUp.length; i++)
 		{
@@ -203,7 +210,6 @@ public class FileWriter
 	        }
 	        stage2Data += "\r\n";
 	    }
-		
 		String stage3Data = "";
 		for(int i = 0; i < stage3txtBackUp.length; i++)
 		{
@@ -213,7 +219,7 @@ public class FileWriter
 	        }
 	        stage3Data += "\r\n";
 	    }
-		
+		// regenerates the missing text files	
 		try 
 		{
 			Writer writer1 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("stage1.txt"), "utf-8"));
@@ -222,15 +228,28 @@ public class FileWriter
 			writer2.write(stage2Data);
 			Writer writer3 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("stage3.txt"), "utf-8"));
 			writer3.write(stage3Data);
+			Writer writer4 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Enemies.txt"), "utf-8"));
+			writer4.write(enemyData);
+			Writer writer5 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Items.txt"), "utf-8"));
+			writer5.write(itemData);
+			Writer writer6 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Player.txt"), "utf-8"));
+			writer6.write(playerData);
 			writer1.close();
 			writer2.close();
 			writer3.close();
+			writer4.close();
+			writer5.close();
+			writer6.close();
 		}
 		catch (IOException e)
 		{
 			displayErrorMessage();
 		}
 	}
+	/*
+	 * This method will display a pop up error message to alert 
+	 * the user an error was encountered
+	 */
 	private void displayErrorMessage()
 	{
 		Object[] options = {"EXIT"};
