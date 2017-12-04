@@ -11,7 +11,7 @@ import gui.InventoryPanel;
 import gui.StartScenePanel;
 import gui.TextPanel;
 import gui.VictoryScenePanel;
-/**
+/*
  * This class manages player input
  */
 public class Game implements KeyListener
@@ -44,7 +44,7 @@ public class Game implements KeyListener
 	private boolean inVictoryScene = false;
 	private boolean textBoxDisplayed = false;
 	private boolean justDefeatedEnemy = false;
-	/*
+	/**
 	 * This constructor contains a shut down hook 
 	 * that will save the game on exit
 	 */
@@ -52,7 +52,7 @@ public class Game implements KeyListener
 	{
 		Runtime.getRuntime().addShutdownHook(onExit());
 	}
-	/*
+	/**
 	 * This method creates and returns a thread that is executed
 	 * when the program is closed allowing the player to save
 	 * his game progress to a text file on exit
@@ -61,7 +61,7 @@ public class Game implements KeyListener
 	{
 		return new Thread() {public void run() {new FileWriter(player,game).save();}};
 	}
-	/*
+	/**
 	 * This method is used to display the game, it will hide
 	 * the starting menu and show the in game display
 	 */
@@ -77,7 +77,7 @@ public class Game implements KeyListener
         	textBoxDisplayed = true;
     	}
 	}
-	/*
+	/**
 	 * This method is used to open or close the inventory menu
 	 */
 	private void accessInventory()
@@ -98,7 +98,7 @@ public class Game implements KeyListener
     		inventoryOpen = false;
     	}
 	}
-	/*
+	/**
 	 * This method initiates a turn of combat
 	 */
 	private void attack()
@@ -130,7 +130,7 @@ public class Game implements KeyListener
     		}
     	}
 	}
-	/*
+	/**
 	 * This method updates the gui when an enemy is found
 	 */
 	private void checkForBattle()
@@ -143,7 +143,7 @@ public class Game implements KeyListener
 			inGameScene = false;
 		}
 	}
-	/*
+	/**
 	 * This method updates the gui when an item is found
 	 */
 	private void checkForItem()
@@ -161,7 +161,7 @@ public class Game implements KeyListener
 				justDefeatedEnemy = false;
 		}		
 	}
-	/*
+	/**
 	 * This method checks to see if player has been defeated
 	 */
 	private void checkPlayerHealth()
@@ -179,7 +179,7 @@ public class Game implements KeyListener
         	inEndScene = true;
         }
 	}
-	/*
+	/**
 	 * This method checks to see if winning condition is met
 	 */
 	private void checkWinCondition()
@@ -194,7 +194,7 @@ public class Game implements KeyListener
         	inVictoryScene = true;
         }
 	}
-	/*
+	/**
 	 * This method updates the user interface after each key press
 	 */
 	private void updateGUI()
@@ -208,7 +208,7 @@ public class Game implements KeyListener
         gamePanel.update(game);
         game.checkStageCompletion();
 	}
-	/*
+	/**
 	 * This method loads the saved game data 
 	 */
 	private void loadGame()
@@ -216,7 +216,7 @@ public class Game implements KeyListener
 		player.loadPlayerData();
 		game.loadMapData();
 	}
-	/*
+	/**
 	 * This method manages the player input
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
@@ -285,17 +285,17 @@ public class Game implements KeyListener
         // Updates the GUI after each input command
         updateGUI();
     }
-    /*
+	/**
      * This method is not used but is required by the key listener 
      * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
      */
     public void keyPressed(KeyEvent e) {}
-    /*
+	/**
      * This method is not used but is required by the key listener 
      * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
      */
     public void keyTyped(KeyEvent e) {}
-    /*
+	/**
      * This method starts the game 
      */
     public void play()

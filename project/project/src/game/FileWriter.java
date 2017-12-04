@@ -15,7 +15,7 @@ public class FileWriter
 	private Map map;
 	private Player player;
 	
-	/*
+	/**
 	 * This is the default constructor
 	 */
 	public FileWriter() {}
@@ -30,7 +30,7 @@ public class FileWriter
 		this.map = new Map(map);
 		this.player = player;
 	}
-	/*
+	/**
 	 * This method saves the game to text file
 	 */
 	public void save()
@@ -39,7 +39,7 @@ public class FileWriter
 		savePlayerData();
 		saveMazeData();
 	}
-	/*
+	/**
 	 * This method will write the maze array values to a 
 	 * text file and save the location of the player
 	 */
@@ -67,7 +67,7 @@ public class FileWriter
 			System.out.println("ERROR: Could not write file");
 		}
 	}
-	/*
+	/**
 	 * This method will write the player statistics to a 
 	 * text file
 	 */
@@ -94,7 +94,7 @@ public class FileWriter
 			displayErrorMessage();
 		}
 	}
-	/*
+	/**
 	 * This method will write the current stage the
 	 * player is on to a text file
 	 */
@@ -111,7 +111,7 @@ public class FileWriter
 			displayErrorMessage();
 		}
 	}
-	/*
+	/**
 	 * This method contains back up data for the text files 
 	 * and is used to repair game text files 
 	 */
@@ -241,7 +241,7 @@ public class FileWriter
 			displayErrorMessage();
 		}
 	}
-	/*
+	/**
 	 * This method will display a pop up error message to alert 
 	 * the user an error was encountered
 	 */

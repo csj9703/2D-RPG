@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -16,7 +15,7 @@ public class EndScenePanel
 	private JLabel gameInstructions = new JLabel();	
 	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("src/graphics/gameOver.png").getImage().getScaledInstance(700, 700, Image.SCALE_DEFAULT));
 	private ImageIcon title = new ImageIcon(new ImageIcon("src/graphics/YouDied.png").getImage().getScaledInstance(500, 700, Image.SCALE_DEFAULT));
-	/* 
+	/**
 	 * This method creates and returns a JPanel
 	 */
 	public JPanel createPanel()

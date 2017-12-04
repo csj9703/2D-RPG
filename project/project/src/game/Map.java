@@ -17,7 +17,7 @@ public class Map
     private int itemID = 0;
     private boolean stageComplete = false;
     private boolean gameWon = false;
-    /*
+	/**
      * This constructor initializes the game, loads all the game elements onto the map
      */
 	public Map () 
@@ -26,7 +26,7 @@ public class Map
 		FileReader fileReader = new FileReader();
 		maze = fileReader.readFile("stage1.txt");
 	}
-	/*
+	/**
 	 * This is the copy constructor for map
 	 * @param map The map object to be copied
 	 */
@@ -42,7 +42,7 @@ public class Map
 		stageComplete = map.getStageComplete();
 		gameWon = map.gameWon();
 	}
-	/*
+	/**
 	 * This method prints the player input controls
 	 */
 	public void displayMenu()
@@ -55,7 +55,7 @@ public class Map
 		System.out.println("Type one of the letters above to indicate direction of movement");
 		System.out.println("or i for character menu");
 	}
-	/*
+	/**
 	 * This method prints the maze grid borders
 	 */
 	public void displayMaze()
@@ -76,7 +76,7 @@ public class Map
 		     System.out.println();
 		}
 	}
-	/*
+	/**
 	 * This method converts the maze elements to a letter
 	 * to be displayed in the console, returns a text maze
 	 */
@@ -150,7 +150,7 @@ public class Map
 		}
 		return textMaze;
 	}
-	/*
+	/**
 	 * This method prints the inventory and player info
 	 * @param player The player
 	 * @param keyboard The scanner
@@ -184,7 +184,7 @@ public class Map
 			}
 		}
 	}
-	/*
+	/**
 	 * This method prints the player and enemy's interactions during battle
 	 * @param player The player
 	 * @param enemy The enemy
@@ -221,7 +221,7 @@ public class Map
 			}	
 		}
 	}
-	/*
+	/**
 	 * This method returns the row index of the player
 	 */
 	private int getRow()
@@ -239,7 +239,7 @@ public class Map
 		}
 		return playerRow;
 	}
-	/*
+	/**
 	 * This method returns the column index of the player
 	 */
 	private int getCol()
@@ -257,7 +257,7 @@ public class Map
 		}
 		return playerCol;
 	}
-	/*
+	/**
 	 * This method moves the player on the grid
 	 */
 	public void move(String choice)
@@ -309,7 +309,7 @@ public class Map
 			maze[playerRow][playerCol] = "x";	
 		}
 	}
-	/*
+	/**
 	 * This method returns true if player is moving into an valid space
 	 * @param playerRow The row index of player
 	 * @param playerCol The column index of player
@@ -319,7 +319,7 @@ public class Map
 		return (!(maze[playerRow][playerCol] == "w")
 			  &&!(maze[playerRow][playerCol] == "v")) ? true : false;
 	}
-	/*
+	/**
 	 * This method starts a battle when player encounters a challenge, 
 	 * and picks up a item when player encounters a object
 	 * @param maze The 2d array the player is traversing
@@ -350,7 +350,7 @@ public class Map
 			gameWon = true;
 		}
 	}
-	/*
+	/**
 	 * This method returns true if player reaches the end of the maze,
 	 * false otherwise
 	 */
@@ -358,7 +358,7 @@ public class Map
 	{
 		return gameWon;
 	}
-	/*
+	/**
 	 * This method checks to see if a stage has been complete
 	 * When a stage is complete it will load the next stage
 	 */
@@ -378,14 +378,14 @@ public class Map
 			stageComplete = false;
 		}
 	}
-	/*
+	/**
 	 * This is the getter method for the grid, returns maze
 	 */
 	public String[][] getMaze()
 	{
 		return maze;
 	}
-	/*
+	/**
 	 * This method converts letter id to number id
 	 */
 	private int convertLetterToID(String letterID)
@@ -411,7 +411,7 @@ public class Map
 		}
 		return id;
 	}
-	/*
+	/**
 	 * This method will load maze from saved game file
 	 */
 	public void loadMapData()
@@ -420,14 +420,14 @@ public class Map
 		maze = fileReader.readFile("SaveMap.txt");
 		selectedStage = fileReader.readStageLevel("currentStage.txt");
 	}
-	/*
+	/**
 	 * This is the getter method for the foundEnemy variable, returns foundEnemy
 	 */
 	public boolean foundEnemy()
 	{
 		return foundEnemy;
 	}
-	/*
+	/**
 	 * This is the setter method for the foundEnemy variable
 	 * @param truthValue The foundEnemy variable
 	 */
@@ -435,14 +435,14 @@ public class Map
 	{
 		foundEnemy = truthValue;
 	}
-	/*
+	/**
 	 * This is the getter method for the foundItem variable, returns foundItem
 	 */
 	public boolean foundItem()
 	{
 		return foundItem;
 	}
-	/*
+	/**
 	 * This is the setter method for the foundItem variable
 	 * @param truthValue The foundItem variable
 	 */
@@ -450,14 +450,14 @@ public class Map
 	{
 		foundItem = truthValue;
 	}
-	/*
+	/**
 	 * This is the getter method for the itemID, returns itemID
 	 */
 	public int getitemID()
 	{
 		return itemID;
 	}
-	/*
+	/**
 	 * This is the getter method for the enemy, returns enemy
 	 * There is a potential privacy leak here, but the reason for returning 
 	 * the original reference is because the enemy should not be cloned because
@@ -468,7 +468,7 @@ public class Map
 	{
 		return enemy;
 	}
-	/*
+	/**
 	 * This is the getter method for the audio player, returns audioPlayer
 	 * There is a potential privacy leak here, but the reason for returning 
 	 * the original reference is because the audio should only come from one 
@@ -479,14 +479,14 @@ public class Map
 	{
 		return audioPlayer;
 	}
-	/*
+	/**
 	 * This is the getter method for the selected stage, returns selectedStage
 	 */
 	public String getSelectedStage()
 	{
 		return selectedStage;
 	}
-	/*
+	/**
 	 * This is the getter method for the stageComplete variable, returns stageComplete
 	 */
 	public Boolean getStageComplete()

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
  */
 public class Gui extends JFrame 
 {
-    /*
+	/**
      * This constructor accepts as arguments the other panels and 
      * initializes the frame
      */

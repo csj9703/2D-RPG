@@ -55,7 +55,7 @@ public abstract class Character extends GameObject
 			this.attack = attack;
 		}
 	}
-	/*
+	/**
 	 * This method checks to see if the character is alive (more than zero health)
 	 * Returns true if is alive, false otherwise
 	 */
@@ -63,7 +63,7 @@ public abstract class Character extends GameObject
 	{
 		return getHealth() > 0 ? true : false;
 	}
-	/*
+	/**
 	 * This abstract method does nothing and must
 	 * be overridden in a subclass
 	 */

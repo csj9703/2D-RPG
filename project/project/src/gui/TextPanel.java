@@ -11,7 +11,7 @@ import game.Enemy;
 public class TextPanel 
 {
 	private JLabel textLabel = new JLabel();
-	/* 
+	/** 
 	 * This method creates and returns a JPanel
 	 */
 	public JPanel createPanel()
@@ -30,7 +30,7 @@ public class TextPanel
 		
 		return textPanel;
 	}
-	/*
+	/** 
 	 * This method is called to display a message when 
 	 * an item is picked up 
 	 * @param itemID The ID of the item
@@ -61,7 +61,7 @@ public class TextPanel
 		}
 		textLabel.setText(text);
 	}
-	/*
+	/** 
 	 * This method is called to display battle results when 
 	 * an enemy is defeated
 	 * @param enemy The enemy
@@ -71,7 +71,7 @@ public class TextPanel
 		String results = "You have defeated the " + enemy.getName() + " and gained " + enemy.getExperience() + " exp!";
 		textLabel.setText(results);
 	}
-	/*
+	/** 
 	 * This method erases the label
 	 */
 	public void reset()

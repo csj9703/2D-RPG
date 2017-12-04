@@ -14,7 +14,7 @@ public class VictoryScenePanel
 	private JLabel victoryMessage = new JLabel();
 	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("src/graphics/victory.gif").getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT));
 	private ImageIcon title = new ImageIcon(new ImageIcon("src/graphics/congratulations.png").getImage().getScaledInstance(609, 114, Image.SCALE_DEFAULT));
-	/* 
+	/** 
 	 * This method creates and returns a JPanel
 	 */
 	public JPanel createPanel()

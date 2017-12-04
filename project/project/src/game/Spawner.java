@@ -15,7 +15,7 @@ public class Spawner
 	private Scanner itemScanner;
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<GameObject> items = new ArrayList<GameObject>();
-	/*
+	/**
 	 * This constructor reads from a text file and 
 	 * assigns the data values to an object
 	 */
@@ -23,7 +23,7 @@ public class Spawner
 	{
 		initializeGameValues();
 	}
-	/*
+	/**
 	 * This method extract game data from a text file 
 	 * and assign each value to an object
 	 */
@@ -41,7 +41,7 @@ public class Spawner
 			initializeGameValues();
 		}
 	}
-	/*
+	/**
 	 * This method extracts the enemy data from Enemies.txt
 	 */
 	private void extractEnemyData() throws FileNotFoundException
@@ -58,7 +58,7 @@ public class Spawner
 		}
 		enemyScanner.close();
 	}
-	/*
+	/**
 	 * This method extracts the item data from Items.txt
 	 */
 	private void extractItemData() throws FileNotFoundException
@@ -79,7 +79,7 @@ public class Spawner
 		}
 		itemScanner.close();
 	}
-	/*
+	/**
 	 * This method returns an enemy based on the enemyID
 	 * @param enemyID The ID number
 	 */
@@ -87,7 +87,7 @@ public class Spawner
 	{
 		return new Enemy(enemies.get(enemyID));
 	}
-	/*
+	/**
 	 * This method returns an potion based on the itemID
 	 * @param itemID The ID number
 	 */
@@ -95,7 +95,7 @@ public class Spawner
 	{
 		return new Potion((Potion) items.get(itemID));
 	}
-	/*
+	/**
 	 * This method returns an weapon based on the itemID
 	 * @param itemID The ID number
 	 */
@@ -103,7 +103,7 @@ public class Spawner
 	{
 		return new Weapon((Weapon) items.get(itemID));
 	}
-	/*
+	/**
 	 * This method creates and returns a new instance of player
 	 * at its default values
 	 */

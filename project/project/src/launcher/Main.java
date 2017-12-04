@@ -10,7 +10,7 @@ import game.Game;
  */
 public class Main 
 {
-	/*
+	/** 
      * This method starts the game 
      */
 	public static void main(String[] args)

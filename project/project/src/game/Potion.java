@@ -6,7 +6,7 @@ package game;
 public class Potion extends GameObject
 {	
 	private int healingAmount;
-	/*
+	/**
 	 * This constructor accepts as arguments the name
 	 * and damage healing amount of the potion
 	 * @param name The name
@@ -24,7 +24,7 @@ public class Potion extends GameObject
 			this.healingAmount = 3;
 		}
 	}
-	/*
+	/**
 	 * This is the copy constructor for potion
 	 * @param potion The potion object to be copied
 	 */
@@ -33,7 +33,7 @@ public class Potion extends GameObject
 		super(potion.getName());
 		healingAmount = potion.getHealingAmount();
 	}
-	/*
+	/**
 	 * This is the getter method for healing amount, returns healingAmount
 	 */
 	public int getHealingAmount()

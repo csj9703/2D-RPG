@@ -1,7 +1,7 @@
 package game;
 
 import java.util.Scanner;
-/**
+/*
  * This class runs the console text based version of Maze RPG
  * and acts as the controller 
  * @author Team 6 - CPSC 233 - Tutorial T02
@@ -17,7 +17,7 @@ import java.util.Scanner;
  */
 public class TextGame 
 {
-	/*
+	/**
 	 * This method starts and runs the program, game ends when either
 	 * the player has completed the maze is defeated by an enemy
 	 * @param keyboard The scanner

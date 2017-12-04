@@ -26,7 +26,7 @@ public class InventoryPanel
 	private ImageIcon mediumPotion = new ImageIcon("src/graphics/medium_potion.png");
 	private ImageIcon largePotion = new ImageIcon("src/graphics/large_potion.png");
 	private ImageIcon inventoryHeader = new ImageIcon("src/graphics/inventory_header.png");
-	/* 
+	/**
 	 * This method creates and returns a JPanel
 	 * @param player The player
 	 */
@@ -74,7 +74,10 @@ public class InventoryPanel
 		
 		return inventoryPanel;
 	}
-	// this method is run after every input command
+	/**
+	 * This method updates the inventory interface after each input command
+	 * @param player The player
+	 */
 	public void update(Player player)
 	{
 		// displays currently equipped weapon
@@ -84,7 +87,7 @@ public class InventoryPanel
 						   + "</html>"; 
 		weaponInventory.setText(weaponInfo);
 		// displays player statistics
-		String playerInfo = "<html>" + "Health: " + player.getHealth()
+		String playerInfo = "<html>" + "Health: " + player.getHealth() + "/" + player.getMaxHealth()
 		                   + "<br/>" + "Level: " + player.getCurrentLevel()
 		                   + "<br/>" + "EXP: " + player.getCurrentExp() + "/" + player.getExpToLvl()
 		                   + "</html>"; 
@@ -99,7 +102,7 @@ public class InventoryPanel
 			case "Iron Longsword":
 				weaponIcon.setIcon(ironLongsword);
 				break;
-			case "Excalibur":
+			case "Blessed Excalibur":
 				weaponIcon.setIcon(excalibur);
 				break;
 		}

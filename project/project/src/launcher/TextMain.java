@@ -11,7 +11,7 @@ import game.TextGame;
  */
 public class TextMain 
 {
-	/*
+	/** 
      * This method starts the game 
      */
 	public static void main(String[] args) 

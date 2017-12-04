@@ -27,7 +27,7 @@ public class Enemy extends Character
 				this.experience = 1;
 			}
 		}
-		/*
+		/**
 		 * This is the copy constructor for enemy
 		 * @param enemy The enemy object to be copied
 		 */

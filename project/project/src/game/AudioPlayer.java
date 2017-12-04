@@ -3,6 +3,7 @@ package game;
 import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.JOptionPane;
 /*
  * This class manages the game music and sound effects
  */
@@ -13,7 +14,7 @@ public class AudioPlayer
 	Clip game;
 	Clip death;
 	Clip victory;
-	/*
+	/**
 	 * This method plays a wave audio file
 	 * @param sound The sound file
 	 */
@@ -27,10 +28,13 @@ public class AudioPlayer
 		}
 		catch(Exception e)
 		{
-			System.out.println("Error: sound file not found");
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null, "Unable to load sound. Reinstall Game", "SOUND ERROR",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+			null, options, options[0]);
 		}
 	}
-	/*
+	/**
 	 * This method plays a attacking sound effect
 	 */
 	public void playAttackSFX()
@@ -38,7 +42,7 @@ public class AudioPlayer
 		File attackSFX = new File("src/sounds/attackSFX.wav");
 		playSound(attackSFX);
 	}
-	/*
+	/**
 	 * This method plays a item sound effect
 	 */
 	public void playPotionSFX()
@@ -46,7 +50,7 @@ public class AudioPlayer
 		File potionSFX = new File("src/sounds/potionSFX.wav");
 		playSound(potionSFX);
 	}
-	/*
+	/**
 	 * This method plays the battle music
 	 */
 	public void playBattleMusic()
@@ -54,7 +58,7 @@ public class AudioPlayer
 		File battleMusic = new File("src/sounds/battleMusic.wav");
 		playSound(battleMusic);
 	}
-	/*
+	/**
 	 * This method plays the drink potion sound effect
 	 */
 	public void playDrinkPotionSFX()
@@ -62,7 +66,7 @@ public class AudioPlayer
 		File drinkPotionSFX = new File("src/sounds/drinkPotionSFX.wav");
 		playSound(drinkPotionSFX);
 	}
-	/*
+	/**
 	 * This method plays the inventory sound effect
 	 */
 	public void playInventorySFX()
@@ -70,7 +74,7 @@ public class AudioPlayer
 		File inventorySFX = new File("src/sounds/inventorySFX.wav");
 		playSound(inventorySFX);
 	}
-	/*
+	/**
 	 * This method plays the movement sound effect
 	 */
 	public void playMovementSFX()
@@ -78,7 +82,7 @@ public class AudioPlayer
 		File moveSFX = new File("src/sounds/moveSFX.wav");
 		playSound(moveSFX);
 	}
-	/*
+	/**
 	 * This method plays the battle music
 	 */
 	public void startBattleMusic()
@@ -91,18 +95,21 @@ public class AudioPlayer
 		}
 		catch(Exception e)
 		{
-			System.out.println("Error: sound file not found");
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null, "Unable to load sound. Reinstall Game", "SOUND ERROR",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+			null, options, options[0]);
 		}
 		battle.start();
 	}
-	/*
+	/**
 	 * This method stops the battle music
 	 */
 	public void stopBattleMusic()
 	{
 		battle.close();
 	}
-	/*
+	/**
 	 * This method plays the game music
 	 */
 	public void startGameMusic()
@@ -115,11 +122,14 @@ public class AudioPlayer
 		}
 		catch(Exception e)
 		{
-			System.out.println("Error: sound file not found");
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null, "Unable to load sound. Reinstall Game", "SOUND ERROR",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+			null, options, options[0]);
 		}
 		game.start();
 	}
-	/*
+	/**
 	 * This method stops the game music
 	 */
 	public void stopGameMusic()
@@ -139,7 +149,10 @@ public class AudioPlayer
 		}
 		catch(Exception e)
 		{
-			System.out.println("Error: sound file not found");
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null, "Unable to load sound. Reinstall Game", "SOUND ERROR",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+			null, options, options[0]);
 		}
 		death.start();
 	}
@@ -163,7 +176,10 @@ public class AudioPlayer
 		}
 		catch(Exception e)
 		{
-			System.out.println("Error: sound file not found");
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null, "Unable to load sound. Reinstall Game", "SOUND ERROR",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+			null, options, options[0]);
 		}
 		victory.start();
 	}
@@ -187,7 +203,10 @@ public class AudioPlayer
 		}
 		catch(Exception e)
 		{
-			System.out.println("Error: sound file not found");
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null, "Unable to load sound. Reinstall Game", "SOUND ERROR",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+			null, options, options[0]);
 		}
 		menu.start();
 	}

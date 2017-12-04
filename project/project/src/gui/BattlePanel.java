@@ -24,7 +24,7 @@ public class BattlePanel
 	private ImageIcon player_Icon = new ImageIcon(new ImageIcon("src/graphics/player.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 	private ImageIcon BG_Icon = new ImageIcon(new ImageIcon("src/graphics/backgroundPH.gif").getImage().getScaledInstance(700, 350, Image.SCALE_DEFAULT));
 	private ImageIcon enemy_Icon;
-	/* 
+	/**
 	 * This method creates and returns a JPanel
 	 */
 	public JPanel createPanel(Player player, Enemy enemy)
@@ -56,29 +56,39 @@ public class BattlePanel
 		
 		return battlePanel;
 	}
-	// this method is run after every input command
+	/**
+	 * This method updates the battle interface after each input command
+	 * @param player The player
+	 * @param enemy The enemy
+	 */
 	public void update(Player player, Enemy enemy)
 	{
 		setPlayerModel();
 		setEnemyModel(enemy.getName());
 		String enemyInfo = "<html>" + "Enemy Name: " + enemy.getName() 
-                          + "<br/>" + "Enemy HP: " + enemy.getHealth() 
-                          + "</html>";
+                         + "<br/>" + "Enemy HP: " + enemy.getHealth() 
+                         + "</html>";
 		enemyStatistics.setText(enemyInfo);
 		
 		String playerInfo = "<html>" + "Player Name: " + player.getName()
-                           + "<br/>" + "Player HP: " + player.getHealth() 
-                                     + "</html>";
+                          + "<br/>" + "Player HP: " + player.getHealth() + "/" + player.getMaxHealth()
+                          + "</html>";
 		playerStatistics.setText(playerInfo);
 		
 		String battleInfo ="<html>" + "You hit the " + enemy.getName() + " for " + player.getDamage() + " damage!"
-							+ "<br/>" + "<br/>" + enemy.getName() + " has hit you for " + enemy.getDamage() + " damage!";
+						  + "<br/>" + "<br/>" + enemy.getName() + " has hit you for " + enemy.getDamage() + " damage!";
 		battleResults.setText(battleInfo);
 	}
+	/**
+	 * This method displays the battle results
+	 */
 	public void showBattleResults()
 	{
 		battleResults.setVisible(true);
 	}
+	/**
+	 * This method hides the battle results
+	 */
 	public void hideBattleResults()
 	{
 		battleResults.setVisible(false);

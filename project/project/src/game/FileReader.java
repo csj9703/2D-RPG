@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class FileReader 
 {
-	/*
+	/**
 	 * This method reads a text file into a 2d array,
 	 * if the text file is not found, a backup will be
 	 * generated
@@ -106,7 +106,7 @@ public class FileReader
 		}
 		return maze;
 	}
-	/*
+	/**
 	 * This methods reads the saved stage level
 	 */
 	public String readStageLevel(String fileName) 

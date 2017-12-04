@@ -25,7 +25,7 @@ public class GamePanel
 	private JLabel[][] labels;
 	private final int ROW = 20;
 	private final int COL = 20;
-	/* 
+	/**
 	 * This method creates and returns a JPanel
 	 * @param game The map
 	 */
@@ -51,7 +51,7 @@ public class GamePanel
 		gamePanel.add(panel);
 		return gamePanel;
 	}
-	/*
+	/**
 	 * This method updates the maze with the correct images
 	 * @param game The map
 	 */

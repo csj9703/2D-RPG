@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class Player extends Character
 {
-	private final int maxHealth;
+	private final int MAX_HEALTH = 20;
 	private int numSmallPotions;
 	private int numMediumPotions;
 	private int numLargePotions;
@@ -33,19 +33,17 @@ public class Player extends Character
 	public Player(String name, int health, int attack)
 	{
 		super(name,health,attack);
-		maxHealth = 20;
 		level = 1;
 		currentEXP = 0;
 		expToLvl = 1;
 	}
-	/*
+	/**
 	 * This is the copy constructor for player
 	 * @param player The player object to be copied
 	 */
 	public Player(Player player)
 	{
 		super(player.getName(),player.getHealth(),player.getAttack());
-		maxHealth = 20;
 		level = 1;
 		currentEXP = 0;
 		expToLvl = 1;
@@ -206,12 +204,19 @@ public class Player extends Character
 	private void restoreHp(int amount)
     {
 		setHealth(getHealth()+amount);
-		if(getHealth() > maxHealth) 
+		if(getHealth() > MAX_HEALTH) 
 		{
-			int excessHp = getHealth() - maxHealth;
+			int excessHp = getHealth() - MAX_HEALTH;
 			setHealth(getHealth()-excessHp);
 		}
     }
+	/**
+	 * This is the getter method for MAX_HEALTH, returns MAX_HEALTH
+	 */
+	public int getMaxHealth()
+	{
+		return MAX_HEALTH;
+	}
 	/**
 	 * This is the getter method for small potions, returns numSmallPotions
 	 */
@@ -289,7 +294,7 @@ public class Player extends Character
 	{
 		return damage;
 	}
-	/*
+	/**
 	 * This method sets the player data to the values saved in file
 	 */
 	public void loadPlayerData()
