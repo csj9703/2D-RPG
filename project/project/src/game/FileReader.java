@@ -116,6 +116,7 @@ public class FileReader
 	}
 	/**
 	 * This methods reads the saved stage level
+	 * @param fileName The file's name
 	 */
 	public String readStageLevel(String fileName) 
 	{

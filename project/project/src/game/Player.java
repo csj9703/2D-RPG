@@ -129,7 +129,6 @@ public class Player extends Character
 	/**
 	 * This method is called after defeating an enemy to increase experience
 	 * @param player The player
-	 * @param enemy The enemy
 	 */
 	public void obtainExp(Enemy enemy)
 	{
