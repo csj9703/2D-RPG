@@ -1,81 +1,39 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 /*
- * This class creates the enemy, potion, 
- * and weapon game objects
+ * This class spawns various game objects, including
+ * potions, weapons, enemies, and the player
  */
 public class Spawner
 {
-	private Enemy enemy;
-	private File file;
-	private Scanner scanner;
-	private Potion potion;
-	private Weapon weapon;
-	private Enemy[] enemyArray = new Enemy[6];
-	private GameObject[] itemArray = new GameObject[7];
-	private Player player;
-	private String fileName = "";
+	private Scanner enemyScanner;
+	private Scanner itemScanner;
+	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+	private ArrayList<GameObject> items = new ArrayList<GameObject>();
 	/*
 	 * This constructor reads from a text file and 
 	 * assigns the data values to an object
-	 * @param aFile The name of the text file
 	 */
-	public Spawner(String aFile)
+	public Spawner()
 	{
-		fileName = aFile;
 		initializeGameValues();
 	}
 	/*
-	 * This method reads data from a text file into a array and assigns
-	 * each value to an object
+	 * This method extract game data from a text file 
+	 * and assign each value to an object
 	 */
 	private void initializeGameValues()
 	{
-		file = new File(fileName) ;
 		try
-		{
-			scanner = new Scanner(file);
-			if (file.equals(new File("Enemies.txt")))
-			{
-				Enemy zombie = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-				Enemy skeleton = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-				Enemy skeletonKing = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-				Enemy blackKnight = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-				Enemy reaper =  new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
-				enemyArray[0] = null;
-				enemyArray[1] = zombie;
-				enemyArray[2] = skeleton;
-				enemyArray[3]= skeletonKing;
-				enemyArray[4] = blackKnight;
-				enemyArray[5] = reaper;
-			}
-			if (file.equals(new File("Items.txt")))
-			{
-				itemArray[0] = null;
-				Potion smallPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
-				Potion mediumPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
-				Potion largePotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
-				itemArray[1] = smallPotion;
-				itemArray[2] = mediumPotion;
-				itemArray[3] = largePotion;
-				Weapon rustyDagger = new Weapon(scanner.next()+" "+scanner.next(), scanner.nextInt());
-				Weapon ironLongsword = new Weapon(scanner.next()+" "+scanner.next(), scanner.nextInt());
-				Weapon excalibur = new Weapon(scanner.next(), scanner.nextInt());
-				itemArray[4] = rustyDagger;
-				itemArray[5] = ironLongsword;
-				itemArray[6] = excalibur;
-			}
-			if (file.equals(new File("Player.txt")))
-			{
-				player = new Player(scanner.next(), scanner.nextInt(), scanner.nextInt());
-			}
-		}
+		{	
+			extractEnemyData();	
+			extractItemData();
+		}	
 		catch (FileNotFoundException e)
 		{
 			FileWriter gameRepair = new FileWriter();
@@ -84,33 +42,50 @@ public class Spawner
 		}
 	}
 	/*
+	 * This method extracts the enemy data from Enemies.txt
+	 */
+	private void extractEnemyData() throws FileNotFoundException
+	{
+		enemyScanner = new Scanner(new File("Enemies.txt"));
+		enemies.add(null);
+		for (int i = 0; i < 5; i++)
+		{
+			String name = enemyScanner.next();
+			int health = enemyScanner.nextInt();
+			int attack = enemyScanner.nextInt();
+			int experience = enemyScanner.nextInt();
+			enemies.add(new Enemy(name, health, attack, experience));
+		}
+		enemyScanner.close();
+	}
+	/*
+	 * This method extracts the item data from Items.txt
+	 */
+	private void extractItemData() throws FileNotFoundException
+	{
+		itemScanner = new Scanner(new File("Items.txt"));
+		items.add(null);
+		for (int i = 0; i < 3; i++)
+		{
+			String name = itemScanner.next() + " " + itemScanner.next();
+			int value = itemScanner.nextInt();
+			items.add(new Potion(name, value));
+		}
+		for (int i = 0; i < 3; i++)
+		{
+			String name = itemScanner.next() + " " + itemScanner.next();
+			int value = itemScanner.nextInt();
+			items.add(new Weapon(name, value));
+		}
+		itemScanner.close();
+	}
+	/*
 	 * This method returns an enemy based on the enemyID
 	 * @param enemyID The ID number
 	 */
 	public Enemy spawnEnemy(int enemyID)
 	{
-		switch (enemyID)
-		{
-			case 1:
-				enemy = objectGrabberEnemy(1);
-				break;
-			case 2:
-				enemy = objectGrabberEnemy(2);
-				break;
-			case 3:
-				enemy = objectGrabberEnemy(3);
-				break;
-			case 4:
-				enemy = objectGrabberEnemy(4);
-				break;
-			case 5:
-				enemy = objectGrabberEnemy(5);
-				break;
-			default:
-				enemy = null;
-				break;
-		}
-		return enemy;
+		return new Enemy(enemies.get(enemyID));
 	}
 	/*
 	 * This method returns an potion based on the itemID
@@ -118,22 +93,7 @@ public class Spawner
 	 */
 	public Potion createItem(int itemID)
 	{
-		switch (itemID)
-		{
-			case 1:
-				potion = objectGrabberPotion(1);
-				break;
-			case 2:
-				potion = objectGrabberPotion(2);
-				break;
-			case 3:
-				potion = objectGrabberPotion(3);
-				break;
-			default:
-				potion = null;
-				break;
-		}
-		return potion;
+		return new Potion((Potion) items.get(itemID));
 	}
 	/*
 	 * This method returns an weapon based on the itemID
@@ -141,52 +101,17 @@ public class Spawner
 	 */
 	public Weapon createWeapon(int itemID)
 	{
-		switch (itemID)
-		{
-			case 4:
-				weapon = objectGrabberWeapon(4);
-				break;
-			case 5:
-				weapon = objectGrabberWeapon(5);
-				break;
-			case 6:
-				weapon = objectGrabberWeapon(6);
-				break;
-			default:
-				weapon = null;
-				break;
-		}
-		return weapon;
+		return new Weapon((Weapon) items.get(itemID));
 	}
 	/*
 	 * This method creates and returns a new instance of player
+	 * at its default values
 	 */
 	public Player spawnPlayer()
 	{
-		return new Player("Hero", 20, 1);
+		final int DEFAULT_MAX_HEALTH = 20;
+		final int DEFAULT_STARTING_ATK = 1;
+		String DEFAULT_HERO_NAME = "Hero";
+		return new Player(DEFAULT_HERO_NAME, DEFAULT_MAX_HEALTH, DEFAULT_STARTING_ATK);
 	}	
-	/*
-	 * This method returns a enemy based on the ID received
-	 * @param enemyID The ID number of the enemy
-	 */
-	public Enemy objectGrabberEnemy(int enemyID)
-	{
-		return new Enemy(enemyArray[enemyID]);
-	}
-	/*
-	 * This method returns a weapon based on the ID received
-	 * @param itemID The ID number of the weapon
-	 */
-	public Weapon objectGrabberWeapon(int itemID)
-	{
-		return new Weapon((Weapon) itemArray[itemID]);
-	}
-	/*
-	 * This method returns a potion based on the ID received
-	 * @param itemID The ID number of the potion
-	 */
-	public Potion objectGrabberPotion(int itemID)
-	{
-		return new Potion((Potion) itemArray[itemID]);
-	}
 }

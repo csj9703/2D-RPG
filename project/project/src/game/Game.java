@@ -16,7 +16,7 @@ import gui.VictoryScenePanel;
  */
 public class Game implements KeyListener
 {	
-	private Player player = new Spawner("Player.txt").spawnPlayer();
+	private Player player = new Spawner().spawnPlayer();
 	private Map game = new Map();
 	private AudioPlayer audioPlayer = game.getAudioPlayer();
 	private GamePanel gamePanel = new GamePanel();

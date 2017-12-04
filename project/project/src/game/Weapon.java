@@ -24,18 +24,14 @@ public class Weapon extends GameObject
 			this.weaponDamage = 1;
 		}
 	}
-	public Weapon(Weapon weaponToCopy)
+	/*
+	 * This is the copy constructor for weapon
+	 * @param weapon The weapon object to be copied
+	 */
+	public Weapon(Weapon weapon) 
 	{
-		super(weaponToCopy.getName());
-		if(weaponToCopy.getWeaponDamage() > 0) 
-		{
-			this.weaponDamage = weaponToCopy.getWeaponDamage();
-		}
-		else 
-		{
-			this.weaponDamage = 1;
-		}
-		
+		super(weapon.getName());
+		weaponDamage = weapon.getWeaponDamage();
 	}
 	/*
 	 * This is the getter method for weapon damage, returns weaponDamage

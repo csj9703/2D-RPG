@@ -184,13 +184,11 @@ public class FileWriter
 			{"w", "x", "w", "3", "r", "w", "r", "w", "r", "w", "r", "w", "r", "r", "r", "r", "r", "r", "r", "w"},
 			{"w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"}};
 		//hard coded enemy data used for backup
-		String enemyData = "Zombie 10 1 1\r\n" + "Skeleton 15 2 1\r\n" + "Skeleton King 15 3 2\r\n" 
-				 + "Black Knight 15 2 1\r\n" + "Reaper 20 4 3";
+		String enemyData = "Zombie 10 1 1\r\n" + "Skeleton 15 2 1\r\n" + "Skeleking 15 3 2\r\n" 
+				 + "Knight 15 2 1\r\n" + "Reaper 20 4 3";
 		//hard coded item data used for backup
 		String itemData = "Small Potion 3\r\n" + "Medium Potion 5\r\n" + "Large Potion 7\r\n" 
-					    + "Rusty Dagger 1\r\n" + "Iron Longsword 2\r\n" + "Excalibur 3";
-		//hard coded player data used for backup
-		String playerData = "Hero 20 1";
+					    + "Rusty Dagger 1\r\n" + "Iron Longsword 2\r\n" + "Blessed Excalibur 3";
 		
 		String stage1Data = "";
 		for(int i = 0; i < stage1txtBackUp.length; i++)
@@ -232,14 +230,11 @@ public class FileWriter
 			writer4.write(enemyData);
 			Writer writer5 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Items.txt"), "utf-8"));
 			writer5.write(itemData);
-			Writer writer6 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Player.txt"), "utf-8"));
-			writer6.write(playerData);
 			writer1.close();
 			writer2.close();
 			writer3.close();
 			writer4.close();
 			writer5.close();
-			writer6.close();
 		}
 		catch (IOException e)
 		{

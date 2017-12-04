@@ -339,7 +339,7 @@ public class Map
 			audioPlayer.stopGameMusic(); 
 			audioPlayer.startBattleMusic();
 			foundEnemy(true);
-			enemy = new Spawner("Enemies.txt").spawnEnemy(convertLetterToID(maze[playerRow][playerCol]));
+			enemy = new Spawner().spawnEnemy(convertLetterToID(maze[playerRow][playerCol]));
 		}
 		else if ((maze[playerRow][playerCol])== "n")
 		{

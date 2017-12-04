@@ -24,19 +24,14 @@ public class Potion extends GameObject
 			this.healingAmount = 3;
 		}
 	}
-	
-
-	public Potion(Potion potionToCopy) 
+	/*
+	 * This is the copy constructor for potion
+	 * @param potion The potion object to be copied
+	 */
+	public Potion(Potion potion) 
 	{
-		super(potionToCopy.getName());
-		if(potionToCopy.healingAmount > 0) 
-		{
-			this.healingAmount = potionToCopy.healingAmount;
-		}
-		else 
-		{
-			this.healingAmount = 3;
-		}
+		super(potion.getName());
+		healingAmount = potion.getHealingAmount();
 	}
 	/*
 	 * This is the getter method for healing amount, returns healingAmount

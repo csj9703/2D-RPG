@@ -25,7 +25,7 @@ public class Player extends Character
 	private boolean hasExcalibur = false;
 	private int damage;
 	private AudioPlayer audioPlayer = new AudioPlayer();
-	private Spawner spawner = new Spawner("Items.txt");
+	private Spawner spawner = new Spawner();
 	/**
 	 * This constructor accepts as arguments the name, health, and attack
 	 * It also sets the starting values of max hit points, level and experience
@@ -38,9 +38,9 @@ public class Player extends Character
 		currentEXP = 0;
 		expToLvl = 1;
 	}
-	/**
-	 * This is the player copy constructor to prevent privacy leaks.
-	 * @param player
+	/*
+	 * This is the copy constructor for player
+	 * @param player The player object to be copied
 	 */
 	public Player(Player player)
 	{

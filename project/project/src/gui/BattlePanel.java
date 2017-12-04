@@ -119,12 +119,12 @@ public class BattlePanel
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/skeleton.gif").getImage().getScaledInstance(115, 125, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
-		else if(enemyName.equals("Skeleton King"))
+		else if(enemyName.equals("Skeleking"))
 		{
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/skeletonKing.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
-		else if(enemyName.equals("Black Knight")) 
+		else if(enemyName.equals("Knight")) 
 		{
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/blackKnight.gif").getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
