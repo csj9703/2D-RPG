@@ -25,7 +25,7 @@ public class TextGame
 	public void play(Scanner keyboard) 
 	{
 		Map game = new Map();
-		Player player = new Spawner("player.txt").spawnPlayer();
+		Player player = new Spawner("Player.txt").spawnPlayer();
 		while (!(game.gameWon()) && player.isAlive())
 		{
 			game.displayMaze(); 

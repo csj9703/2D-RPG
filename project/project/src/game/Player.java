@@ -2,6 +2,7 @@ package game;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
 /*
@@ -22,6 +23,7 @@ public class Player extends Character
 	private boolean hasExcalibur = false;
 	private int damage;
 	private AudioPlayer audioPlayer = new AudioPlayer();
+	private Spawner spawner = new Spawner("Items.txt");
 	/**
 	 * This constructor accepts as arguments the name, health, and attack
 	 * It also sets the starting values of max hit points, level and experience
@@ -29,6 +31,18 @@ public class Player extends Character
 	public Player(String name, int health, int attack)
 	{
 		super(name,health,attack);
+		maxHealth = 20;
+		level = 1;
+		currentEXP = 0;
+		expToLvl = 1;
+	}
+	/**
+	 * This is the player copy constructor to prevent privacy leaks.
+	 * @param player
+	 */
+	public Player(Player player)
+	{
+		super(player.getName(),player.getHealth(),player.getAttack());
 		maxHealth = 20;
 		level = 1;
 		currentEXP = 0;
@@ -132,7 +146,7 @@ public class Player extends Character
 		case 1:
 			if (getNumSmallPotions() > 0)
 			{
-				restoreHp(3);
+				restoreHp(spawner.createItem(1).getHealingAmount());
 				numSmallPotions -= 1;
 				audioPlayer.playDrinkPotionSFX();
 			}
@@ -140,7 +154,7 @@ public class Player extends Character
 		case 2:
 			if (getNumMediumPotions() > 0)
 			{
-				restoreHp(5);
+				restoreHp(spawner.createItem(2).getHealingAmount());
 				numMediumPotions -= 1;
 				audioPlayer.playDrinkPotionSFX();
 			}
@@ -148,7 +162,7 @@ public class Player extends Character
 		case 3:
 			if (getNumLargePotions() > 0)
 			{
-				restoreHp(7);
+				restoreHp(spawner.createItem(3).getHealingAmount());
 				numLargePotions -= 1;
 				audioPlayer.playDrinkPotionSFX();
 			}
@@ -232,18 +246,18 @@ public class Player extends Character
 		int weaponDamage = 0;
 		if (hasExcalibur)
 		{
-			weaponDamage = 3;
-			currentWeapon = "Excalibur";
+			weaponDamage = spawner.createWeapon(6).getWeaponDamage();
+			currentWeapon = spawner.createWeapon(6).getName();
 		}
 		else if (hasSword)
 		{
-			weaponDamage = 2;
-			currentWeapon = "Iron Longsword";
+			weaponDamage = spawner.createWeapon(5).getWeaponDamage();
+			currentWeapon = spawner.createWeapon(5).getName();
 		}
 		else if (hasDagger)
 		{
-			weaponDamage = 1;
-			currentWeapon = "Rusty Dagger";
+			weaponDamage = spawner.createWeapon(4).getWeaponDamage();
+			currentWeapon = spawner.createWeapon(4).getName();
 		}
 		else
 		{
@@ -280,33 +294,32 @@ public class Player extends Character
 	{
 		File file = new File("SaveGame.txt");
 		Scanner scanner = null;
+		final int SIZE = 12;
+		String[] playerData = new String[SIZE];
 		try 
 		{
 			scanner = new Scanner(file);
-		} 
-		catch (FileNotFoundException e) 
-		{
-			System.out.println("Error: " + "SaveGame.txt" + " not found");
-		}
-		final int SIZE = 12;
-		String[] playerData = new String[SIZE];
 		
-		for(int i = 0; i < SIZE; i++) 
-		{
+			for(int i = 0; i < SIZE; i++) 
+			{
 			playerData[i] = scanner.next();
+			}
+			numSmallPotions = Integer.parseInt(playerData[0]);
+			numMediumPotions = Integer.parseInt(playerData[1]);
+			numLargePotions = Integer.parseInt(playerData[2]);
+			level = Integer.parseInt(playerData[3]);
+			currentEXP = Integer.parseInt(playerData[4]);
+			expToLvl = Integer.parseInt(playerData[5]);
+			setHealth(Integer.parseInt(playerData[6]));
+			setAttack(Integer.parseInt(playerData[7]));
+			hasDagger = Boolean.parseBoolean(playerData[9]);
+			hasSword = Boolean.parseBoolean(playerData[10]);
+			hasExcalibur = Boolean.parseBoolean(playerData[11]);
 		}
-		numSmallPotions = Integer.parseInt(playerData[0]);
-		numMediumPotions = Integer.parseInt(playerData[1]);
-		numLargePotions = Integer.parseInt(playerData[2]);
-		level = Integer.parseInt(playerData[3]);
-		currentEXP = Integer.parseInt(playerData[4]);
-		expToLvl = Integer.parseInt(playerData[5]);
-		setHealth(Integer.parseInt(playerData[6]));
-		setAttack(Integer.parseInt(playerData[7]));
-		playerData[9] +="";
-		hasDagger = Boolean.parseBoolean(playerData[9]);
-		hasSword = Boolean.parseBoolean(playerData[10]);
-		hasExcalibur = Boolean.parseBoolean(playerData[11]);
+		catch (FileNotFoundException|ArrayIndexOutOfBoundsException|NoSuchElementException e) 
+		{
+		
+		}
 		if (hasDagger)
 		{
 			currentWeapon = "Rusty Dagger";
