@@ -7,7 +7,9 @@ import game.Potion;
 public class PotionTest 
 {	
 	
-	//Constructor Test default name and healing amount
+	/*
+	 * Constructor Test default with default name and healing amounts entered
+	 */
 	@Test
 	public void constructorTest() 
 	{
@@ -16,7 +18,9 @@ public class PotionTest
 		assertEquals("Potion should have healing amount 10",10,pot1.getHealingAmount());
 	}
 	
-	//getHealingAmount test
+	/*
+	 * Testing the getHealingAmount method using default values for healing and name
+	 */
 	@Test
 	public void test_getHealingAmount()
 	{
@@ -24,7 +28,10 @@ public class PotionTest
 		assertEquals("Potion created with healing amount 5, should show this", 5, pot1.getHealingAmount());
     }
 
-	//Constructor Test with negative value
+	/*
+	 * Constructor Test with negative value as healing amount, this is not allowed
+	 * for a normal functioning healing amount
+	 */
 	@Test
 	public void test_constructor_NegativeHealing()
 	{
@@ -32,7 +39,10 @@ public class PotionTest
 		assertEquals("Potion shouldn't show -10 as healing amount",3,pot1.getHealingAmount());
 	}
   
-	//Constructor Test with no healing
+	/*
+	 * Constructor Test with 0 for healing value, this is not allowed for a normal
+	 * functioning healing amount
+	 */
 	@Test
 	public void test_constructor_ZeroHealing()
 	{
