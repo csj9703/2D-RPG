@@ -6,6 +6,14 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 /*
  * This class is used to read text files into an array
+ * 
+ * Text file character mapping		
+ * w : wall		      a : zombie       1 : small potion         
+ * v : wall2		  b : skeleton     2 : medium potion
+ * r : road           c : skeleking    3 : large potion
+ * n : check point    d : knight       4 : rusty dagger
+ * m : end of maze    e : reaper	   5 : iron longsword
+ * x : player			               6 : blessed excalibur
  */
 public class FileReader 
 {

@@ -340,7 +340,7 @@ public class Player extends Character
 		}
 		if (hasExcalibur)
 		{
-			currentWeapon = "Excalibur";
+			currentWeapon = "Blessed Excalibur";
 		}
 	}
 }

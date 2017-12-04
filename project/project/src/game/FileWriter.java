@@ -64,7 +64,7 @@ public class FileWriter
 		}
 		catch (IOException e)
 		{
-			System.out.println("ERROR: Could not write file");
+			displayErrorMessage();
 		}
 	}
 	/**
