@@ -16,9 +16,9 @@ public class Player extends Character
 	private int numSmallPotions;
 	private int numMediumPotions;
 	private int numLargePotions;
-	private int level;
-	private int currentEXP;
-	private int expToLvl;
+	private int level = 1;
+	private int currentEXP = 0;
+	private int expToLvl = 1;
 	private String currentWeapon = "No Weapon";
 	private boolean hasDagger = false;
 	private boolean hasSword = false;
@@ -26,27 +26,17 @@ public class Player extends Character
 	private int damage;
 	private AudioPlayer audioPlayer = new AudioPlayer();
 	private Spawner spawner = new Spawner();
+	
 	/**
 	 * This constructor accepts as arguments the name, health, and attack
 	 * It also sets the starting values of max hit points, level and experience
+	 * @param name, name of player 
+	 * @param health, health of player
+	 * @param attack, attack of player
 	 */
 	public Player(String name, int health, int attack)
 	{
 		super(name,health,attack);
-		level = 1;
-		currentEXP = 0;
-		expToLvl = 1;
-	}
-	/**
-	 * This is the copy constructor for player
-	 * @param player The player object to be copied
-	 */
-	public Player(Player player)
-	{
-		super(player.getName(),player.getHealth(),player.getAttack());
-		level = 1;
-		currentEXP = 0;
-		expToLvl = 1;
 	}
 	/**
 	 * This is the getter method for level, returns level
@@ -128,7 +118,7 @@ public class Player extends Character
 	}
 	/**
 	 * This method is called after defeating an enemy to increase experience
-	 * @param player The player
+	 * @param enemy The enemy
 	 */
 	public void obtainExp(Enemy enemy)
 	{
@@ -308,7 +298,7 @@ public class Player extends Character
 		
 			for(int i = 0; i < SIZE; i++) 
 			{
-			playerData[i] = scanner.next();
+				playerData[i] = scanner.next();
 			}
 			numSmallPotions = Integer.parseInt(playerData[0]);
 			numMediumPotions = Integer.parseInt(playerData[1]);

@@ -7,7 +7,7 @@ import game.*;
 
 public class SpawnerTest 
 {
-	/**
+	/*
 	 * These four methods below check that each instance variable 
 	 * used in the constructors of two objects of the same
 	 * class are equivalent, the spawner class may only manipulate the variables which
@@ -44,7 +44,7 @@ public class SpawnerTest
 	}
 	
 	
-	/**
+	/*
 	 * SpawnPlayer Test, checks to see if the player has the correct default values, using
 	 * playerEquals() method.
 	 */
@@ -58,9 +58,9 @@ public class SpawnerTest
 		assertEquals("Spawned player, expected name of Hero, health 20 and attack 1", true,playerEquals(test,holder));
 	}
 	
-	/**
+	/*
 	 * SpawnEnemy Tests, compares the instances created by the spawner to instances that
-	 * were expected using enemyEquals() method. Null if its given an unexpected enemyID. 
+	 * were expected using enemyEquals() method.
 	 */
 	
 	@Test
@@ -104,9 +104,9 @@ public class SpawnerTest
 	assertEquals("Gave 5 as an enemy ID, expected Black Knight",true,enemyEquals(test,holder));
 	}
 	
-	/** CreateItem Tests, checks to see if the potions created by the spawner 
+	/*  
+	 *  CreateItem Tests, checks to see if the potions created by the spawner 
 	 *  are the same as the ones that were expected using the potionEquals() method.
-	 *  null if its an unexpected ItemID.
 	 */
 	
 	@Test
@@ -134,10 +134,9 @@ public class SpawnerTest
 	assertEquals("Gave 3 as item ID, expected large potion",true,potionEquals(test,holder));
 	}
 	
-	/**
+	/*
 	 * CreateWeapon Tests, checks to see if the weapons created by the spawner
 	 * are the same as the ones that were expected using the weaponEquals() method.
-	 * null if its an unexpected ItemID.
 	 */
 	
 	@Test
@@ -164,12 +163,15 @@ public class SpawnerTest
 	Weapon holder = new Weapon("Blessed Excalibur",3);
 	assertEquals("Gave 6 as item ID, expected Excalibur",true,weaponEquals(test,holder));
 	}
-	/**
+	
+	
+	/*
 	 * Below we test for privacy of the objects stored in the spawner
 	 * if we get back the changed attack value then there is a leak.
 	 */
 	
-	/** 
+	
+	/*
 	 * Testing Privacy of Enemy Objects
 	 */
 	@Test
@@ -217,7 +219,7 @@ public class SpawnerTest
 	Enemy b = spawn.spawnEnemy(5);
 	assertEquals("Tested for privacy of Reaper by changing attack",4,b.getAttack());
 	}
-	/**
+	/*
 	 * Testing Privacy of Weapon Objects
 	 */
 	@Test
@@ -244,7 +246,7 @@ public class SpawnerTest
 	a.setName("SomethingWentWrongo");
 	assertEquals("Changed the name of a weapon Object from Spawner","Blessed Excalibur",spawn.createWeapon(6).getName());
 	}
-	/**
+	/*
 	 * Testing Privacy of Potion Objects
 	 */
 	@Test
