@@ -13,6 +13,8 @@ public class SpawnerTest
 	 * class are equivalent, the spawner class may only manipulate the variables which
 	 * are used in the constructor as its purpose is only to *spawn* objects, so it is unnecessary to check
 	 * other instance variables.
+	 * @param obja first object to be compared
+	 * @param objb second object to be compared
 	 * @return true if the objects are equal, false otherwise.
 	 */
 
@@ -42,8 +44,10 @@ public class SpawnerTest
 	}
 	
 	
-	//SpawnPlayer Test, checks to see if the player has the correct default values, using
-	//playerEquals() method.
+	/**
+	 * SpawnPlayer Test, checks to see if the player has the correct default values, using
+	 * playerEquals() method.
+	 */
 	
 	@Test
 	public void SpawnPlayerTest()
@@ -54,8 +58,10 @@ public class SpawnerTest
 		assertEquals("Spawned player, expected name of Hero, health 20 and attack 1", true,playerEquals(test,holder));
 	}
 	
-	//SpawnEnemy Tests, compares the instances created by the spawner to instances that 
-	//were expected using enemyEquals() method. Null if its given an unexpected enemyID.
+	/**
+	 * SpawnEnemy Tests, compares the instances created by the spawner to instances that
+	 * were expected using enemyEquals() method. Null if its given an unexpected enemyID. 
+	 */
 	
 	@Test
 	public void spawnZombieTest()
@@ -78,16 +84,16 @@ public class SpawnerTest
 	{
 	Spawner spawn = new Spawner();
 	Enemy test = spawn.spawnEnemy(3);
-	Enemy holder = new Enemy("Skeleton King",15,3,2);
-	assertEquals("Gave 3 as an enemy ID, expected SkeletonKing",true,enemyEquals(test,holder));
+	Enemy holder = new Enemy("Skeleking",15,3,2);
+	assertEquals("Gave 3 as an enemy ID, expected Skeleking",true,enemyEquals(test,holder));
 	}
 	@Test
 	public void spawnBlackKnightTest()
 	{
 	Spawner spawn = new Spawner();
 	Enemy test = spawn.spawnEnemy(4);
-	Enemy holder = new Enemy("Black Knight",15,2,1);
-	assertEquals("Gave 4 as an enemy ID, expected Black Knight",true,enemyEquals(test,holder));
+	Enemy holder = new Enemy("Knight",15,2,1);
+	assertEquals("Gave 4 as an enemy ID, expected Knight",true,enemyEquals(test,holder));
 	}
 	@Test
 	public void spawnReaperTest()
@@ -97,21 +103,11 @@ public class SpawnerTest
 	Enemy holder = new Enemy("Reaper",20,4,3);
 	assertEquals("Gave 5 as an enemy ID, expected Black Knight",true,enemyEquals(test,holder));
 	}
-	@Test
-	public void InvalidEnemyTest()
-	{
-	Spawner spawn = new Spawner();
-	Enemy test = spawn.spawnEnemy(6);
-	Enemy test2 = spawn.spawnEnemy(0);
-	Enemy test3 = spawn.spawnEnemy(-40);
-	assertEquals("Gave invalid Enemy ID, expected default instance for Enemy",null,test);
-	assertEquals("Gave invalid Enemy ID, expected default instance for Enemy",null,test2);
-	assertEquals("Gave invalid Enemy ID, expected default instance for Enemy",null,test3);
-	}
 	
-	//CreateItem Tests, checks to see if the potions created by the spawner
-	//are the same as the ones that were expected using the potionEquals() method.
-	//null if its an unexpected ItemID.
+	/** CreateItem Tests, checks to see if the potions created by the spawner 
+	 *  are the same as the ones that were expected using the potionEquals() method.
+	 *  null if its an unexpected ItemID.
+	 */
 	
 	@Test
 	public void createSmallPotionTest()
@@ -137,21 +133,12 @@ public class SpawnerTest
 	Potion holder = new Potion("Large Potion",7);
 	assertEquals("Gave 3 as item ID, expected large potion",true,potionEquals(test,holder));
 	}
-	@Test
-	public void IncorrectItemTest()
-	{
-	Spawner spawn = new Spawner();
-	Potion test = spawn.createItem(-40);
-	Potion test2 = spawn.createItem(4);
-	Potion test3 = spawn.createItem(0);
-	assertEquals("Gave invalid Item ID, expected default instance of Potion",null,test);
-	assertEquals("Gave invalid Item ID, expected default instance of Potion",null,test2);
-	assertEquals("Gave invalid Item ID, expected default instance of Potion",null,test3);
-	}
 	
-	//CreateWeapon Tests, checks to see if the weapons created by the spawner
-	//are the same as the ones that were expected using the weaponEquals() method.
-	//null if its an unexpected ItemID.
+	/**
+	 * CreateWeapon Tests, checks to see if the weapons created by the spawner
+	 * are the same as the ones that were expected using the weaponEquals() method.
+	 * null if its an unexpected ItemID.
+	 */
 	
 	@Test
 	public void createRustyDaggerTest()
@@ -174,27 +161,17 @@ public class SpawnerTest
 	{
 	Spawner spawn = new Spawner();
 	Weapon test = spawn.createWeapon(6);
-	Weapon holder = new Weapon("Excalibur",3);
+	Weapon holder = new Weapon("Blessed Excalibur",3);
 	assertEquals("Gave 6 as item ID, expected Excalibur",true,weaponEquals(test,holder));
 	}
-	@Test
-	public void IncorrectWeaponTest()
-	{
-	Spawner spawn = new Spawner();
-	Weapon test = spawn.createWeapon(7);
-	Weapon test2 = spawn.createWeapon(3);
-	Weapon test3 = spawn.createWeapon(-400);
-	assertEquals("Gave invalid Weapon ID, expected default instance of Weapon",null,test);
-	assertEquals("Gave invalid Weapon ID, expected default instance of Weapon",null,test2);
-	assertEquals("Gave invalid Weapon ID, expected default instance of Weapon",null,test3);
-	}
-	
 	/**
 	 * Below we test for privacy of the objects stored in the spawner
 	 * if we get back the changed attack value then there is a leak.
 	 */
 	
-	//Testing Enemy Objects
+	/** 
+	 * Testing Privacy of Enemy Objects
+	 */
 	@Test
 	public void privacyEnemiesTest1()
 	{
@@ -240,7 +217,9 @@ public class SpawnerTest
 	Enemy b = spawn.spawnEnemy(5);
 	assertEquals("Tested for privacy of Reaper by changing attack",4,b.getAttack());
 	}
-	//Testing Weapon Objects
+	/**
+	 * Testing Privacy of Weapon Objects
+	 */
 	@Test
 	public void privacyWeaponsTest1()
 	{
@@ -263,9 +242,11 @@ public class SpawnerTest
 	Spawner spawn = new Spawner();
 	Weapon a = spawn.createWeapon(6);
 	a.setName("SomethingWentWrongo");
-	assertEquals("Changed the name of a weapon Object from Spawner","Excalibur",spawn.createWeapon(6).getName());
+	assertEquals("Changed the name of a weapon Object from Spawner","Blessed Excalibur",spawn.createWeapon(6).getName());
 	}
-	//Testing Potion Objects
+	/**
+	 * Testing Privacy of Potion Objects
+	 */
 	@Test
 	public void privacyPotionsTest1()
 	{
