@@ -15,6 +15,7 @@ public class Spawner
 	private Enemy enemy;
 	private File file;
 	private Scanner scanner;
+	private Scanner scanner2;
 	private Potion potion;
 	private Weapon weapon;
 	private Enemy[] enemyArray = new Enemy[6];
@@ -41,8 +42,21 @@ public class Spawner
 		try
 		{
 			scanner = new Scanner(file);
+			scanner2 = new Scanner(file);
+			String entireFile ="";
+			String holderValues = "";
+			
+			while (scanner2.hasNext())
+			{
+				entireFile=entireFile+scanner2.next();
+			}
+			
 			if (file.equals(new File("Enemies.txt")))
 			{
+				holderValues = "Zombie1011Skeleton1521SkeletonKing1532BlackKnight1521Reaper2043";
+				
+				if (!entireFile.equals(holderValues))
+					throw new FileNotFoundException();
 				Enemy zombie = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
 				Enemy skeleton = new Enemy(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
 				Enemy skeletonKing = new Enemy(scanner.next()+" "+scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
@@ -57,6 +71,10 @@ public class Spawner
 			}
 			if (file.equals(new File("Items.txt")))
 			{
+				holderValues = "SmallPotion3MediumPotion5LargePotion7RustyDagger1IronLongsword2Excalibur3";
+				
+				if (!entireFile.equals(holderValues))
+					throw new FileNotFoundException();
 				itemArray[0] = null;
 				Potion smallPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
 				Potion mediumPotion = new Potion(scanner.next()+" "+scanner.next(), scanner.nextInt());
