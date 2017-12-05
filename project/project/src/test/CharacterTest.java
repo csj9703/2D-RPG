@@ -19,6 +19,7 @@ public class CharacterTest {
 		}
 	}
 	
+	//This method checks if Character class is abstract and contains an abstract method attack.
 	private boolean isAbstractAndContainsAbstractMethod(){
 		boolean classAbstract = false;
 		boolean containsAbstractMethod = false;
@@ -41,7 +42,9 @@ public class CharacterTest {
 		}
 		return classAbstract && containsAbstractMethod;
 	}
-	//Constructor Tests
+	/*
+	 * This tests the constructor, the constructor will initialize the given values. 
+	 */
 	@Test
 	public void constructorTest_Default() {
 		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstractAndContainsAbstractMethod());
@@ -50,7 +53,9 @@ public class CharacterTest {
 		assertEquals("Character health should be 10",10,chr.getHealth());
 		assertEquals("Character attack should be 1",1,chr.getAttack());
 	}
-	//Set name Tests
+	/*
+	 * This tests the setName method, should return the same string as passed in.
+	 */
 	@Test
 	public void setNameTest_String() {
 		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstractAndContainsAbstractMethod());
@@ -58,7 +63,10 @@ public class CharacterTest {
 		chr.setName("New");
 		assertEquals("Character name should be 'New'","New",chr.getName());
 	}
-	//Set Health Tests
+	/*
+	 * This tests the setHealth method, should return the same integer as passed in.
+	 * Including negative values.
+	 */
 	@Test
 	public void setHealthTest_Postive() {
 		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstractAndContainsAbstractMethod());
@@ -74,7 +82,10 @@ public class CharacterTest {
 		chr.setHealth(-1);
 		assertEquals("Character health should be -1",-1,chr.getHealth());
 	}
-	//Set Attack Tests
+	/*
+	 * This tests the setAttack method, should return the same integer as passed in.
+	 * Except negative values.
+	 */
 	@Test
 	public void setAttackTest_Positive() {
 		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstractAndContainsAbstractMethod());

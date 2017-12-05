@@ -17,6 +17,7 @@ public class GameObjectTest {
 		}
 	}
 	
+	//This method checks if GameObject class is abstract.
 	private boolean isAbstract(){
 		boolean classAbstract = false;
 		try {
@@ -36,14 +37,18 @@ public class GameObjectTest {
 		}
 		return classAbstract;
 	}
-	//Constructor Test
+	/*
+	 * This is the constructor test, variable should be initialized with specified string. 
+	 */
 	@Test
 	public void constructorTest() {
 		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstract());
 		GameObject gameOBJ = new Temp("Default");
 		assertEquals("GameObject should be named 'Default'","Default",gameOBJ.getName());
 	}
-	//Set Name Test
+	/*
+	 * This tests the setName method, should set the name as the passed in string.
+	 */
 	@Test
 	public void SetNameTest() {
 		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstract());
