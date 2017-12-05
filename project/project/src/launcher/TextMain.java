@@ -6,8 +6,8 @@ import game.TextGame;
  * This class is the starting execution point of the game,
  * launches the text version of the game
  * @author Team 6 - CPSC 233 - Tutorial T02
- * @version 3.0
- * @since November 20, 2017
+ * @version 4.0
+ * @since December 4, 2017
  */
 public class TextMain 
 {

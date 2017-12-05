@@ -33,23 +33,19 @@ public class Game implements KeyListener
 	private JPanel victoryScene = victoryScenePanel.createPanel();	
 	private TextPanel textPanel = new TextPanel();
 	private JPanel textBox = textPanel.createPanel();
-	private Gui gui = new Gui(this, gameInterface, battleInterface, inventoryInterface, 
-									startingScene, endingScene, victoryScene, textBox);
 	// flags used to keep track of which scene is being displayed
 	private boolean inBattleScene = false;
 	private boolean inventoryOpen = false;
 	private boolean inStartScene = true;
 	private boolean inGameScene = false;
-	private boolean inEndScene = false;
-	private boolean inVictoryScene = false;
-	private boolean textBoxDisplayed = false;
 	private boolean justDefeatedEnemy = false;
 	/**
-	 * This constructor contains a shut down hook 
-	 * that will save the game on exit
+	 * This constructor will create the GUI that contains a shut down 
+	 * hook that will save the game on exit
 	 */
 	public Game()
 	{
+		new Gui(this, gameInterface, battleInterface, inventoryInterface, startingScene, endingScene, victoryScene, textBox);
 		Runtime.getRuntime().addShutdownHook(onExit());
 	}
 	/**
@@ -74,7 +70,6 @@ public class Game implements KeyListener
         	gameInterface.setVisible(true);
         	inGameScene = true;
         	textBox.setVisible(true);
-        	textBoxDisplayed = true;
     	}
 	}
 	/**
@@ -176,7 +171,6 @@ public class Game implements KeyListener
         	inBattleScene = false;
         	inventoryInterface.setVisible(false);
         	endingScene.setVisible(true);
-        	inEndScene = true;
         }
 	}
 	/**
@@ -191,7 +185,6 @@ public class Game implements KeyListener
         	gameInterface.setVisible(false);
         	inGameScene = false;
         	victoryScene.setVisible(true);
-        	inVictoryScene = true;
         }
 	}
 	/**

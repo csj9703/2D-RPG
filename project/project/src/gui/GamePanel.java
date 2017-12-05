@@ -49,6 +49,7 @@ public class GamePanel
 		JPanel gamePanel = new JPanel();
 		gamePanel.setBounds(0, 0, 650, 650);
 		gamePanel.add(panel);
+
 		return gamePanel;
 	}
 	/**
