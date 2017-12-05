@@ -3,9 +3,11 @@ package gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import game.Enemy;
@@ -121,30 +123,48 @@ public class BattlePanel
 		int yCoord = 0;
 		if(enemyName.equals("Zombie")) 
 		{
+			fileExists("src/graphics/zombie.gif");
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/zombie.gif").getImage().getScaledInstance(90, 125, Image.SCALE_DEFAULT));
 			xCoord = 425; yCoord = 190;
 		}
 		else if(enemyName.equals("Skeleton")) 
 		{
+			fileExists("src/graphics/skeleton.gif");
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/skeleton.gif").getImage().getScaledInstance(115, 125, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
 		else if(enemyName.equals("Skeleking"))
 		{
+			fileExists("src/graphics/skeletonKing.gif");
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/skeletonKing.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
 		else if(enemyName.equals("Knight")) 
 		{
+			fileExists("src/graphics/blackKnight.gif");
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/blackKnight.gif").getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
 		else if(enemyName.equals("Reaper")) 
 		{
+			fileExists("src/graphics/reaper.gif");
 			enemy_Icon = new ImageIcon(new ImageIcon("src/graphics/reaper.gif").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 			xCoord = 350; yCoord = 175;
 		}
 		enemyLB.setIcon(enemy_Icon);
 		enemyLB.setBounds(xCoord,yCoord,250,150);
 	}
+	
+	private void fileExists(String filePath) {
+		File f = new File(filePath);
+		if (f.exists() && f.canRead()) {
+			
+		}else {
+			Object[] options = {"OK"};
+			JOptionPane.showOptionDialog(null, "Exit and Reinstall Game", "MISSING TEXTURE ERROR",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+			null, options, options[0]);
+		}
+	}
+	
 }
