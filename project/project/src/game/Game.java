@@ -55,7 +55,7 @@ public class Game implements KeyListener
 	 */
 	private Thread onExit()
 	{
-		return new Thread() {public void run() {new FileWriter(player,game).save();}};
+		return new Thread() {public void run() {new FileWriter(new Player(player),new Map(game)).save();}};
 	}
 	/**
 	 * This method is used to display the game, it will hide
@@ -95,6 +95,10 @@ public class Game implements KeyListener
 	}
 	/**
 	 * This method initiates a turn of combat
+	 * The original reference is used for battle between
+	 * the player and enemy because you cannot defeat a enemy 
+	 * if a new copy of it is made each attack, i.e. health
+	 * will not decrease
 	 */
 	private void attack()
 	{
@@ -196,9 +200,9 @@ public class Game implements KeyListener
 		checkForItem();
 		checkPlayerHealth();
 		checkWinCondition();
-        battlePanel.update(player, game.getEnemy());
-        inventoryPanel.update(player);
-        gamePanel.update(game);
+        battlePanel.update(new Player(player), new Enemy(game.getEnemy()));
+        inventoryPanel.update(new Player(player));
+        gamePanel.update(new Map(game));
         game.checkStageCompletion();
 	}
 	/**

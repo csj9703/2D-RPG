@@ -12,21 +12,20 @@ import javax.swing.JOptionPane;
  */
 public class Player extends Character
 {
-	private final int MAX_HEALTH = 20;
+	private final int DEFAULT_MAX_HEALTH = 20;
 	private int numSmallPotions;
 	private int numMediumPotions;
 	private int numLargePotions;
 	private int level = 1;
 	private int currentEXP = 0;
 	private int expToLvl = 1;
+	private int damage;
 	private String currentWeapon = "No Weapon";
 	private boolean hasDagger = false;
 	private boolean hasSword = false;
 	private boolean hasExcalibur = false;
-	private int damage;
 	private AudioPlayer audioPlayer = new AudioPlayer();
 	private Spawner spawner = new Spawner();
-	
 	/**
 	 * This constructor accepts as arguments the name, health, and attack
 	 * It also sets the starting values of max hit points, level and experience
@@ -37,6 +36,21 @@ public class Player extends Character
 	public Player(String name, int health, int attack)
 	{
 		super(name,health,attack);
+	}
+	/*
+	 * This is the copy constructor for the player
+	 */
+	public Player(Player player)
+	{
+		super(player.getName(), player.getHealth(), player.getAttack());
+		numSmallPotions = player.getNumSmallPotions();
+		numMediumPotions = player.getNumMediumPotions();
+		numLargePotions = player.getNumLargePotions();
+		level = player.getCurrentLevel();
+		currentEXP = player.getCurrentExp();
+		expToLvl = player.getExpToLvl();
+		currentWeapon = player.getCurrentWeapon();
+		damage = player.getDamage();
 	}
 	/**
 	 * This is the getter method for level, returns level
@@ -122,7 +136,7 @@ public class Player extends Character
 	 */
 	public void obtainExp(Enemy enemy)
 	{
-		currentEXP += enemy.getExperience();
+		currentEXP += new Enemy(enemy).getExperience();
 	}
 	/**
 	 * This method consumes a item based on the itemID passed as argument
@@ -193,9 +207,9 @@ public class Player extends Character
 	private void restoreHp(int amount)
     {
 		setHealth(getHealth()+amount);
-		if(getHealth() > MAX_HEALTH) 
+		if(getHealth() > DEFAULT_MAX_HEALTH) 
 		{
-			int excessHp = getHealth() - MAX_HEALTH;
+			int excessHp = getHealth() - DEFAULT_MAX_HEALTH;
 			setHealth(getHealth()-excessHp);
 		}
     }
@@ -204,7 +218,7 @@ public class Player extends Character
 	 */
 	public int getMaxHealth()
 	{
-		return MAX_HEALTH;
+		return DEFAULT_MAX_HEALTH;
 	}
 	/**
 	 * This is the getter method for small potions, returns numSmallPotions
@@ -264,7 +278,6 @@ public class Player extends Character
 	/**
 	 * This method reduces the enemy's health by the amount of damage 
 	 * inflicted by the player
-	 *@param player The player
 	 *@param enemy The enemy
 	 */
 	@Override 

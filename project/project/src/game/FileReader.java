@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 /*
- * This class is used to read text files into an array
+ * This class is used to read text files 
  * 
  * Text file character mapping		
  * w : wall		      a : zombie       1 : small potion         
@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class FileReader 
 {
 	/**
-	 * This method reads a text file into a 2d array,
+	 * This method reads a stage file into a 2d array,
 	 * if the text file is not found, a backup will be
 	 * generated
 	 * @return maze The 2d array
@@ -34,6 +34,8 @@ public class FileReader
 		try 
 		{
 			scanner = new Scanner(file);
+			// loops through text file and stores each letter
+			// separated by a space into a array index
 			for(int r = 0; r < ROWS; r++) 
 			{
 				for(int c = 0; c < COLS; c++) 
@@ -116,7 +118,7 @@ public class FileReader
 	}
 	/**
 	 * This methods reads the saved stage level
-	 * @param fileName The file's name
+	 * @param fileName The name of the text file
 	 */
 	public String readStageLevel(String fileName) 
 	{

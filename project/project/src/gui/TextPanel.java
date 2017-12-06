@@ -16,7 +16,7 @@ public class TextPanel
 	 */
 	public JPanel createPanel()
 	{
-		JPanel textPanel   = new JPanel();
+		JPanel textPanel = new JPanel();
 		textPanel .setLayout(null);
 		textPanel .setBackground(Color.BLACK);
 		textPanel .setBounds(0, 0, 640, 50);

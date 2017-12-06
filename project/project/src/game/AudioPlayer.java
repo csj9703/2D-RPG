@@ -9,11 +9,10 @@ import javax.swing.JOptionPane;
  */
 public class AudioPlayer 
 {
-	Clip menu;
-	Clip battle;
-	Clip game;
-	Clip death;
-	Clip victory;
+	private Clip battle;
+	private Clip game;
+	private Clip death;
+	private Clip victory;
 	/**
 	 * This method plays a wave audio file
 	 * @param sound The sound file
@@ -189,32 +188,5 @@ public class AudioPlayer
 	public void stopVictoryMusic()
 	{
 		victory.close();
-	}
-	/**
-	 * This method plays the menu music
-	 */
-	public void startMenuMusic()
-	{
-		File menuMusic = new File("src/sounds/menuMusic.wav");
-		try
-		{
-			menu = AudioSystem.getClip();
-			menu.open(AudioSystem.getAudioInputStream(menuMusic));
-		}
-		catch(Exception e)
-		{
-			Object[] options = {"OK"};
-			JOptionPane.showOptionDialog(null, "Unable to load sound. Reinstall Game", "SOUND ERROR",
-			JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-			null, options, options[0]);
-		}
-		menu.start();
-	}
-	/**
-	 * This method stops the menu music
-	 */
-	public void stopMenuMusic()
-	{
-		menu.close();
 	}
 }

@@ -309,6 +309,7 @@ public class PlayerTest {
 		 p1.useItem(1);
 		 assertEquals("numSmallPotions should be 0", 0, p1.getNumSmallPotions());
 	 }
+	 
 	 @Test
 	 public void useItemTest_MediumPotion_ItemUsed() {
 		 Player p1 = new Player("Default", 10, 1);
@@ -340,5 +341,4 @@ public class PlayerTest {
 		 }
 		 assertEquals("Enemy health should decrease.",isLess,e1Health<e1.getHealth());
  	 }
- 	 
 }

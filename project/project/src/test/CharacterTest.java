@@ -5,11 +5,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
 import org.junit.Test;
-
 import game.Character;
 
+/*
+ * This class contains the unit test for Character.java
+ */
 public class CharacterTest {
 	private class Temp extends Character{
 		public Temp(String name, int health, int attack) {

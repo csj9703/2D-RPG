@@ -14,12 +14,11 @@ public class FileWriter
 {
 	private Map map;
 	private Player player;
-	
 	/**
 	 * This is the default constructor
 	 */
 	public FileWriter() {}
-	/*
+	/**
 	 * This constructor initializes the writer to a bufferedWriter and gives it the fileName
 	 * this will also catch the possible fileNotFoundException.
 	 * @param player The player
@@ -28,7 +27,7 @@ public class FileWriter
 	public FileWriter(Player player, Map map)
 	{
 		this.map = new Map(map);
-		this.player = player;
+		this.player = new Player(player);
 	}
 	/**
 	 * This method saves the game to text file
@@ -68,8 +67,7 @@ public class FileWriter
 		}
 	}
 	/**
-	 * This method will write the player statistics to a 
-	 * text file
+	 * This method will write the current data to a text file
 	 */
 	private void savePlayerData() 
 	{
@@ -84,9 +82,18 @@ public class FileWriter
 		try 
 		{
 			Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("SaveGame.txt"), "utf-8"));
-			writer.write(player.getNumSmallPotions()+ " " + player.getNumMediumPotions() + " " + player.getNumLargePotions()
-			+ " "+ player.getCurrentLevel() + " "+player.getCurrentExp()+" "+player.getExpToLvl() + " "+ player.getHealth() 
-			+ " " + player.getAttack() + " " + weapon + " " + hasDagger + " " + hasIronLongsword + " " + hasExcalibur);
+			writer.write(player.getNumSmallPotions() + " " 
+						+ player.getNumMediumPotions() + " " 
+						+ player.getNumLargePotions() + " "
+						+ player.getCurrentLevel() + " "
+						+ player.getCurrentExp()+ " "
+						+ player.getExpToLvl() + " "
+						+ player.getHealth() + " " 
+						+ player.getAttack() + " " 
+						+ weapon + " " 
+						+ hasDagger + " " 
+						+ hasIronLongsword + " " 
+						+ hasExcalibur);
 			writer.close();
 		}
 		catch (IOException e)

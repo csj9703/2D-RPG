@@ -9,7 +9,9 @@ import java.io.IOException;
 import org.junit.Test;
 
 import game.GameObject;
-
+/*
+ * This class contains the unit test for GameObject.java
+ */
 public class GameObjectTest {
 	private class Temp extends GameObject{
 		public Temp(String name) {
@@ -56,5 +58,4 @@ public class GameObjectTest {
 		gameOBJ.setName("New");
 		assertEquals("GameObject should be named 'New'","New",gameOBJ.getName());
 	}
-	
 }

@@ -24,7 +24,7 @@ public class Map
 	{	
 		audioPlayer.startGameMusic();
 		FileReader fileReader = new FileReader();
-		maze = fileReader.readFile("stage1.txt");
+		maze = fileReader.readFile(selectedStage);
 	}
 	/**
 	 * This is the copy constructor for map
@@ -52,8 +52,8 @@ public class Map
 		System.out.println("   w   ");
 		System.out.println("a  i  d");
 		System.out.println("   s   ");
-		System.out.println("Type one of the letters above to indicate direction of movement");
-		System.out.println("or i for character menu");
+		System.out.println("Type one of the letters above to indicate direction");
+		System.out.println("of movement or i for character menu");
 	}
 	/**
 	 * This method prints the maze grid borders
