@@ -34,7 +34,6 @@ public class CharacterTest {
 					containsAbstractMethod = true;
 				}
 				line = in.readLine();
-				in.close();
 			}
 		} catch (FileNotFoundException e) {
 			classAbstract = false;
