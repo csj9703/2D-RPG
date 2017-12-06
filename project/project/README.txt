@@ -38,13 +38,15 @@ Test Class Names:
 Linux:
 	in ../project/project> javac -d bin -cp bin src/launcher/Main.java
 
-	*****Replace "TestClasses" with the corresponding test classes*****
-	in ../project/project> java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar;bin org.junit.runner.JUnitCore test.TestClasses  
+	To run a test replace "NameTest" with the corresponding test class name, e.g. PlayerTest
+
+	in ../project/project> java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar;bin org.junit.runner.JUnitCore test.NameTest  
 	
 -------------------------------------------------------------------------------
 Windows:
 	in ../project/project> javac -d bin -cp bin src\launcher\Main.java
 
-	*****Replace "TestClasses" with the corresponding test classes*****
-	in ../project/project> java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar:bin org.junit.runner.JUnitCore test.TestClasses
+	To run a test replace "NameTest" with the corresponding test class name, e.g. PlayerTest
+
+	in ../project/project> java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar;bin org.junit.runner.JUnitCore test.TestClasses
 	
