@@ -34,9 +34,12 @@ public class FileWriter
 	 */
 	public void save()
 	{
-		saveMapData();
-		savePlayerData();
-		saveMazeData();
+		if (player.getHealth() > 0)
+		{
+			saveMapData();
+			savePlayerData();
+			saveMazeData();
+		}
 	}
 	/**
 	 * This method will write the maze array values to a 
