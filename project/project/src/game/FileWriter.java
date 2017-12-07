@@ -72,7 +72,7 @@ public class FileWriter
 	private void savePlayerData() 
 	{
 		// determines what weapon the player has obtained thus far
-		boolean hasExcalibur = player.getCurrentWeapon().equals("Excalibur");
+		boolean hasExcalibur = player.getCurrentWeapon().equals("Blessed Excalibur");
 		boolean hasIronLongsword = player.getCurrentWeapon().equals("Iron Longsword");
 		boolean hasDagger = player.getCurrentWeapon().equals("Rusty Dagger");
 		// removes the space from weapon name

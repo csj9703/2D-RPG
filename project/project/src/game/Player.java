@@ -37,10 +37,7 @@ public class Player extends Character
 	{
 		super(name,health,attack);
 	}
-	/*
-	 * This is the copy constructor for the player
-	 */
-	public Player(Player player)
+		public Player(Player player)
 	{
 		super(player.getName(), player.getHealth(), player.getAttack());
 		numSmallPotions = player.getNumSmallPotions();
@@ -51,12 +48,9 @@ public class Player extends Character
 		expToLvl = player.getExpToLvl();
 		currentWeapon = player.getCurrentWeapon();
 		damage = player.getDamage();
-		if (player.hasDagger == true)
-		hasDagger = true;
-		else if (player.hasSword == true)
-		hasSword = true;
-		else if (player.hasExcalibur == true)
-		hasExcalibur = true;
+		hasExcalibur = player.hasExcalibur;
+		hasSword = player.hasSword;
+		hasDagger = player.hasDagger;
 	}
 	/**
 	 * This is the getter method for level, returns level
@@ -179,7 +173,8 @@ public class Player extends Character
 		}
 	}
 	/**
-	 * This method picks up a item based on the itemID passed as argument
+	 * This method picks up a item based on the itemID passed as argument, 
+	 * then the getWeaponDamage() method is called to update the currentWeapon variable
 	 * @param itemID The ID of the item
 	 */
 	public void pickUp(int itemID)
@@ -205,6 +200,7 @@ public class Player extends Character
 			hasExcalibur = true;
 			break;
 		}
+		getWeaponDamage();
 	}
 	/**
 	 * This method increases the player's health
@@ -273,7 +269,7 @@ public class Player extends Character
 		else if (hasDagger)
 		{
 			weaponDamage = spawner.createWeapon(4).getWeaponDamage();
-			currentWeapon = spawner.createWeapon(4).getName();
+			currentWeapon = spawner.createWeapon(4).getName();		
 		}
 		else
 		{
