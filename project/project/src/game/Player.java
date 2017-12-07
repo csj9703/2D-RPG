@@ -51,6 +51,12 @@ public class Player extends Character
 		expToLvl = player.getExpToLvl();
 		currentWeapon = player.getCurrentWeapon();
 		damage = player.getDamage();
+		if (player.hasDagger == true)
+		hasDagger = true;
+		else if (player.hasSword == true)
+		hasSword = true;
+		else if (player.hasExcalibur == true)
+		hasExcalibur = true;
 	}
 	/**
 	 * This is the getter method for level, returns level

@@ -31,6 +31,7 @@ public class GameObjectTest {
 				}
 				line = in.readLine();
 			}
+			in.close();
 		} catch (FileNotFoundException e) {
 			classAbstract = false;
 		} catch (IOException e) {
