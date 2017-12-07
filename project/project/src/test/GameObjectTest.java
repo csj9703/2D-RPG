@@ -44,7 +44,7 @@ public class GameObjectTest {
 	 */
 	@Test
 	public void constructorTest() {
-		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstract());
+		assertTrue("GameObject should be declared abstract", isAbstract());
 		GameObject gameOBJ = new Temp("Default");
 		assertEquals("GameObject should be named 'Default'","Default",gameOBJ.getName());
 	}
@@ -53,7 +53,7 @@ public class GameObjectTest {
 	 */
 	@Test
 	public void SetNameTest() {
-		assertTrue("Character should be declared abstract and contain abstract attack method", isAbstract());
+		assertTrue("GameObject should be declared abstract", isAbstract());
 		GameObject gameOBJ = new Temp("Default");
 		gameOBJ.setName("New");
 		assertEquals("GameObject should be named 'New'","New",gameOBJ.getName());
